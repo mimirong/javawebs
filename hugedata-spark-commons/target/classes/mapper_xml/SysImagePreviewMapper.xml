@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.SysImagePreviewMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.SysImagePreview" >
+    <id column="PREVIEW_ID" property="previewId" jdbcType="INTEGER" />
+    <result column="ORIGINAL_FILE_ID" property="originalFileId" jdbcType="VARCHAR" />
+    <result column="PREVIEW_FILE_ID" property="previewFileId" jdbcType="VARCHAR" />
+    <result column="WIDTH" property="width" jdbcType="INTEGER" />
+    <result column="HEIGHT" property="height" jdbcType="INTEGER" />
+    <result column="PREVIEW_TYPE" property="previewType" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != previewId" >
+      and sip.PREVIEW_ID = #{previewId}
+    </if>
+    <if test="null != ne_previewId" >
+      and sip.PREVIEW_ID != #{ne_previewId}
+    </if>
+    <if test="null != list_previewId" >
+      and sip.PREVIEW_ID in (<foreach collection="list_previewId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != originalFileId" >
+      and sip.ORIGINAL_FILE_ID = #{originalFileId}
+    </if>
+    <if test="null != ne_originalFileId" >
+      and sip.ORIGINAL_FILE_ID != #{ne_originalFileId}
+    </if>
+    <if test="null != like_originalFileId" >
+      and sip.ORIGINAL_FILE_ID like CONCAT('%', #{like_originalFileId}, '%')
+    </if>
+    <if test="null != list_originalFileId" >
+      and sip.ORIGINAL_FILE_ID in (<foreach collection="list_originalFileId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_originalFileId" >
+      and sip.ORIGINAL_FILE_ID &gt;= #{begin_originalFileId}
+    </if>
+    <if test="null != end_originalFileId" >
+      and sip.ORIGINAL_FILE_ID &lt;= #{end_originalFileId}
+    </if>
+    <if test="null != previewFileId" >
+      and sip.PREVIEW_FILE_ID = #{previewFileId}
+    </if>
+    <if test="null != ne_previewFileId" >
+      and sip.PREVIEW_FILE_ID != #{ne_previewFileId}
+    </if>
+    <if test="null != like_previewFileId" >
+      and sip.PREVIEW_FILE_ID like CONCAT('%', #{like_previewFileId}, '%')
+    </if>
+    <if test="null != list_previewFileId" >
+      and sip.PREVIEW_FILE_ID in (<foreach collection="list_previewFileId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_previewFileId" >
+      and sip.PREVIEW_FILE_ID &gt;= #{begin_previewFileId}
+    </if>
+    <if test="null != end_previewFileId" >
+      and sip.PREVIEW_FILE_ID &lt;= #{end_previewFileId}
+    </if>
+    <if test="null != width" >
+      and sip.WIDTH = #{width}
+    </if>
+    <if test="null != ne_width" >
+      and sip.WIDTH != #{ne_width}
+    </if>
+    <if test="null != list_width" >
+      and sip.WIDTH in (<foreach collection="list_width" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != height" >
+      and sip.HEIGHT = #{height}
+    </if>
+    <if test="null != ne_height" >
+      and sip.HEIGHT != #{ne_height}
+    </if>
+    <if test="null != list_height" >
+      and sip.HEIGHT in (<foreach collection="list_height" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != previewType" >
+      and sip.PREVIEW_TYPE = #{previewType}
+    </if>
+    <if test="null != ne_previewType" >
+      and sip.PREVIEW_TYPE != #{ne_previewType}
+    </if>
+    <if test="null != like_previewType" >
+      and sip.PREVIEW_TYPE like CONCAT('%', #{like_previewType}, '%')
+    </if>
+    <if test="null != list_previewType" >
+      and sip.PREVIEW_TYPE in (<foreach collection="list_previewType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_previewType" >
+      and sip.PREVIEW_TYPE &gt;= #{begin_previewType}
+    </if>
+    <if test="null != end_previewType" >
+      and sip.PREVIEW_TYPE &lt;= #{end_previewType}
+    </if>
+    <if test="null != begin_createTime" >
+      and sip.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and sip.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'previewId' == orderItem.column" >
+            sip.PREVIEW_ID ${orderItem.dir}
+          </if>
+          <if test="'originalFileId' == orderItem.column" >
+            sip.ORIGINAL_FILE_ID ${orderItem.dir}
+          </if>
+          <if test="'previewFileId' == orderItem.column" >
+            sip.PREVIEW_FILE_ID ${orderItem.dir}
+          </if>
+          <if test="'width' == orderItem.column" >
+            sip.WIDTH ${orderItem.dir}
+          </if>
+          <if test="'height' == orderItem.column" >
+            sip.HEIGHT ${orderItem.dir}
+          </if>
+          <if test="'previewType' == orderItem.column" >
+            sip.PREVIEW_TYPE ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            sip.CREATE_TIME ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    sip.PREVIEW_ID, sip.ORIGINAL_FILE_ID, sip.PREVIEW_FILE_ID, sip.WIDTH, sip.HEIGHT, 
+    sip.PREVIEW_TYPE, sip.CREATE_TIME
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_image_preview sip
+    where sip.PREVIEW_ID = #{previewId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from sys_image_preview sip
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from sys_image_preview sip
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.SysImagePreview" >
+    insert into sys_image_preview
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="previewId != null" >
+        PREVIEW_ID,
+      </if>
+      <if test="originalFileId != null" >
+        ORIGINAL_FILE_ID,
+      </if>
+      <if test="previewFileId != null" >
+        PREVIEW_FILE_ID,
+      </if>
+      <if test="width != null" >
+        WIDTH,
+      </if>
+      <if test="height != null" >
+        HEIGHT,
+      </if>
+      <if test="previewType != null" >
+        PREVIEW_TYPE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="previewId != null" >
+        #{previewId,jdbcType=INTEGER},
+      </if>
+      <if test="originalFileId != null" >
+        #{originalFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="previewFileId != null" >
+        #{previewFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="width != null" >
+        #{width,jdbcType=INTEGER},
+      </if>
+      <if test="height != null" >
+        #{height,jdbcType=INTEGER},
+      </if>
+      <if test="previewType != null" >
+        #{previewType,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from sys_image_preview
+    where PREVIEW_ID = #{previewId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from sys_image_preview where PREVIEW_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from sip using (sys_image_preview as sip) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.SysImagePreview" >
+    update sys_image_preview
+    <set >
+      <if test="originalFileId != null" >
+        ORIGINAL_FILE_ID = #{originalFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="previewFileId != null" >
+        PREVIEW_FILE_ID = #{previewFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="width != null" >
+        WIDTH = #{width,jdbcType=INTEGER},
+      </if>
+      <if test="height != null" >
+        HEIGHT = #{height,jdbcType=INTEGER},
+      </if>
+      <if test="previewType != null" >
+        PREVIEW_TYPE = #{previewType,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where PREVIEW_ID = #{previewId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update sys_image_preview sip
+    <set >
+      <if test="record.previewId != null" >
+        PREVIEW_ID = #{record.previewId,jdbcType=INTEGER},
+      </if>
+      <if test="record.originalFileId != null" >
+        ORIGINAL_FILE_ID = #{record.originalFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.previewFileId != null" >
+        PREVIEW_FILE_ID = #{record.previewFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.width != null" >
+        WIDTH = #{record.width,jdbcType=INTEGER},
+      </if>
+      <if test="record.height != null" >
+        HEIGHT = #{record.height,jdbcType=INTEGER},
+      </if>
+      <if test="record.previewType != null" >
+        PREVIEW_TYPE = #{record.previewType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.previewId" >
+        and sip.PREVIEW_ID = #{map.previewId}
+      </if>
+      <if test="null != map.list_previewId" >
+        and sip.PREVIEW_ID in (<foreach collection="map.list_previewId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.originalFileId" >
+        and sip.ORIGINAL_FILE_ID = #{map.originalFileId}
+      </if>
+      <if test="null != map.like_originalFileId" >
+        and sip.ORIGINAL_FILE_ID like '%' || #{map.like_originalFileId} || '%'
+      </if>
+      <if test="null != map.list_originalFileId" >
+        and sip.ORIGINAL_FILE_ID in (<foreach collection="map.list_originalFileId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.previewFileId" >
+        and sip.PREVIEW_FILE_ID = #{map.previewFileId}
+      </if>
+      <if test="null != map.like_previewFileId" >
+        and sip.PREVIEW_FILE_ID like '%' || #{map.like_previewFileId} || '%'
+      </if>
+      <if test="null != map.list_previewFileId" >
+        and sip.PREVIEW_FILE_ID in (<foreach collection="map.list_previewFileId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.width" >
+        and sip.WIDTH = #{map.width}
+      </if>
+      <if test="null != map.list_width" >
+        and sip.WIDTH in (<foreach collection="map.list_width" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.height" >
+        and sip.HEIGHT = #{map.height}
+      </if>
+      <if test="null != map.list_height" >
+        and sip.HEIGHT in (<foreach collection="map.list_height" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.previewType" >
+        and sip.PREVIEW_TYPE = #{map.previewType}
+      </if>
+      <if test="null != map.like_previewType" >
+        and sip.PREVIEW_TYPE like '%' || #{map.like_previewType} || '%'
+      </if>
+      <if test="null != map.list_previewType" >
+        and sip.PREVIEW_TYPE in (<foreach collection="map.list_previewType" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and sip.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and sip.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+    </where>
+  </update>
+</mapper>

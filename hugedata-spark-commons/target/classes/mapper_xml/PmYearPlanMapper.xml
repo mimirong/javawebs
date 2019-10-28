@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.PmYearPlanMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.PmYearPlan" >
+    <id column="PLAN_ID" property="planId" jdbcType="INTEGER" />
+    <result column="PLAN_YEAR" property="planYear" jdbcType="VARCHAR" />
+    <result column="AMOUNT" property="amount" jdbcType="DOUBLE" />
+    <result column="MAIN_ACTOR" property="mainActor" jdbcType="VARCHAR" />
+    <result column="CONTENT" property="content" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="APPROVE_RESULT" property="approveResult" jdbcType="VARCHAR" />
+    <result column="PLAN_STATUS" property="planStatus" jdbcType="BIT" />
+    <result column="PROJECT_ID" property="projectId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != planId" >
+      and pyp.PLAN_ID = #{planId}
+    </if>
+    <if test="null != ne_planId" >
+      and pyp.PLAN_ID != #{ne_planId}
+    </if>
+    <if test="null != list_planId" >
+      and pyp.PLAN_ID in (<foreach collection="list_planId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != planYear" >
+      and pyp.PLAN_YEAR = #{planYear}
+    </if>
+    <if test="null != ne_planYear" >
+      and pyp.PLAN_YEAR != #{ne_planYear}
+    </if>
+    <if test="null != like_planYear" >
+      and pyp.PLAN_YEAR like CONCAT('%', #{like_planYear}, '%')
+    </if>
+    <if test="null != list_planYear" >
+      and pyp.PLAN_YEAR in (<foreach collection="list_planYear" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_planYear" >
+      and pyp.PLAN_YEAR &gt;= #{begin_planYear}
+    </if>
+    <if test="null != end_planYear" >
+      and pyp.PLAN_YEAR &lt;= #{end_planYear}
+    </if>
+    <if test="null != amount" >
+      and pyp.AMOUNT = #{amount}
+    </if>
+    <if test="null != ne_amount" >
+      and pyp.AMOUNT != #{ne_amount}
+    </if>
+    <if test="null != list_amount" >
+      and pyp.AMOUNT in (<foreach collection="list_amount" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != mainActor" >
+      and pyp.MAIN_ACTOR = #{mainActor}
+    </if>
+    <if test="null != ne_mainActor" >
+      and pyp.MAIN_ACTOR != #{ne_mainActor}
+    </if>
+    <if test="null != like_mainActor" >
+      and pyp.MAIN_ACTOR like CONCAT('%', #{like_mainActor}, '%')
+    </if>
+    <if test="null != list_mainActor" >
+      and pyp.MAIN_ACTOR in (<foreach collection="list_mainActor" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_mainActor" >
+      and pyp.MAIN_ACTOR &gt;= #{begin_mainActor}
+    </if>
+    <if test="null != end_mainActor" >
+      and pyp.MAIN_ACTOR &lt;= #{end_mainActor}
+    </if>
+    <if test="null != content" >
+      and pyp.CONTENT = #{content}
+    </if>
+    <if test="null != ne_content" >
+      and pyp.CONTENT != #{ne_content}
+    </if>
+    <if test="null != like_content" >
+      and pyp.CONTENT like CONCAT('%', #{like_content}, '%')
+    </if>
+    <if test="null != list_content" >
+      and pyp.CONTENT in (<foreach collection="list_content" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_content" >
+      and pyp.CONTENT &gt;= #{begin_content}
+    </if>
+    <if test="null != end_content" >
+      and pyp.CONTENT &lt;= #{end_content}
+    </if>
+    <if test="null != begin_createTime" >
+      and pyp.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and pyp.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != approveResult" >
+      and pyp.APPROVE_RESULT = #{approveResult}
+    </if>
+    <if test="null != ne_approveResult" >
+      and pyp.APPROVE_RESULT != #{ne_approveResult}
+    </if>
+    <if test="null != like_approveResult" >
+      and pyp.APPROVE_RESULT like CONCAT('%', #{like_approveResult}, '%')
+    </if>
+    <if test="null != list_approveResult" >
+      and pyp.APPROVE_RESULT in (<foreach collection="list_approveResult" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_approveResult" >
+      and pyp.APPROVE_RESULT &gt;= #{begin_approveResult}
+    </if>
+    <if test="null != end_approveResult" >
+      and pyp.APPROVE_RESULT &lt;= #{end_approveResult}
+    </if>
+    <if test="null != planStatus" >
+      and pyp.PLAN_STATUS = #{planStatus}
+    </if>
+    <if test="null != ne_planStatus" >
+      and pyp.PLAN_STATUS != #{ne_planStatus}
+    </if>
+    <if test="null != list_planStatus" >
+      and pyp.PLAN_STATUS in (<foreach collection="list_planStatus" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != projectId" >
+      and pyp.PROJECT_ID = #{projectId}
+    </if>
+    <if test="null != ne_projectId" >
+      and pyp.PROJECT_ID != #{ne_projectId}
+    </if>
+    <if test="null != list_projectId" >
+      and pyp.PROJECT_ID in (<foreach collection="list_projectId" item="i" separator=",">#{i}</foreach>)
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'planId' == orderItem.column" >
+            pyp.PLAN_ID ${orderItem.dir}
+          </if>
+          <if test="'planYear' == orderItem.column" >
+            pyp.PLAN_YEAR ${orderItem.dir}
+          </if>
+          <if test="'amount' == orderItem.column" >
+            pyp.AMOUNT ${orderItem.dir}
+          </if>
+          <if test="'mainActor' == orderItem.column" >
+            pyp.MAIN_ACTOR ${orderItem.dir}
+          </if>
+          <if test="'content' == orderItem.column" >
+            pyp.CONTENT ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            pyp.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'approveResult' == orderItem.column" >
+            pyp.APPROVE_RESULT ${orderItem.dir}
+          </if>
+          <if test="'planStatus' == orderItem.column" >
+            pyp.PLAN_STATUS ${orderItem.dir}
+          </if>
+          <if test="'projectId' == orderItem.column" >
+            pyp.PROJECT_ID ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    pyp.PLAN_ID, pyp.PLAN_YEAR, pyp.AMOUNT, pyp.MAIN_ACTOR, pyp.CONTENT, pyp.CREATE_TIME, 
+    pyp.APPROVE_RESULT, pyp.PLAN_STATUS, pyp.PROJECT_ID
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from pm_year_plan pyp
+    where pyp.PLAN_ID = #{planId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from pm_year_plan pyp
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from pm_year_plan pyp
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.PmYearPlan" >
+    <selectKey resultType="java.lang.Integer" keyProperty="planId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into pm_year_plan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      PLAN_ID,
+      <if test="planYear != null" >
+        PLAN_YEAR,
+      </if>
+      <if test="amount != null" >
+        AMOUNT,
+      </if>
+      <if test="mainActor != null" >
+        MAIN_ACTOR,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="approveResult != null" >
+        APPROVE_RESULT,
+      </if>
+      <if test="planStatus != null" >
+        PLAN_STATUS,
+      </if>
+      <if test="projectId != null" >
+        PROJECT_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{planId,jdbcType=INTEGER},
+      <if test="planYear != null" >
+        #{planYear,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="mainActor != null" >
+        #{mainActor,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approveResult != null" >
+        #{approveResult,jdbcType=VARCHAR},
+      </if>
+      <if test="planStatus != null" >
+        #{planStatus,jdbcType=BIT},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from pm_year_plan
+    where PLAN_ID = #{planId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from pm_year_plan where PLAN_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from pyp using (pm_year_plan as pyp) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.PmYearPlan" >
+    update pm_year_plan
+    <set >
+      <if test="planYear != null" >
+        PLAN_YEAR = #{planYear,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        AMOUNT = #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="mainActor != null" >
+        MAIN_ACTOR = #{mainActor,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approveResult != null" >
+        APPROVE_RESULT = #{approveResult,jdbcType=VARCHAR},
+      </if>
+      <if test="planStatus != null" >
+        PLAN_STATUS = #{planStatus,jdbcType=BIT},
+      </if>
+      <if test="projectId != null" >
+        PROJECT_ID = #{projectId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where PLAN_ID = #{planId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update pm_year_plan pyp
+    <set >
+      <if test="record.planId != null" >
+        PLAN_ID = #{record.planId,jdbcType=INTEGER},
+      </if>
+      <if test="record.planYear != null" >
+        PLAN_YEAR = #{record.planYear,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amount != null" >
+        AMOUNT = #{record.amount,jdbcType=DOUBLE},
+      </if>
+      <if test="record.mainActor != null" >
+        MAIN_ACTOR = #{record.mainActor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null" >
+        CONTENT = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.approveResult != null" >
+        APPROVE_RESULT = #{record.approveResult,jdbcType=VARCHAR},
+      </if>
+      <if test="record.planStatus != null" >
+        PLAN_STATUS = #{record.planStatus,jdbcType=BIT},
+      </if>
+      <if test="record.projectId != null" >
+        PROJECT_ID = #{record.projectId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.planId" >
+        and pyp.PLAN_ID = #{map.planId}
+      </if>
+      <if test="null != map.list_planId" >
+        and pyp.PLAN_ID in (<foreach collection="map.list_planId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.planYear" >
+        and pyp.PLAN_YEAR = #{map.planYear}
+      </if>
+      <if test="null != map.like_planYear" >
+        and pyp.PLAN_YEAR like '%' || #{map.like_planYear} || '%'
+      </if>
+      <if test="null != map.list_planYear" >
+        and pyp.PLAN_YEAR in (<foreach collection="map.list_planYear" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.amount" >
+        and pyp.AMOUNT = #{map.amount}
+      </if>
+      <if test="null != map.list_amount" >
+        and pyp.AMOUNT in (<foreach collection="map.list_amount" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.mainActor" >
+        and pyp.MAIN_ACTOR = #{map.mainActor}
+      </if>
+      <if test="null != map.like_mainActor" >
+        and pyp.MAIN_ACTOR like '%' || #{map.like_mainActor} || '%'
+      </if>
+      <if test="null != map.list_mainActor" >
+        and pyp.MAIN_ACTOR in (<foreach collection="map.list_mainActor" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.content" >
+        and pyp.CONTENT = #{map.content}
+      </if>
+      <if test="null != map.like_content" >
+        and pyp.CONTENT like '%' || #{map.like_content} || '%'
+      </if>
+      <if test="null != map.list_content" >
+        and pyp.CONTENT in (<foreach collection="map.list_content" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and pyp.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and pyp.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.approveResult" >
+        and pyp.APPROVE_RESULT = #{map.approveResult}
+      </if>
+      <if test="null != map.like_approveResult" >
+        and pyp.APPROVE_RESULT like '%' || #{map.like_approveResult} || '%'
+      </if>
+      <if test="null != map.list_approveResult" >
+        and pyp.APPROVE_RESULT in (<foreach collection="map.list_approveResult" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.planStatus" >
+        and pyp.PLAN_STATUS = #{map.planStatus}
+      </if>
+      <if test="null != map.list_planStatus" >
+        and pyp.PLAN_STATUS in (<foreach collection="map.list_planStatus" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.projectId" >
+        and pyp.PROJECT_ID = #{map.projectId}
+      </if>
+      <if test="null != map.list_projectId" >
+        and pyp.PROJECT_ID in (<foreach collection="map.list_projectId" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

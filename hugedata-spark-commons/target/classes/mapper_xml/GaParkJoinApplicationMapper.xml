@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.GaParkJoinApplicationMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.GaParkJoinApplication" >
+    <id column="APPLICATION_ID" property="applicationId" jdbcType="INTEGER" />
+    <result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR" />
+    <result column="CONTACT" property="contact" jdbcType="VARCHAR" />
+    <result column="CONTACT_MOBILE" property="contactMobile" jdbcType="VARCHAR" />
+    <result column="APPLICATION_FORM" property="applicationForm" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="APPLIER_USER_ID" property="applierUserId" jdbcType="INTEGER" />
+    <result column="APPLIER_NAME" property="applierName" jdbcType="VARCHAR" />
+    <result column="APPROVER_USER_ID" property="approverUserId" jdbcType="INTEGER" />
+    <result column="APPROVER_NAME" property="approverName" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="APPROVE_TIME" property="approveTime" jdbcType="TIMESTAMP" />
+    <result column="APPROVE_COMMENT" property="approveComment" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.com.hugedata.spark.commons.storage.entity.GaParkJoinApplication" extends="BaseResultMap" >
+    <result column="CONTENT" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != applicationId" >
+      and gpja.APPLICATION_ID = #{applicationId}
+    </if>
+    <if test="null != ne_applicationId" >
+      and gpja.APPLICATION_ID != #{ne_applicationId}
+    </if>
+    <if test="null != list_applicationId" >
+      and gpja.APPLICATION_ID in (<foreach collection="list_applicationId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != companyName" >
+      and gpja.COMPANY_NAME = #{companyName}
+    </if>
+    <if test="null != ne_companyName" >
+      and gpja.COMPANY_NAME != #{ne_companyName}
+    </if>
+    <if test="null != like_companyName" >
+      and gpja.COMPANY_NAME like CONCAT('%', #{like_companyName}, '%')
+    </if>
+    <if test="null != list_companyName" >
+      and gpja.COMPANY_NAME in (<foreach collection="list_companyName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_companyName" >
+      and gpja.COMPANY_NAME &gt;= #{begin_companyName}
+    </if>
+    <if test="null != end_companyName" >
+      and gpja.COMPANY_NAME &lt;= #{end_companyName}
+    </if>
+    <if test="null != contact" >
+      and gpja.CONTACT = #{contact}
+    </if>
+    <if test="null != ne_contact" >
+      and gpja.CONTACT != #{ne_contact}
+    </if>
+    <if test="null != like_contact" >
+      and gpja.CONTACT like CONCAT('%', #{like_contact}, '%')
+    </if>
+    <if test="null != list_contact" >
+      and gpja.CONTACT in (<foreach collection="list_contact" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_contact" >
+      and gpja.CONTACT &gt;= #{begin_contact}
+    </if>
+    <if test="null != end_contact" >
+      and gpja.CONTACT &lt;= #{end_contact}
+    </if>
+    <if test="null != contactMobile" >
+      and gpja.CONTACT_MOBILE = #{contactMobile}
+    </if>
+    <if test="null != ne_contactMobile" >
+      and gpja.CONTACT_MOBILE != #{ne_contactMobile}
+    </if>
+    <if test="null != like_contactMobile" >
+      and gpja.CONTACT_MOBILE like CONCAT('%', #{like_contactMobile}, '%')
+    </if>
+    <if test="null != list_contactMobile" >
+      and gpja.CONTACT_MOBILE in (<foreach collection="list_contactMobile" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_contactMobile" >
+      and gpja.CONTACT_MOBILE &gt;= #{begin_contactMobile}
+    </if>
+    <if test="null != end_contactMobile" >
+      and gpja.CONTACT_MOBILE &lt;= #{end_contactMobile}
+    </if>
+    <if test="null != applicationForm" >
+      and gpja.APPLICATION_FORM = #{applicationForm}
+    </if>
+    <if test="null != ne_applicationForm" >
+      and gpja.APPLICATION_FORM != #{ne_applicationForm}
+    </if>
+    <if test="null != like_applicationForm" >
+      and gpja.APPLICATION_FORM like CONCAT('%', #{like_applicationForm}, '%')
+    </if>
+    <if test="null != list_applicationForm" >
+      and gpja.APPLICATION_FORM in (<foreach collection="list_applicationForm" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_applicationForm" >
+      and gpja.APPLICATION_FORM &gt;= #{begin_applicationForm}
+    </if>
+    <if test="null != end_applicationForm" >
+      and gpja.APPLICATION_FORM &lt;= #{end_applicationForm}
+    </if>
+    <if test="null != status" >
+      and gpja.STATUS = #{status}
+    </if>
+    <if test="null != ne_status" >
+      and gpja.STATUS != #{ne_status}
+    </if>
+    <if test="null != like_status" >
+      and gpja.STATUS like CONCAT('%', #{like_status}, '%')
+    </if>
+    <if test="null != list_status" >
+      and gpja.STATUS in (<foreach collection="list_status" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_status" >
+      and gpja.STATUS &gt;= #{begin_status}
+    </if>
+    <if test="null != end_status" >
+      and gpja.STATUS &lt;= #{end_status}
+    </if>
+    <if test="null != applierUserId" >
+      and gpja.APPLIER_USER_ID = #{applierUserId}
+    </if>
+    <if test="null != ne_applierUserId" >
+      and gpja.APPLIER_USER_ID != #{ne_applierUserId}
+    </if>
+    <if test="null != list_applierUserId" >
+      and gpja.APPLIER_USER_ID in (<foreach collection="list_applierUserId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != applierName" >
+      and gpja.APPLIER_NAME = #{applierName}
+    </if>
+    <if test="null != ne_applierName" >
+      and gpja.APPLIER_NAME != #{ne_applierName}
+    </if>
+    <if test="null != like_applierName" >
+      and gpja.APPLIER_NAME like CONCAT('%', #{like_applierName}, '%')
+    </if>
+    <if test="null != list_applierName" >
+      and gpja.APPLIER_NAME in (<foreach collection="list_applierName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_applierName" >
+      and gpja.APPLIER_NAME &gt;= #{begin_applierName}
+    </if>
+    <if test="null != end_applierName" >
+      and gpja.APPLIER_NAME &lt;= #{end_applierName}
+    </if>
+    <if test="null != approverUserId" >
+      and gpja.APPROVER_USER_ID = #{approverUserId}
+    </if>
+    <if test="null != ne_approverUserId" >
+      and gpja.APPROVER_USER_ID != #{ne_approverUserId}
+    </if>
+    <if test="null != list_approverUserId" >
+      and gpja.APPROVER_USER_ID in (<foreach collection="list_approverUserId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != approverName" >
+      and gpja.APPROVER_NAME = #{approverName}
+    </if>
+    <if test="null != ne_approverName" >
+      and gpja.APPROVER_NAME != #{ne_approverName}
+    </if>
+    <if test="null != like_approverName" >
+      and gpja.APPROVER_NAME like CONCAT('%', #{like_approverName}, '%')
+    </if>
+    <if test="null != list_approverName" >
+      and gpja.APPROVER_NAME in (<foreach collection="list_approverName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_approverName" >
+      and gpja.APPROVER_NAME &gt;= #{begin_approverName}
+    </if>
+    <if test="null != end_approverName" >
+      and gpja.APPROVER_NAME &lt;= #{end_approverName}
+    </if>
+    <if test="null != begin_createTime" >
+      and gpja.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and gpja.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_approveTime" >
+      and gpja.APPROVE_TIME &gt;= #{begin_approveTime}
+    </if>
+    <if test="null != end_approveTime" >
+      and gpja.APPROVE_TIME &lt;= #{end_approveTime}
+    </if>
+    <if test="null != approveComment" >
+      and gpja.APPROVE_COMMENT = #{approveComment}
+    </if>
+    <if test="null != ne_approveComment" >
+      and gpja.APPROVE_COMMENT != #{ne_approveComment}
+    </if>
+    <if test="null != like_approveComment" >
+      and gpja.APPROVE_COMMENT like CONCAT('%', #{like_approveComment}, '%')
+    </if>
+    <if test="null != list_approveComment" >
+      and gpja.APPROVE_COMMENT in (<foreach collection="list_approveComment" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_approveComment" >
+      and gpja.APPROVE_COMMENT &gt;= #{begin_approveComment}
+    </if>
+    <if test="null != end_approveComment" >
+      and gpja.APPROVE_COMMENT &lt;= #{end_approveComment}
+    </if>
+    <if test="null != content" >
+      and gpja.CONTENT = #{content}
+    </if>
+    <if test="null != ne_content" >
+      and gpja.CONTENT != #{ne_content}
+    </if>
+    <if test="null != like_content" >
+      and gpja.CONTENT like CONCAT('%', #{like_content}, '%')
+    </if>
+    <if test="null != list_content" >
+      and gpja.CONTENT in (<foreach collection="list_content" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_content" >
+      and gpja.CONTENT &gt;= #{begin_content}
+    </if>
+    <if test="null != end_content" >
+      and gpja.CONTENT &lt;= #{end_content}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'applicationId' == orderItem.column" >
+            gpja.APPLICATION_ID ${orderItem.dir}
+          </if>
+          <if test="'companyName' == orderItem.column" >
+            gpja.COMPANY_NAME ${orderItem.dir}
+          </if>
+          <if test="'contact' == orderItem.column" >
+            gpja.CONTACT ${orderItem.dir}
+          </if>
+          <if test="'contactMobile' == orderItem.column" >
+            gpja.CONTACT_MOBILE ${orderItem.dir}
+          </if>
+          <if test="'applicationForm' == orderItem.column" >
+            gpja.APPLICATION_FORM ${orderItem.dir}
+          </if>
+          <if test="'status' == orderItem.column" >
+            gpja.STATUS ${orderItem.dir}
+          </if>
+          <if test="'applierUserId' == orderItem.column" >
+            gpja.APPLIER_USER_ID ${orderItem.dir}
+          </if>
+          <if test="'applierName' == orderItem.column" >
+            gpja.APPLIER_NAME ${orderItem.dir}
+          </if>
+          <if test="'approverUserId' == orderItem.column" >
+            gpja.APPROVER_USER_ID ${orderItem.dir}
+          </if>
+          <if test="'approverName' == orderItem.column" >
+            gpja.APPROVER_NAME ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            gpja.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'approveTime' == orderItem.column" >
+            gpja.APPROVE_TIME ${orderItem.dir}
+          </if>
+          <if test="'approveComment' == orderItem.column" >
+            gpja.APPROVE_COMMENT ${orderItem.dir}
+          </if>
+          <if test="'content' == orderItem.column" >
+            gpja.CONTENT ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    gpja.APPLICATION_ID, gpja.COMPANY_NAME, gpja.CONTACT, gpja.CONTACT_MOBILE, gpja.APPLICATION_FORM, 
+    gpja.STATUS, gpja.APPLIER_USER_ID, gpja.APPLIER_NAME, gpja.APPROVER_USER_ID, gpja.APPROVER_NAME, 
+    gpja.CREATE_TIME, gpja.APPROVE_TIME, gpja.APPROVE_COMMENT
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONTENT
+  </sql>
+  <select id="selectById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ga_park_join_application gpja
+    where gpja.APPLICATION_ID = #{applicationId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ga_park_join_application gpja
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from ga_park_join_application gpja
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaParkJoinApplication" >
+    <selectKey resultType="java.lang.Integer" keyProperty="applicationId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into ga_park_join_application
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      APPLICATION_ID,
+      <if test="companyName != null" >
+        COMPANY_NAME,
+      </if>
+      <if test="contact != null" >
+        CONTACT,
+      </if>
+      <if test="contactMobile != null" >
+        CONTACT_MOBILE,
+      </if>
+      <if test="applicationForm != null" >
+        APPLICATION_FORM,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="applierUserId != null" >
+        APPLIER_USER_ID,
+      </if>
+      <if test="applierName != null" >
+        APPLIER_NAME,
+      </if>
+      <if test="approverUserId != null" >
+        APPROVER_USER_ID,
+      </if>
+      <if test="approverName != null" >
+        APPROVER_NAME,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="approveTime != null" >
+        APPROVE_TIME,
+      </if>
+      <if test="approveComment != null" >
+        APPROVE_COMMENT,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{applicationId,jdbcType=INTEGER},
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactMobile != null" >
+        #{contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="applicationForm != null" >
+        #{applicationForm,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="applierUserId != null" >
+        #{applierUserId,jdbcType=INTEGER},
+      </if>
+      <if test="applierName != null" >
+        #{applierName,jdbcType=VARCHAR},
+      </if>
+      <if test="approverUserId != null" >
+        #{approverUserId,jdbcType=INTEGER},
+      </if>
+      <if test="approverName != null" >
+        #{approverName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approveTime != null" >
+        #{approveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approveComment != null" >
+        #{approveComment,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from ga_park_join_application
+    where APPLICATION_ID = #{applicationId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from ga_park_join_application where APPLICATION_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from gpja using (ga_park_join_application as gpja) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaParkJoinApplication" >
+    update ga_park_join_application
+    <set >
+      <if test="companyName != null" >
+        COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        CONTACT = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactMobile != null" >
+        CONTACT_MOBILE = #{contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="applicationForm != null" >
+        APPLICATION_FORM = #{applicationForm,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="applierUserId != null" >
+        APPLIER_USER_ID = #{applierUserId,jdbcType=INTEGER},
+      </if>
+      <if test="applierName != null" >
+        APPLIER_NAME = #{applierName,jdbcType=VARCHAR},
+      </if>
+      <if test="approverUserId != null" >
+        APPROVER_USER_ID = #{approverUserId,jdbcType=INTEGER},
+      </if>
+      <if test="approverName != null" >
+        APPROVER_NAME = #{approverName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approveTime != null" >
+        APPROVE_TIME = #{approveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approveComment != null" >
+        APPROVE_COMMENT = #{approveComment,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where APPLICATION_ID = #{applicationId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update ga_park_join_application gpja
+    <set >
+      <if test="record.applicationId != null" >
+        APPLICATION_ID = #{record.applicationId,jdbcType=INTEGER},
+      </if>
+      <if test="record.companyName != null" >
+        COMPANY_NAME = #{record.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contact != null" >
+        CONTACT = #{record.contact,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactMobile != null" >
+        CONTACT_MOBILE = #{record.contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applicationForm != null" >
+        APPLICATION_FORM = #{record.applicationForm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applierUserId != null" >
+        APPLIER_USER_ID = #{record.applierUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.applierName != null" >
+        APPLIER_NAME = #{record.applierName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.approverUserId != null" >
+        APPROVER_USER_ID = #{record.approverUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.approverName != null" >
+        APPROVER_NAME = #{record.approverName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.approveTime != null" >
+        APPROVE_TIME = #{record.approveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.approveComment != null" >
+        APPROVE_COMMENT = #{record.approveComment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null" >
+        CONTENT = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.applicationId" >
+        and gpja.APPLICATION_ID = #{map.applicationId}
+      </if>
+      <if test="null != map.list_applicationId" >
+        and gpja.APPLICATION_ID in (<foreach collection="map.list_applicationId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.companyName" >
+        and gpja.COMPANY_NAME = #{map.companyName}
+      </if>
+      <if test="null != map.like_companyName" >
+        and gpja.COMPANY_NAME like '%' || #{map.like_companyName} || '%'
+      </if>
+      <if test="null != map.list_companyName" >
+        and gpja.COMPANY_NAME in (<foreach collection="map.list_companyName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.contact" >
+        and gpja.CONTACT = #{map.contact}
+      </if>
+      <if test="null != map.like_contact" >
+        and gpja.CONTACT like '%' || #{map.like_contact} || '%'
+      </if>
+      <if test="null != map.list_contact" >
+        and gpja.CONTACT in (<foreach collection="map.list_contact" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.contactMobile" >
+        and gpja.CONTACT_MOBILE = #{map.contactMobile}
+      </if>
+      <if test="null != map.like_contactMobile" >
+        and gpja.CONTACT_MOBILE like '%' || #{map.like_contactMobile} || '%'
+      </if>
+      <if test="null != map.list_contactMobile" >
+        and gpja.CONTACT_MOBILE in (<foreach collection="map.list_contactMobile" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.applicationForm" >
+        and gpja.APPLICATION_FORM = #{map.applicationForm}
+      </if>
+      <if test="null != map.like_applicationForm" >
+        and gpja.APPLICATION_FORM like '%' || #{map.like_applicationForm} || '%'
+      </if>
+      <if test="null != map.list_applicationForm" >
+        and gpja.APPLICATION_FORM in (<foreach collection="map.list_applicationForm" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.status" >
+        and gpja.STATUS = #{map.status}
+      </if>
+      <if test="null != map.like_status" >
+        and gpja.STATUS like '%' || #{map.like_status} || '%'
+      </if>
+      <if test="null != map.list_status" >
+        and gpja.STATUS in (<foreach collection="map.list_status" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.applierUserId" >
+        and gpja.APPLIER_USER_ID = #{map.applierUserId}
+      </if>
+      <if test="null != map.list_applierUserId" >
+        and gpja.APPLIER_USER_ID in (<foreach collection="map.list_applierUserId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.applierName" >
+        and gpja.APPLIER_NAME = #{map.applierName}
+      </if>
+      <if test="null != map.like_applierName" >
+        and gpja.APPLIER_NAME like '%' || #{map.like_applierName} || '%'
+      </if>
+      <if test="null != map.list_applierName" >
+        and gpja.APPLIER_NAME in (<foreach collection="map.list_applierName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.approverUserId" >
+        and gpja.APPROVER_USER_ID = #{map.approverUserId}
+      </if>
+      <if test="null != map.list_approverUserId" >
+        and gpja.APPROVER_USER_ID in (<foreach collection="map.list_approverUserId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.approverName" >
+        and gpja.APPROVER_NAME = #{map.approverName}
+      </if>
+      <if test="null != map.like_approverName" >
+        and gpja.APPROVER_NAME like '%' || #{map.like_approverName} || '%'
+      </if>
+      <if test="null != map.list_approverName" >
+        and gpja.APPROVER_NAME in (<foreach collection="map.list_approverName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and gpja.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and gpja.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_approveTime" >
+        and gpja.APPROVE_TIME &gt;= #{map.begin_approveTime}
+      </if>
+      <if test="null != map.end_approveTime" >
+        and gpja.APPROVE_TIME &lt;= #{map.end_approveTime}
+      </if>
+      <if test="null != map.approveComment" >
+        and gpja.APPROVE_COMMENT = #{map.approveComment}
+      </if>
+      <if test="null != map.like_approveComment" >
+        and gpja.APPROVE_COMMENT like '%' || #{map.like_approveComment} || '%'
+      </if>
+      <if test="null != map.list_approveComment" >
+        and gpja.APPROVE_COMMENT in (<foreach collection="map.list_approveComment" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.content" >
+        and gpja.CONTENT = #{map.content}
+      </if>
+      <if test="null != map.like_content" >
+        and gpja.CONTENT like '%' || #{map.like_content} || '%'
+      </if>
+      <if test="null != map.list_content" >
+        and gpja.CONTENT in (<foreach collection="map.list_content" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

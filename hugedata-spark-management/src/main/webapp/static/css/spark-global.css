@@ -1,0 +1,10 @@
+.dataTables_wrapper .dataTables_processing { width:160px; height:160px; background:#f8f8f8; line-height:120px; top:50%; left:50%; margin:-80px 0 0 -80px; }
+
+.datatable_wrapper { clear:both; }
+.dataTables_paginate { display:inline-block; } 
+.dataTables_info { display:inline-block; }
+.page_v1_inner { text-align:center; height:28px; } 
+
+.red { color:#dc143c; }
+.green { color:#228b22; }
+

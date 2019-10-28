@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.GaReportTemplateMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.GaReportTemplate" >
+    <id column="TEMPLATE_ID" property="templateId" jdbcType="INTEGER" />
+    <result column="TEMPLATE_NAME" property="templateName" jdbcType="VARCHAR" />
+    <result column="ATTACHMENT_FILE_NAME" property="attachmentFileName" jdbcType="VARCHAR" />
+    <result column="ATTACHMENT_FILE_ID" property="attachmentFileId" jdbcType="VARCHAR" />
+    <result column="CREATOR_USER_ID" property="creatorUserId" jdbcType="INTEGER" />
+    <result column="CREATOR_NAME" property="creatorName" jdbcType="VARCHAR" />
+    <result column="IS_VISIBLE" property="isVisible" jdbcType="BIT" />
+    <result column="PUBLISH_TIME" property="publishTime" jdbcType="TIMESTAMP" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="PUBLISHER" property="publisher" jdbcType="VARCHAR" />
+    <result column="PUBLISH_DEPT_ID" property="publishDeptId" jdbcType="INTEGER" />
+    <result column="PUBLISH_DEPT_NAME" property="publishDeptName" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.com.hugedata.spark.commons.storage.entity.GaReportTemplate" extends="BaseResultMap" >
+    <result column="CONTENT" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != templateId" >
+      and grt.TEMPLATE_ID = #{templateId}
+    </if>
+    <if test="null != ne_templateId" >
+      and grt.TEMPLATE_ID != #{ne_templateId}
+    </if>
+    <if test="null != list_templateId" >
+      and grt.TEMPLATE_ID in (<foreach collection="list_templateId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != templateName" >
+      and grt.TEMPLATE_NAME = #{templateName}
+    </if>
+    <if test="null != ne_templateName" >
+      and grt.TEMPLATE_NAME != #{ne_templateName}
+    </if>
+    <if test="null != like_templateName" >
+      and grt.TEMPLATE_NAME like CONCAT('%', #{like_templateName}, '%')
+    </if>
+    <if test="null != list_templateName" >
+      and grt.TEMPLATE_NAME in (<foreach collection="list_templateName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_templateName" >
+      and grt.TEMPLATE_NAME &gt;= #{begin_templateName}
+    </if>
+    <if test="null != end_templateName" >
+      and grt.TEMPLATE_NAME &lt;= #{end_templateName}
+    </if>
+    <if test="null != attachmentFileName" >
+      and grt.ATTACHMENT_FILE_NAME = #{attachmentFileName}
+    </if>
+    <if test="null != ne_attachmentFileName" >
+      and grt.ATTACHMENT_FILE_NAME != #{ne_attachmentFileName}
+    </if>
+    <if test="null != like_attachmentFileName" >
+      and grt.ATTACHMENT_FILE_NAME like CONCAT('%', #{like_attachmentFileName}, '%')
+    </if>
+    <if test="null != list_attachmentFileName" >
+      and grt.ATTACHMENT_FILE_NAME in (<foreach collection="list_attachmentFileName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_attachmentFileName" >
+      and grt.ATTACHMENT_FILE_NAME &gt;= #{begin_attachmentFileName}
+    </if>
+    <if test="null != end_attachmentFileName" >
+      and grt.ATTACHMENT_FILE_NAME &lt;= #{end_attachmentFileName}
+    </if>
+    <if test="null != attachmentFileId" >
+      and grt.ATTACHMENT_FILE_ID = #{attachmentFileId}
+    </if>
+    <if test="null != ne_attachmentFileId" >
+      and grt.ATTACHMENT_FILE_ID != #{ne_attachmentFileId}
+    </if>
+    <if test="null != like_attachmentFileId" >
+      and grt.ATTACHMENT_FILE_ID like CONCAT('%', #{like_attachmentFileId}, '%')
+    </if>
+    <if test="null != list_attachmentFileId" >
+      and grt.ATTACHMENT_FILE_ID in (<foreach collection="list_attachmentFileId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_attachmentFileId" >
+      and grt.ATTACHMENT_FILE_ID &gt;= #{begin_attachmentFileId}
+    </if>
+    <if test="null != end_attachmentFileId" >
+      and grt.ATTACHMENT_FILE_ID &lt;= #{end_attachmentFileId}
+    </if>
+    <if test="null != creatorUserId" >
+      and grt.CREATOR_USER_ID = #{creatorUserId}
+    </if>
+    <if test="null != ne_creatorUserId" >
+      and grt.CREATOR_USER_ID != #{ne_creatorUserId}
+    </if>
+    <if test="null != list_creatorUserId" >
+      and grt.CREATOR_USER_ID in (<foreach collection="list_creatorUserId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != creatorName" >
+      and grt.CREATOR_NAME = #{creatorName}
+    </if>
+    <if test="null != ne_creatorName" >
+      and grt.CREATOR_NAME != #{ne_creatorName}
+    </if>
+    <if test="null != like_creatorName" >
+      and grt.CREATOR_NAME like CONCAT('%', #{like_creatorName}, '%')
+    </if>
+    <if test="null != list_creatorName" >
+      and grt.CREATOR_NAME in (<foreach collection="list_creatorName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_creatorName" >
+      and grt.CREATOR_NAME &gt;= #{begin_creatorName}
+    </if>
+    <if test="null != end_creatorName" >
+      and grt.CREATOR_NAME &lt;= #{end_creatorName}
+    </if>
+    <if test="null != isVisible" >
+      and grt.IS_VISIBLE = #{isVisible}
+    </if>
+    <if test="null != ne_isVisible" >
+      and grt.IS_VISIBLE != #{ne_isVisible}
+    </if>
+    <if test="null != list_isVisible" >
+      and grt.IS_VISIBLE in (<foreach collection="list_isVisible" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_publishTime" >
+      and grt.PUBLISH_TIME &gt;= #{begin_publishTime}
+    </if>
+    <if test="null != end_publishTime" >
+      and grt.PUBLISH_TIME &lt;= #{end_publishTime}
+    </if>
+    <if test="null != begin_createTime" >
+      and grt.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and grt.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_updateTime" >
+      and grt.UPDATE_TIME &gt;= #{begin_updateTime}
+    </if>
+    <if test="null != end_updateTime" >
+      and grt.UPDATE_TIME &lt;= #{end_updateTime}
+    </if>
+    <if test="null != publisher" >
+      and grt.PUBLISHER = #{publisher}
+    </if>
+    <if test="null != ne_publisher" >
+      and grt.PUBLISHER != #{ne_publisher}
+    </if>
+    <if test="null != like_publisher" >
+      and grt.PUBLISHER like CONCAT('%', #{like_publisher}, '%')
+    </if>
+    <if test="null != list_publisher" >
+      and grt.PUBLISHER in (<foreach collection="list_publisher" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_publisher" >
+      and grt.PUBLISHER &gt;= #{begin_publisher}
+    </if>
+    <if test="null != end_publisher" >
+      and grt.PUBLISHER &lt;= #{end_publisher}
+    </if>
+    <if test="null != publishDeptId" >
+      and grt.PUBLISH_DEPT_ID = #{publishDeptId}
+    </if>
+    <if test="null != ne_publishDeptId" >
+      and grt.PUBLISH_DEPT_ID != #{ne_publishDeptId}
+    </if>
+    <if test="null != list_publishDeptId" >
+      and grt.PUBLISH_DEPT_ID in (<foreach collection="list_publishDeptId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != publishDeptName" >
+      and grt.PUBLISH_DEPT_NAME = #{publishDeptName}
+    </if>
+    <if test="null != ne_publishDeptName" >
+      and grt.PUBLISH_DEPT_NAME != #{ne_publishDeptName}
+    </if>
+    <if test="null != like_publishDeptName" >
+      and grt.PUBLISH_DEPT_NAME like CONCAT('%', #{like_publishDeptName}, '%')
+    </if>
+    <if test="null != list_publishDeptName" >
+      and grt.PUBLISH_DEPT_NAME in (<foreach collection="list_publishDeptName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_publishDeptName" >
+      and grt.PUBLISH_DEPT_NAME &gt;= #{begin_publishDeptName}
+    </if>
+    <if test="null != end_publishDeptName" >
+      and grt.PUBLISH_DEPT_NAME &lt;= #{end_publishDeptName}
+    </if>
+    <if test="null != content" >
+      and grt.CONTENT = #{content}
+    </if>
+    <if test="null != ne_content" >
+      and grt.CONTENT != #{ne_content}
+    </if>
+    <if test="null != like_content" >
+      and grt.CONTENT like CONCAT('%', #{like_content}, '%')
+    </if>
+    <if test="null != list_content" >
+      and grt.CONTENT in (<foreach collection="list_content" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_content" >
+      and grt.CONTENT &gt;= #{begin_content}
+    </if>
+    <if test="null != end_content" >
+      and grt.CONTENT &lt;= #{end_content}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'templateId' == orderItem.column" >
+            grt.TEMPLATE_ID ${orderItem.dir}
+          </if>
+          <if test="'templateName' == orderItem.column" >
+            grt.TEMPLATE_NAME ${orderItem.dir}
+          </if>
+          <if test="'attachmentFileName' == orderItem.column" >
+            grt.ATTACHMENT_FILE_NAME ${orderItem.dir}
+          </if>
+          <if test="'attachmentFileId' == orderItem.column" >
+            grt.ATTACHMENT_FILE_ID ${orderItem.dir}
+          </if>
+          <if test="'creatorUserId' == orderItem.column" >
+            grt.CREATOR_USER_ID ${orderItem.dir}
+          </if>
+          <if test="'creatorName' == orderItem.column" >
+            grt.CREATOR_NAME ${orderItem.dir}
+          </if>
+          <if test="'isVisible' == orderItem.column" >
+            grt.IS_VISIBLE ${orderItem.dir}
+          </if>
+          <if test="'publishTime' == orderItem.column" >
+            grt.PUBLISH_TIME ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            grt.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'updateTime' == orderItem.column" >
+            grt.UPDATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'publisher' == orderItem.column" >
+            grt.PUBLISHER ${orderItem.dir}
+          </if>
+          <if test="'publishDeptId' == orderItem.column" >
+            grt.PUBLISH_DEPT_ID ${orderItem.dir}
+          </if>
+          <if test="'publishDeptName' == orderItem.column" >
+            grt.PUBLISH_DEPT_NAME ${orderItem.dir}
+          </if>
+          <if test="'content' == orderItem.column" >
+            grt.CONTENT ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    grt.TEMPLATE_ID, grt.TEMPLATE_NAME, grt.ATTACHMENT_FILE_NAME, grt.ATTACHMENT_FILE_ID, 
+    grt.CREATOR_USER_ID, grt.CREATOR_NAME, grt.IS_VISIBLE, grt.PUBLISH_TIME, grt.CREATE_TIME, 
+    grt.UPDATE_TIME, grt.PUBLISHER, grt.PUBLISH_DEPT_ID, grt.PUBLISH_DEPT_NAME
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONTENT
+  </sql>
+  <select id="selectById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ga_report_template grt
+    where grt.TEMPLATE_ID = #{templateId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ga_report_template grt
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from ga_report_template grt
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaReportTemplate" >
+    <selectKey resultType="java.lang.Integer" keyProperty="templateId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into ga_report_template
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      TEMPLATE_ID,
+      <if test="templateName != null" >
+        TEMPLATE_NAME,
+      </if>
+      <if test="attachmentFileName != null" >
+        ATTACHMENT_FILE_NAME,
+      </if>
+      <if test="attachmentFileId != null" >
+        ATTACHMENT_FILE_ID,
+      </if>
+      <if test="creatorUserId != null" >
+        CREATOR_USER_ID,
+      </if>
+      <if test="creatorName != null" >
+        CREATOR_NAME,
+      </if>
+      <if test="isVisible != null" >
+        IS_VISIBLE,
+      </if>
+      <if test="publishTime != null" >
+        PUBLISH_TIME,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="publisher != null" >
+        PUBLISHER,
+      </if>
+      <if test="publishDeptId != null" >
+        PUBLISH_DEPT_ID,
+      </if>
+      <if test="publishDeptName != null" >
+        PUBLISH_DEPT_NAME,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{templateId,jdbcType=INTEGER},
+      <if test="templateName != null" >
+        #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentFileName != null" >
+        #{attachmentFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentFileId != null" >
+        #{attachmentFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorUserId != null" >
+        #{creatorUserId,jdbcType=INTEGER},
+      </if>
+      <if test="creatorName != null" >
+        #{creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="isVisible != null" >
+        #{isVisible,jdbcType=BIT},
+      </if>
+      <if test="publishTime != null" >
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publisher != null" >
+        #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="publishDeptId != null" >
+        #{publishDeptId,jdbcType=INTEGER},
+      </if>
+      <if test="publishDeptName != null" >
+        #{publishDeptName,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from ga_report_template
+    where TEMPLATE_ID = #{templateId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from ga_report_template where TEMPLATE_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from grt using (ga_report_template as grt) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaReportTemplate" >
+    update ga_report_template
+    <set >
+      <if test="templateName != null" >
+        TEMPLATE_NAME = #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentFileName != null" >
+        ATTACHMENT_FILE_NAME = #{attachmentFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentFileId != null" >
+        ATTACHMENT_FILE_ID = #{attachmentFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorUserId != null" >
+        CREATOR_USER_ID = #{creatorUserId,jdbcType=INTEGER},
+      </if>
+      <if test="creatorName != null" >
+        CREATOR_NAME = #{creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="isVisible != null" >
+        IS_VISIBLE = #{isVisible,jdbcType=BIT},
+      </if>
+      <if test="publishTime != null" >
+        PUBLISH_TIME = #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publisher != null" >
+        PUBLISHER = #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="publishDeptId != null" >
+        PUBLISH_DEPT_ID = #{publishDeptId,jdbcType=INTEGER},
+      </if>
+      <if test="publishDeptName != null" >
+        PUBLISH_DEPT_NAME = #{publishDeptName,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where TEMPLATE_ID = #{templateId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update ga_report_template grt
+    <set >
+      <if test="record.templateId != null" >
+        TEMPLATE_ID = #{record.templateId,jdbcType=INTEGER},
+      </if>
+      <if test="record.templateName != null" >
+        TEMPLATE_NAME = #{record.templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attachmentFileName != null" >
+        ATTACHMENT_FILE_NAME = #{record.attachmentFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attachmentFileId != null" >
+        ATTACHMENT_FILE_ID = #{record.attachmentFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creatorUserId != null" >
+        CREATOR_USER_ID = #{record.creatorUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.creatorName != null" >
+        CREATOR_NAME = #{record.creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isVisible != null" >
+        IS_VISIBLE = #{record.isVisible,jdbcType=BIT},
+      </if>
+      <if test="record.publishTime != null" >
+        PUBLISH_TIME = #{record.publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.publisher != null" >
+        PUBLISHER = #{record.publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="record.publishDeptId != null" >
+        PUBLISH_DEPT_ID = #{record.publishDeptId,jdbcType=INTEGER},
+      </if>
+      <if test="record.publishDeptName != null" >
+        PUBLISH_DEPT_NAME = #{record.publishDeptName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null" >
+        CONTENT = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.templateId" >
+        and grt.TEMPLATE_ID = #{map.templateId}
+      </if>
+      <if test="null != map.list_templateId" >
+        and grt.TEMPLATE_ID in (<foreach collection="map.list_templateId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.templateName" >
+        and grt.TEMPLATE_NAME = #{map.templateName}
+      </if>
+      <if test="null != map.like_templateName" >
+        and grt.TEMPLATE_NAME like '%' || #{map.like_templateName} || '%'
+      </if>
+      <if test="null != map.list_templateName" >
+        and grt.TEMPLATE_NAME in (<foreach collection="map.list_templateName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.attachmentFileName" >
+        and grt.ATTACHMENT_FILE_NAME = #{map.attachmentFileName}
+      </if>
+      <if test="null != map.like_attachmentFileName" >
+        and grt.ATTACHMENT_FILE_NAME like '%' || #{map.like_attachmentFileName} || '%'
+      </if>
+      <if test="null != map.list_attachmentFileName" >
+        and grt.ATTACHMENT_FILE_NAME in (<foreach collection="map.list_attachmentFileName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.attachmentFileId" >
+        and grt.ATTACHMENT_FILE_ID = #{map.attachmentFileId}
+      </if>
+      <if test="null != map.like_attachmentFileId" >
+        and grt.ATTACHMENT_FILE_ID like '%' || #{map.like_attachmentFileId} || '%'
+      </if>
+      <if test="null != map.list_attachmentFileId" >
+        and grt.ATTACHMENT_FILE_ID in (<foreach collection="map.list_attachmentFileId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.creatorUserId" >
+        and grt.CREATOR_USER_ID = #{map.creatorUserId}
+      </if>
+      <if test="null != map.list_creatorUserId" >
+        and grt.CREATOR_USER_ID in (<foreach collection="map.list_creatorUserId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.creatorName" >
+        and grt.CREATOR_NAME = #{map.creatorName}
+      </if>
+      <if test="null != map.like_creatorName" >
+        and grt.CREATOR_NAME like '%' || #{map.like_creatorName} || '%'
+      </if>
+      <if test="null != map.list_creatorName" >
+        and grt.CREATOR_NAME in (<foreach collection="map.list_creatorName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.isVisible" >
+        and grt.IS_VISIBLE = #{map.isVisible}
+      </if>
+      <if test="null != map.list_isVisible" >
+        and grt.IS_VISIBLE in (<foreach collection="map.list_isVisible" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_publishTime" >
+        and grt.PUBLISH_TIME &gt;= #{map.begin_publishTime}
+      </if>
+      <if test="null != map.end_publishTime" >
+        and grt.PUBLISH_TIME &lt;= #{map.end_publishTime}
+      </if>
+      <if test="null != map.begin_createTime" >
+        and grt.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and grt.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_updateTime" >
+        and grt.UPDATE_TIME &gt;= #{map.begin_updateTime}
+      </if>
+      <if test="null != map.end_updateTime" >
+        and grt.UPDATE_TIME &lt;= #{map.end_updateTime}
+      </if>
+      <if test="null != map.publisher" >
+        and grt.PUBLISHER = #{map.publisher}
+      </if>
+      <if test="null != map.like_publisher" >
+        and grt.PUBLISHER like '%' || #{map.like_publisher} || '%'
+      </if>
+      <if test="null != map.list_publisher" >
+        and grt.PUBLISHER in (<foreach collection="map.list_publisher" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.publishDeptId" >
+        and grt.PUBLISH_DEPT_ID = #{map.publishDeptId}
+      </if>
+      <if test="null != map.list_publishDeptId" >
+        and grt.PUBLISH_DEPT_ID in (<foreach collection="map.list_publishDeptId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.publishDeptName" >
+        and grt.PUBLISH_DEPT_NAME = #{map.publishDeptName}
+      </if>
+      <if test="null != map.like_publishDeptName" >
+        and grt.PUBLISH_DEPT_NAME like '%' || #{map.like_publishDeptName} || '%'
+      </if>
+      <if test="null != map.list_publishDeptName" >
+        and grt.PUBLISH_DEPT_NAME in (<foreach collection="map.list_publishDeptName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.content" >
+        and grt.CONTENT = #{map.content}
+      </if>
+      <if test="null != map.like_content" >
+        and grt.CONTENT like '%' || #{map.like_content} || '%'
+      </if>
+      <if test="null != map.list_content" >
+        and grt.CONTENT in (<foreach collection="map.list_content" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

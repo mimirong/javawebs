@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.GaFinancingGuideMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.GaFinancingGuide" >
+    <id column="GUIDE_ID" property="guideId" jdbcType="INTEGER" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="BRIEF" property="brief" jdbcType="VARCHAR" />
+    <result column="ATTACHMENT_FILE_NAME" property="attachmentFileName" jdbcType="VARCHAR" />
+    <result column="ATTACHMENT_FILE_ID" property="attachmentFileId" jdbcType="VARCHAR" />
+    <result column="CREATOR_USER_ID" property="creatorUserId" jdbcType="INTEGER" />
+    <result column="CREATOR_NAME" property="creatorName" jdbcType="VARCHAR" />
+    <result column="IS_VISIBLE" property="isVisible" jdbcType="BIT" />
+    <result column="PUBLISH_TIME" property="publishTime" jdbcType="TIMESTAMP" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="PUBLISHER" property="publisher" jdbcType="VARCHAR" />
+    <result column="PUBLISH_DEPT" property="publishDept" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.com.hugedata.spark.commons.storage.entity.GaFinancingGuide" extends="BaseResultMap" >
+    <result column="CONTENT" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != guideId" >
+      and gfg.GUIDE_ID = #{guideId}
+    </if>
+    <if test="null != ne_guideId" >
+      and gfg.GUIDE_ID != #{ne_guideId}
+    </if>
+    <if test="null != list_guideId" >
+      and gfg.GUIDE_ID in (<foreach collection="list_guideId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != title" >
+      and gfg.TITLE = #{title}
+    </if>
+    <if test="null != ne_title" >
+      and gfg.TITLE != #{ne_title}
+    </if>
+    <if test="null != like_title" >
+      and gfg.TITLE like CONCAT('%', #{like_title}, '%')
+    </if>
+    <if test="null != list_title" >
+      and gfg.TITLE in (<foreach collection="list_title" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_title" >
+      and gfg.TITLE &gt;= #{begin_title}
+    </if>
+    <if test="null != end_title" >
+      and gfg.TITLE &lt;= #{end_title}
+    </if>
+    <if test="null != brief" >
+      and gfg.BRIEF = #{brief}
+    </if>
+    <if test="null != ne_brief" >
+      and gfg.BRIEF != #{ne_brief}
+    </if>
+    <if test="null != like_brief" >
+      and gfg.BRIEF like CONCAT('%', #{like_brief}, '%')
+    </if>
+    <if test="null != list_brief" >
+      and gfg.BRIEF in (<foreach collection="list_brief" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_brief" >
+      and gfg.BRIEF &gt;= #{begin_brief}
+    </if>
+    <if test="null != end_brief" >
+      and gfg.BRIEF &lt;= #{end_brief}
+    </if>
+    <if test="null != attachmentFileName" >
+      and gfg.ATTACHMENT_FILE_NAME = #{attachmentFileName}
+    </if>
+    <if test="null != ne_attachmentFileName" >
+      and gfg.ATTACHMENT_FILE_NAME != #{ne_attachmentFileName}
+    </if>
+    <if test="null != like_attachmentFileName" >
+      and gfg.ATTACHMENT_FILE_NAME like CONCAT('%', #{like_attachmentFileName}, '%')
+    </if>
+    <if test="null != list_attachmentFileName" >
+      and gfg.ATTACHMENT_FILE_NAME in (<foreach collection="list_attachmentFileName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_attachmentFileName" >
+      and gfg.ATTACHMENT_FILE_NAME &gt;= #{begin_attachmentFileName}
+    </if>
+    <if test="null != end_attachmentFileName" >
+      and gfg.ATTACHMENT_FILE_NAME &lt;= #{end_attachmentFileName}
+    </if>
+    <if test="null != attachmentFileId" >
+      and gfg.ATTACHMENT_FILE_ID = #{attachmentFileId}
+    </if>
+    <if test="null != ne_attachmentFileId" >
+      and gfg.ATTACHMENT_FILE_ID != #{ne_attachmentFileId}
+    </if>
+    <if test="null != like_attachmentFileId" >
+      and gfg.ATTACHMENT_FILE_ID like CONCAT('%', #{like_attachmentFileId}, '%')
+    </if>
+    <if test="null != list_attachmentFileId" >
+      and gfg.ATTACHMENT_FILE_ID in (<foreach collection="list_attachmentFileId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_attachmentFileId" >
+      and gfg.ATTACHMENT_FILE_ID &gt;= #{begin_attachmentFileId}
+    </if>
+    <if test="null != end_attachmentFileId" >
+      and gfg.ATTACHMENT_FILE_ID &lt;= #{end_attachmentFileId}
+    </if>
+    <if test="null != creatorUserId" >
+      and gfg.CREATOR_USER_ID = #{creatorUserId}
+    </if>
+    <if test="null != ne_creatorUserId" >
+      and gfg.CREATOR_USER_ID != #{ne_creatorUserId}
+    </if>
+    <if test="null != list_creatorUserId" >
+      and gfg.CREATOR_USER_ID in (<foreach collection="list_creatorUserId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != creatorName" >
+      and gfg.CREATOR_NAME = #{creatorName}
+    </if>
+    <if test="null != ne_creatorName" >
+      and gfg.CREATOR_NAME != #{ne_creatorName}
+    </if>
+    <if test="null != like_creatorName" >
+      and gfg.CREATOR_NAME like CONCAT('%', #{like_creatorName}, '%')
+    </if>
+    <if test="null != list_creatorName" >
+      and gfg.CREATOR_NAME in (<foreach collection="list_creatorName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_creatorName" >
+      and gfg.CREATOR_NAME &gt;= #{begin_creatorName}
+    </if>
+    <if test="null != end_creatorName" >
+      and gfg.CREATOR_NAME &lt;= #{end_creatorName}
+    </if>
+    <if test="null != isVisible" >
+      and gfg.IS_VISIBLE = #{isVisible}
+    </if>
+    <if test="null != ne_isVisible" >
+      and gfg.IS_VISIBLE != #{ne_isVisible}
+    </if>
+    <if test="null != list_isVisible" >
+      and gfg.IS_VISIBLE in (<foreach collection="list_isVisible" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_publishTime" >
+      and gfg.PUBLISH_TIME &gt;= #{begin_publishTime}
+    </if>
+    <if test="null != end_publishTime" >
+      and gfg.PUBLISH_TIME &lt;= #{end_publishTime}
+    </if>
+    <if test="null != begin_createTime" >
+      and gfg.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and gfg.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_updateTime" >
+      and gfg.UPDATE_TIME &gt;= #{begin_updateTime}
+    </if>
+    <if test="null != end_updateTime" >
+      and gfg.UPDATE_TIME &lt;= #{end_updateTime}
+    </if>
+    <if test="null != publisher" >
+      and gfg.PUBLISHER = #{publisher}
+    </if>
+    <if test="null != ne_publisher" >
+      and gfg.PUBLISHER != #{ne_publisher}
+    </if>
+    <if test="null != like_publisher" >
+      and gfg.PUBLISHER like CONCAT('%', #{like_publisher}, '%')
+    </if>
+    <if test="null != list_publisher" >
+      and gfg.PUBLISHER in (<foreach collection="list_publisher" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_publisher" >
+      and gfg.PUBLISHER &gt;= #{begin_publisher}
+    </if>
+    <if test="null != end_publisher" >
+      and gfg.PUBLISHER &lt;= #{end_publisher}
+    </if>
+    <if test="null != publishDept" >
+      and gfg.PUBLISH_DEPT = #{publishDept}
+    </if>
+    <if test="null != ne_publishDept" >
+      and gfg.PUBLISH_DEPT != #{ne_publishDept}
+    </if>
+    <if test="null != like_publishDept" >
+      and gfg.PUBLISH_DEPT like CONCAT('%', #{like_publishDept}, '%')
+    </if>
+    <if test="null != list_publishDept" >
+      and gfg.PUBLISH_DEPT in (<foreach collection="list_publishDept" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_publishDept" >
+      and gfg.PUBLISH_DEPT &gt;= #{begin_publishDept}
+    </if>
+    <if test="null != end_publishDept" >
+      and gfg.PUBLISH_DEPT &lt;= #{end_publishDept}
+    </if>
+    <if test="null != content" >
+      and gfg.CONTENT = #{content}
+    </if>
+    <if test="null != ne_content" >
+      and gfg.CONTENT != #{ne_content}
+    </if>
+    <if test="null != like_content" >
+      and gfg.CONTENT like CONCAT('%', #{like_content}, '%')
+    </if>
+    <if test="null != list_content" >
+      and gfg.CONTENT in (<foreach collection="list_content" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_content" >
+      and gfg.CONTENT &gt;= #{begin_content}
+    </if>
+    <if test="null != end_content" >
+      and gfg.CONTENT &lt;= #{end_content}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'guideId' == orderItem.column" >
+            gfg.GUIDE_ID ${orderItem.dir}
+          </if>
+          <if test="'title' == orderItem.column" >
+            gfg.TITLE ${orderItem.dir}
+          </if>
+          <if test="'brief' == orderItem.column" >
+            gfg.BRIEF ${orderItem.dir}
+          </if>
+          <if test="'attachmentFileName' == orderItem.column" >
+            gfg.ATTACHMENT_FILE_NAME ${orderItem.dir}
+          </if>
+          <if test="'attachmentFileId' == orderItem.column" >
+            gfg.ATTACHMENT_FILE_ID ${orderItem.dir}
+          </if>
+          <if test="'creatorUserId' == orderItem.column" >
+            gfg.CREATOR_USER_ID ${orderItem.dir}
+          </if>
+          <if test="'creatorName' == orderItem.column" >
+            gfg.CREATOR_NAME ${orderItem.dir}
+          </if>
+          <if test="'isVisible' == orderItem.column" >
+            gfg.IS_VISIBLE ${orderItem.dir}
+          </if>
+          <if test="'publishTime' == orderItem.column" >
+            gfg.PUBLISH_TIME ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            gfg.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'updateTime' == orderItem.column" >
+            gfg.UPDATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'publisher' == orderItem.column" >
+            gfg.PUBLISHER ${orderItem.dir}
+          </if>
+          <if test="'publishDept' == orderItem.column" >
+            gfg.PUBLISH_DEPT ${orderItem.dir}
+          </if>
+          <if test="'content' == orderItem.column" >
+            gfg.CONTENT ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    gfg.GUIDE_ID, gfg.TITLE, gfg.BRIEF, gfg.ATTACHMENT_FILE_NAME, gfg.ATTACHMENT_FILE_ID, 
+    gfg.CREATOR_USER_ID, gfg.CREATOR_NAME, gfg.IS_VISIBLE, gfg.PUBLISH_TIME, gfg.CREATE_TIME, 
+    gfg.UPDATE_TIME, gfg.PUBLISHER, gfg.PUBLISH_DEPT
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONTENT
+  </sql>
+  <select id="selectById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ga_financing_guide gfg
+    where gfg.GUIDE_ID = #{guideId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ga_financing_guide gfg
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from ga_financing_guide gfg
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaFinancingGuide" >
+    <selectKey resultType="java.lang.Integer" keyProperty="guideId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into ga_financing_guide
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      GUIDE_ID,
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="brief != null" >
+        BRIEF,
+      </if>
+      <if test="attachmentFileName != null" >
+        ATTACHMENT_FILE_NAME,
+      </if>
+      <if test="attachmentFileId != null" >
+        ATTACHMENT_FILE_ID,
+      </if>
+      <if test="creatorUserId != null" >
+        CREATOR_USER_ID,
+      </if>
+      <if test="creatorName != null" >
+        CREATOR_NAME,
+      </if>
+      <if test="isVisible != null" >
+        IS_VISIBLE,
+      </if>
+      <if test="publishTime != null" >
+        PUBLISH_TIME,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="publisher != null" >
+        PUBLISHER,
+      </if>
+      <if test="publishDept != null" >
+        PUBLISH_DEPT,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{guideId,jdbcType=INTEGER},
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="brief != null" >
+        #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentFileName != null" >
+        #{attachmentFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentFileId != null" >
+        #{attachmentFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorUserId != null" >
+        #{creatorUserId,jdbcType=INTEGER},
+      </if>
+      <if test="creatorName != null" >
+        #{creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="isVisible != null" >
+        #{isVisible,jdbcType=BIT},
+      </if>
+      <if test="publishTime != null" >
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publisher != null" >
+        #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="publishDept != null" >
+        #{publishDept,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from ga_financing_guide
+    where GUIDE_ID = #{guideId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from ga_financing_guide where GUIDE_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from gfg using (ga_financing_guide as gfg) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaFinancingGuide" >
+    update ga_financing_guide
+    <set >
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="brief != null" >
+        BRIEF = #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentFileName != null" >
+        ATTACHMENT_FILE_NAME = #{attachmentFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentFileId != null" >
+        ATTACHMENT_FILE_ID = #{attachmentFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorUserId != null" >
+        CREATOR_USER_ID = #{creatorUserId,jdbcType=INTEGER},
+      </if>
+      <if test="creatorName != null" >
+        CREATOR_NAME = #{creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="isVisible != null" >
+        IS_VISIBLE = #{isVisible,jdbcType=BIT},
+      </if>
+      <if test="publishTime != null" >
+        PUBLISH_TIME = #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publisher != null" >
+        PUBLISHER = #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="publishDept != null" >
+        PUBLISH_DEPT = #{publishDept,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where GUIDE_ID = #{guideId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update ga_financing_guide gfg
+    <set >
+      <if test="record.guideId != null" >
+        GUIDE_ID = #{record.guideId,jdbcType=INTEGER},
+      </if>
+      <if test="record.title != null" >
+        TITLE = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brief != null" >
+        BRIEF = #{record.brief,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attachmentFileName != null" >
+        ATTACHMENT_FILE_NAME = #{record.attachmentFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attachmentFileId != null" >
+        ATTACHMENT_FILE_ID = #{record.attachmentFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creatorUserId != null" >
+        CREATOR_USER_ID = #{record.creatorUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.creatorName != null" >
+        CREATOR_NAME = #{record.creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isVisible != null" >
+        IS_VISIBLE = #{record.isVisible,jdbcType=BIT},
+      </if>
+      <if test="record.publishTime != null" >
+        PUBLISH_TIME = #{record.publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.publisher != null" >
+        PUBLISHER = #{record.publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="record.publishDept != null" >
+        PUBLISH_DEPT = #{record.publishDept,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null" >
+        CONTENT = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.guideId" >
+        and gfg.GUIDE_ID = #{map.guideId}
+      </if>
+      <if test="null != map.list_guideId" >
+        and gfg.GUIDE_ID in (<foreach collection="map.list_guideId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.title" >
+        and gfg.TITLE = #{map.title}
+      </if>
+      <if test="null != map.like_title" >
+        and gfg.TITLE like '%' || #{map.like_title} || '%'
+      </if>
+      <if test="null != map.list_title" >
+        and gfg.TITLE in (<foreach collection="map.list_title" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.brief" >
+        and gfg.BRIEF = #{map.brief}
+      </if>
+      <if test="null != map.like_brief" >
+        and gfg.BRIEF like '%' || #{map.like_brief} || '%'
+      </if>
+      <if test="null != map.list_brief" >
+        and gfg.BRIEF in (<foreach collection="map.list_brief" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.attachmentFileName" >
+        and gfg.ATTACHMENT_FILE_NAME = #{map.attachmentFileName}
+      </if>
+      <if test="null != map.like_attachmentFileName" >
+        and gfg.ATTACHMENT_FILE_NAME like '%' || #{map.like_attachmentFileName} || '%'
+      </if>
+      <if test="null != map.list_attachmentFileName" >
+        and gfg.ATTACHMENT_FILE_NAME in (<foreach collection="map.list_attachmentFileName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.attachmentFileId" >
+        and gfg.ATTACHMENT_FILE_ID = #{map.attachmentFileId}
+      </if>
+      <if test="null != map.like_attachmentFileId" >
+        and gfg.ATTACHMENT_FILE_ID like '%' || #{map.like_attachmentFileId} || '%'
+      </if>
+      <if test="null != map.list_attachmentFileId" >
+        and gfg.ATTACHMENT_FILE_ID in (<foreach collection="map.list_attachmentFileId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.creatorUserId" >
+        and gfg.CREATOR_USER_ID = #{map.creatorUserId}
+      </if>
+      <if test="null != map.list_creatorUserId" >
+        and gfg.CREATOR_USER_ID in (<foreach collection="map.list_creatorUserId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.creatorName" >
+        and gfg.CREATOR_NAME = #{map.creatorName}
+      </if>
+      <if test="null != map.like_creatorName" >
+        and gfg.CREATOR_NAME like '%' || #{map.like_creatorName} || '%'
+      </if>
+      <if test="null != map.list_creatorName" >
+        and gfg.CREATOR_NAME in (<foreach collection="map.list_creatorName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.isVisible" >
+        and gfg.IS_VISIBLE = #{map.isVisible}
+      </if>
+      <if test="null != map.list_isVisible" >
+        and gfg.IS_VISIBLE in (<foreach collection="map.list_isVisible" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_publishTime" >
+        and gfg.PUBLISH_TIME &gt;= #{map.begin_publishTime}
+      </if>
+      <if test="null != map.end_publishTime" >
+        and gfg.PUBLISH_TIME &lt;= #{map.end_publishTime}
+      </if>
+      <if test="null != map.begin_createTime" >
+        and gfg.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and gfg.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_updateTime" >
+        and gfg.UPDATE_TIME &gt;= #{map.begin_updateTime}
+      </if>
+      <if test="null != map.end_updateTime" >
+        and gfg.UPDATE_TIME &lt;= #{map.end_updateTime}
+      </if>
+      <if test="null != map.publisher" >
+        and gfg.PUBLISHER = #{map.publisher}
+      </if>
+      <if test="null != map.like_publisher" >
+        and gfg.PUBLISHER like '%' || #{map.like_publisher} || '%'
+      </if>
+      <if test="null != map.list_publisher" >
+        and gfg.PUBLISHER in (<foreach collection="map.list_publisher" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.publishDept" >
+        and gfg.PUBLISH_DEPT = #{map.publishDept}
+      </if>
+      <if test="null != map.like_publishDept" >
+        and gfg.PUBLISH_DEPT like '%' || #{map.like_publishDept} || '%'
+      </if>
+      <if test="null != map.list_publishDept" >
+        and gfg.PUBLISH_DEPT in (<foreach collection="map.list_publishDept" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.content" >
+        and gfg.CONTENT = #{map.content}
+      </if>
+      <if test="null != map.like_content" >
+        and gfg.CONTENT like '%' || #{map.like_content} || '%'
+      </if>
+      <if test="null != map.list_content" >
+        and gfg.CONTENT in (<foreach collection="map.list_content" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

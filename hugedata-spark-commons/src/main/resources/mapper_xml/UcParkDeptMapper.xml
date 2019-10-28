@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.UcParkDeptMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.UcParkDept" >
+    <id column="DEPT_ID" property="deptId" jdbcType="INTEGER" />
+    <result column="DEPT_NAME" property="deptName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != deptId" >
+      and upd.DEPT_ID = #{deptId}
+    </if>
+    <if test="null != ne_deptId" >
+      and upd.DEPT_ID != #{ne_deptId}
+    </if>
+    <if test="null != list_deptId" >
+      and upd.DEPT_ID in (<foreach collection="list_deptId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != deptName" >
+      and upd.DEPT_NAME = #{deptName}
+    </if>
+    <if test="null != ne_deptName" >
+      and upd.DEPT_NAME != #{ne_deptName}
+    </if>
+    <if test="null != like_deptName" >
+      and upd.DEPT_NAME like CONCAT('%', #{like_deptName}, '%')
+    </if>
+    <if test="null != list_deptName" >
+      and upd.DEPT_NAME in (<foreach collection="list_deptName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_deptName" >
+      and upd.DEPT_NAME &gt;= #{begin_deptName}
+    </if>
+    <if test="null != end_deptName" >
+      and upd.DEPT_NAME &lt;= #{end_deptName}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'deptId' == orderItem.column" >
+            upd.DEPT_ID ${orderItem.dir}
+          </if>
+          <if test="'deptName' == orderItem.column" >
+            upd.DEPT_NAME ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    upd.DEPT_ID, upd.DEPT_NAME
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from uc_park_dept upd
+    where upd.DEPT_ID = #{deptId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from uc_park_dept upd
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from uc_park_dept upd
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcParkDept" >
+    insert into uc_park_dept
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="deptId != null" >
+        DEPT_ID,
+      </if>
+      <if test="deptName != null" >
+        DEPT_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="deptId != null" >
+        #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="deptName != null" >
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from uc_park_dept
+    where DEPT_ID = #{deptId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from uc_park_dept where DEPT_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from upd using (uc_park_dept as upd) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcParkDept" >
+    update uc_park_dept
+    <set >
+      <if test="deptName != null" >
+        DEPT_NAME = #{deptName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DEPT_ID = #{deptId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update uc_park_dept upd
+    <set >
+      <if test="record.deptId != null" >
+        DEPT_ID = #{record.deptId,jdbcType=INTEGER},
+      </if>
+      <if test="record.deptName != null" >
+        DEPT_NAME = #{record.deptName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.deptId" >
+        and upd.DEPT_ID = #{map.deptId}
+      </if>
+      <if test="null != map.list_deptId" >
+        and upd.DEPT_ID in (<foreach collection="map.list_deptId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.deptName" >
+        and upd.DEPT_NAME = #{map.deptName}
+      </if>
+      <if test="null != map.like_deptName" >
+        and upd.DEPT_NAME like '%' || #{map.like_deptName} || '%'
+      </if>
+      <if test="null != map.list_deptName" >
+        and upd.DEPT_NAME in (<foreach collection="map.list_deptName" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

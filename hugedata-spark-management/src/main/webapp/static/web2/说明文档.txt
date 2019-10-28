@@ -1,0 +1,137 @@
+    
+登录			login.html
+
+入口			home.html
+
+密码修改		password.html
+
+账号管理		
+	
+	企业账号管理	account.html
+
+	内部账号管理	account-inside.html	
+
+一.OA办公系统
+
+二.行政审批处理		
+
+	1.在线办理			check.html
+
+	  	办件详情(待预审)	check-detail.html
+
+		办件详情(初审)		check-detail1.html
+
+		办件详情(复审)		check-detail2.html
+
+		办件详情(决定)		check-detail3.html
+
+		办件详情(主任决定)	check-detail4.html
+
+		办件详情(书记决定)	check-detail5.html
+
+		办件详情(确认办结)	check-detail6.html
+
+
+	2.窗口办理			check-window.html
+
+		添加办件		check-window-detail.html
+
+	3.工作统计                	job-account.html
+
+
+三.项目审核管理			project.html
+
+	1.基本信息		project01.html
+
+          更新信息		project01-edit.html
+
+	2.手续文件		project02.html
+
+	3.文档资料		project03.html
+
+	4.项目月报		project04.html
+
+	  待审核月报    	project04-check.html
+
+	5.年度计划		project05.html			
+
+	6.添加项目		project-add.html
+
+
+四.服务外包管理
+
+	1.转化成果
+
+		1.1 专家名录	achievements.html	
+			
+		1.2 技术成果	achievements01.html	
+			
+	2.会议培训		conference.html    	
+	
+
+五.综合政务
+
+	1.入园服务	
+
+		1.1 申请审批	govaffairs.html		
+
+		1.2 入园指南	govaffairs01-guide.html
+
+	2.退园服务	
+
+		2.1 申请审批	govaffairs02.html	
+
+		2.2 退园指南	govaffairs02-guide.html
+
+	3.场地服务		govaffairs03.html	
+
+	4.费用服务		govaffairs04.html	
+
+	5.IT基础设施服务
+
+		5.1 申请记录	cloudhost.html		
+
+		5.2 云主机套餐	cloudhost02.html	
+
+		5.3 云存储	cloudhost03.html	
+
+
+六.互动交流管理
+
+	1.领导信箱		interactive.html	
+
+	2.调查征集		interactive02.html	
+
+		2.1 查看结果	interactive02-detail.html
+
+		2.2 配置	interactive02-set.html	
+
+七.信息发布管理
+
+	1.办事指南		release.html
+
+	  添加页		release-add.html
+
+	  修改页		release-edit.html
+
+	2.通知公告					
+
+		2.1 图片新闻	notice.html
+
+		2.2 通知公告	notice02.html
+
+	3.便民服务					
+
+		3.1 园区小区	handy-service.html
+
+		3.2 园区学校	handy-service02.html
+
+		3.3 园区医院	handy-service03.html
+
+		3.4 园区公交	handy-service04.html
+
+
+
+
+
+

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.OsTechServiceConfigMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.OsTechServiceConfig" >
+    <id column="CONFIG_NAME" property="configName" jdbcType="VARCHAR" />
+    <result column="CONFIG_TYPE" property="configType" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.com.hugedata.spark.commons.storage.entity.OsTechServiceConfig" extends="BaseResultMap" >
+    <result column="CONFIG_VALUE" property="configValue" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != configName" >
+      and otsc.CONFIG_NAME = #{configName}
+    </if>
+    <if test="null != ne_configName" >
+      and otsc.CONFIG_NAME != #{ne_configName}
+    </if>
+    <if test="null != like_configName" >
+      and otsc.CONFIG_NAME like CONCAT('%', #{like_configName}, '%')
+    </if>
+    <if test="null != list_configName" >
+      and otsc.CONFIG_NAME in (<foreach collection="list_configName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_configName" >
+      and otsc.CONFIG_NAME &gt;= #{begin_configName}
+    </if>
+    <if test="null != end_configName" >
+      and otsc.CONFIG_NAME &lt;= #{end_configName}
+    </if>
+    <if test="null != configType" >
+      and otsc.CONFIG_TYPE = #{configType}
+    </if>
+    <if test="null != ne_configType" >
+      and otsc.CONFIG_TYPE != #{ne_configType}
+    </if>
+    <if test="null != like_configType" >
+      and otsc.CONFIG_TYPE like CONCAT('%', #{like_configType}, '%')
+    </if>
+    <if test="null != list_configType" >
+      and otsc.CONFIG_TYPE in (<foreach collection="list_configType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_configType" >
+      and otsc.CONFIG_TYPE &gt;= #{begin_configType}
+    </if>
+    <if test="null != end_configType" >
+      and otsc.CONFIG_TYPE &lt;= #{end_configType}
+    </if>
+    <if test="null != configValue" >
+      and otsc.CONFIG_VALUE = #{configValue}
+    </if>
+    <if test="null != ne_configValue" >
+      and otsc.CONFIG_VALUE != #{ne_configValue}
+    </if>
+    <if test="null != like_configValue" >
+      and otsc.CONFIG_VALUE like CONCAT('%', #{like_configValue}, '%')
+    </if>
+    <if test="null != list_configValue" >
+      and otsc.CONFIG_VALUE in (<foreach collection="list_configValue" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_configValue" >
+      and otsc.CONFIG_VALUE &gt;= #{begin_configValue}
+    </if>
+    <if test="null != end_configValue" >
+      and otsc.CONFIG_VALUE &lt;= #{end_configValue}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'configName' == orderItem.column" >
+            otsc.CONFIG_NAME ${orderItem.dir}
+          </if>
+          <if test="'configType' == orderItem.column" >
+            otsc.CONFIG_TYPE ${orderItem.dir}
+          </if>
+          <if test="'configValue' == orderItem.column" >
+            otsc.CONFIG_VALUE ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    otsc.CONFIG_NAME, otsc.CONFIG_TYPE
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONFIG_VALUE
+  </sql>
+  <select id="selectById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from os_tech_service_config otsc
+    where otsc.CONFIG_NAME = #{configName,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByMap" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from os_tech_service_config otsc
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from os_tech_service_config otsc
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.OsTechServiceConfig" >
+    insert into os_tech_service_config
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="configName != null" >
+        CONFIG_NAME,
+      </if>
+      <if test="configType != null" >
+        CONFIG_TYPE,
+      </if>
+      <if test="configValue != null" >
+        CONFIG_VALUE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="configName != null" >
+        #{configName,jdbcType=VARCHAR},
+      </if>
+      <if test="configType != null" >
+        #{configType,jdbcType=VARCHAR},
+      </if>
+      <if test="configValue != null" >
+        #{configValue,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.String" >
+    delete from os_tech_service_config
+    where CONFIG_NAME = #{configName,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from os_tech_service_config where CONFIG_NAME in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from otsc using (os_tech_service_config as otsc) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.OsTechServiceConfig" >
+    update os_tech_service_config
+    <set >
+      <if test="configType != null" >
+        CONFIG_TYPE = #{configType,jdbcType=VARCHAR},
+      </if>
+      <if test="configValue != null" >
+        CONFIG_VALUE = #{configValue,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where CONFIG_NAME = #{configName,jdbcType=VARCHAR}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update os_tech_service_config otsc
+    <set >
+      <if test="record.configName != null" >
+        CONFIG_NAME = #{record.configName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.configType != null" >
+        CONFIG_TYPE = #{record.configType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.configValue != null" >
+        CONFIG_VALUE = #{record.configValue,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.configName" >
+        and otsc.CONFIG_NAME = #{map.configName}
+      </if>
+      <if test="null != map.like_configName" >
+        and otsc.CONFIG_NAME like '%' || #{map.like_configName} || '%'
+      </if>
+      <if test="null != map.list_configName" >
+        and otsc.CONFIG_NAME in (<foreach collection="map.list_configName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.configType" >
+        and otsc.CONFIG_TYPE = #{map.configType}
+      </if>
+      <if test="null != map.like_configType" >
+        and otsc.CONFIG_TYPE like '%' || #{map.like_configType} || '%'
+      </if>
+      <if test="null != map.list_configType" >
+        and otsc.CONFIG_TYPE in (<foreach collection="map.list_configType" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.configValue" >
+        and otsc.CONFIG_VALUE = #{map.configValue}
+      </if>
+      <if test="null != map.like_configValue" >
+        and otsc.CONFIG_VALUE like '%' || #{map.like_configValue} || '%'
+      </if>
+      <if test="null != map.list_configValue" >
+        and otsc.CONFIG_VALUE in (<foreach collection="map.list_configValue" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

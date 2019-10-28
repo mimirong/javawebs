@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.GaParkJoinGuideMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.GaParkJoinGuide" >
+    <id column="GUIDE_ID" property="guideId" jdbcType="INTEGER" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="BRIEF" property="brief" jdbcType="VARCHAR" />
+    <result column="ATTACHMENT_FILE_NAME" property="attachmentFileName" jdbcType="VARCHAR" />
+    <result column="ATTACHMENT_FILE_ID" property="attachmentFileId" jdbcType="VARCHAR" />
+    <result column="CREATOR_USER_ID" property="creatorUserId" jdbcType="INTEGER" />
+    <result column="CREATOR_NAME" property="creatorName" jdbcType="VARCHAR" />
+    <result column="IS_VISIBLE" property="isVisible" jdbcType="BIT" />
+    <result column="PUBLISH_TIME" property="publishTime" jdbcType="TIMESTAMP" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="CREATOR_DEPT" property="creatorDept" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.com.hugedata.spark.commons.storage.entity.GaParkJoinGuide" extends="BaseResultMap" >
+    <result column="CONTENT" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != guideId" >
+      and gpjg.GUIDE_ID = #{guideId}
+    </if>
+    <if test="null != ne_guideId" >
+      and gpjg.GUIDE_ID != #{ne_guideId}
+    </if>
+    <if test="null != list_guideId" >
+      and gpjg.GUIDE_ID in (<foreach collection="list_guideId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != title" >
+      and gpjg.TITLE = #{title}
+    </if>
+    <if test="null != ne_title" >
+      and gpjg.TITLE != #{ne_title}
+    </if>
+    <if test="null != like_title" >
+      and gpjg.TITLE like CONCAT('%', #{like_title}, '%')
+    </if>
+    <if test="null != list_title" >
+      and gpjg.TITLE in (<foreach collection="list_title" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_title" >
+      and gpjg.TITLE &gt;= #{begin_title}
+    </if>
+    <if test="null != end_title" >
+      and gpjg.TITLE &lt;= #{end_title}
+    </if>
+    <if test="null != brief" >
+      and gpjg.BRIEF = #{brief}
+    </if>
+    <if test="null != ne_brief" >
+      and gpjg.BRIEF != #{ne_brief}
+    </if>
+    <if test="null != like_brief" >
+      and gpjg.BRIEF like CONCAT('%', #{like_brief}, '%')
+    </if>
+    <if test="null != list_brief" >
+      and gpjg.BRIEF in (<foreach collection="list_brief" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_brief" >
+      and gpjg.BRIEF &gt;= #{begin_brief}
+    </if>
+    <if test="null != end_brief" >
+      and gpjg.BRIEF &lt;= #{end_brief}
+    </if>
+    <if test="null != attachmentFileName" >
+      and gpjg.ATTACHMENT_FILE_NAME = #{attachmentFileName}
+    </if>
+    <if test="null != ne_attachmentFileName" >
+      and gpjg.ATTACHMENT_FILE_NAME != #{ne_attachmentFileName}
+    </if>
+    <if test="null != like_attachmentFileName" >
+      and gpjg.ATTACHMENT_FILE_NAME like CONCAT('%', #{like_attachmentFileName}, '%')
+    </if>
+    <if test="null != list_attachmentFileName" >
+      and gpjg.ATTACHMENT_FILE_NAME in (<foreach collection="list_attachmentFileName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_attachmentFileName" >
+      and gpjg.ATTACHMENT_FILE_NAME &gt;= #{begin_attachmentFileName}
+    </if>
+    <if test="null != end_attachmentFileName" >
+      and gpjg.ATTACHMENT_FILE_NAME &lt;= #{end_attachmentFileName}
+    </if>
+    <if test="null != attachmentFileId" >
+      and gpjg.ATTACHMENT_FILE_ID = #{attachmentFileId}
+    </if>
+    <if test="null != ne_attachmentFileId" >
+      and gpjg.ATTACHMENT_FILE_ID != #{ne_attachmentFileId}
+    </if>
+    <if test="null != like_attachmentFileId" >
+      and gpjg.ATTACHMENT_FILE_ID like CONCAT('%', #{like_attachmentFileId}, '%')
+    </if>
+    <if test="null != list_attachmentFileId" >
+      and gpjg.ATTACHMENT_FILE_ID in (<foreach collection="list_attachmentFileId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_attachmentFileId" >
+      and gpjg.ATTACHMENT_FILE_ID &gt;= #{begin_attachmentFileId}
+    </if>
+    <if test="null != end_attachmentFileId" >
+      and gpjg.ATTACHMENT_FILE_ID &lt;= #{end_attachmentFileId}
+    </if>
+    <if test="null != creatorUserId" >
+      and gpjg.CREATOR_USER_ID = #{creatorUserId}
+    </if>
+    <if test="null != ne_creatorUserId" >
+      and gpjg.CREATOR_USER_ID != #{ne_creatorUserId}
+    </if>
+    <if test="null != list_creatorUserId" >
+      and gpjg.CREATOR_USER_ID in (<foreach collection="list_creatorUserId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != creatorName" >
+      and gpjg.CREATOR_NAME = #{creatorName}
+    </if>
+    <if test="null != ne_creatorName" >
+      and gpjg.CREATOR_NAME != #{ne_creatorName}
+    </if>
+    <if test="null != like_creatorName" >
+      and gpjg.CREATOR_NAME like CONCAT('%', #{like_creatorName}, '%')
+    </if>
+    <if test="null != list_creatorName" >
+      and gpjg.CREATOR_NAME in (<foreach collection="list_creatorName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_creatorName" >
+      and gpjg.CREATOR_NAME &gt;= #{begin_creatorName}
+    </if>
+    <if test="null != end_creatorName" >
+      and gpjg.CREATOR_NAME &lt;= #{end_creatorName}
+    </if>
+    <if test="null != isVisible" >
+      and gpjg.IS_VISIBLE = #{isVisible}
+    </if>
+    <if test="null != ne_isVisible" >
+      and gpjg.IS_VISIBLE != #{ne_isVisible}
+    </if>
+    <if test="null != list_isVisible" >
+      and gpjg.IS_VISIBLE in (<foreach collection="list_isVisible" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_publishTime" >
+      and gpjg.PUBLISH_TIME &gt;= #{begin_publishTime}
+    </if>
+    <if test="null != end_publishTime" >
+      and gpjg.PUBLISH_TIME &lt;= #{end_publishTime}
+    </if>
+    <if test="null != begin_createTime" >
+      and gpjg.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and gpjg.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_updateTime" >
+      and gpjg.UPDATE_TIME &gt;= #{begin_updateTime}
+    </if>
+    <if test="null != end_updateTime" >
+      and gpjg.UPDATE_TIME &lt;= #{end_updateTime}
+    </if>
+    <if test="null != creatorDept" >
+      and gpjg.CREATOR_DEPT = #{creatorDept}
+    </if>
+    <if test="null != ne_creatorDept" >
+      and gpjg.CREATOR_DEPT != #{ne_creatorDept}
+    </if>
+    <if test="null != like_creatorDept" >
+      and gpjg.CREATOR_DEPT like CONCAT('%', #{like_creatorDept}, '%')
+    </if>
+    <if test="null != list_creatorDept" >
+      and gpjg.CREATOR_DEPT in (<foreach collection="list_creatorDept" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_creatorDept" >
+      and gpjg.CREATOR_DEPT &gt;= #{begin_creatorDept}
+    </if>
+    <if test="null != end_creatorDept" >
+      and gpjg.CREATOR_DEPT &lt;= #{end_creatorDept}
+    </if>
+    <if test="null != content" >
+      and gpjg.CONTENT = #{content}
+    </if>
+    <if test="null != ne_content" >
+      and gpjg.CONTENT != #{ne_content}
+    </if>
+    <if test="null != like_content" >
+      and gpjg.CONTENT like CONCAT('%', #{like_content}, '%')
+    </if>
+    <if test="null != list_content" >
+      and gpjg.CONTENT in (<foreach collection="list_content" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_content" >
+      and gpjg.CONTENT &gt;= #{begin_content}
+    </if>
+    <if test="null != end_content" >
+      and gpjg.CONTENT &lt;= #{end_content}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'guideId' == orderItem.column" >
+            gpjg.GUIDE_ID ${orderItem.dir}
+          </if>
+          <if test="'title' == orderItem.column" >
+            gpjg.TITLE ${orderItem.dir}
+          </if>
+          <if test="'brief' == orderItem.column" >
+            gpjg.BRIEF ${orderItem.dir}
+          </if>
+          <if test="'attachmentFileName' == orderItem.column" >
+            gpjg.ATTACHMENT_FILE_NAME ${orderItem.dir}
+          </if>
+          <if test="'attachmentFileId' == orderItem.column" >
+            gpjg.ATTACHMENT_FILE_ID ${orderItem.dir}
+          </if>
+          <if test="'creatorUserId' == orderItem.column" >
+            gpjg.CREATOR_USER_ID ${orderItem.dir}
+          </if>
+          <if test="'creatorName' == orderItem.column" >
+            gpjg.CREATOR_NAME ${orderItem.dir}
+          </if>
+          <if test="'isVisible' == orderItem.column" >
+            gpjg.IS_VISIBLE ${orderItem.dir}
+          </if>
+          <if test="'publishTime' == orderItem.column" >
+            gpjg.PUBLISH_TIME ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            gpjg.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'updateTime' == orderItem.column" >
+            gpjg.UPDATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'creatorDept' == orderItem.column" >
+            gpjg.CREATOR_DEPT ${orderItem.dir}
+          </if>
+          <if test="'content' == orderItem.column" >
+            gpjg.CONTENT ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    gpjg.GUIDE_ID, gpjg.TITLE, gpjg.BRIEF, gpjg.ATTACHMENT_FILE_NAME, gpjg.ATTACHMENT_FILE_ID, 
+    gpjg.CREATOR_USER_ID, gpjg.CREATOR_NAME, gpjg.IS_VISIBLE, gpjg.PUBLISH_TIME, gpjg.CREATE_TIME, 
+    gpjg.UPDATE_TIME, gpjg.CREATOR_DEPT
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONTENT
+  </sql>
+  <select id="selectById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ga_park_join_guide gpjg
+    where gpjg.GUIDE_ID = #{guideId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ga_park_join_guide gpjg
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from ga_park_join_guide gpjg
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaParkJoinGuide" >
+    <selectKey resultType="java.lang.Integer" keyProperty="guideId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into ga_park_join_guide
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      GUIDE_ID,
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="brief != null" >
+        BRIEF,
+      </if>
+      <if test="attachmentFileName != null" >
+        ATTACHMENT_FILE_NAME,
+      </if>
+      <if test="attachmentFileId != null" >
+        ATTACHMENT_FILE_ID,
+      </if>
+      <if test="creatorUserId != null" >
+        CREATOR_USER_ID,
+      </if>
+      <if test="creatorName != null" >
+        CREATOR_NAME,
+      </if>
+      <if test="isVisible != null" >
+        IS_VISIBLE,
+      </if>
+      <if test="publishTime != null" >
+        PUBLISH_TIME,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="creatorDept != null" >
+        CREATOR_DEPT,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{guideId,jdbcType=INTEGER},
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="brief != null" >
+        #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentFileName != null" >
+        #{attachmentFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentFileId != null" >
+        #{attachmentFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorUserId != null" >
+        #{creatorUserId,jdbcType=INTEGER},
+      </if>
+      <if test="creatorName != null" >
+        #{creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="isVisible != null" >
+        #{isVisible,jdbcType=BIT},
+      </if>
+      <if test="publishTime != null" >
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorDept != null" >
+        #{creatorDept,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from ga_park_join_guide
+    where GUIDE_ID = #{guideId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from ga_park_join_guide where GUIDE_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from gpjg using (ga_park_join_guide as gpjg) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaParkJoinGuide" >
+    update ga_park_join_guide
+    <set >
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="brief != null" >
+        BRIEF = #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentFileName != null" >
+        ATTACHMENT_FILE_NAME = #{attachmentFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentFileId != null" >
+        ATTACHMENT_FILE_ID = #{attachmentFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorUserId != null" >
+        CREATOR_USER_ID = #{creatorUserId,jdbcType=INTEGER},
+      </if>
+      <if test="creatorName != null" >
+        CREATOR_NAME = #{creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="isVisible != null" >
+        IS_VISIBLE = #{isVisible,jdbcType=BIT},
+      </if>
+      <if test="publishTime != null" >
+        PUBLISH_TIME = #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorDept != null" >
+        CREATOR_DEPT = #{creatorDept,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where GUIDE_ID = #{guideId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update ga_park_join_guide gpjg
+    <set >
+      <if test="record.guideId != null" >
+        GUIDE_ID = #{record.guideId,jdbcType=INTEGER},
+      </if>
+      <if test="record.title != null" >
+        TITLE = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brief != null" >
+        BRIEF = #{record.brief,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attachmentFileName != null" >
+        ATTACHMENT_FILE_NAME = #{record.attachmentFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attachmentFileId != null" >
+        ATTACHMENT_FILE_ID = #{record.attachmentFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creatorUserId != null" >
+        CREATOR_USER_ID = #{record.creatorUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.creatorName != null" >
+        CREATOR_NAME = #{record.creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isVisible != null" >
+        IS_VISIBLE = #{record.isVisible,jdbcType=BIT},
+      </if>
+      <if test="record.publishTime != null" >
+        PUBLISH_TIME = #{record.publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.creatorDept != null" >
+        CREATOR_DEPT = #{record.creatorDept,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null" >
+        CONTENT = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.guideId" >
+        and gpjg.GUIDE_ID = #{map.guideId}
+      </if>
+      <if test="null != map.list_guideId" >
+        and gpjg.GUIDE_ID in (<foreach collection="map.list_guideId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.title" >
+        and gpjg.TITLE = #{map.title}
+      </if>
+      <if test="null != map.like_title" >
+        and gpjg.TITLE like '%' || #{map.like_title} || '%'
+      </if>
+      <if test="null != map.list_title" >
+        and gpjg.TITLE in (<foreach collection="map.list_title" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.brief" >
+        and gpjg.BRIEF = #{map.brief}
+      </if>
+      <if test="null != map.like_brief" >
+        and gpjg.BRIEF like '%' || #{map.like_brief} || '%'
+      </if>
+      <if test="null != map.list_brief" >
+        and gpjg.BRIEF in (<foreach collection="map.list_brief" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.attachmentFileName" >
+        and gpjg.ATTACHMENT_FILE_NAME = #{map.attachmentFileName}
+      </if>
+      <if test="null != map.like_attachmentFileName" >
+        and gpjg.ATTACHMENT_FILE_NAME like '%' || #{map.like_attachmentFileName} || '%'
+      </if>
+      <if test="null != map.list_attachmentFileName" >
+        and gpjg.ATTACHMENT_FILE_NAME in (<foreach collection="map.list_attachmentFileName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.attachmentFileId" >
+        and gpjg.ATTACHMENT_FILE_ID = #{map.attachmentFileId}
+      </if>
+      <if test="null != map.like_attachmentFileId" >
+        and gpjg.ATTACHMENT_FILE_ID like '%' || #{map.like_attachmentFileId} || '%'
+      </if>
+      <if test="null != map.list_attachmentFileId" >
+        and gpjg.ATTACHMENT_FILE_ID in (<foreach collection="map.list_attachmentFileId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.creatorUserId" >
+        and gpjg.CREATOR_USER_ID = #{map.creatorUserId}
+      </if>
+      <if test="null != map.list_creatorUserId" >
+        and gpjg.CREATOR_USER_ID in (<foreach collection="map.list_creatorUserId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.creatorName" >
+        and gpjg.CREATOR_NAME = #{map.creatorName}
+      </if>
+      <if test="null != map.like_creatorName" >
+        and gpjg.CREATOR_NAME like '%' || #{map.like_creatorName} || '%'
+      </if>
+      <if test="null != map.list_creatorName" >
+        and gpjg.CREATOR_NAME in (<foreach collection="map.list_creatorName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.isVisible" >
+        and gpjg.IS_VISIBLE = #{map.isVisible}
+      </if>
+      <if test="null != map.list_isVisible" >
+        and gpjg.IS_VISIBLE in (<foreach collection="map.list_isVisible" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_publishTime" >
+        and gpjg.PUBLISH_TIME &gt;= #{map.begin_publishTime}
+      </if>
+      <if test="null != map.end_publishTime" >
+        and gpjg.PUBLISH_TIME &lt;= #{map.end_publishTime}
+      </if>
+      <if test="null != map.begin_createTime" >
+        and gpjg.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and gpjg.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_updateTime" >
+        and gpjg.UPDATE_TIME &gt;= #{map.begin_updateTime}
+      </if>
+      <if test="null != map.end_updateTime" >
+        and gpjg.UPDATE_TIME &lt;= #{map.end_updateTime}
+      </if>
+      <if test="null != map.creatorDept" >
+        and gpjg.CREATOR_DEPT = #{map.creatorDept}
+      </if>
+      <if test="null != map.like_creatorDept" >
+        and gpjg.CREATOR_DEPT like '%' || #{map.like_creatorDept} || '%'
+      </if>
+      <if test="null != map.list_creatorDept" >
+        and gpjg.CREATOR_DEPT in (<foreach collection="map.list_creatorDept" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.content" >
+        and gpjg.CONTENT = #{map.content}
+      </if>
+      <if test="null != map.like_content" >
+        and gpjg.CONTENT like '%' || #{map.like_content} || '%'
+      </if>
+      <if test="null != map.list_content" >
+        and gpjg.CONTENT in (<foreach collection="map.list_content" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

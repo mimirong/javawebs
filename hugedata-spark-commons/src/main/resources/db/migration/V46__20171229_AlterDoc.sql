@@ -1,0 +1,1 @@
+ALTER TABLE pm_project_doc ADD COLUMN STATUS CHAR(1);

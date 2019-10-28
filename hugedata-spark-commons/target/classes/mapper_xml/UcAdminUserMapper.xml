@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.UcAdminUserMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.UcAdminUser" >
+    <id column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="IS_ACCEPT_MESSAGE" property="isAcceptMessage" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="LAST_LOGIN_TIME" property="lastLoginTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != userId" >
+      and uau.USER_ID = #{userId}
+    </if>
+    <if test="null != ne_userId" >
+      and uau.USER_ID != #{ne_userId}
+    </if>
+    <if test="null != like_userId" >
+      and uau.USER_ID like CONCAT('%', #{like_userId}, '%')
+    </if>
+    <if test="null != list_userId" >
+      and uau.USER_ID in (<foreach collection="list_userId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_userId" >
+      and uau.USER_ID &gt;= #{begin_userId}
+    </if>
+    <if test="null != end_userId" >
+      and uau.USER_ID &lt;= #{end_userId}
+    </if>
+    <if test="null != username" >
+      and uau.USERNAME = #{username}
+    </if>
+    <if test="null != ne_username" >
+      and uau.USERNAME != #{ne_username}
+    </if>
+    <if test="null != like_username" >
+      and uau.USERNAME like CONCAT('%', #{like_username}, '%')
+    </if>
+    <if test="null != list_username" >
+      and uau.USERNAME in (<foreach collection="list_username" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_username" >
+      and uau.USERNAME &gt;= #{begin_username}
+    </if>
+    <if test="null != end_username" >
+      and uau.USERNAME &lt;= #{end_username}
+    </if>
+    <if test="null != password" >
+      and uau.PASSWORD = #{password}
+    </if>
+    <if test="null != ne_password" >
+      and uau.PASSWORD != #{ne_password}
+    </if>
+    <if test="null != like_password" >
+      and uau.PASSWORD like CONCAT('%', #{like_password}, '%')
+    </if>
+    <if test="null != list_password" >
+      and uau.PASSWORD in (<foreach collection="list_password" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_password" >
+      and uau.PASSWORD &gt;= #{begin_password}
+    </if>
+    <if test="null != end_password" >
+      and uau.PASSWORD &lt;= #{end_password}
+    </if>
+    <if test="null != mobile" >
+      and uau.MOBILE = #{mobile}
+    </if>
+    <if test="null != ne_mobile" >
+      and uau.MOBILE != #{ne_mobile}
+    </if>
+    <if test="null != like_mobile" >
+      and uau.MOBILE like CONCAT('%', #{like_mobile}, '%')
+    </if>
+    <if test="null != list_mobile" >
+      and uau.MOBILE in (<foreach collection="list_mobile" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_mobile" >
+      and uau.MOBILE &gt;= #{begin_mobile}
+    </if>
+    <if test="null != end_mobile" >
+      and uau.MOBILE &lt;= #{end_mobile}
+    </if>
+    <if test="null != email" >
+      and uau.EMAIL = #{email}
+    </if>
+    <if test="null != ne_email" >
+      and uau.EMAIL != #{ne_email}
+    </if>
+    <if test="null != like_email" >
+      and uau.EMAIL like CONCAT('%', #{like_email}, '%')
+    </if>
+    <if test="null != list_email" >
+      and uau.EMAIL in (<foreach collection="list_email" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_email" >
+      and uau.EMAIL &gt;= #{begin_email}
+    </if>
+    <if test="null != end_email" >
+      and uau.EMAIL &lt;= #{end_email}
+    </if>
+    <if test="null != isAcceptMessage" >
+      and uau.IS_ACCEPT_MESSAGE = #{isAcceptMessage}
+    </if>
+    <if test="null != ne_isAcceptMessage" >
+      and uau.IS_ACCEPT_MESSAGE != #{ne_isAcceptMessage}
+    </if>
+    <if test="null != like_isAcceptMessage" >
+      and uau.IS_ACCEPT_MESSAGE like CONCAT('%', #{like_isAcceptMessage}, '%')
+    </if>
+    <if test="null != list_isAcceptMessage" >
+      and uau.IS_ACCEPT_MESSAGE in (<foreach collection="list_isAcceptMessage" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_isAcceptMessage" >
+      and uau.IS_ACCEPT_MESSAGE &gt;= #{begin_isAcceptMessage}
+    </if>
+    <if test="null != end_isAcceptMessage" >
+      and uau.IS_ACCEPT_MESSAGE &lt;= #{end_isAcceptMessage}
+    </if>
+    <if test="null != begin_createTime" >
+      and uau.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and uau.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_lastLoginTime" >
+      and uau.LAST_LOGIN_TIME &gt;= #{begin_lastLoginTime}
+    </if>
+    <if test="null != end_lastLoginTime" >
+      and uau.LAST_LOGIN_TIME &lt;= #{end_lastLoginTime}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'userId' == orderItem.column" >
+            uau.USER_ID ${orderItem.dir}
+          </if>
+          <if test="'username' == orderItem.column" >
+            uau.USERNAME ${orderItem.dir}
+          </if>
+          <if test="'password' == orderItem.column" >
+            uau.PASSWORD ${orderItem.dir}
+          </if>
+          <if test="'mobile' == orderItem.column" >
+            uau.MOBILE ${orderItem.dir}
+          </if>
+          <if test="'email' == orderItem.column" >
+            uau.EMAIL ${orderItem.dir}
+          </if>
+          <if test="'isAcceptMessage' == orderItem.column" >
+            uau.IS_ACCEPT_MESSAGE ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            uau.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'lastLoginTime' == orderItem.column" >
+            uau.LAST_LOGIN_TIME ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    uau.USER_ID, uau.USERNAME, uau.PASSWORD, uau.MOBILE, uau.EMAIL, uau.IS_ACCEPT_MESSAGE, 
+    uau.CREATE_TIME, uau.LAST_LOGIN_TIME
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from uc_admin_user uau
+    where uau.USER_ID = #{userId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from uc_admin_user uau
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from uc_admin_user uau
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcAdminUser" >
+    insert into uc_admin_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="username != null" >
+        USERNAME,
+      </if>
+      <if test="password != null" >
+        PASSWORD,
+      </if>
+      <if test="mobile != null" >
+        MOBILE,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="isAcceptMessage != null" >
+        IS_ACCEPT_MESSAGE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="lastLoginTime != null" >
+        LAST_LOGIN_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="isAcceptMessage != null" >
+        #{isAcceptMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null" >
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.String" >
+    delete from uc_admin_user
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from uc_admin_user where USER_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from uau using (uc_admin_user as uau) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcAdminUser" >
+    update uc_admin_user
+    <set >
+      <if test="username != null" >
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        MOBILE = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="isAcceptMessage != null" >
+        IS_ACCEPT_MESSAGE = #{isAcceptMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null" >
+        LAST_LOGIN_TIME = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update uc_admin_user uau
+    <set >
+      <if test="record.userId != null" >
+        USER_ID = #{record.userId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.username != null" >
+        USERNAME = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null" >
+        PASSWORD = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobile != null" >
+        MOBILE = #{record.mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        EMAIL = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isAcceptMessage != null" >
+        IS_ACCEPT_MESSAGE = #{record.isAcceptMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastLoginTime != null" >
+        LAST_LOGIN_TIME = #{record.lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.userId" >
+        and uau.USER_ID = #{map.userId}
+      </if>
+      <if test="null != map.like_userId" >
+        and uau.USER_ID like '%' || #{map.like_userId} || '%'
+      </if>
+      <if test="null != map.list_userId" >
+        and uau.USER_ID in (<foreach collection="map.list_userId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.username" >
+        and uau.USERNAME = #{map.username}
+      </if>
+      <if test="null != map.like_username" >
+        and uau.USERNAME like '%' || #{map.like_username} || '%'
+      </if>
+      <if test="null != map.list_username" >
+        and uau.USERNAME in (<foreach collection="map.list_username" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.password" >
+        and uau.PASSWORD = #{map.password}
+      </if>
+      <if test="null != map.like_password" >
+        and uau.PASSWORD like '%' || #{map.like_password} || '%'
+      </if>
+      <if test="null != map.list_password" >
+        and uau.PASSWORD in (<foreach collection="map.list_password" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.mobile" >
+        and uau.MOBILE = #{map.mobile}
+      </if>
+      <if test="null != map.like_mobile" >
+        and uau.MOBILE like '%' || #{map.like_mobile} || '%'
+      </if>
+      <if test="null != map.list_mobile" >
+        and uau.MOBILE in (<foreach collection="map.list_mobile" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.email" >
+        and uau.EMAIL = #{map.email}
+      </if>
+      <if test="null != map.like_email" >
+        and uau.EMAIL like '%' || #{map.like_email} || '%'
+      </if>
+      <if test="null != map.list_email" >
+        and uau.EMAIL in (<foreach collection="map.list_email" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.isAcceptMessage" >
+        and uau.IS_ACCEPT_MESSAGE = #{map.isAcceptMessage}
+      </if>
+      <if test="null != map.like_isAcceptMessage" >
+        and uau.IS_ACCEPT_MESSAGE like '%' || #{map.like_isAcceptMessage} || '%'
+      </if>
+      <if test="null != map.list_isAcceptMessage" >
+        and uau.IS_ACCEPT_MESSAGE in (<foreach collection="map.list_isAcceptMessage" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and uau.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and uau.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_lastLoginTime" >
+        and uau.LAST_LOGIN_TIME &gt;= #{map.begin_lastLoginTime}
+      </if>
+      <if test="null != map.end_lastLoginTime" >
+        and uau.LAST_LOGIN_TIME &lt;= #{map.end_lastLoginTime}
+      </if>
+    </where>
+  </update>
+</mapper>

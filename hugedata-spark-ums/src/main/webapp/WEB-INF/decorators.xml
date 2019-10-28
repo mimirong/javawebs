@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/jsp">
+
+	<decorator name="main" page="master/master.jsp">
+		<pattern>*</pattern>
+	</decorator>
+	
+	<decorator name="empty" page="master/master_empty.jsp">
+		<pattern>*-empty</pattern>
+	</decorator>
+	
+	<decorator name="simple" page="master/master_simple.jsp">
+		<pattern>*-simple</pattern>
+	</decorator>
+</decorators>

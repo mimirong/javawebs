@@ -1,0 +1,20 @@
+delete from schema_version where version_rank = 6;
+
+drop table if exists OS_COMPANY_CONTRACT;
+drop table if exists OS_COMPANY_CREDIT;
+drop table if exists OS_COMPANY_FEEDBACK;
+drop table if exists OS_COMPANY_INFO;
+drop table if exists OS_COMPANY_PROJECT;
+drop table if exists OS_COMPANY_SERVICE;
+drop table if exists OS_INTELLECTUAL_PROPERTY_APPLY;
+drop table if exists OS_INTELLECTUAL_PROPERTY_INFO;
+drop table if exists OS_INTENTION_COMPANY;
+drop table if exists OS_JOB_OFFER;
+drop table if exists OS_PERSONAL_CREDIT;
+drop table if exists OS_PERSONAL_CREDIT_ITEM;
+drop table if exists OS_PROJECT_DECLARE_APPLY;
+drop table if exists OS_PROJECT_DECLARE_TEMPLATE;
+drop table if exists OS_QUALITY_SERVICE;
+drop table if exists OS_QUALITY_SERVICE_APPLY;
+drop table if exists OS_TECH_SERVICE_APPLY;
+drop table if exists OS_TRAINING;

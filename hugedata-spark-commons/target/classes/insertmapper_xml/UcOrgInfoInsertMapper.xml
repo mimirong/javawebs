@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.insertmapper.UcOrgInfoInsertMapper" >
+
+  <insert id="insertAll" parameterType="java.util.ArrayList">
+    <selectKey resultType="java.lang.Integer" keyProperty="orgId" order="AFTER">
+      select @@identity
+    </selectKey>
+    insert into uc_org_info (ORG_ID,REF_ORG_ID, NAME,PARENT_ORG_ID,CREATE_TIME,UPDATE_TIME)
+    values
+    <foreach collection="list" item="obj" index="index" separator=",">
+      ( #{obj.orgId,jdbcType=INTEGER},#{obj.refOrgId,jdbcType=VARCHAR},#{obj.name,jdbcType=VARCHAR},
+      #{obj.parentOrgId,jdbcType=INTEGER},#{obj.createTime,jdbcType=TIMESTAMP},
+      #{obj.updateTime,jdbcType=TIMESTAMP})
+    </foreach>
+     on duplicate key update
+    NAME=VALUES(NAME),PARENT_ORG_ID=VALUES(PARENT_ORG_ID),UPDATE_TIME=VALUES(UPDATE_TIME)
+  </insert>
+
+</mapper>

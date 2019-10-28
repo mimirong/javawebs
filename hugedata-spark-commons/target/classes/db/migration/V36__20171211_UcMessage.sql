@@ -1,0 +1,2 @@
+alter table UC_MESSAGE
+add  REFERENCE_ID VARCHAR(100);

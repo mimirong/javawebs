@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.GaReportSubmitMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.GaReportSubmit" >
+    <id column="SUBMIT_ID" property="submitId" jdbcType="INTEGER" />
+    <result column="TEMPLATE_ID" property="templateId" jdbcType="INTEGER" />
+    <result column="TEMPLATE_NAME" property="templateName" jdbcType="VARCHAR" />
+    <result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR" />
+    <result column="CONTACT" property="contact" jdbcType="VARCHAR" />
+    <result column="CONTACT_MOBILE" property="contactMobile" jdbcType="VARCHAR" />
+    <result column="REPORT_FILE_ID" property="reportFileId" jdbcType="VARCHAR" />
+    <result column="SUBMITTER_USER_ID" property="submitterUserId" jdbcType="INTEGER" />
+    <result column="SUBMITTER_NAME" property="submitterName" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="APPROVE_TIME" property="approveTime" jdbcType="TIMESTAMP" />
+    <result column="REPORT_FILE_NAME" property="reportFileName" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.com.hugedata.spark.commons.storage.entity.GaReportSubmit" extends="BaseResultMap" >
+    <result column="CONTENT" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != submitId" >
+      and grs.SUBMIT_ID = #{submitId}
+    </if>
+    <if test="null != ne_submitId" >
+      and grs.SUBMIT_ID != #{ne_submitId}
+    </if>
+    <if test="null != list_submitId" >
+      and grs.SUBMIT_ID in (<foreach collection="list_submitId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != templateId" >
+      and grs.TEMPLATE_ID = #{templateId}
+    </if>
+    <if test="null != ne_templateId" >
+      and grs.TEMPLATE_ID != #{ne_templateId}
+    </if>
+    <if test="null != list_templateId" >
+      and grs.TEMPLATE_ID in (<foreach collection="list_templateId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != templateName" >
+      and grs.TEMPLATE_NAME = #{templateName}
+    </if>
+    <if test="null != ne_templateName" >
+      and grs.TEMPLATE_NAME != #{ne_templateName}
+    </if>
+    <if test="null != like_templateName" >
+      and grs.TEMPLATE_NAME like CONCAT('%', #{like_templateName}, '%')
+    </if>
+    <if test="null != list_templateName" >
+      and grs.TEMPLATE_NAME in (<foreach collection="list_templateName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_templateName" >
+      and grs.TEMPLATE_NAME &gt;= #{begin_templateName}
+    </if>
+    <if test="null != end_templateName" >
+      and grs.TEMPLATE_NAME &lt;= #{end_templateName}
+    </if>
+    <if test="null != companyName" >
+      and grs.COMPANY_NAME = #{companyName}
+    </if>
+    <if test="null != ne_companyName" >
+      and grs.COMPANY_NAME != #{ne_companyName}
+    </if>
+    <if test="null != like_companyName" >
+      and grs.COMPANY_NAME like CONCAT('%', #{like_companyName}, '%')
+    </if>
+    <if test="null != list_companyName" >
+      and grs.COMPANY_NAME in (<foreach collection="list_companyName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_companyName" >
+      and grs.COMPANY_NAME &gt;= #{begin_companyName}
+    </if>
+    <if test="null != end_companyName" >
+      and grs.COMPANY_NAME &lt;= #{end_companyName}
+    </if>
+    <if test="null != contact" >
+      and grs.CONTACT = #{contact}
+    </if>
+    <if test="null != ne_contact" >
+      and grs.CONTACT != #{ne_contact}
+    </if>
+    <if test="null != like_contact" >
+      and grs.CONTACT like CONCAT('%', #{like_contact}, '%')
+    </if>
+    <if test="null != list_contact" >
+      and grs.CONTACT in (<foreach collection="list_contact" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_contact" >
+      and grs.CONTACT &gt;= #{begin_contact}
+    </if>
+    <if test="null != end_contact" >
+      and grs.CONTACT &lt;= #{end_contact}
+    </if>
+    <if test="null != contactMobile" >
+      and grs.CONTACT_MOBILE = #{contactMobile}
+    </if>
+    <if test="null != ne_contactMobile" >
+      and grs.CONTACT_MOBILE != #{ne_contactMobile}
+    </if>
+    <if test="null != like_contactMobile" >
+      and grs.CONTACT_MOBILE like CONCAT('%', #{like_contactMobile}, '%')
+    </if>
+    <if test="null != list_contactMobile" >
+      and grs.CONTACT_MOBILE in (<foreach collection="list_contactMobile" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_contactMobile" >
+      and grs.CONTACT_MOBILE &gt;= #{begin_contactMobile}
+    </if>
+    <if test="null != end_contactMobile" >
+      and grs.CONTACT_MOBILE &lt;= #{end_contactMobile}
+    </if>
+    <if test="null != reportFileId" >
+      and grs.REPORT_FILE_ID = #{reportFileId}
+    </if>
+    <if test="null != ne_reportFileId" >
+      and grs.REPORT_FILE_ID != #{ne_reportFileId}
+    </if>
+    <if test="null != like_reportFileId" >
+      and grs.REPORT_FILE_ID like CONCAT('%', #{like_reportFileId}, '%')
+    </if>
+    <if test="null != list_reportFileId" >
+      and grs.REPORT_FILE_ID in (<foreach collection="list_reportFileId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_reportFileId" >
+      and grs.REPORT_FILE_ID &gt;= #{begin_reportFileId}
+    </if>
+    <if test="null != end_reportFileId" >
+      and grs.REPORT_FILE_ID &lt;= #{end_reportFileId}
+    </if>
+    <if test="null != submitterUserId" >
+      and grs.SUBMITTER_USER_ID = #{submitterUserId}
+    </if>
+    <if test="null != ne_submitterUserId" >
+      and grs.SUBMITTER_USER_ID != #{ne_submitterUserId}
+    </if>
+    <if test="null != list_submitterUserId" >
+      and grs.SUBMITTER_USER_ID in (<foreach collection="list_submitterUserId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != submitterName" >
+      and grs.SUBMITTER_NAME = #{submitterName}
+    </if>
+    <if test="null != ne_submitterName" >
+      and grs.SUBMITTER_NAME != #{ne_submitterName}
+    </if>
+    <if test="null != like_submitterName" >
+      and grs.SUBMITTER_NAME like CONCAT('%', #{like_submitterName}, '%')
+    </if>
+    <if test="null != list_submitterName" >
+      and grs.SUBMITTER_NAME in (<foreach collection="list_submitterName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_submitterName" >
+      and grs.SUBMITTER_NAME &gt;= #{begin_submitterName}
+    </if>
+    <if test="null != end_submitterName" >
+      and grs.SUBMITTER_NAME &lt;= #{end_submitterName}
+    </if>
+    <if test="null != begin_createTime" >
+      and grs.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and grs.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_approveTime" >
+      and grs.APPROVE_TIME &gt;= #{begin_approveTime}
+    </if>
+    <if test="null != end_approveTime" >
+      and grs.APPROVE_TIME &lt;= #{end_approveTime}
+    </if>
+    <if test="null != reportFileName" >
+      and grs.REPORT_FILE_NAME = #{reportFileName}
+    </if>
+    <if test="null != ne_reportFileName" >
+      and grs.REPORT_FILE_NAME != #{ne_reportFileName}
+    </if>
+    <if test="null != like_reportFileName" >
+      and grs.REPORT_FILE_NAME like CONCAT('%', #{like_reportFileName}, '%')
+    </if>
+    <if test="null != list_reportFileName" >
+      and grs.REPORT_FILE_NAME in (<foreach collection="list_reportFileName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_reportFileName" >
+      and grs.REPORT_FILE_NAME &gt;= #{begin_reportFileName}
+    </if>
+    <if test="null != end_reportFileName" >
+      and grs.REPORT_FILE_NAME &lt;= #{end_reportFileName}
+    </if>
+    <if test="null != content" >
+      and grs.CONTENT = #{content}
+    </if>
+    <if test="null != ne_content" >
+      and grs.CONTENT != #{ne_content}
+    </if>
+    <if test="null != like_content" >
+      and grs.CONTENT like CONCAT('%', #{like_content}, '%')
+    </if>
+    <if test="null != list_content" >
+      and grs.CONTENT in (<foreach collection="list_content" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_content" >
+      and grs.CONTENT &gt;= #{begin_content}
+    </if>
+    <if test="null != end_content" >
+      and grs.CONTENT &lt;= #{end_content}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'submitId' == orderItem.column" >
+            grs.SUBMIT_ID ${orderItem.dir}
+          </if>
+          <if test="'templateId' == orderItem.column" >
+            grs.TEMPLATE_ID ${orderItem.dir}
+          </if>
+          <if test="'templateName' == orderItem.column" >
+            grs.TEMPLATE_NAME ${orderItem.dir}
+          </if>
+          <if test="'companyName' == orderItem.column" >
+            grs.COMPANY_NAME ${orderItem.dir}
+          </if>
+          <if test="'contact' == orderItem.column" >
+            grs.CONTACT ${orderItem.dir}
+          </if>
+          <if test="'contactMobile' == orderItem.column" >
+            grs.CONTACT_MOBILE ${orderItem.dir}
+          </if>
+          <if test="'reportFileId' == orderItem.column" >
+            grs.REPORT_FILE_ID ${orderItem.dir}
+          </if>
+          <if test="'submitterUserId' == orderItem.column" >
+            grs.SUBMITTER_USER_ID ${orderItem.dir}
+          </if>
+          <if test="'submitterName' == orderItem.column" >
+            grs.SUBMITTER_NAME ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            grs.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'approveTime' == orderItem.column" >
+            grs.APPROVE_TIME ${orderItem.dir}
+          </if>
+          <if test="'reportFileName' == orderItem.column" >
+            grs.REPORT_FILE_NAME ${orderItem.dir}
+          </if>
+          <if test="'content' == orderItem.column" >
+            grs.CONTENT ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    grs.SUBMIT_ID, grs.TEMPLATE_ID, grs.TEMPLATE_NAME, grs.COMPANY_NAME, grs.CONTACT, 
+    grs.CONTACT_MOBILE, grs.REPORT_FILE_ID, grs.SUBMITTER_USER_ID, grs.SUBMITTER_NAME, 
+    grs.CREATE_TIME, grs.APPROVE_TIME, grs.REPORT_FILE_NAME
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONTENT
+  </sql>
+  <select id="selectById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ga_report_submit grs
+    where grs.SUBMIT_ID = #{submitId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ga_report_submit grs
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from ga_report_submit grs
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaReportSubmit" >
+    <selectKey resultType="java.lang.Integer" keyProperty="submitId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into ga_report_submit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      SUBMIT_ID,
+      <if test="templateId != null" >
+        TEMPLATE_ID,
+      </if>
+      <if test="templateName != null" >
+        TEMPLATE_NAME,
+      </if>
+      <if test="companyName != null" >
+        COMPANY_NAME,
+      </if>
+      <if test="contact != null" >
+        CONTACT,
+      </if>
+      <if test="contactMobile != null" >
+        CONTACT_MOBILE,
+      </if>
+      <if test="reportFileId != null" >
+        REPORT_FILE_ID,
+      </if>
+      <if test="submitterUserId != null" >
+        SUBMITTER_USER_ID,
+      </if>
+      <if test="submitterName != null" >
+        SUBMITTER_NAME,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="approveTime != null" >
+        APPROVE_TIME,
+      </if>
+      <if test="reportFileName != null" >
+        REPORT_FILE_NAME,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{submitId,jdbcType=INTEGER},
+      <if test="templateId != null" >
+        #{templateId,jdbcType=INTEGER},
+      </if>
+      <if test="templateName != null" >
+        #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactMobile != null" >
+        #{contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="reportFileId != null" >
+        #{reportFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="submitterUserId != null" >
+        #{submitterUserId,jdbcType=INTEGER},
+      </if>
+      <if test="submitterName != null" >
+        #{submitterName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approveTime != null" >
+        #{approveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reportFileName != null" >
+        #{reportFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from ga_report_submit
+    where SUBMIT_ID = #{submitId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from ga_report_submit where SUBMIT_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from grs using (ga_report_submit as grs) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaReportSubmit" >
+    update ga_report_submit
+    <set >
+      <if test="templateId != null" >
+        TEMPLATE_ID = #{templateId,jdbcType=INTEGER},
+      </if>
+      <if test="templateName != null" >
+        TEMPLATE_NAME = #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        CONTACT = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactMobile != null" >
+        CONTACT_MOBILE = #{contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="reportFileId != null" >
+        REPORT_FILE_ID = #{reportFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="submitterUserId != null" >
+        SUBMITTER_USER_ID = #{submitterUserId,jdbcType=INTEGER},
+      </if>
+      <if test="submitterName != null" >
+        SUBMITTER_NAME = #{submitterName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approveTime != null" >
+        APPROVE_TIME = #{approveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reportFileName != null" >
+        REPORT_FILE_NAME = #{reportFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where SUBMIT_ID = #{submitId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update ga_report_submit grs
+    <set >
+      <if test="record.submitId != null" >
+        SUBMIT_ID = #{record.submitId,jdbcType=INTEGER},
+      </if>
+      <if test="record.templateId != null" >
+        TEMPLATE_ID = #{record.templateId,jdbcType=INTEGER},
+      </if>
+      <if test="record.templateName != null" >
+        TEMPLATE_NAME = #{record.templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyName != null" >
+        COMPANY_NAME = #{record.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contact != null" >
+        CONTACT = #{record.contact,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactMobile != null" >
+        CONTACT_MOBILE = #{record.contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reportFileId != null" >
+        REPORT_FILE_ID = #{record.reportFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.submitterUserId != null" >
+        SUBMITTER_USER_ID = #{record.submitterUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.submitterName != null" >
+        SUBMITTER_NAME = #{record.submitterName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.approveTime != null" >
+        APPROVE_TIME = #{record.approveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.reportFileName != null" >
+        REPORT_FILE_NAME = #{record.reportFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null" >
+        CONTENT = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.submitId" >
+        and grs.SUBMIT_ID = #{map.submitId}
+      </if>
+      <if test="null != map.list_submitId" >
+        and grs.SUBMIT_ID in (<foreach collection="map.list_submitId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.templateId" >
+        and grs.TEMPLATE_ID = #{map.templateId}
+      </if>
+      <if test="null != map.list_templateId" >
+        and grs.TEMPLATE_ID in (<foreach collection="map.list_templateId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.templateName" >
+        and grs.TEMPLATE_NAME = #{map.templateName}
+      </if>
+      <if test="null != map.like_templateName" >
+        and grs.TEMPLATE_NAME like '%' || #{map.like_templateName} || '%'
+      </if>
+      <if test="null != map.list_templateName" >
+        and grs.TEMPLATE_NAME in (<foreach collection="map.list_templateName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.companyName" >
+        and grs.COMPANY_NAME = #{map.companyName}
+      </if>
+      <if test="null != map.like_companyName" >
+        and grs.COMPANY_NAME like '%' || #{map.like_companyName} || '%'
+      </if>
+      <if test="null != map.list_companyName" >
+        and grs.COMPANY_NAME in (<foreach collection="map.list_companyName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.contact" >
+        and grs.CONTACT = #{map.contact}
+      </if>
+      <if test="null != map.like_contact" >
+        and grs.CONTACT like '%' || #{map.like_contact} || '%'
+      </if>
+      <if test="null != map.list_contact" >
+        and grs.CONTACT in (<foreach collection="map.list_contact" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.contactMobile" >
+        and grs.CONTACT_MOBILE = #{map.contactMobile}
+      </if>
+      <if test="null != map.like_contactMobile" >
+        and grs.CONTACT_MOBILE like '%' || #{map.like_contactMobile} || '%'
+      </if>
+      <if test="null != map.list_contactMobile" >
+        and grs.CONTACT_MOBILE in (<foreach collection="map.list_contactMobile" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.reportFileId" >
+        and grs.REPORT_FILE_ID = #{map.reportFileId}
+      </if>
+      <if test="null != map.like_reportFileId" >
+        and grs.REPORT_FILE_ID like '%' || #{map.like_reportFileId} || '%'
+      </if>
+      <if test="null != map.list_reportFileId" >
+        and grs.REPORT_FILE_ID in (<foreach collection="map.list_reportFileId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.submitterUserId" >
+        and grs.SUBMITTER_USER_ID = #{map.submitterUserId}
+      </if>
+      <if test="null != map.list_submitterUserId" >
+        and grs.SUBMITTER_USER_ID in (<foreach collection="map.list_submitterUserId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.submitterName" >
+        and grs.SUBMITTER_NAME = #{map.submitterName}
+      </if>
+      <if test="null != map.like_submitterName" >
+        and grs.SUBMITTER_NAME like '%' || #{map.like_submitterName} || '%'
+      </if>
+      <if test="null != map.list_submitterName" >
+        and grs.SUBMITTER_NAME in (<foreach collection="map.list_submitterName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and grs.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and grs.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_approveTime" >
+        and grs.APPROVE_TIME &gt;= #{map.begin_approveTime}
+      </if>
+      <if test="null != map.end_approveTime" >
+        and grs.APPROVE_TIME &lt;= #{map.end_approveTime}
+      </if>
+      <if test="null != map.reportFileName" >
+        and grs.REPORT_FILE_NAME = #{map.reportFileName}
+      </if>
+      <if test="null != map.like_reportFileName" >
+        and grs.REPORT_FILE_NAME like '%' || #{map.like_reportFileName} || '%'
+      </if>
+      <if test="null != map.list_reportFileName" >
+        and grs.REPORT_FILE_NAME in (<foreach collection="map.list_reportFileName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.content" >
+        and grs.CONTENT = #{map.content}
+      </if>
+      <if test="null != map.like_content" >
+        and grs.CONTENT like '%' || #{map.like_content} || '%'
+      </if>
+      <if test="null != map.list_content" >
+        and grs.CONTENT in (<foreach collection="map.list_content" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

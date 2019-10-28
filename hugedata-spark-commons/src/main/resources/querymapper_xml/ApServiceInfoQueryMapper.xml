@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.com.hugedata.spark.commons.storage.querymapper.ApServiceInfoQueryMapper">
+
+	<select id="selectForParkUser" resultMap="cn.com.hugedata.spark.commons.storage.mapper.ApServiceInfoMapper.ResultMapWithBLOBs" parameterType="map" >
+		select <include refid="cn.com.hugedata.spark.commons.storage.mapper.ApServiceInfoMapper.Base_Column_List" />,
+    	   	   <include refid="cn.com.hugedata.spark.commons.storage.mapper.ApServiceInfoMapper.Blob_Column_List" />
+    	from ap_service_info asi
+    	<where>
+    		<include refid="cn.com.hugedata.spark.commons.storage.mapper.ApServiceInfoMapper.Map_Where_Clause" />
+    		<if test="loginUserId != null">
+	      		and ( 
+	      		      asi.deptcode in (select dept_id from uc_user_dept uud where uud.user_id = #{loginUserId, jdbcType=INTEGER})
+	      		    or
+	      		      asi.current_user_id = #{loginUserId, jdbcType=INTEGER}
+	      		    or 
+	      		      exists (select * from ap_service_cc cc where cc.service_id = asi.service_id and cc.cc_user_id = #{loginUserId, jdbcType=INTEGER})
+	      		    )
+     		</if>
+     		<if test="operateUserId != null">
+     			and exists (select * from ap_service_process p where asi.service_id = p.service_id and p.user_id = #{operateUserId, jdbcType=INTEGER})
+     		</if>
+    	</where>
+    	<include refid="cn.com.hugedata.spark.commons.storage.mapper.ApServiceInfoMapper.Order_By_Clause" />
+  	</select>
+  
+  	<select id="countForParkUser" resultType="int" parameterType="map" >
+    	select count(1) 
+    	from ap_service_info asi
+    	<where>
+    		<include refid="cn.com.hugedata.spark.commons.storage.mapper.ApServiceInfoMapper.Map_Where_Clause" />
+    		<if test="loginUserId != null">
+	      		and ( 
+	      		      asi.deptcode in (select dept_id from uc_user_dept uud where uud.user_id = #{loginUserId, jdbcType=INTEGER})
+	      		    or
+	      		      asi.current_user_id = #{loginUserId, jdbcType=INTEGER}
+	      		    or 
+	      		      exists (select * from ap_service_cc cc where cc.service_id = asi.service_id and cc.cc_user_id = #{loginUserId, jdbcType=INTEGER})
+	      		    )
+     		</if>
+     		<if test="operateUserId != null">
+     			and exists (select * from ap_service_process p where asi.service_id = p.service_id and p.user_id = #{operateUserId, jdbcType=INTEGER})
+     		</if>
+    	</where>
+  	</select>
+  	
+</mapper>

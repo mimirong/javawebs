@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.querymapper.UcUserInfoQueryMapper" >
+
+	<select id="selectByMap" parameterType="map" resultMap="cn.com.hugedata.spark.commons.storage.mapper.UcUserInfoMapper.BaseResultMap">
+		select <include refid="cn.com.hugedata.spark.commons.storage.mapper.UcUserInfoMapper.Base_Column_List" /> 
+		from uc_user_info uui
+		inner join uc_user_dept uud on uud.user_id = uui.user_id
+		<where>
+			<include refid="cn.com.hugedata.spark.commons.storage.mapper.UcUserInfoMapper.Map_Where_Clause" /> 
+			<if test="deptCode != null"> and uud.dept_id = #{deptCode, jdbcType=INTEGER} </if>
+		</where>
+		<include refid="cn.com.hugedata.spark.commons.storage.mapper.UcUserInfoMapper.Order_By_Clause" />
+	</select>
+
+	<select id="countByMap" parameterType="map" resultType="int">
+		select count(1) 
+		from uc_user_info uui
+		inner join uc_user_dept uud on uud.user_id = uui.user_id
+		<where>
+			<include refid="cn.com.hugedata.spark.commons.storage.mapper.UcUserInfoMapper.Map_Where_Clause" /> 
+			<if test="deptCode != null"> and uud.dept_id = #{deptCode, jdbcType=INTEGER} </if>
+		</where>
+	</select>
+	
+</mapper>

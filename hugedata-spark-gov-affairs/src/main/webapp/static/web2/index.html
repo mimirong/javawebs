@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>首页</title>
+  <link type="text/css" rel="stylesheet" href="public/css/reset.css" />
+  <link type="text/css" rel="stylesheet" href="public/css/style.css" />
+</head>
+<body style="overflow: hidden">
+<div class="top-tips">建议使用IE8以上浏览器（不含IE8）浏览网站 <a class="close"></a></div>
+<div class="logo-index">
+    <a href="index.html"><img src="public/images/logo-index.PNG" alt=""/></a>
+    <div class="logo-index-right">
+        <a class="download-app"><em class="dlapp-icon"></em>下载APP</a>
+        <a class="internal-office" href="login/login.html">内部办公系统</a>
+        <a class="" href="login.html">登录</a>
+        <a>&nbsp;|&nbsp;</a>
+        <a class="" href="register.html">注册</a>
+        <div class="download-con">
+            <ul class="clearfix">
+                <li>
+                    <h2>IOS下载</h2>
+                    <img src="public/images/IOS.png" width="93" height="92" alt=""/>
+                </li>
+                <li>
+                    <h2>安卓下载</h2>
+                    <img src="public/images/android.png" width="94" height="94" alt=""/>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="slideImg">
+    <div class="pageImg img1 z1"><img src="public/images/indexBg1.png" />
+       <!-- <div class="txt"></div>-->
+    </div>
+    <div class="pageImg img2 z1"><img src="public/images/indexBg2.png" />
+        <div class="txt"></div>
+    </div>
+     <div class="pageImg img3 z1"><img src="public/images/indexBg3.png" />
+         <div class="txt"></div>
+     </div>
+</div>
+
+<div class="index-bottom" style="position:fixed;width:100%;bottom:0px;">
+    <div class="indexNav">
+        <ul>
+            <li class="nav0"><a href="http://www.cshrss.gov.cn/xxgk/ztzl/csrcxz22/" target="_blank"><img src="public/images/nav0.PNG" /><span>人才政策</span></a></li>
+            <li class="nav1"><a href="bsfw01.html"><img src="public/images/nav1.PNG" /><span>办事服务</span></a></li>
+            <li class="nav2"><a href="fwwb.html"><img src="public/images/nav2.PNG" />服务外包</a></li>
+            <li class="nav3"><a href="xmgl.html"><img src="public/images/nav3.PNG" />项目管理</a></li>
+            <li class="nav7"><a href="fwwb04.html"><img src="public/images/nav7.PNG" />综合服务</a></li>
+            <li class="nav4"><a href="tzgg.html"><img src="public/images/nav4.PNG" />通知公告</a></li>
+            <li class="nav5"> <a href="bmfw.html"><img src="public/images/nav5.PNG" />便民服务</a></li>
+            <li class="nav6"><a href="hdjl.html"><img src="public/images/nav6.PNG" />互动交流</a></li>
+        </ul>
+    </div>
+<!--footer-->
+    <div class="index-footer">
+        <div class="clearfix" style="min-width: 1220px;">
+            <div class="footer-left">
+                <h1 class="footer-tit">友情链接</h1>
+                <ul class="clearfix">
+                    <li>湘江新区</li>
+                    <li>中国岳麓</li>
+                    <li>中国长沙</li>
+                    <li>湖南省政府网</li>
+                </ul>
+            </div>
+            <div class="left_float" style="margin-top:10px;"><img src="public/images/wechat.png" alt="" style="margin-right: 100px;"/><img src="public/images/weibo.png" alt=""/></div>
+            <div class="footer-right">
+                <ul>
+                    <li style="margin:30px 0 12px 0;">电话：0731-88532200&nbsp;&nbsp;&nbsp;&nbsp;版权所有：长沙市岳麓区科技产业园&nbsp;&nbsp;&nbsp;&nbsp;备案号：湘ICP备10202297号-1</li>
+                    <li>建议使用IE8以上浏览器（不含IE8）浏览网站，技术支持：湖南网数科技有限公司</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--footer结束-->
+
+
+<!--javascript 开发时移至</body>前-->
+<script type="text/javascript" src="public/js/jquery.min.js"></script>
+<script type="text/javascript" src="public/js/public.min.js"></script>
+<script type="text/javascript" src="public/js/scripts.js"></script>
+<script>
+    $(function(){
+        var pageImg = $('.pageImg');
+        var flag = true;
+        var f = true;
+        var slideImg = $('.slideImg');
+        var op = 0.2;
+        var num = 0;
+        pageImg.eq(num).addClass("z1");
+        setInterval(function(){
+            num+=1;
+            if(num>=3){
+                num=0;
+            }
+            comeback(pageImg.eq(num));
+
+        },5000)
+
+
+        function comeback(obj){
+            f = true;
+            obj.css({
+
+
+                /*'left' : 0,
+                'top'  : 0,*/
+               // 'z-index' : 1,
+                'opacity' : 1
+            });
+            pageImg.not(obj).each(function(){
+                $(this).css({
+                    //'z-index' : parseInt($(this).css('z-index'))
+                });
+                $(this).animate({
+                    opacity: 0
+                },'slow')
+            })
+        }
+    })
+</script>
+</body>
+</html>

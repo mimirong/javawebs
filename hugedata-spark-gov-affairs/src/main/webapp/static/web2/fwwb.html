@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>服务外包</title>
+<link type="text/css" rel="stylesheet" href="public/css/reset.css" />
+<link type="text/css" rel="stylesheet" href="public/css/style.css" />
+</head>
+
+<body class="service-page">
+    <div class="se-topbar">
+        <div class="cen clearfix">
+            <div class="fl">欢迎您，<span class="mr10">XX企业</span>|<a href="grzx.html" class="ml10">个人中心</a></div>
+            <div class="fr">
+                <a href="index.html">园区首页</a><a href="bsfw01.html">办事服务</a><a href="xmgl.html">项目管理</a><a href="fwwb04.html">综合服务</a><a href="bmfw.html">便民服务</a><a href="hdjl.html">互动交流</a>
+            </div>
+        </div>
+    </div>
+    <div class="se-header">
+        <div class="cen clearfix">
+            <div class="logo fl"><a href="fwwb.html"><img src="public/images/service/logo_service.png" alt="岳麓科技产业园"/></a></div>
+            <div class="search-block fr">
+                <h2><a class="on">服务项目</a><a>服务需求</a><a>专家名录</a><a>技术成果</a><a>会议培训</a></h2>
+                <div class="clearfix">
+                    <div class="search-box fl"><input type="text" placeholder="请输入关键词"/><a class="search-btn" href="service-search.html"></a></div>
+                    <a class="btn btn-grey fl" href="service-test-release.html">发布供应</a><a class="btn btn-grey fl" href="service-require-release.html">发布需求</a>
+                </div>
+                <p><a>化工学化学</a><a>建筑材料</a><a>无损检测</a><a>消费品</a><a>环境检测与职业卫生</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="se-banner">
+        <div class="banner-block"></div>
+        <div class="nav">
+            <ul class="clearfix">
+                <li><a href="service-test.html"><em class="icon"></em>检验检测</a></li>
+                <li><a href="service-require.html"><em class="icon icon2"></em>需求大厅</a></li>
+                <li><a href="service-expert.html"><em class="icon icon3"></em>成果转化</a></li>
+                <li><a href="service-meeting.html"><em class="icon icon4"></em>会议培训</a></li>
+            </ul>
+        </div>
+        <div class="news">
+            <div class="cen clearfix">
+                <script>
+                    var marqueeContent=new Array();   //滚动主题
+
+                    marqueeContent[0]='<a href="#" target="_blank">岳麓区科技园举行升国旗仪式</a>';
+                    marqueeContent[1]='<a href="#" target="_blank">岳麓区科技园举行升国旗仪式2</a>';
+                    marqueeContent[2]='<a href="#" target="_blank">岳麓区科技园举行升国旗仪式3</a>';
+
+                    var marqueeInterval=new Array();  //定义一些常用而且要经常用到的变量
+                    var marqueeId=0;
+                    var marqueeDelay=5000;
+                    var marqueeHeight=40;
+                    function initMarquee() {
+                        var str=marqueeContent[0];
+                        document.write('<div id=marqueeBox class="news_scrol" style="overflow:hidden;height:'+marqueeHeight+'px" onmouseover="clearInterval(marqueeInterval[0])" onmouseout="marqueeInterval[0]=setInterval(\'startMarquee()\',marqueeDelay)"><div>'+str+'</div></div>');
+                        marqueeId++;
+                        marqueeInterval[0]=setInterval("startMarquee()",marqueeDelay);
+                    }
+                    function startMarquee() {
+                        var str=marqueeContent[marqueeId];
+                        marqueeId++;
+                        if(marqueeId>=marqueeContent.length) marqueeId=0;
+                        if(marqueeBox.childNodes.length==1) {
+                            var nextLine=document.createElement('DIV');
+                            nextLine.innerHTML=str;
+                            marqueeBox.appendChild(nextLine);
+                        }
+                        else {
+                            marqueeBox.childNodes[0].innerHTML=str;
+                            marqueeBox.appendChild(marqueeBox.childNodes[0]);
+                            marqueeBox.scrollTop=0;
+                        }
+                        clearInterval(marqueeInterval[1]);
+                        marqueeInterval[1]=setInterval("scrollMarquee()",20);
+                    }
+                    function scrollMarquee() {
+                        marqueeBox.scrollTop++;
+                        if(marqueeBox.scrollTop%marqueeHeight==marqueeHeight){
+                            clearInterval(marqueeInterval[1]);
+                        }
+                    }
+                    initMarquee();
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <div class="cen">
+        <div class="se-row clearfix">
+            <div class="fl">
+                <h2 class="se-title"><span>检验检测</span><a href="service-test.html" class="more">更多</a></h2>
+                <ul class="se-ul clearfix">
+                    <li><a href="service-test-detail.html"><img src="public/images/service/img02.png" alt=""/><span class="wh" title="HPL样品检测fdsfdsfdsfdsfsdf">HPL样品检测fdsfdsfdsfdsfsdf</span></a></li>
+                    <li><a href="service-test-detail.html"><img src="public/images/service/img02.png" alt=""/><span title="HPL样品检测">HPL样品检测</span></a></li>
+                    <li><a href="service-test-detail.html"><img src="public/images/service/img02.png" alt=""/><span title="HPL样品检测">HPL样品检测</span></a></li>
+                    <li><a href="service-test-detail.html"><img src="public/images/service/img02.png" alt=""/><span title="HPL样品检测">HPL样品检测</span></a></li>
+                    <li><a href="service-test-detail.html"><img src="public/images/service/img02.png" alt=""/><span title="HPL样品检测">HPL样品检测</span></a></li>
+                    <li><a href="service-test-detail.html"><img src="public/images/service/img02.png" alt=""/><span title="HPL样品检测">HPL样品检测</span></a></li>
+                </ul>
+            </div>
+            <div class="fr">
+                <h2 class="se-title"><span>技术服务</span><a href="service-test.html?flag=2" class="more">更多</a></h2>
+                <ul class="se-ul clearfix">
+                    <li><a href="service-test-detail.html"><img src="public/images/service/img06.png" alt=""/><span title="HPL样品检测">HPL样品检测</span></a></li>
+                    <li><a href="service-test-detail.html"><img src="public/images/service/img06.png" alt=""/><span title="HPL样品检测">HPL样品检测</span></a></li>
+                    <li><a href="service-test-detail.html"><img src="public/images/service/img06.png" alt=""/><span title="HPL样品检测">HPL样品检测</span></a></li>
+                    <li><a href="service-test-detail.html"><img src="public/images/service/img06.png" alt=""/><span title="HPL样品检测">HPL样品检测</span></a></li>
+                    <li><a href="service-test-detail.html"><img src="public/images/service/img06.png" alt=""/><span title="HPL样品检测">HPL样品检测</span></a></li>
+                    <li><a href="service-test-detail.html"><img src="public/images/service/img06.png" alt=""/><span title="HPL样品检测">HPL样品检测</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="se-row-bg">
+        <div class="cen">
+            <div class="se-row clearfix">
+                <div class="fl">
+                    <h2 class="se-title"><span>需求大厅</span><a href="service-require.html" class="more">更多</a><a href="service-require-release.html" class="release-btn">发布需求</a></h2>
+                    <dl class="se-dl clearfix">
+                        <dt><a href="service-require.html"><img src="public/images/service/img05.png" alt=""/></a></dt>
+                        <dd>
+                            <ul>
+                                <li><span class="disc"></span><a href="service-require-detail.html" title="真空气体成份分析">真空气体成份分析</a><span>2016/01/01</span></li>
+                                <li><span class="disc"></span><a href="service-require-detail.html" title="大豆类农产品成分检测">大豆类农产品成分检测</a><span>2016/01/01</span></li>
+                                <li><span class="disc"></span><a href="service-require-detail.html" title="寻找“苏州或上海”地区寻找“苏州或上海”地区">寻找“苏州或上海”地区寻找“苏州或上海”地区</a><span>2016/01/01</span></li>
+                                <li><span class="disc"></span><a href="service-require-detail.html" title="凯氏定氮法检测总氮含量">凯氏定氮法检测总氮含量</a><span>2016/01/01</span></li>
+                                <li><span class="disc"></span><a href="service-require-detail.html" title="真空气体成份分析">真空气体成份分析</a><span>2016/01/01</span></li>
+                                <li><span class="disc"></span><a href="service-require-detail.html" title="大豆类农产品成分检测">大豆类农产品成分检测</a><span>2016/01/01</span></li>
+                                <li><span class="disc"></span><a href="service-require-detail.html" title="寻找“苏州或上海”地区寻找“苏州或上海”地区">寻找“苏州或上海”地区寻找“苏州或上海”地区</a><span>2016/01/01</span></li>
+                                <li><span class="disc"></span><a href="service-require-detail.html" title="凯氏定氮法检测总氮含量">凯氏定氮法检测总氮含量</a><span>2016/01/01</span></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="fr">
+                    <h2 class="se-title"><span>会议培训</span><a href="service-meeting.html" class="more">更多</a></h2>
+                    <dl class="se-dl clearfix">
+                        <dt><a href="service-meeting-detail.html"><img src="public/images/service/img03.png" alt=""/></a></dt>
+                        <dd>
+                            <ul>
+                                <li><span class="disc"></span><a href="service-meeting-detail.html" title="真空气体成份分析">真空气体成份分析</a><span>2016/01/01</span></li>
+                                <li><span class="disc"></span><a href="service-meeting-detail.html" title="大豆类农产品成分检测">大豆类农产品成分检测</a><span>2016/01/01</span></li>
+                                <li><span class="disc"></span><a href="service-meeting-detail.html" title="寻找“苏州或上海”地区寻找“苏州或上海”地区">寻找“苏州或上海”地区寻找“苏州或上海”地区</a><span>2016/01/01</span></li>
+                                <li><span class="disc"></span><a href="service-meeting-detail.html" title="凯氏定氮法检测总氮含量">凯氏定氮法检测总氮含量</a><span>2016/01/01</span></li>
+                                <li><span class="disc"></span><a href="service-meeting-detail.html" title="真空气体成份分析">真空气体成份分析</a><span>2016/01/01</span></li>
+                                <li><span class="disc"></span><a href="service-meeting-detail.html" title="大豆类农产品成分检测">大豆类农产品成分检测</a><span>2016/01/01</span></li>
+                                <li><span class="disc"></span><a href="service-meeting-detail.html" title="寻找“苏州或上海”地区寻找“苏州或上海”地区">寻找“苏州或上海”地区寻找“苏州或上海”地区</a><span>2016/01/01</span></li>
+                                <li><span class="disc"></span><a href="service-meeting-detail.html" title="凯氏定氮法检测总氮含量">凯氏定氮法检测总氮含量</a><span>2016/01/01</span></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cen">
+        <div class="se-row se-row-expert clearfix">
+            <h2 class="se-title"><span>成果转化</span><a href="service-expert.html" class="more">更多</a></h2>
+            <ul class="se-ul clearfix">
+                <li><a href="service-test-detail.html">
+                    <img src="public/images/service/img04.png" alt=""/><span class="wh" title="检测总氮含量检测总氮含量检测总氮含量">检测总氮含量检测总氮含量检测总氮含量</span>
+                    <p>投资金额：<em class="red">500</em><i>万</i></p>
+                </a></li>
+                <li><a href="service-test-detail.html">
+                    <img src="public/images/service/img04.png" alt=""/><span class="wh" title="检测总氮含量检测总氮含量检测总氮含量">检测总氮含量检测总氮含量检测总氮含量</span>
+                    <p>投资金额：<em class="red">500</em><i>万</i></p>
+                </a></li>
+                <li><a href="service-test-detail.html">
+                    <img src="public/images/service/img04.png" alt=""/><span class="wh" title="检测总氮含量检测总氮含量检测总氮含量">检测总氮含量检测总氮含量检测总氮含量</span>
+                    <p>投资金额：<em class="red">500</em><i>万</i></p>
+                </a></li>
+                <li><a href="service-test-detail.html">
+                    <img src="public/images/service/img04.png" alt=""/><span class="wh" title="检测总氮含量检测总氮含量检测总氮含量">检测总氮含量检测总氮含量检测总氮含量</span>
+                    <p>投资金额：<em class="red">500</em><i>万</i></p>
+                </a></li>
+                <li><a href="service-test-detail.html">
+                    <img src="public/images/service/img04.png" alt=""/><span class="wh" title="检测总氮含量检测总氮含量检测总氮含量">检测总氮含量检测总氮含量检测总氮含量</span>
+                    <p>投资金额：<em class="red">500</em><i>万</i></p>
+                </a></li>
+                <li><a href="service-test-detail.html">
+                    <img src="public/images/service/img04.png" alt=""/><span class="wh" title="检测总氮含量检测总氮含量检测总氮含量">检测总氮含量检测总氮含量检测总氮含量</span>
+                    <p>投资金额：<em class="red">500</em><i>万</i></p>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="login_footer">
+      <div class="cen">
+        <div class="login_footer_top">
+            <ul class="left_float">
+                <li>
+                  <h1>友情链接</h1>
+                  <p><a href="#">湘江新区</a></p>
+                  <p><a href="#">中国长沙</a></p>
+                  <p><a href="#">中国岳麓</a></p>
+                  <p><a href="#">湖南省政府网</a></p>
+                </li>
+            </ul>
+            <img src="public/images/code1.png" style="margin-right: 105px;">
+            <img src="public/images/code2.png">
+            <ul class="right_float">
+                <li>
+                    <p>联系电话：0731-88532200</p>
+                    <p>版权所有：长沙市岳麓区科技产业园</p>
+                    <p>备案号：湘ICP备10202297号-1</p>
+                    <p>技术支持：湖南网数科技有限公司</a></p>
+                </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="goTopBtn" class="go-top-btn"></div>
+
+    <!--javascript 开发时移至</body>前-->
+<script type="text/javascript" src="public/js/jquery.min.js"></script>
+<script type="text/javascript" src="public/js/public.min.js"></script>
+<script type="text/javascript" src="public/js/scripts.js"></script>
+</body>
+</html>

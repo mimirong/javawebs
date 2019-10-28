@@ -1,0 +1,20 @@
+CREATE TABLE `ga_message_post` (
+  `post_id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_time` datetime DEFAULT NULL,
+  `post_addr` varchar(200) DEFAULT NULL,
+  `event_desc` varchar(2000) DEFAULT NULL,
+  `post_level` char(1) DEFAULT NULL,
+  `happen_time` datetime DEFAULT NULL,
+  `poster_name` varchar(50) DEFAULT NULL,
+  `poster_mobile` varchar(50) DEFAULT NULL,
+  `file1_id` varchar(100) DEFAULT NULL,
+  `file2_id` varchar(100) DEFAULT NULL,
+  `file3_id` varchar(100) DEFAULT NULL,
+  `file4_id` varchar(100) DEFAULT NULL,
+  `file5_id` varchar(100) DEFAULT NULL,
+  `file6_id` varchar(100) DEFAULT NULL,
+  `creater_id` int(11) DEFAULT NULL,
+  `creater_name` varchar(50) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`post_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -1,0 +1,777 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.DdDetectionApplyMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.DdDetectionApply" >
+    <id column="APPLY_ID" property="applyId" jdbcType="INTEGER" />
+    <result column="APPLY_TYPE" property="applyType" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="RESOURCE_ID" property="resourceId" jdbcType="VARCHAR" />
+    <result column="RESOURCE_NAME" property="resourceName" jdbcType="VARCHAR" />
+    <result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR" />
+    <result column="CONTACT" property="contact" jdbcType="VARCHAR" />
+    <result column="CONTACT_NAME" property="contactName" jdbcType="VARCHAR" />
+    <result column="APPLIER_USER_ID" property="applierUserId" jdbcType="INTEGER" />
+    <result column="APPLIER_NAME" property="applierName" jdbcType="VARCHAR" />
+    <result column="APPROVER_USER_ID" property="approverUserId" jdbcType="INTEGER" />
+    <result column="APPROVER_NAME" property="approverName" jdbcType="VARCHAR" />
+    <result column="APPROVE_COMMENT" property="approveComment" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="APPROVE_TIME" property="approveTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.com.hugedata.spark.commons.storage.entity.DdDetectionApply" extends="BaseResultMap" >
+    <result column="COMMENT" property="comment" jdbcType="LONGVARCHAR" />
+    <result column="EXTRA_DATA" property="extraData" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != applyId" >
+      and dda.APPLY_ID = #{applyId}
+    </if>
+    <if test="null != ne_applyId" >
+      and dda.APPLY_ID != #{ne_applyId}
+    </if>
+    <if test="null != list_applyId" >
+      and dda.APPLY_ID in (<foreach collection="list_applyId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != applyType" >
+      and dda.APPLY_TYPE = #{applyType}
+    </if>
+    <if test="null != ne_applyType" >
+      and dda.APPLY_TYPE != #{ne_applyType}
+    </if>
+    <if test="null != like_applyType" >
+      and dda.APPLY_TYPE like CONCAT('%', #{like_applyType}, '%')
+    </if>
+    <if test="null != list_applyType" >
+      and dda.APPLY_TYPE in (<foreach collection="list_applyType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_applyType" >
+      and dda.APPLY_TYPE &gt;= #{begin_applyType}
+    </if>
+    <if test="null != end_applyType" >
+      and dda.APPLY_TYPE &lt;= #{end_applyType}
+    </if>
+    <if test="null != status" >
+      and dda.STATUS = #{status}
+    </if>
+    <if test="null != ne_status" >
+      and dda.STATUS != #{ne_status}
+    </if>
+    <if test="null != like_status" >
+      and dda.STATUS like CONCAT('%', #{like_status}, '%')
+    </if>
+    <if test="null != list_status" >
+      and dda.STATUS in (<foreach collection="list_status" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_status" >
+      and dda.STATUS &gt;= #{begin_status}
+    </if>
+    <if test="null != end_status" >
+      and dda.STATUS &lt;= #{end_status}
+    </if>
+    <if test="null != resourceId" >
+      and dda.RESOURCE_ID = #{resourceId}
+    </if>
+    <if test="null != ne_resourceId" >
+      and dda.RESOURCE_ID != #{ne_resourceId}
+    </if>
+    <if test="null != like_resourceId" >
+      and dda.RESOURCE_ID like CONCAT('%', #{like_resourceId}, '%')
+    </if>
+    <if test="null != list_resourceId" >
+      and dda.RESOURCE_ID in (<foreach collection="list_resourceId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_resourceId" >
+      and dda.RESOURCE_ID &gt;= #{begin_resourceId}
+    </if>
+    <if test="null != end_resourceId" >
+      and dda.RESOURCE_ID &lt;= #{end_resourceId}
+    </if>
+    <if test="null != resourceName" >
+      and dda.RESOURCE_NAME = #{resourceName}
+    </if>
+    <if test="null != ne_resourceName" >
+      and dda.RESOURCE_NAME != #{ne_resourceName}
+    </if>
+    <if test="null != like_resourceName" >
+      and dda.RESOURCE_NAME like CONCAT('%', #{like_resourceName}, '%')
+    </if>
+    <if test="null != list_resourceName" >
+      and dda.RESOURCE_NAME in (<foreach collection="list_resourceName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_resourceName" >
+      and dda.RESOURCE_NAME &gt;= #{begin_resourceName}
+    </if>
+    <if test="null != end_resourceName" >
+      and dda.RESOURCE_NAME &lt;= #{end_resourceName}
+    </if>
+    <if test="null != companyName" >
+      and dda.COMPANY_NAME = #{companyName}
+    </if>
+    <if test="null != ne_companyName" >
+      and dda.COMPANY_NAME != #{ne_companyName}
+    </if>
+    <if test="null != like_companyName" >
+      and dda.COMPANY_NAME like CONCAT('%', #{like_companyName}, '%')
+    </if>
+    <if test="null != list_companyName" >
+      and dda.COMPANY_NAME in (<foreach collection="list_companyName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_companyName" >
+      and dda.COMPANY_NAME &gt;= #{begin_companyName}
+    </if>
+    <if test="null != end_companyName" >
+      and dda.COMPANY_NAME &lt;= #{end_companyName}
+    </if>
+    <if test="null != contact" >
+      and dda.CONTACT = #{contact}
+    </if>
+    <if test="null != ne_contact" >
+      and dda.CONTACT != #{ne_contact}
+    </if>
+    <if test="null != like_contact" >
+      and dda.CONTACT like CONCAT('%', #{like_contact}, '%')
+    </if>
+    <if test="null != list_contact" >
+      and dda.CONTACT in (<foreach collection="list_contact" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_contact" >
+      and dda.CONTACT &gt;= #{begin_contact}
+    </if>
+    <if test="null != end_contact" >
+      and dda.CONTACT &lt;= #{end_contact}
+    </if>
+    <if test="null != contactName" >
+      and dda.CONTACT_NAME = #{contactName}
+    </if>
+    <if test="null != ne_contactName" >
+      and dda.CONTACT_NAME != #{ne_contactName}
+    </if>
+    <if test="null != like_contactName" >
+      and dda.CONTACT_NAME like CONCAT('%', #{like_contactName}, '%')
+    </if>
+    <if test="null != list_contactName" >
+      and dda.CONTACT_NAME in (<foreach collection="list_contactName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_contactName" >
+      and dda.CONTACT_NAME &gt;= #{begin_contactName}
+    </if>
+    <if test="null != end_contactName" >
+      and dda.CONTACT_NAME &lt;= #{end_contactName}
+    </if>
+    <if test="null != applierUserId" >
+      and dda.APPLIER_USER_ID = #{applierUserId}
+    </if>
+    <if test="null != ne_applierUserId" >
+      and dda.APPLIER_USER_ID != #{ne_applierUserId}
+    </if>
+    <if test="null != list_applierUserId" >
+      and dda.APPLIER_USER_ID in (<foreach collection="list_applierUserId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != applierName" >
+      and dda.APPLIER_NAME = #{applierName}
+    </if>
+    <if test="null != ne_applierName" >
+      and dda.APPLIER_NAME != #{ne_applierName}
+    </if>
+    <if test="null != like_applierName" >
+      and dda.APPLIER_NAME like CONCAT('%', #{like_applierName}, '%')
+    </if>
+    <if test="null != list_applierName" >
+      and dda.APPLIER_NAME in (<foreach collection="list_applierName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_applierName" >
+      and dda.APPLIER_NAME &gt;= #{begin_applierName}
+    </if>
+    <if test="null != end_applierName" >
+      and dda.APPLIER_NAME &lt;= #{end_applierName}
+    </if>
+    <if test="null != approverUserId" >
+      and dda.APPROVER_USER_ID = #{approverUserId}
+    </if>
+    <if test="null != ne_approverUserId" >
+      and dda.APPROVER_USER_ID != #{ne_approverUserId}
+    </if>
+    <if test="null != list_approverUserId" >
+      and dda.APPROVER_USER_ID in (<foreach collection="list_approverUserId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != approverName" >
+      and dda.APPROVER_NAME = #{approverName}
+    </if>
+    <if test="null != ne_approverName" >
+      and dda.APPROVER_NAME != #{ne_approverName}
+    </if>
+    <if test="null != like_approverName" >
+      and dda.APPROVER_NAME like CONCAT('%', #{like_approverName}, '%')
+    </if>
+    <if test="null != list_approverName" >
+      and dda.APPROVER_NAME in (<foreach collection="list_approverName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_approverName" >
+      and dda.APPROVER_NAME &gt;= #{begin_approverName}
+    </if>
+    <if test="null != end_approverName" >
+      and dda.APPROVER_NAME &lt;= #{end_approverName}
+    </if>
+    <if test="null != approveComment" >
+      and dda.APPROVE_COMMENT = #{approveComment}
+    </if>
+    <if test="null != ne_approveComment" >
+      and dda.APPROVE_COMMENT != #{ne_approveComment}
+    </if>
+    <if test="null != like_approveComment" >
+      and dda.APPROVE_COMMENT like CONCAT('%', #{like_approveComment}, '%')
+    </if>
+    <if test="null != list_approveComment" >
+      and dda.APPROVE_COMMENT in (<foreach collection="list_approveComment" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_approveComment" >
+      and dda.APPROVE_COMMENT &gt;= #{begin_approveComment}
+    </if>
+    <if test="null != end_approveComment" >
+      and dda.APPROVE_COMMENT &lt;= #{end_approveComment}
+    </if>
+    <if test="null != begin_createTime" >
+      and dda.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and dda.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_updateTime" >
+      and dda.UPDATE_TIME &gt;= #{begin_updateTime}
+    </if>
+    <if test="null != end_updateTime" >
+      and dda.UPDATE_TIME &lt;= #{end_updateTime}
+    </if>
+    <if test="null != begin_approveTime" >
+      and dda.APPROVE_TIME &gt;= #{begin_approveTime}
+    </if>
+    <if test="null != end_approveTime" >
+      and dda.APPROVE_TIME &lt;= #{end_approveTime}
+    </if>
+    <if test="null != comment" >
+      and dda.COMMENT = #{comment}
+    </if>
+    <if test="null != ne_comment" >
+      and dda.COMMENT != #{ne_comment}
+    </if>
+    <if test="null != like_comment" >
+      and dda.COMMENT like CONCAT('%', #{like_comment}, '%')
+    </if>
+    <if test="null != list_comment" >
+      and dda.COMMENT in (<foreach collection="list_comment" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_comment" >
+      and dda.COMMENT &gt;= #{begin_comment}
+    </if>
+    <if test="null != end_comment" >
+      and dda.COMMENT &lt;= #{end_comment}
+    </if>
+    <if test="null != extraData" >
+      and dda.EXTRA_DATA = #{extraData}
+    </if>
+    <if test="null != ne_extraData" >
+      and dda.EXTRA_DATA != #{ne_extraData}
+    </if>
+    <if test="null != like_extraData" >
+      and dda.EXTRA_DATA like CONCAT('%', #{like_extraData}, '%')
+    </if>
+    <if test="null != list_extraData" >
+      and dda.EXTRA_DATA in (<foreach collection="list_extraData" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_extraData" >
+      and dda.EXTRA_DATA &gt;= #{begin_extraData}
+    </if>
+    <if test="null != end_extraData" >
+      and dda.EXTRA_DATA &lt;= #{end_extraData}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'applyId' == orderItem.column" >
+            dda.APPLY_ID ${orderItem.dir}
+          </if>
+          <if test="'applyType' == orderItem.column" >
+            dda.APPLY_TYPE ${orderItem.dir}
+          </if>
+          <if test="'status' == orderItem.column" >
+            dda.STATUS ${orderItem.dir}
+          </if>
+          <if test="'resourceId' == orderItem.column" >
+            dda.RESOURCE_ID ${orderItem.dir}
+          </if>
+          <if test="'resourceName' == orderItem.column" >
+            dda.RESOURCE_NAME ${orderItem.dir}
+          </if>
+          <if test="'companyName' == orderItem.column" >
+            dda.COMPANY_NAME ${orderItem.dir}
+          </if>
+          <if test="'contact' == orderItem.column" >
+            dda.CONTACT ${orderItem.dir}
+          </if>
+          <if test="'contactName' == orderItem.column" >
+            dda.CONTACT_NAME ${orderItem.dir}
+          </if>
+          <if test="'applierUserId' == orderItem.column" >
+            dda.APPLIER_USER_ID ${orderItem.dir}
+          </if>
+          <if test="'applierName' == orderItem.column" >
+            dda.APPLIER_NAME ${orderItem.dir}
+          </if>
+          <if test="'approverUserId' == orderItem.column" >
+            dda.APPROVER_USER_ID ${orderItem.dir}
+          </if>
+          <if test="'approverName' == orderItem.column" >
+            dda.APPROVER_NAME ${orderItem.dir}
+          </if>
+          <if test="'approveComment' == orderItem.column" >
+            dda.APPROVE_COMMENT ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            dda.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'updateTime' == orderItem.column" >
+            dda.UPDATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'approveTime' == orderItem.column" >
+            dda.APPROVE_TIME ${orderItem.dir}
+          </if>
+          <if test="'comment' == orderItem.column" >
+            dda.COMMENT ${orderItem.dir}
+          </if>
+          <if test="'extraData' == orderItem.column" >
+            dda.EXTRA_DATA ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    dda.APPLY_ID, dda.APPLY_TYPE, dda.STATUS, dda.RESOURCE_ID, dda.RESOURCE_NAME, dda.COMPANY_NAME, 
+    dda.CONTACT, dda.CONTACT_NAME, dda.APPLIER_USER_ID, dda.APPLIER_NAME, dda.APPROVER_USER_ID, 
+    dda.APPROVER_NAME, dda.APPROVE_COMMENT, dda.CREATE_TIME, dda.UPDATE_TIME, dda.APPROVE_TIME
+  </sql>
+  <sql id="Blob_Column_List" >
+    COMMENT, EXTRA_DATA
+  </sql>
+  <select id="selectById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from dd_detection_apply dda
+    where dda.APPLY_ID = #{applyId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from dd_detection_apply dda
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from dd_detection_apply dda
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.DdDetectionApply" >
+    <selectKey resultType="java.lang.Integer" keyProperty="applyId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into dd_detection_apply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      APPLY_ID,
+      <if test="applyType != null" >
+        APPLY_TYPE,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="resourceId != null" >
+        RESOURCE_ID,
+      </if>
+      <if test="resourceName != null" >
+        RESOURCE_NAME,
+      </if>
+      <if test="companyName != null" >
+        COMPANY_NAME,
+      </if>
+      <if test="contact != null" >
+        CONTACT,
+      </if>
+      <if test="contactName != null" >
+        CONTACT_NAME,
+      </if>
+      <if test="applierUserId != null" >
+        APPLIER_USER_ID,
+      </if>
+      <if test="applierName != null" >
+        APPLIER_NAME,
+      </if>
+      <if test="approverUserId != null" >
+        APPROVER_USER_ID,
+      </if>
+      <if test="approverName != null" >
+        APPROVER_NAME,
+      </if>
+      <if test="approveComment != null" >
+        APPROVE_COMMENT,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="approveTime != null" >
+        APPROVE_TIME,
+      </if>
+      <if test="comment != null" >
+        COMMENT,
+      </if>
+      <if test="extraData != null" >
+        EXTRA_DATA,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{applyId,jdbcType=INTEGER},
+      <if test="applyType != null" >
+        #{applyType,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceName != null" >
+        #{resourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="applierUserId != null" >
+        #{applierUserId,jdbcType=INTEGER},
+      </if>
+      <if test="applierName != null" >
+        #{applierName,jdbcType=VARCHAR},
+      </if>
+      <if test="approverUserId != null" >
+        #{approverUserId,jdbcType=INTEGER},
+      </if>
+      <if test="approverName != null" >
+        #{approverName,jdbcType=VARCHAR},
+      </if>
+      <if test="approveComment != null" >
+        #{approveComment,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approveTime != null" >
+        #{approveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="extraData != null" >
+        #{extraData,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from dd_detection_apply
+    where APPLY_ID = #{applyId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from dd_detection_apply where APPLY_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from dda using (dd_detection_apply as dda) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.DdDetectionApply" >
+    update dd_detection_apply
+    <set >
+      <if test="applyType != null" >
+        APPLY_TYPE = #{applyType,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceId != null" >
+        RESOURCE_ID = #{resourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceName != null" >
+        RESOURCE_NAME = #{resourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        CONTACT = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        CONTACT_NAME = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="applierUserId != null" >
+        APPLIER_USER_ID = #{applierUserId,jdbcType=INTEGER},
+      </if>
+      <if test="applierName != null" >
+        APPLIER_NAME = #{applierName,jdbcType=VARCHAR},
+      </if>
+      <if test="approverUserId != null" >
+        APPROVER_USER_ID = #{approverUserId,jdbcType=INTEGER},
+      </if>
+      <if test="approverName != null" >
+        APPROVER_NAME = #{approverName,jdbcType=VARCHAR},
+      </if>
+      <if test="approveComment != null" >
+        APPROVE_COMMENT = #{approveComment,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approveTime != null" >
+        APPROVE_TIME = #{approveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comment != null" >
+        COMMENT = #{comment,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="extraData != null" >
+        EXTRA_DATA = #{extraData,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where APPLY_ID = #{applyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update dd_detection_apply dda
+    <set >
+      <if test="record.applyId != null" >
+        APPLY_ID = #{record.applyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.applyType != null" >
+        APPLY_TYPE = #{record.applyType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resourceId != null" >
+        RESOURCE_ID = #{record.resourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resourceName != null" >
+        RESOURCE_NAME = #{record.resourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyName != null" >
+        COMPANY_NAME = #{record.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contact != null" >
+        CONTACT = #{record.contact,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactName != null" >
+        CONTACT_NAME = #{record.contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applierUserId != null" >
+        APPLIER_USER_ID = #{record.applierUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.applierName != null" >
+        APPLIER_NAME = #{record.applierName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.approverUserId != null" >
+        APPROVER_USER_ID = #{record.approverUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.approverName != null" >
+        APPROVER_NAME = #{record.approverName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.approveComment != null" >
+        APPROVE_COMMENT = #{record.approveComment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.approveTime != null" >
+        APPROVE_TIME = #{record.approveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.comment != null" >
+        COMMENT = #{record.comment,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.extraData != null" >
+        EXTRA_DATA = #{record.extraData,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.applyId" >
+        and dda.APPLY_ID = #{map.applyId}
+      </if>
+      <if test="null != map.list_applyId" >
+        and dda.APPLY_ID in (<foreach collection="map.list_applyId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.applyType" >
+        and dda.APPLY_TYPE = #{map.applyType}
+      </if>
+      <if test="null != map.like_applyType" >
+        and dda.APPLY_TYPE like '%' || #{map.like_applyType} || '%'
+      </if>
+      <if test="null != map.list_applyType" >
+        and dda.APPLY_TYPE in (<foreach collection="map.list_applyType" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.status" >
+        and dda.STATUS = #{map.status}
+      </if>
+      <if test="null != map.like_status" >
+        and dda.STATUS like '%' || #{map.like_status} || '%'
+      </if>
+      <if test="null != map.list_status" >
+        and dda.STATUS in (<foreach collection="map.list_status" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.resourceId" >
+        and dda.RESOURCE_ID = #{map.resourceId}
+      </if>
+      <if test="null != map.like_resourceId" >
+        and dda.RESOURCE_ID like '%' || #{map.like_resourceId} || '%'
+      </if>
+      <if test="null != map.list_resourceId" >
+        and dda.RESOURCE_ID in (<foreach collection="map.list_resourceId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.resourceName" >
+        and dda.RESOURCE_NAME = #{map.resourceName}
+      </if>
+      <if test="null != map.like_resourceName" >
+        and dda.RESOURCE_NAME like '%' || #{map.like_resourceName} || '%'
+      </if>
+      <if test="null != map.list_resourceName" >
+        and dda.RESOURCE_NAME in (<foreach collection="map.list_resourceName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.companyName" >
+        and dda.COMPANY_NAME = #{map.companyName}
+      </if>
+      <if test="null != map.like_companyName" >
+        and dda.COMPANY_NAME like '%' || #{map.like_companyName} || '%'
+      </if>
+      <if test="null != map.list_companyName" >
+        and dda.COMPANY_NAME in (<foreach collection="map.list_companyName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.contact" >
+        and dda.CONTACT = #{map.contact}
+      </if>
+      <if test="null != map.like_contact" >
+        and dda.CONTACT like '%' || #{map.like_contact} || '%'
+      </if>
+      <if test="null != map.list_contact" >
+        and dda.CONTACT in (<foreach collection="map.list_contact" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.contactName" >
+        and dda.CONTACT_NAME = #{map.contactName}
+      </if>
+      <if test="null != map.like_contactName" >
+        and dda.CONTACT_NAME like '%' || #{map.like_contactName} || '%'
+      </if>
+      <if test="null != map.list_contactName" >
+        and dda.CONTACT_NAME in (<foreach collection="map.list_contactName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.applierUserId" >
+        and dda.APPLIER_USER_ID = #{map.applierUserId}
+      </if>
+      <if test="null != map.list_applierUserId" >
+        and dda.APPLIER_USER_ID in (<foreach collection="map.list_applierUserId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.applierName" >
+        and dda.APPLIER_NAME = #{map.applierName}
+      </if>
+      <if test="null != map.like_applierName" >
+        and dda.APPLIER_NAME like '%' || #{map.like_applierName} || '%'
+      </if>
+      <if test="null != map.list_applierName" >
+        and dda.APPLIER_NAME in (<foreach collection="map.list_applierName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.approverUserId" >
+        and dda.APPROVER_USER_ID = #{map.approverUserId}
+      </if>
+      <if test="null != map.list_approverUserId" >
+        and dda.APPROVER_USER_ID in (<foreach collection="map.list_approverUserId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.approverName" >
+        and dda.APPROVER_NAME = #{map.approverName}
+      </if>
+      <if test="null != map.like_approverName" >
+        and dda.APPROVER_NAME like '%' || #{map.like_approverName} || '%'
+      </if>
+      <if test="null != map.list_approverName" >
+        and dda.APPROVER_NAME in (<foreach collection="map.list_approverName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.approveComment" >
+        and dda.APPROVE_COMMENT = #{map.approveComment}
+      </if>
+      <if test="null != map.like_approveComment" >
+        and dda.APPROVE_COMMENT like '%' || #{map.like_approveComment} || '%'
+      </if>
+      <if test="null != map.list_approveComment" >
+        and dda.APPROVE_COMMENT in (<foreach collection="map.list_approveComment" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and dda.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and dda.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_updateTime" >
+        and dda.UPDATE_TIME &gt;= #{map.begin_updateTime}
+      </if>
+      <if test="null != map.end_updateTime" >
+        and dda.UPDATE_TIME &lt;= #{map.end_updateTime}
+      </if>
+      <if test="null != map.begin_approveTime" >
+        and dda.APPROVE_TIME &gt;= #{map.begin_approveTime}
+      </if>
+      <if test="null != map.end_approveTime" >
+        and dda.APPROVE_TIME &lt;= #{map.end_approveTime}
+      </if>
+      <if test="null != map.comment" >
+        and dda.COMMENT = #{map.comment}
+      </if>
+      <if test="null != map.like_comment" >
+        and dda.COMMENT like '%' || #{map.like_comment} || '%'
+      </if>
+      <if test="null != map.list_comment" >
+        and dda.COMMENT in (<foreach collection="map.list_comment" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.extraData" >
+        and dda.EXTRA_DATA = #{map.extraData}
+      </if>
+      <if test="null != map.like_extraData" >
+        and dda.EXTRA_DATA like '%' || #{map.like_extraData} || '%'
+      </if>
+      <if test="null != map.list_extraData" >
+        and dda.EXTRA_DATA in (<foreach collection="map.list_extraData" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

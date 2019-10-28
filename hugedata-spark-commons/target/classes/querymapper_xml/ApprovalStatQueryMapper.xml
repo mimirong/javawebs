@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.querymapper.ApprovalStatQueryMapper">
+	
+	<resultMap id="ApprovalStatItemRM" type="cn.com.hugedata.spark.commons.storage.queryentity.ApprovalStatItem">
+		<id column="user_id" property="userId" jdbcType="INTEGER" />
+		<result column="user_name" property="userName" jdbcType="VARCHAR" />
+		<result column="accepted_count" property="acceptedCount" jdbcType="INTEGER" />
+		<result column="in_progress_count" property="inProgressCount" jdbcType="INTEGER" />
+		<result column="finished_count" property="finishedCount" jdbcType="INTEGER" />
+		<result column="rejected_count" property="rejectedCount" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<select id="summaryByUser" parameterType="map" resultMap="ApprovalStatItemRM">
+		select
+			u.user_id                                                                  as user_id,
+		    u.name                                                                     as user_name,
+		    (select count(1) from ap_service_info where accept_user_id = u.user_id)    as accept_count,
+		    
+		    (select count(1) from ap_service_info s 
+		     where s.create_time between #{beginTime,jdbcType=TIMESTAMP} and #{endTime,jdbcType=TIMESTAMP} 
+		     and s.status = '211'
+		     and exists (select * from ap_service_process p 
+		                 where s.service_id = p.service_id 
+						 and p.user_id = u.user_id))                                   as finished_count,
+						 
+		    (select count(1) from ap_service_info s 
+		     where s.create_time between #{beginTime,jdbcType=TIMESTAMP} and #{endTime,jdbcType=TIMESTAMP} 
+		     and (s.status = '221' or s.status = '231')
+		     and exists (select * from ap_service_process p 
+		                 where s.service_id = p.service_id 
+		                 and p.user_id = u.user_id))                                   as rejected_count,
+		                 
+		    (select count(1) from ap_service_info s 
+		     where s.create_time between #{beginTime,jdbcType=TIMESTAMP} and #{endTime,jdbcType=TIMESTAMP} 
+		     and s.status != '211' 
+		     and s.status != '221'
+		     and s.status != '231'
+		     and exists (select * from ap_service_process p 
+		                 where s.service_id = p.service_id 
+		                 and p.user_id = u.user_id))                                   as in_progress_count
+		                 
+		from uc_user_info u
+		<where>
+			and u.user_type = 'PARK'
+			<if test="deptIdList != null">
+				and u.user_id in ( select ud.user_id from uc_user_dept ud
+				                   where ud.dept_id in (<foreach collection="deptIdList" item="i" separator=",">#{i}</foreach>))
+			</if>
+			<if test="userIdList != null">
+				and u.user_id in (<foreach collection="userIdList" item="i" separator=",">#{i}</foreach>)
+			</if>
+		</where>
+	</select>
+	
+	
+</mapper>

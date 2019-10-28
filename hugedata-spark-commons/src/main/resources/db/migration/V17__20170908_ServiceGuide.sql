@@ -1,0 +1,1 @@
+alter table GA_SERVICE_GUIDE modify WORK_TIME VARCHAR(200);

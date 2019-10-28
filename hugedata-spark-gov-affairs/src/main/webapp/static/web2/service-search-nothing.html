@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>服务外包</title>
+<link type="text/css" rel="stylesheet" href="public/css/reset.css" />
+<link type="text/css" rel="stylesheet" href="public/css/style.css" />
+</head>
+
+<body class="service-page">
+    <div class="se-topbar">
+        <div class="cen clearfix">
+            <div class="fl">欢迎您，<span class="mr10">XX企业</span>|<a href="grzx.html" class="ml10">个人中心</a></div>
+            <div class="fr">
+                <a href="index.html">园区首页</a><a href="bsfw01.html">办事服务</a><a href="xmgl.html">项目管理</a><a href="fwwb04.html">综合服务</a><a href="bmfw.html">便民服务</a><a href="hdjl.html">互动交流</a>
+            </div>
+        </div>
+    </div>
+    <div class="se-header">
+        <div class="cen clearfix">
+            <div class="logo fl"><a href="fwwb.html"><img src="public/images/service/logo_service.png" alt="岳麓科技产业园"/></a></div>
+            <div class="search-block fr">
+                <h2><a class="on">服务项目</a><a>服务需求</a><a>专家名录</a><a>技术成果</a><a>会议培训</a></h2>
+                <div class="clearfix">
+                    <div class="search-box fl"><input type="text" placeholder="请输入关键词"/><a class="search-btn"></a></div>
+                    <a class="btn btn-grey fl" href="service-test-release.html">发布供应</a><a class="btn btn-grey fl" href="service-require-release.html">发布需求</a>
+                </div>
+                <p><a>化工学化学</a><a>建筑材料</a><a>无损检测</a><a>消费品</a><a>环境检测与职业卫生</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="se-nav">
+        <div class="cen clearfix">
+            <div class="fl">
+                <a href="fwwb.html">首页</a>
+                <a href="service-test.html">检验检测</a>
+                <a href="service-require.html">需求大厅</a>
+                <a href="service-expert.html">成果转化</a>
+                <a href="service-meeting.html">会议培训</a>
+            </div>
+        </div>
+    </div>
+
+    <h1 class="column_tit">您当前的位置：<a href="fwwb.html">首页</a> &gt; <span>搜索</span></h1>
+
+    <div class="cen" id="minServiceH">
+        <div class="se-filter clearfix">
+            <label class="tit">服务领域：</label>
+            <div class="conbox">
+                <a>检验检测</a><a>技术服务</a>
+            </div>
+        </div>
+        <div class="se-filter clearfix" style="margin-top: -11px;">
+            <label class="tit">服务领域：</label>
+            <div class="conbox">
+                <a>其他</a><a>化学化工</a><a>建筑建材</a><a>无损检测</a><a>消费品</a><a>环境监测与职业卫生</a><a>生物医药及器械</a><a>电子电气及机械</a><a>电子电气及机械</a><a>电磁兼容（EMC）</a>
+            </div>
+            <a class="show_more" data-id="0">更多</a>
+        </div>
+        <div class="se-sort">
+            <label>排序：</label>
+            <a class="on">按浏览量</a><a>按最新发布</a>
+            <span class="fr"><b class="blue">0</b> 页</span>
+        </div>
+        <ul class="se-list">
+            <li class="nothing">
+               <p class="tips"><em></em>找不到您查询的相关信息</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="login_footer">
+      <div class="cen">
+        <div class="login_footer_top">
+            <ul class="left_float">
+                <li>
+                  <h1>友情链接</h1>
+                  <p><a href="#">湘江新区</a></p>
+                  <p><a href="#">中国长沙</a></p>
+                  <p><a href="#">中国岳麓</a></p>
+                  <p><a href="#">湖南省政府网</a></p>
+                </li>
+            </ul>
+            <img src="public/images/code1.png" style="margin-right: 105px;">
+            <img src="public/images/code2.png">
+            <ul class="right_float">
+                <li>
+                    <p>联系电话：0731-88532200</p>
+                    <p>版权所有：长沙市岳麓区科技产业园</p>
+                    <p>备案号：湘ICP备10202297号-1</p>
+                    <p>技术支持：湖南网数科技有限公司</a></p>
+                </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="goTopBtn" class="go-top-btn"></div>
+
+<!--javascript 开发时移至</body>前-->
+<script type="text/javascript" src="public/js/jquery.min.js"></script>
+<script type="text/javascript" src="public/js/public.min.js"></script>
+<script type="text/javascript" src="public/js/scripts.js"></script>
+<script type="text/javascript">
+    $(function() {
+        var url = window.location.href;
+        var num = url.substring(url.indexOf("=") + 1);
+        if (num > 0) {
+            $(".se-title-tab .fl span").eq(num - 1).addClass("on").siblings().removeClass();
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.PmProjectDocMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.PmProjectDoc" >
+    <id column="DOC_ID" property="docId" jdbcType="INTEGER" />
+    <result column="DOC_TYPE" property="docType" jdbcType="CHAR" />
+    <result column="TYPE_CODE" property="typeCode" jdbcType="CHAR" />
+    <result column="TYPE_NAME" property="typeName" jdbcType="VARCHAR" />
+    <result column="FILE_ID" property="fileId" jdbcType="VARCHAR" />
+    <result column="FILE_NAME" property="fileName" jdbcType="VARCHAR" />
+    <result column="APPROVE_CODE" property="approveCode" jdbcType="VARCHAR" />
+    <result column="UPLOAD_USER_ID" property="uploadUserId" jdbcType="INTEGER" />
+    <result column="UPLOAD_USER_NAME" property="uploadUserName" jdbcType="VARCHAR" />
+    <result column="UPLOAD_TIME" property="uploadTime" jdbcType="TIMESTAMP" />
+    <result column="DELETED" property="deleted" jdbcType="BIT" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="PROJECT_ID" property="projectId" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != docId" >
+      and ppd.DOC_ID = #{docId}
+    </if>
+    <if test="null != ne_docId" >
+      and ppd.DOC_ID != #{ne_docId}
+    </if>
+    <if test="null != list_docId" >
+      and ppd.DOC_ID in (<foreach collection="list_docId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != docType" >
+      and ppd.DOC_TYPE = #{docType}
+    </if>
+    <if test="null != ne_docType" >
+      and ppd.DOC_TYPE != #{ne_docType}
+    </if>
+    <if test="null != like_docType" >
+      and ppd.DOC_TYPE like CONCAT('%', #{like_docType}, '%')
+    </if>
+    <if test="null != list_docType" >
+      and ppd.DOC_TYPE in (<foreach collection="list_docType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_docType" >
+      and ppd.DOC_TYPE &gt;= #{begin_docType}
+    </if>
+    <if test="null != end_docType" >
+      and ppd.DOC_TYPE &lt;= #{end_docType}
+    </if>
+    <if test="null != typeCode" >
+      and ppd.TYPE_CODE = #{typeCode}
+    </if>
+    <if test="null != ne_typeCode" >
+      and ppd.TYPE_CODE != #{ne_typeCode}
+    </if>
+    <if test="null != like_typeCode" >
+      and ppd.TYPE_CODE like CONCAT('%', #{like_typeCode}, '%')
+    </if>
+    <if test="null != list_typeCode" >
+      and ppd.TYPE_CODE in (<foreach collection="list_typeCode" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_typeCode" >
+      and ppd.TYPE_CODE &gt;= #{begin_typeCode}
+    </if>
+    <if test="null != end_typeCode" >
+      and ppd.TYPE_CODE &lt;= #{end_typeCode}
+    </if>
+    <if test="null != typeName" >
+      and ppd.TYPE_NAME = #{typeName}
+    </if>
+    <if test="null != ne_typeName" >
+      and ppd.TYPE_NAME != #{ne_typeName}
+    </if>
+    <if test="null != like_typeName" >
+      and ppd.TYPE_NAME like CONCAT('%', #{like_typeName}, '%')
+    </if>
+    <if test="null != list_typeName" >
+      and ppd.TYPE_NAME in (<foreach collection="list_typeName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_typeName" >
+      and ppd.TYPE_NAME &gt;= #{begin_typeName}
+    </if>
+    <if test="null != end_typeName" >
+      and ppd.TYPE_NAME &lt;= #{end_typeName}
+    </if>
+    <if test="null != fileId" >
+      and ppd.FILE_ID = #{fileId}
+    </if>
+    <if test="null != ne_fileId" >
+      and ppd.FILE_ID != #{ne_fileId}
+    </if>
+    <if test="null != like_fileId" >
+      and ppd.FILE_ID like CONCAT('%', #{like_fileId}, '%')
+    </if>
+    <if test="null != list_fileId" >
+      and ppd.FILE_ID in (<foreach collection="list_fileId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_fileId" >
+      and ppd.FILE_ID &gt;= #{begin_fileId}
+    </if>
+    <if test="null != end_fileId" >
+      and ppd.FILE_ID &lt;= #{end_fileId}
+    </if>
+    <if test="null != fileName" >
+      and ppd.FILE_NAME = #{fileName}
+    </if>
+    <if test="null != ne_fileName" >
+      and ppd.FILE_NAME != #{ne_fileName}
+    </if>
+    <if test="null != like_fileName" >
+      and ppd.FILE_NAME like CONCAT('%', #{like_fileName}, '%')
+    </if>
+    <if test="null != list_fileName" >
+      and ppd.FILE_NAME in (<foreach collection="list_fileName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_fileName" >
+      and ppd.FILE_NAME &gt;= #{begin_fileName}
+    </if>
+    <if test="null != end_fileName" >
+      and ppd.FILE_NAME &lt;= #{end_fileName}
+    </if>
+    <if test="null != approveCode" >
+      and ppd.APPROVE_CODE = #{approveCode}
+    </if>
+    <if test="null != ne_approveCode" >
+      and ppd.APPROVE_CODE != #{ne_approveCode}
+    </if>
+    <if test="null != like_approveCode" >
+      and ppd.APPROVE_CODE like CONCAT('%', #{like_approveCode}, '%')
+    </if>
+    <if test="null != list_approveCode" >
+      and ppd.APPROVE_CODE in (<foreach collection="list_approveCode" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_approveCode" >
+      and ppd.APPROVE_CODE &gt;= #{begin_approveCode}
+    </if>
+    <if test="null != end_approveCode" >
+      and ppd.APPROVE_CODE &lt;= #{end_approveCode}
+    </if>
+    <if test="null != uploadUserId" >
+      and ppd.UPLOAD_USER_ID = #{uploadUserId}
+    </if>
+    <if test="null != ne_uploadUserId" >
+      and ppd.UPLOAD_USER_ID != #{ne_uploadUserId}
+    </if>
+    <if test="null != list_uploadUserId" >
+      and ppd.UPLOAD_USER_ID in (<foreach collection="list_uploadUserId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != uploadUserName" >
+      and ppd.UPLOAD_USER_NAME = #{uploadUserName}
+    </if>
+    <if test="null != ne_uploadUserName" >
+      and ppd.UPLOAD_USER_NAME != #{ne_uploadUserName}
+    </if>
+    <if test="null != like_uploadUserName" >
+      and ppd.UPLOAD_USER_NAME like CONCAT('%', #{like_uploadUserName}, '%')
+    </if>
+    <if test="null != list_uploadUserName" >
+      and ppd.UPLOAD_USER_NAME in (<foreach collection="list_uploadUserName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_uploadUserName" >
+      and ppd.UPLOAD_USER_NAME &gt;= #{begin_uploadUserName}
+    </if>
+    <if test="null != end_uploadUserName" >
+      and ppd.UPLOAD_USER_NAME &lt;= #{end_uploadUserName}
+    </if>
+    <if test="null != begin_uploadTime" >
+      and ppd.UPLOAD_TIME &gt;= #{begin_uploadTime}
+    </if>
+    <if test="null != end_uploadTime" >
+      and ppd.UPLOAD_TIME &lt;= #{end_uploadTime}
+    </if>
+    <if test="null != deleted" >
+      and ppd.DELETED = #{deleted}
+    </if>
+    <if test="null != ne_deleted" >
+      and ppd.DELETED != #{ne_deleted}
+    </if>
+    <if test="null != list_deleted" >
+      and ppd.DELETED in (<foreach collection="list_deleted" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_updateTime" >
+      and ppd.UPDATE_TIME &gt;= #{begin_updateTime}
+    </if>
+    <if test="null != end_updateTime" >
+      and ppd.UPDATE_TIME &lt;= #{end_updateTime}
+    </if>
+    <if test="null != projectId" >
+      and ppd.PROJECT_ID = #{projectId}
+    </if>
+    <if test="null != ne_projectId" >
+      and ppd.PROJECT_ID != #{ne_projectId}
+    </if>
+    <if test="null != list_projectId" >
+      and ppd.PROJECT_ID in (<foreach collection="list_projectId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != status" >
+      and ppd.status = #{status}
+    </if>
+    <if test="null != ne_status" >
+      and ppd.status != #{ne_status}
+    </if>
+    <if test="null != like_status" >
+      and ppd.status like CONCAT('%', #{like_status}, '%')
+    </if>
+    <if test="null != list_status" >
+      and ppd.status in (<foreach collection="list_status" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_status" >
+      and ppd.status &gt;= #{begin_status}
+    </if>
+    <if test="null != end_status" >
+      and ppd.status &lt;= #{end_status}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'docId' == orderItem.column" >
+            ppd.DOC_ID ${orderItem.dir}
+          </if>
+          <if test="'docType' == orderItem.column" >
+            ppd.DOC_TYPE ${orderItem.dir}
+          </if>
+          <if test="'typeCode' == orderItem.column" >
+            ppd.TYPE_CODE ${orderItem.dir}
+          </if>
+          <if test="'typeName' == orderItem.column" >
+            ppd.TYPE_NAME ${orderItem.dir}
+          </if>
+          <if test="'fileId' == orderItem.column" >
+            ppd.FILE_ID ${orderItem.dir}
+          </if>
+          <if test="'fileName' == orderItem.column" >
+            ppd.FILE_NAME ${orderItem.dir}
+          </if>
+          <if test="'approveCode' == orderItem.column" >
+            ppd.APPROVE_CODE ${orderItem.dir}
+          </if>
+          <if test="'uploadUserId' == orderItem.column" >
+            ppd.UPLOAD_USER_ID ${orderItem.dir}
+          </if>
+          <if test="'uploadUserName' == orderItem.column" >
+            ppd.UPLOAD_USER_NAME ${orderItem.dir}
+          </if>
+          <if test="'uploadTime' == orderItem.column" >
+            ppd.UPLOAD_TIME ${orderItem.dir}
+          </if>
+          <if test="'deleted' == orderItem.column" >
+            ppd.DELETED ${orderItem.dir}
+          </if>
+          <if test="'updateTime' == orderItem.column" >
+            ppd.UPDATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'projectId' == orderItem.column" >
+            ppd.PROJECT_ID ${orderItem.dir}
+          </if>
+          <if test="'status' == orderItem.column" >
+            ppd.status ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    ppd.DOC_ID, ppd.DOC_TYPE, ppd.TYPE_CODE, ppd.TYPE_NAME, ppd.FILE_ID, ppd.FILE_NAME, 
+    ppd.APPROVE_CODE, ppd.UPLOAD_USER_ID, ppd.UPLOAD_USER_NAME, ppd.UPLOAD_TIME, ppd.DELETED, 
+    ppd.UPDATE_TIME, ppd.PROJECT_ID, ppd.status
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from pm_project_doc ppd
+    where ppd.DOC_ID = #{docId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from pm_project_doc ppd
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from pm_project_doc ppd
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.PmProjectDoc" >
+    <selectKey resultType="java.lang.Integer" keyProperty="docId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into pm_project_doc
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      DOC_ID,
+      <if test="docType != null" >
+        DOC_TYPE,
+      </if>
+      <if test="typeCode != null" >
+        TYPE_CODE,
+      </if>
+      <if test="typeName != null" >
+        TYPE_NAME,
+      </if>
+      <if test="fileId != null" >
+        FILE_ID,
+      </if>
+      <if test="fileName != null" >
+        FILE_NAME,
+      </if>
+      <if test="approveCode != null" >
+        APPROVE_CODE,
+      </if>
+      <if test="uploadUserId != null" >
+        UPLOAD_USER_ID,
+      </if>
+      <if test="uploadUserName != null" >
+        UPLOAD_USER_NAME,
+      </if>
+      <if test="uploadTime != null" >
+        UPLOAD_TIME,
+      </if>
+      <if test="deleted != null" >
+        DELETED,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="projectId != null" >
+        PROJECT_ID,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{docId,jdbcType=INTEGER},
+      <if test="docType != null" >
+        #{docType,jdbcType=CHAR},
+      </if>
+      <if test="typeCode != null" >
+        #{typeCode,jdbcType=CHAR},
+      </if>
+      <if test="typeName != null" >
+        #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileId != null" >
+        #{fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="approveCode != null" >
+        #{approveCode,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadUserId != null" >
+        #{uploadUserId,jdbcType=INTEGER},
+      </if>
+      <if test="uploadUserName != null" >
+        #{uploadUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadTime != null" >
+        #{uploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=BIT},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from pm_project_doc
+    where DOC_ID = #{docId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from pm_project_doc where DOC_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from ppd using (pm_project_doc as ppd) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.PmProjectDoc" >
+    update pm_project_doc
+    <set >
+      <if test="docType != null" >
+        DOC_TYPE = #{docType,jdbcType=CHAR},
+      </if>
+      <if test="typeCode != null" >
+        TYPE_CODE = #{typeCode,jdbcType=CHAR},
+      </if>
+      <if test="typeName != null" >
+        TYPE_NAME = #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileId != null" >
+        FILE_ID = #{fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        FILE_NAME = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="approveCode != null" >
+        APPROVE_CODE = #{approveCode,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadUserId != null" >
+        UPLOAD_USER_ID = #{uploadUserId,jdbcType=INTEGER},
+      </if>
+      <if test="uploadUserName != null" >
+        UPLOAD_USER_NAME = #{uploadUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadTime != null" >
+        UPLOAD_TIME = #{uploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        DELETED = #{deleted,jdbcType=BIT},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectId != null" >
+        PROJECT_ID = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+    </set>
+    where DOC_ID = #{docId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update pm_project_doc ppd
+    <set >
+      <if test="record.docId != null" >
+        DOC_ID = #{record.docId,jdbcType=INTEGER},
+      </if>
+      <if test="record.docType != null" >
+        DOC_TYPE = #{record.docType,jdbcType=CHAR},
+      </if>
+      <if test="record.typeCode != null" >
+        TYPE_CODE = #{record.typeCode,jdbcType=CHAR},
+      </if>
+      <if test="record.typeName != null" >
+        TYPE_NAME = #{record.typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileId != null" >
+        FILE_ID = #{record.fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileName != null" >
+        FILE_NAME = #{record.fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.approveCode != null" >
+        APPROVE_CODE = #{record.approveCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uploadUserId != null" >
+        UPLOAD_USER_ID = #{record.uploadUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.uploadUserName != null" >
+        UPLOAD_USER_NAME = #{record.uploadUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uploadTime != null" >
+        UPLOAD_TIME = #{record.uploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.deleted != null" >
+        DELETED = #{record.deleted,jdbcType=BIT},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.projectId != null" >
+        PROJECT_ID = #{record.projectId,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=CHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.docId" >
+        and ppd.DOC_ID = #{map.docId}
+      </if>
+      <if test="null != map.list_docId" >
+        and ppd.DOC_ID in (<foreach collection="map.list_docId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.docType" >
+        and ppd.DOC_TYPE = #{map.docType}
+      </if>
+      <if test="null != map.like_docType" >
+        and ppd.DOC_TYPE like '%' || #{map.like_docType} || '%'
+      </if>
+      <if test="null != map.list_docType" >
+        and ppd.DOC_TYPE in (<foreach collection="map.list_docType" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.typeCode" >
+        and ppd.TYPE_CODE = #{map.typeCode}
+      </if>
+      <if test="null != map.like_typeCode" >
+        and ppd.TYPE_CODE like '%' || #{map.like_typeCode} || '%'
+      </if>
+      <if test="null != map.list_typeCode" >
+        and ppd.TYPE_CODE in (<foreach collection="map.list_typeCode" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.typeName" >
+        and ppd.TYPE_NAME = #{map.typeName}
+      </if>
+      <if test="null != map.like_typeName" >
+        and ppd.TYPE_NAME like '%' || #{map.like_typeName} || '%'
+      </if>
+      <if test="null != map.list_typeName" >
+        and ppd.TYPE_NAME in (<foreach collection="map.list_typeName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.fileId" >
+        and ppd.FILE_ID = #{map.fileId}
+      </if>
+      <if test="null != map.like_fileId" >
+        and ppd.FILE_ID like '%' || #{map.like_fileId} || '%'
+      </if>
+      <if test="null != map.list_fileId" >
+        and ppd.FILE_ID in (<foreach collection="map.list_fileId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.fileName" >
+        and ppd.FILE_NAME = #{map.fileName}
+      </if>
+      <if test="null != map.like_fileName" >
+        and ppd.FILE_NAME like '%' || #{map.like_fileName} || '%'
+      </if>
+      <if test="null != map.list_fileName" >
+        and ppd.FILE_NAME in (<foreach collection="map.list_fileName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.approveCode" >
+        and ppd.APPROVE_CODE = #{map.approveCode}
+      </if>
+      <if test="null != map.like_approveCode" >
+        and ppd.APPROVE_CODE like '%' || #{map.like_approveCode} || '%'
+      </if>
+      <if test="null != map.list_approveCode" >
+        and ppd.APPROVE_CODE in (<foreach collection="map.list_approveCode" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.uploadUserId" >
+        and ppd.UPLOAD_USER_ID = #{map.uploadUserId}
+      </if>
+      <if test="null != map.list_uploadUserId" >
+        and ppd.UPLOAD_USER_ID in (<foreach collection="map.list_uploadUserId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.uploadUserName" >
+        and ppd.UPLOAD_USER_NAME = #{map.uploadUserName}
+      </if>
+      <if test="null != map.like_uploadUserName" >
+        and ppd.UPLOAD_USER_NAME like '%' || #{map.like_uploadUserName} || '%'
+      </if>
+      <if test="null != map.list_uploadUserName" >
+        and ppd.UPLOAD_USER_NAME in (<foreach collection="map.list_uploadUserName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_uploadTime" >
+        and ppd.UPLOAD_TIME &gt;= #{map.begin_uploadTime}
+      </if>
+      <if test="null != map.end_uploadTime" >
+        and ppd.UPLOAD_TIME &lt;= #{map.end_uploadTime}
+      </if>
+      <if test="null != map.deleted" >
+        and ppd.DELETED = #{map.deleted}
+      </if>
+      <if test="null != map.list_deleted" >
+        and ppd.DELETED in (<foreach collection="map.list_deleted" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_updateTime" >
+        and ppd.UPDATE_TIME &gt;= #{map.begin_updateTime}
+      </if>
+      <if test="null != map.end_updateTime" >
+        and ppd.UPDATE_TIME &lt;= #{map.end_updateTime}
+      </if>
+      <if test="null != map.projectId" >
+        and ppd.PROJECT_ID = #{map.projectId}
+      </if>
+      <if test="null != map.list_projectId" >
+        and ppd.PROJECT_ID in (<foreach collection="map.list_projectId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.status" >
+        and ppd.status = #{map.status}
+      </if>
+      <if test="null != map.like_status" >
+        and ppd.status like '%' || #{map.like_status} || '%'
+      </if>
+      <if test="null != map.list_status" >
+        and ppd.status in (<foreach collection="map.list_status" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

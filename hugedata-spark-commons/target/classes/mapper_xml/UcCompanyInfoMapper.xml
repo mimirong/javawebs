@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.UcCompanyInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.UcCompanyInfo" >
+    <id column="COMPANY_ID" property="companyId" jdbcType="INTEGER" />
+    <result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR" />
+    <result column="COMPANY_TYPE" property="companyType" jdbcType="VARCHAR" />
+    <result column="COMPANY_ADDRESS" property="companyAddress" jdbcType="VARCHAR" />
+    <result column="ORGANIZATION_CODE" property="organizationCode" jdbcType="VARCHAR" />
+    <result column="LICENCE_CODE" property="licenceCode" jdbcType="VARCHAR" />
+    <result column="REPRESENTATIVE" property="representative" jdbcType="VARCHAR" />
+    <result column="REPRESENTATIVE_ID" property="representativeId" jdbcType="VARCHAR" />
+    <result column="CONTACT_NAME" property="contactName" jdbcType="VARCHAR" />
+    <result column="CONTACT_MOBILE" property="contactMobile" jdbcType="VARCHAR" />
+    <result column="CONTACT_EMAIL" property="contactEmail" jdbcType="VARCHAR" />
+    <result column="CREATOR_USER_ID" property="creatorUserId" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != companyId" >
+      and uci.COMPANY_ID = #{companyId}
+    </if>
+    <if test="null != ne_companyId" >
+      and uci.COMPANY_ID != #{ne_companyId}
+    </if>
+    <if test="null != list_companyId" >
+      and uci.COMPANY_ID in (<foreach collection="list_companyId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != companyName" >
+      and uci.COMPANY_NAME = #{companyName}
+    </if>
+    <if test="null != ne_companyName" >
+      and uci.COMPANY_NAME != #{ne_companyName}
+    </if>
+    <if test="null != like_companyName" >
+      and uci.COMPANY_NAME like CONCAT('%', #{like_companyName}, '%')
+    </if>
+    <if test="null != list_companyName" >
+      and uci.COMPANY_NAME in (<foreach collection="list_companyName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_companyName" >
+      and uci.COMPANY_NAME &gt;= #{begin_companyName}
+    </if>
+    <if test="null != end_companyName" >
+      and uci.COMPANY_NAME &lt;= #{end_companyName}
+    </if>
+    <if test="null != companyType" >
+      and uci.COMPANY_TYPE = #{companyType}
+    </if>
+    <if test="null != ne_companyType" >
+      and uci.COMPANY_TYPE != #{ne_companyType}
+    </if>
+    <if test="null != like_companyType" >
+      and uci.COMPANY_TYPE like CONCAT('%', #{like_companyType}, '%')
+    </if>
+    <if test="null != list_companyType" >
+      and uci.COMPANY_TYPE in (<foreach collection="list_companyType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_companyType" >
+      and uci.COMPANY_TYPE &gt;= #{begin_companyType}
+    </if>
+    <if test="null != end_companyType" >
+      and uci.COMPANY_TYPE &lt;= #{end_companyType}
+    </if>
+    <if test="null != companyAddress" >
+      and uci.COMPANY_ADDRESS = #{companyAddress}
+    </if>
+    <if test="null != ne_companyAddress" >
+      and uci.COMPANY_ADDRESS != #{ne_companyAddress}
+    </if>
+    <if test="null != like_companyAddress" >
+      and uci.COMPANY_ADDRESS like CONCAT('%', #{like_companyAddress}, '%')
+    </if>
+    <if test="null != list_companyAddress" >
+      and uci.COMPANY_ADDRESS in (<foreach collection="list_companyAddress" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_companyAddress" >
+      and uci.COMPANY_ADDRESS &gt;= #{begin_companyAddress}
+    </if>
+    <if test="null != end_companyAddress" >
+      and uci.COMPANY_ADDRESS &lt;= #{end_companyAddress}
+    </if>
+    <if test="null != organizationCode" >
+      and uci.ORGANIZATION_CODE = #{organizationCode}
+    </if>
+    <if test="null != ne_organizationCode" >
+      and uci.ORGANIZATION_CODE != #{ne_organizationCode}
+    </if>
+    <if test="null != like_organizationCode" >
+      and uci.ORGANIZATION_CODE like CONCAT('%', #{like_organizationCode}, '%')
+    </if>
+    <if test="null != list_organizationCode" >
+      and uci.ORGANIZATION_CODE in (<foreach collection="list_organizationCode" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_organizationCode" >
+      and uci.ORGANIZATION_CODE &gt;= #{begin_organizationCode}
+    </if>
+    <if test="null != end_organizationCode" >
+      and uci.ORGANIZATION_CODE &lt;= #{end_organizationCode}
+    </if>
+    <if test="null != licenceCode" >
+      and uci.LICENCE_CODE = #{licenceCode}
+    </if>
+    <if test="null != ne_licenceCode" >
+      and uci.LICENCE_CODE != #{ne_licenceCode}
+    </if>
+    <if test="null != like_licenceCode" >
+      and uci.LICENCE_CODE like CONCAT('%', #{like_licenceCode}, '%')
+    </if>
+    <if test="null != list_licenceCode" >
+      and uci.LICENCE_CODE in (<foreach collection="list_licenceCode" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_licenceCode" >
+      and uci.LICENCE_CODE &gt;= #{begin_licenceCode}
+    </if>
+    <if test="null != end_licenceCode" >
+      and uci.LICENCE_CODE &lt;= #{end_licenceCode}
+    </if>
+    <if test="null != representative" >
+      and uci.REPRESENTATIVE = #{representative}
+    </if>
+    <if test="null != ne_representative" >
+      and uci.REPRESENTATIVE != #{ne_representative}
+    </if>
+    <if test="null != like_representative" >
+      and uci.REPRESENTATIVE like CONCAT('%', #{like_representative}, '%')
+    </if>
+    <if test="null != list_representative" >
+      and uci.REPRESENTATIVE in (<foreach collection="list_representative" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_representative" >
+      and uci.REPRESENTATIVE &gt;= #{begin_representative}
+    </if>
+    <if test="null != end_representative" >
+      and uci.REPRESENTATIVE &lt;= #{end_representative}
+    </if>
+    <if test="null != representativeId" >
+      and uci.REPRESENTATIVE_ID = #{representativeId}
+    </if>
+    <if test="null != ne_representativeId" >
+      and uci.REPRESENTATIVE_ID != #{ne_representativeId}
+    </if>
+    <if test="null != like_representativeId" >
+      and uci.REPRESENTATIVE_ID like CONCAT('%', #{like_representativeId}, '%')
+    </if>
+    <if test="null != list_representativeId" >
+      and uci.REPRESENTATIVE_ID in (<foreach collection="list_representativeId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_representativeId" >
+      and uci.REPRESENTATIVE_ID &gt;= #{begin_representativeId}
+    </if>
+    <if test="null != end_representativeId" >
+      and uci.REPRESENTATIVE_ID &lt;= #{end_representativeId}
+    </if>
+    <if test="null != contactName" >
+      and uci.CONTACT_NAME = #{contactName}
+    </if>
+    <if test="null != ne_contactName" >
+      and uci.CONTACT_NAME != #{ne_contactName}
+    </if>
+    <if test="null != like_contactName" >
+      and uci.CONTACT_NAME like CONCAT('%', #{like_contactName}, '%')
+    </if>
+    <if test="null != list_contactName" >
+      and uci.CONTACT_NAME in (<foreach collection="list_contactName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_contactName" >
+      and uci.CONTACT_NAME &gt;= #{begin_contactName}
+    </if>
+    <if test="null != end_contactName" >
+      and uci.CONTACT_NAME &lt;= #{end_contactName}
+    </if>
+    <if test="null != contactMobile" >
+      and uci.CONTACT_MOBILE = #{contactMobile}
+    </if>
+    <if test="null != ne_contactMobile" >
+      and uci.CONTACT_MOBILE != #{ne_contactMobile}
+    </if>
+    <if test="null != like_contactMobile" >
+      and uci.CONTACT_MOBILE like CONCAT('%', #{like_contactMobile}, '%')
+    </if>
+    <if test="null != list_contactMobile" >
+      and uci.CONTACT_MOBILE in (<foreach collection="list_contactMobile" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_contactMobile" >
+      and uci.CONTACT_MOBILE &gt;= #{begin_contactMobile}
+    </if>
+    <if test="null != end_contactMobile" >
+      and uci.CONTACT_MOBILE &lt;= #{end_contactMobile}
+    </if>
+    <if test="null != contactEmail" >
+      and uci.CONTACT_EMAIL = #{contactEmail}
+    </if>
+    <if test="null != ne_contactEmail" >
+      and uci.CONTACT_EMAIL != #{ne_contactEmail}
+    </if>
+    <if test="null != like_contactEmail" >
+      and uci.CONTACT_EMAIL like CONCAT('%', #{like_contactEmail}, '%')
+    </if>
+    <if test="null != list_contactEmail" >
+      and uci.CONTACT_EMAIL in (<foreach collection="list_contactEmail" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_contactEmail" >
+      and uci.CONTACT_EMAIL &gt;= #{begin_contactEmail}
+    </if>
+    <if test="null != end_contactEmail" >
+      and uci.CONTACT_EMAIL &lt;= #{end_contactEmail}
+    </if>
+    <if test="null != creatorUserId" >
+      and uci.CREATOR_USER_ID = #{creatorUserId}
+    </if>
+    <if test="null != ne_creatorUserId" >
+      and uci.CREATOR_USER_ID != #{ne_creatorUserId}
+    </if>
+    <if test="null != list_creatorUserId" >
+      and uci.CREATOR_USER_ID in (<foreach collection="list_creatorUserId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_createTime" >
+      and uci.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and uci.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_updateTime" >
+      and uci.UPDATE_TIME &gt;= #{begin_updateTime}
+    </if>
+    <if test="null != end_updateTime" >
+      and uci.UPDATE_TIME &lt;= #{end_updateTime}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'companyId' == orderItem.column" >
+            uci.COMPANY_ID ${orderItem.dir}
+          </if>
+          <if test="'companyName' == orderItem.column" >
+            uci.COMPANY_NAME ${orderItem.dir}
+          </if>
+          <if test="'companyType' == orderItem.column" >
+            uci.COMPANY_TYPE ${orderItem.dir}
+          </if>
+          <if test="'companyAddress' == orderItem.column" >
+            uci.COMPANY_ADDRESS ${orderItem.dir}
+          </if>
+          <if test="'organizationCode' == orderItem.column" >
+            uci.ORGANIZATION_CODE ${orderItem.dir}
+          </if>
+          <if test="'licenceCode' == orderItem.column" >
+            uci.LICENCE_CODE ${orderItem.dir}
+          </if>
+          <if test="'representative' == orderItem.column" >
+            uci.REPRESENTATIVE ${orderItem.dir}
+          </if>
+          <if test="'representativeId' == orderItem.column" >
+            uci.REPRESENTATIVE_ID ${orderItem.dir}
+          </if>
+          <if test="'contactName' == orderItem.column" >
+            uci.CONTACT_NAME ${orderItem.dir}
+          </if>
+          <if test="'contactMobile' == orderItem.column" >
+            uci.CONTACT_MOBILE ${orderItem.dir}
+          </if>
+          <if test="'contactEmail' == orderItem.column" >
+            uci.CONTACT_EMAIL ${orderItem.dir}
+          </if>
+          <if test="'creatorUserId' == orderItem.column" >
+            uci.CREATOR_USER_ID ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            uci.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'updateTime' == orderItem.column" >
+            uci.UPDATE_TIME ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    uci.COMPANY_ID, uci.COMPANY_NAME, uci.COMPANY_TYPE, uci.COMPANY_ADDRESS, uci.ORGANIZATION_CODE, 
+    uci.LICENCE_CODE, uci.REPRESENTATIVE, uci.REPRESENTATIVE_ID, uci.CONTACT_NAME, uci.CONTACT_MOBILE, 
+    uci.CONTACT_EMAIL, uci.CREATOR_USER_ID, uci.CREATE_TIME, uci.UPDATE_TIME
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from uc_company_info uci
+    where uci.COMPANY_ID = #{companyId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from uc_company_info uci
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from uc_company_info uci
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcCompanyInfo" >
+    <selectKey resultType="java.lang.Integer" keyProperty="companyId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into uc_company_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      COMPANY_ID,
+      <if test="companyName != null" >
+        COMPANY_NAME,
+      </if>
+      <if test="companyType != null" >
+        COMPANY_TYPE,
+      </if>
+      <if test="companyAddress != null" >
+        COMPANY_ADDRESS,
+      </if>
+      <if test="organizationCode != null" >
+        ORGANIZATION_CODE,
+      </if>
+      <if test="licenceCode != null" >
+        LICENCE_CODE,
+      </if>
+      <if test="representative != null" >
+        REPRESENTATIVE,
+      </if>
+      <if test="representativeId != null" >
+        REPRESENTATIVE_ID,
+      </if>
+      <if test="contactName != null" >
+        CONTACT_NAME,
+      </if>
+      <if test="contactMobile != null" >
+        CONTACT_MOBILE,
+      </if>
+      <if test="contactEmail != null" >
+        CONTACT_EMAIL,
+      </if>
+      <if test="creatorUserId != null" >
+        CREATOR_USER_ID,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{companyId,jdbcType=INTEGER},
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyType != null" >
+        #{companyType,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null" >
+        #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationCode != null" >
+        #{organizationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceCode != null" >
+        #{licenceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="representative != null" >
+        #{representative,jdbcType=VARCHAR},
+      </if>
+      <if test="representativeId != null" >
+        #{representativeId,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactMobile != null" >
+        #{contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="contactEmail != null" >
+        #{contactEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorUserId != null" >
+        #{creatorUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from uc_company_info
+    where COMPANY_ID = #{companyId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from uc_company_info where COMPANY_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from uci using (uc_company_info as uci) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcCompanyInfo" >
+    update uc_company_info
+    <set >
+      <if test="companyName != null" >
+        COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyType != null" >
+        COMPANY_TYPE = #{companyType,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null" >
+        COMPANY_ADDRESS = #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationCode != null" >
+        ORGANIZATION_CODE = #{organizationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceCode != null" >
+        LICENCE_CODE = #{licenceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="representative != null" >
+        REPRESENTATIVE = #{representative,jdbcType=VARCHAR},
+      </if>
+      <if test="representativeId != null" >
+        REPRESENTATIVE_ID = #{representativeId,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        CONTACT_NAME = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactMobile != null" >
+        CONTACT_MOBILE = #{contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="contactEmail != null" >
+        CONTACT_EMAIL = #{contactEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorUserId != null" >
+        CREATOR_USER_ID = #{creatorUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where COMPANY_ID = #{companyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update uc_company_info uci
+    <set >
+      <if test="record.companyId != null" >
+        COMPANY_ID = #{record.companyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.companyName != null" >
+        COMPANY_NAME = #{record.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyType != null" >
+        COMPANY_TYPE = #{record.companyType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyAddress != null" >
+        COMPANY_ADDRESS = #{record.companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.organizationCode != null" >
+        ORGANIZATION_CODE = #{record.organizationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.licenceCode != null" >
+        LICENCE_CODE = #{record.licenceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.representative != null" >
+        REPRESENTATIVE = #{record.representative,jdbcType=VARCHAR},
+      </if>
+      <if test="record.representativeId != null" >
+        REPRESENTATIVE_ID = #{record.representativeId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactName != null" >
+        CONTACT_NAME = #{record.contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactMobile != null" >
+        CONTACT_MOBILE = #{record.contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactEmail != null" >
+        CONTACT_EMAIL = #{record.contactEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creatorUserId != null" >
+        CREATOR_USER_ID = #{record.creatorUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.companyId" >
+        and uci.COMPANY_ID = #{map.companyId}
+      </if>
+      <if test="null != map.list_companyId" >
+        and uci.COMPANY_ID in (<foreach collection="map.list_companyId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.companyName" >
+        and uci.COMPANY_NAME = #{map.companyName}
+      </if>
+      <if test="null != map.like_companyName" >
+        and uci.COMPANY_NAME like '%' || #{map.like_companyName} || '%'
+      </if>
+      <if test="null != map.list_companyName" >
+        and uci.COMPANY_NAME in (<foreach collection="map.list_companyName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.companyType" >
+        and uci.COMPANY_TYPE = #{map.companyType}
+      </if>
+      <if test="null != map.like_companyType" >
+        and uci.COMPANY_TYPE like '%' || #{map.like_companyType} || '%'
+      </if>
+      <if test="null != map.list_companyType" >
+        and uci.COMPANY_TYPE in (<foreach collection="map.list_companyType" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.companyAddress" >
+        and uci.COMPANY_ADDRESS = #{map.companyAddress}
+      </if>
+      <if test="null != map.like_companyAddress" >
+        and uci.COMPANY_ADDRESS like '%' || #{map.like_companyAddress} || '%'
+      </if>
+      <if test="null != map.list_companyAddress" >
+        and uci.COMPANY_ADDRESS in (<foreach collection="map.list_companyAddress" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.organizationCode" >
+        and uci.ORGANIZATION_CODE = #{map.organizationCode}
+      </if>
+      <if test="null != map.like_organizationCode" >
+        and uci.ORGANIZATION_CODE like '%' || #{map.like_organizationCode} || '%'
+      </if>
+      <if test="null != map.list_organizationCode" >
+        and uci.ORGANIZATION_CODE in (<foreach collection="map.list_organizationCode" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.licenceCode" >
+        and uci.LICENCE_CODE = #{map.licenceCode}
+      </if>
+      <if test="null != map.like_licenceCode" >
+        and uci.LICENCE_CODE like '%' || #{map.like_licenceCode} || '%'
+      </if>
+      <if test="null != map.list_licenceCode" >
+        and uci.LICENCE_CODE in (<foreach collection="map.list_licenceCode" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.representative" >
+        and uci.REPRESENTATIVE = #{map.representative}
+      </if>
+      <if test="null != map.like_representative" >
+        and uci.REPRESENTATIVE like '%' || #{map.like_representative} || '%'
+      </if>
+      <if test="null != map.list_representative" >
+        and uci.REPRESENTATIVE in (<foreach collection="map.list_representative" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.representativeId" >
+        and uci.REPRESENTATIVE_ID = #{map.representativeId}
+      </if>
+      <if test="null != map.like_representativeId" >
+        and uci.REPRESENTATIVE_ID like '%' || #{map.like_representativeId} || '%'
+      </if>
+      <if test="null != map.list_representativeId" >
+        and uci.REPRESENTATIVE_ID in (<foreach collection="map.list_representativeId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.contactName" >
+        and uci.CONTACT_NAME = #{map.contactName}
+      </if>
+      <if test="null != map.like_contactName" >
+        and uci.CONTACT_NAME like '%' || #{map.like_contactName} || '%'
+      </if>
+      <if test="null != map.list_contactName" >
+        and uci.CONTACT_NAME in (<foreach collection="map.list_contactName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.contactMobile" >
+        and uci.CONTACT_MOBILE = #{map.contactMobile}
+      </if>
+      <if test="null != map.like_contactMobile" >
+        and uci.CONTACT_MOBILE like '%' || #{map.like_contactMobile} || '%'
+      </if>
+      <if test="null != map.list_contactMobile" >
+        and uci.CONTACT_MOBILE in (<foreach collection="map.list_contactMobile" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.contactEmail" >
+        and uci.CONTACT_EMAIL = #{map.contactEmail}
+      </if>
+      <if test="null != map.like_contactEmail" >
+        and uci.CONTACT_EMAIL like '%' || #{map.like_contactEmail} || '%'
+      </if>
+      <if test="null != map.list_contactEmail" >
+        and uci.CONTACT_EMAIL in (<foreach collection="map.list_contactEmail" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.creatorUserId" >
+        and uci.CREATOR_USER_ID = #{map.creatorUserId}
+      </if>
+      <if test="null != map.list_creatorUserId" >
+        and uci.CREATOR_USER_ID in (<foreach collection="map.list_creatorUserId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and uci.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and uci.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_updateTime" >
+        and uci.UPDATE_TIME &gt;= #{map.begin_updateTime}
+      </if>
+      <if test="null != map.end_updateTime" >
+        and uci.UPDATE_TIME &lt;= #{map.end_updateTime}
+      </if>
+    </where>
+  </update>
+</mapper>

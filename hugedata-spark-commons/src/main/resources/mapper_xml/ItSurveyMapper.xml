@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.ItSurveyMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.ItSurvey" >
+    <id column="SURVEY_ID" property="surveyId" jdbcType="INTEGER" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="BRIEF" property="brief" jdbcType="VARCHAR" />
+    <result column="SOURCE" property="source" jdbcType="VARCHAR" />
+    <result column="START_TIME" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="END_TIME" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="SUBMIT_COUNT" property="submitCount" jdbcType="INTEGER" />
+    <result column="CREATOR_USER_ID" property="creatorUserId" jdbcType="INTEGER" />
+    <result column="CREATOR_NAME" property="creatorName" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="IS_PUBLISHED" property="isPublished" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != surveyId" >
+      and is0.SURVEY_ID = #{surveyId}
+    </if>
+    <if test="null != ne_surveyId" >
+      and is0.SURVEY_ID != #{ne_surveyId}
+    </if>
+    <if test="null != list_surveyId" >
+      and is0.SURVEY_ID in (<foreach collection="list_surveyId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != title" >
+      and is0.TITLE = #{title}
+    </if>
+    <if test="null != ne_title" >
+      and is0.TITLE != #{ne_title}
+    </if>
+    <if test="null != like_title" >
+      and is0.TITLE like CONCAT('%', #{like_title}, '%')
+    </if>
+    <if test="null != list_title" >
+      and is0.TITLE in (<foreach collection="list_title" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_title" >
+      and is0.TITLE &gt;= #{begin_title}
+    </if>
+    <if test="null != end_title" >
+      and is0.TITLE &lt;= #{end_title}
+    </if>
+    <if test="null != brief" >
+      and is0.BRIEF = #{brief}
+    </if>
+    <if test="null != ne_brief" >
+      and is0.BRIEF != #{ne_brief}
+    </if>
+    <if test="null != like_brief" >
+      and is0.BRIEF like CONCAT('%', #{like_brief}, '%')
+    </if>
+    <if test="null != list_brief" >
+      and is0.BRIEF in (<foreach collection="list_brief" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_brief" >
+      and is0.BRIEF &gt;= #{begin_brief}
+    </if>
+    <if test="null != end_brief" >
+      and is0.BRIEF &lt;= #{end_brief}
+    </if>
+    <if test="null != source" >
+      and is0.SOURCE = #{source}
+    </if>
+    <if test="null != ne_source" >
+      and is0.SOURCE != #{ne_source}
+    </if>
+    <if test="null != like_source" >
+      and is0.SOURCE like CONCAT('%', #{like_source}, '%')
+    </if>
+    <if test="null != list_source" >
+      and is0.SOURCE in (<foreach collection="list_source" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_source" >
+      and is0.SOURCE &gt;= #{begin_source}
+    </if>
+    <if test="null != end_source" >
+      and is0.SOURCE &lt;= #{end_source}
+    </if>
+    <if test="null != begin_startTime" >
+      and is0.START_TIME &gt;= #{begin_startTime}
+    </if>
+    <if test="null != end_startTime" >
+      and is0.START_TIME &lt;= #{end_startTime}
+    </if>
+    <if test="null != begin_endTime" >
+      and is0.END_TIME &gt;= #{begin_endTime}
+    </if>
+    <if test="null != end_endTime" >
+      and is0.END_TIME &lt;= #{end_endTime}
+    </if>
+    <if test="null != submitCount" >
+      and is0.SUBMIT_COUNT = #{submitCount}
+    </if>
+    <if test="null != ne_submitCount" >
+      and is0.SUBMIT_COUNT != #{ne_submitCount}
+    </if>
+    <if test="null != list_submitCount" >
+      and is0.SUBMIT_COUNT in (<foreach collection="list_submitCount" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != creatorUserId" >
+      and is0.CREATOR_USER_ID = #{creatorUserId}
+    </if>
+    <if test="null != ne_creatorUserId" >
+      and is0.CREATOR_USER_ID != #{ne_creatorUserId}
+    </if>
+    <if test="null != list_creatorUserId" >
+      and is0.CREATOR_USER_ID in (<foreach collection="list_creatorUserId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != creatorName" >
+      and is0.CREATOR_NAME = #{creatorName}
+    </if>
+    <if test="null != ne_creatorName" >
+      and is0.CREATOR_NAME != #{ne_creatorName}
+    </if>
+    <if test="null != like_creatorName" >
+      and is0.CREATOR_NAME like CONCAT('%', #{like_creatorName}, '%')
+    </if>
+    <if test="null != list_creatorName" >
+      and is0.CREATOR_NAME in (<foreach collection="list_creatorName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_creatorName" >
+      and is0.CREATOR_NAME &gt;= #{begin_creatorName}
+    </if>
+    <if test="null != end_creatorName" >
+      and is0.CREATOR_NAME &lt;= #{end_creatorName}
+    </if>
+    <if test="null != begin_createTime" >
+      and is0.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and is0.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_updateTime" >
+      and is0.UPDATE_TIME &gt;= #{begin_updateTime}
+    </if>
+    <if test="null != end_updateTime" >
+      and is0.UPDATE_TIME &lt;= #{end_updateTime}
+    </if>
+    <if test="null != isPublished" >
+      and is0.IS_PUBLISHED = #{isPublished}
+    </if>
+    <if test="null != ne_isPublished" >
+      and is0.IS_PUBLISHED != #{ne_isPublished}
+    </if>
+    <if test="null != list_isPublished" >
+      and is0.IS_PUBLISHED in (<foreach collection="list_isPublished" item="i" separator=",">#{i}</foreach>)
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'surveyId' == orderItem.column" >
+            is0.SURVEY_ID ${orderItem.dir}
+          </if>
+          <if test="'title' == orderItem.column" >
+            is0.TITLE ${orderItem.dir}
+          </if>
+          <if test="'brief' == orderItem.column" >
+            is0.BRIEF ${orderItem.dir}
+          </if>
+          <if test="'source' == orderItem.column" >
+            is0.SOURCE ${orderItem.dir}
+          </if>
+          <if test="'startTime' == orderItem.column" >
+            is0.START_TIME ${orderItem.dir}
+          </if>
+          <if test="'endTime' == orderItem.column" >
+            is0.END_TIME ${orderItem.dir}
+          </if>
+          <if test="'submitCount' == orderItem.column" >
+            is0.SUBMIT_COUNT ${orderItem.dir}
+          </if>
+          <if test="'creatorUserId' == orderItem.column" >
+            is0.CREATOR_USER_ID ${orderItem.dir}
+          </if>
+          <if test="'creatorName' == orderItem.column" >
+            is0.CREATOR_NAME ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            is0.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'updateTime' == orderItem.column" >
+            is0.UPDATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'isPublished' == orderItem.column" >
+            is0.IS_PUBLISHED ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    is0.SURVEY_ID, is0.TITLE, is0.BRIEF, is0.SOURCE, is0.START_TIME, is0.END_TIME, is0.SUBMIT_COUNT, 
+    is0.CREATOR_USER_ID, is0.CREATOR_NAME, is0.CREATE_TIME, is0.UPDATE_TIME, is0.IS_PUBLISHED
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from it_survey is0
+    where is0.SURVEY_ID = #{surveyId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from it_survey is0
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from it_survey is0
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.ItSurvey" >
+    <selectKey resultType="java.lang.Integer" keyProperty="surveyId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into it_survey
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      SURVEY_ID,
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="brief != null" >
+        BRIEF,
+      </if>
+      <if test="source != null" >
+        SOURCE,
+      </if>
+      <if test="startTime != null" >
+        START_TIME,
+      </if>
+      <if test="endTime != null" >
+        END_TIME,
+      </if>
+      <if test="submitCount != null" >
+        SUBMIT_COUNT,
+      </if>
+      <if test="creatorUserId != null" >
+        CREATOR_USER_ID,
+      </if>
+      <if test="creatorName != null" >
+        CREATOR_NAME,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="isPublished != null" >
+        IS_PUBLISHED,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{surveyId,jdbcType=INTEGER},
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="brief != null" >
+        #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitCount != null" >
+        #{submitCount,jdbcType=INTEGER},
+      </if>
+      <if test="creatorUserId != null" >
+        #{creatorUserId,jdbcType=INTEGER},
+      </if>
+      <if test="creatorName != null" >
+        #{creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isPublished != null" >
+        #{isPublished,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from it_survey
+    where SURVEY_ID = #{surveyId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from it_survey where SURVEY_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from is0 using (it_survey as is0) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.ItSurvey" >
+    update it_survey
+    <set >
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="brief != null" >
+        BRIEF = #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        SOURCE = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        START_TIME = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitCount != null" >
+        SUBMIT_COUNT = #{submitCount,jdbcType=INTEGER},
+      </if>
+      <if test="creatorUserId != null" >
+        CREATOR_USER_ID = #{creatorUserId,jdbcType=INTEGER},
+      </if>
+      <if test="creatorName != null" >
+        CREATOR_NAME = #{creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isPublished != null" >
+        IS_PUBLISHED = #{isPublished,jdbcType=BIT},
+      </if>
+    </set>
+    where SURVEY_ID = #{surveyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update it_survey is0
+    <set >
+      <if test="record.surveyId != null" >
+        SURVEY_ID = #{record.surveyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.title != null" >
+        TITLE = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brief != null" >
+        BRIEF = #{record.brief,jdbcType=VARCHAR},
+      </if>
+      <if test="record.source != null" >
+        SOURCE = #{record.source,jdbcType=VARCHAR},
+      </if>
+      <if test="record.startTime != null" >
+        START_TIME = #{record.startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.endTime != null" >
+        END_TIME = #{record.endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.submitCount != null" >
+        SUBMIT_COUNT = #{record.submitCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.creatorUserId != null" >
+        CREATOR_USER_ID = #{record.creatorUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.creatorName != null" >
+        CREATOR_NAME = #{record.creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isPublished != null" >
+        IS_PUBLISHED = #{record.isPublished,jdbcType=BIT},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.surveyId" >
+        and is0.SURVEY_ID = #{map.surveyId}
+      </if>
+      <if test="null != map.list_surveyId" >
+        and is0.SURVEY_ID in (<foreach collection="map.list_surveyId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.title" >
+        and is0.TITLE = #{map.title}
+      </if>
+      <if test="null != map.like_title" >
+        and is0.TITLE like '%' || #{map.like_title} || '%'
+      </if>
+      <if test="null != map.list_title" >
+        and is0.TITLE in (<foreach collection="map.list_title" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.brief" >
+        and is0.BRIEF = #{map.brief}
+      </if>
+      <if test="null != map.like_brief" >
+        and is0.BRIEF like '%' || #{map.like_brief} || '%'
+      </if>
+      <if test="null != map.list_brief" >
+        and is0.BRIEF in (<foreach collection="map.list_brief" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.source" >
+        and is0.SOURCE = #{map.source}
+      </if>
+      <if test="null != map.like_source" >
+        and is0.SOURCE like '%' || #{map.like_source} || '%'
+      </if>
+      <if test="null != map.list_source" >
+        and is0.SOURCE in (<foreach collection="map.list_source" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_startTime" >
+        and is0.START_TIME &gt;= #{map.begin_startTime}
+      </if>
+      <if test="null != map.end_startTime" >
+        and is0.START_TIME &lt;= #{map.end_startTime}
+      </if>
+      <if test="null != map.begin_endTime" >
+        and is0.END_TIME &gt;= #{map.begin_endTime}
+      </if>
+      <if test="null != map.end_endTime" >
+        and is0.END_TIME &lt;= #{map.end_endTime}
+      </if>
+      <if test="null != map.submitCount" >
+        and is0.SUBMIT_COUNT = #{map.submitCount}
+      </if>
+      <if test="null != map.list_submitCount" >
+        and is0.SUBMIT_COUNT in (<foreach collection="map.list_submitCount" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.creatorUserId" >
+        and is0.CREATOR_USER_ID = #{map.creatorUserId}
+      </if>
+      <if test="null != map.list_creatorUserId" >
+        and is0.CREATOR_USER_ID in (<foreach collection="map.list_creatorUserId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.creatorName" >
+        and is0.CREATOR_NAME = #{map.creatorName}
+      </if>
+      <if test="null != map.like_creatorName" >
+        and is0.CREATOR_NAME like '%' || #{map.like_creatorName} || '%'
+      </if>
+      <if test="null != map.list_creatorName" >
+        and is0.CREATOR_NAME in (<foreach collection="map.list_creatorName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and is0.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and is0.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_updateTime" >
+        and is0.UPDATE_TIME &gt;= #{map.begin_updateTime}
+      </if>
+      <if test="null != map.end_updateTime" >
+        and is0.UPDATE_TIME &lt;= #{map.end_updateTime}
+      </if>
+      <if test="null != map.isPublished" >
+        and is0.IS_PUBLISHED = #{map.isPublished}
+      </if>
+      <if test="null != map.list_isPublished" >
+        and is0.IS_PUBLISHED in (<foreach collection="map.list_isPublished" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

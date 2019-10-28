@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.UcOrgInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.UcOrgInfo" >
+    <id column="ORG_ID" property="orgId" jdbcType="INTEGER" />
+    <result column="REF_ORG_ID" property="refOrgId" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="PARENT_ORG_ID" property="parentOrgId" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != orgId" >
+      and uoi.ORG_ID = #{orgId}
+    </if>
+    <if test="null != ne_orgId" >
+      and uoi.ORG_ID != #{ne_orgId}
+    </if>
+    <if test="null != list_orgId" >
+      and uoi.ORG_ID in (<foreach collection="list_orgId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != refOrgId" >
+      and uoi.REF_ORG_ID = #{refOrgId}
+    </if>
+    <if test="null != ne_refOrgId" >
+      and uoi.REF_ORG_ID != #{ne_refOrgId}
+    </if>
+    <if test="null != like_refOrgId" >
+      and uoi.REF_ORG_ID like CONCAT('%', #{like_refOrgId}, '%')
+    </if>
+    <if test="null != list_refOrgId" >
+      and uoi.REF_ORG_ID in (<foreach collection="list_refOrgId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_refOrgId" >
+      and uoi.REF_ORG_ID &gt;= #{begin_refOrgId}
+    </if>
+    <if test="null != end_refOrgId" >
+      and uoi.REF_ORG_ID &lt;= #{end_refOrgId}
+    </if>
+    <if test="null != name" >
+      and uoi.NAME = #{name}
+    </if>
+    <if test="null != ne_name" >
+      and uoi.NAME != #{ne_name}
+    </if>
+    <if test="null != like_name" >
+      and uoi.NAME like CONCAT('%', #{like_name}, '%')
+    </if>
+    <if test="null != list_name" >
+      and uoi.NAME in (<foreach collection="list_name" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_name" >
+      and uoi.NAME &gt;= #{begin_name}
+    </if>
+    <if test="null != end_name" >
+      and uoi.NAME &lt;= #{end_name}
+    </if>
+    <if test="null != parentOrgId" >
+      and uoi.PARENT_ORG_ID = #{parentOrgId}
+    </if>
+    <if test="null != ne_parentOrgId" >
+      and uoi.PARENT_ORG_ID != #{ne_parentOrgId}
+    </if>
+    <if test="null != list_parentOrgId" >
+      and uoi.PARENT_ORG_ID in (<foreach collection="list_parentOrgId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_createTime" >
+      and uoi.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and uoi.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_updateTime" >
+      and uoi.UPDATE_TIME &gt;= #{begin_updateTime}
+    </if>
+    <if test="null != end_updateTime" >
+      and uoi.UPDATE_TIME &lt;= #{end_updateTime}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'orgId' == orderItem.column" >
+            uoi.ORG_ID ${orderItem.dir}
+          </if>
+          <if test="'refOrgId' == orderItem.column" >
+            uoi.REF_ORG_ID ${orderItem.dir}
+          </if>
+          <if test="'name' == orderItem.column" >
+            uoi.NAME ${orderItem.dir}
+          </if>
+          <if test="'parentOrgId' == orderItem.column" >
+            uoi.PARENT_ORG_ID ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            uoi.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'updateTime' == orderItem.column" >
+            uoi.UPDATE_TIME ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    uoi.ORG_ID, uoi.REF_ORG_ID, uoi.NAME, uoi.PARENT_ORG_ID, uoi.CREATE_TIME, uoi.UPDATE_TIME
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from uc_org_info uoi
+    where uoi.ORG_ID = #{orgId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from uc_org_info uoi
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from uc_org_info uoi
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcOrgInfo" >
+    <selectKey resultType="java.lang.Integer" keyProperty="orgId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into uc_org_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      ORG_ID,
+      <if test="refOrgId != null" >
+        REF_ORG_ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="parentOrgId != null" >
+        PARENT_ORG_ID,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{orgId,jdbcType=INTEGER},
+      <if test="refOrgId != null" >
+        #{refOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parentOrgId != null" >
+        #{parentOrgId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from uc_org_info
+    where ORG_ID = #{orgId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from uc_org_info where ORG_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from uoi using (uc_org_info as uoi) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcOrgInfo" >
+    update uc_org_info
+    <set >
+      <if test="refOrgId != null" >
+        REF_ORG_ID = #{refOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parentOrgId != null" >
+        PARENT_ORG_ID = #{parentOrgId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ORG_ID = #{orgId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update uc_org_info uoi
+    <set >
+      <if test="record.orgId != null" >
+        ORG_ID = #{record.orgId,jdbcType=INTEGER},
+      </if>
+      <if test="record.refOrgId != null" >
+        REF_ORG_ID = #{record.refOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parentOrgId != null" >
+        PARENT_ORG_ID = #{record.parentOrgId,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.orgId" >
+        and uoi.ORG_ID = #{map.orgId}
+      </if>
+      <if test="null != map.list_orgId" >
+        and uoi.ORG_ID in (<foreach collection="map.list_orgId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.refOrgId" >
+        and uoi.REF_ORG_ID = #{map.refOrgId}
+      </if>
+      <if test="null != map.like_refOrgId" >
+        and uoi.REF_ORG_ID like '%' || #{map.like_refOrgId} || '%'
+      </if>
+      <if test="null != map.list_refOrgId" >
+        and uoi.REF_ORG_ID in (<foreach collection="map.list_refOrgId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.name" >
+        and uoi.NAME = #{map.name}
+      </if>
+      <if test="null != map.like_name" >
+        and uoi.NAME like '%' || #{map.like_name} || '%'
+      </if>
+      <if test="null != map.list_name" >
+        and uoi.NAME in (<foreach collection="map.list_name" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.parentOrgId" >
+        and uoi.PARENT_ORG_ID = #{map.parentOrgId}
+      </if>
+      <if test="null != map.list_parentOrgId" >
+        and uoi.PARENT_ORG_ID in (<foreach collection="map.list_parentOrgId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and uoi.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and uoi.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_updateTime" >
+        and uoi.UPDATE_TIME &gt;= #{map.begin_updateTime}
+      </if>
+      <if test="null != map.end_updateTime" >
+        and uoi.UPDATE_TIME &lt;= #{map.end_updateTime}
+      </if>
+    </where>
+  </update>
+</mapper>

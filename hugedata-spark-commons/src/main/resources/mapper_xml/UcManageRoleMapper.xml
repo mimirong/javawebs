@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.UcManageRoleMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.UcManageRole" >
+    <id column="ROLE_ID" property="roleId" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.com.hugedata.spark.commons.storage.entity.UcManageRole" extends="BaseResultMap" >
+    <result column="CUSTOM_MENU" property="customMenu" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != roleId" >
+      and umr.ROLE_ID = #{roleId}
+    </if>
+    <if test="null != ne_roleId" >
+      and umr.ROLE_ID != #{ne_roleId}
+    </if>
+    <if test="null != like_roleId" >
+      and umr.ROLE_ID like CONCAT('%', #{like_roleId}, '%')
+    </if>
+    <if test="null != list_roleId" >
+      and umr.ROLE_ID in (<foreach collection="list_roleId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_roleId" >
+      and umr.ROLE_ID &gt;= #{begin_roleId}
+    </if>
+    <if test="null != end_roleId" >
+      and umr.ROLE_ID &lt;= #{end_roleId}
+    </if>
+    <if test="null != name" >
+      and umr.NAME = #{name}
+    </if>
+    <if test="null != ne_name" >
+      and umr.NAME != #{ne_name}
+    </if>
+    <if test="null != like_name" >
+      and umr.NAME like CONCAT('%', #{like_name}, '%')
+    </if>
+    <if test="null != list_name" >
+      and umr.NAME in (<foreach collection="list_name" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_name" >
+      and umr.NAME &gt;= #{begin_name}
+    </if>
+    <if test="null != end_name" >
+      and umr.NAME &lt;= #{end_name}
+    </if>
+    <if test="null != description" >
+      and umr.DESCRIPTION = #{description}
+    </if>
+    <if test="null != ne_description" >
+      and umr.DESCRIPTION != #{ne_description}
+    </if>
+    <if test="null != like_description" >
+      and umr.DESCRIPTION like CONCAT('%', #{like_description}, '%')
+    </if>
+    <if test="null != list_description" >
+      and umr.DESCRIPTION in (<foreach collection="list_description" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_description" >
+      and umr.DESCRIPTION &gt;= #{begin_description}
+    </if>
+    <if test="null != end_description" >
+      and umr.DESCRIPTION &lt;= #{end_description}
+    </if>
+    <if test="null != customMenu" >
+      and umr.CUSTOM_MENU = #{customMenu}
+    </if>
+    <if test="null != ne_customMenu" >
+      and umr.CUSTOM_MENU != #{ne_customMenu}
+    </if>
+    <if test="null != like_customMenu" >
+      and umr.CUSTOM_MENU like CONCAT('%', #{like_customMenu}, '%')
+    </if>
+    <if test="null != list_customMenu" >
+      and umr.CUSTOM_MENU in (<foreach collection="list_customMenu" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_customMenu" >
+      and umr.CUSTOM_MENU &gt;= #{begin_customMenu}
+    </if>
+    <if test="null != end_customMenu" >
+      and umr.CUSTOM_MENU &lt;= #{end_customMenu}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'roleId' == orderItem.column" >
+            umr.ROLE_ID ${orderItem.dir}
+          </if>
+          <if test="'name' == orderItem.column" >
+            umr.NAME ${orderItem.dir}
+          </if>
+          <if test="'description' == orderItem.column" >
+            umr.DESCRIPTION ${orderItem.dir}
+          </if>
+          <if test="'customMenu' == orderItem.column" >
+            umr.CUSTOM_MENU ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    umr.ROLE_ID, umr.NAME, umr.DESCRIPTION
+  </sql>
+  <sql id="Blob_Column_List" >
+    CUSTOM_MENU
+  </sql>
+  <select id="selectById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from uc_manage_role umr
+    where umr.ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByMap" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from uc_manage_role umr
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from uc_manage_role umr
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcManageRole" >
+    insert into uc_manage_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        ROLE_ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="description != null" >
+        DESCRIPTION,
+      </if>
+      <if test="customMenu != null" >
+        CUSTOM_MENU,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="customMenu != null" >
+        #{customMenu,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.String" >
+    delete from uc_manage_role
+    where ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from uc_manage_role where ROLE_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from umr using (uc_manage_role as umr) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcManageRole" >
+    update uc_manage_role
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="customMenu != null" >
+        CUSTOM_MENU = #{customMenu,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update uc_manage_role umr
+    <set >
+      <if test="record.roleId != null" >
+        ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description != null" >
+        DESCRIPTION = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customMenu != null" >
+        CUSTOM_MENU = #{record.customMenu,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.roleId" >
+        and umr.ROLE_ID = #{map.roleId}
+      </if>
+      <if test="null != map.like_roleId" >
+        and umr.ROLE_ID like '%' || #{map.like_roleId} || '%'
+      </if>
+      <if test="null != map.list_roleId" >
+        and umr.ROLE_ID in (<foreach collection="map.list_roleId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.name" >
+        and umr.NAME = #{map.name}
+      </if>
+      <if test="null != map.like_name" >
+        and umr.NAME like '%' || #{map.like_name} || '%'
+      </if>
+      <if test="null != map.list_name" >
+        and umr.NAME in (<foreach collection="map.list_name" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.description" >
+        and umr.DESCRIPTION = #{map.description}
+      </if>
+      <if test="null != map.like_description" >
+        and umr.DESCRIPTION like '%' || #{map.like_description} || '%'
+      </if>
+      <if test="null != map.list_description" >
+        and umr.DESCRIPTION in (<foreach collection="map.list_description" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.customMenu" >
+        and umr.CUSTOM_MENU = #{map.customMenu}
+      </if>
+      <if test="null != map.like_customMenu" >
+        and umr.CUSTOM_MENU like '%' || #{map.like_customMenu} || '%'
+      </if>
+      <if test="null != map.list_customMenu" >
+        and umr.CUSTOM_MENU in (<foreach collection="map.list_customMenu" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

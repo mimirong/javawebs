@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.GaPmStandardMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.GaPmStandard" >
+    <id column="STANDARD_ID" property="standardId" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="ICON_FILE_ID" property="iconFileId" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.com.hugedata.spark.commons.storage.entity.GaPmStandard" extends="BaseResultMap" >
+    <result column="REMARK" property="remark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != standardId" >
+      and gps.STANDARD_ID = #{standardId}
+    </if>
+    <if test="null != ne_standardId" >
+      and gps.STANDARD_ID != #{ne_standardId}
+    </if>
+    <if test="null != like_standardId" >
+      and gps.STANDARD_ID like CONCAT('%', #{like_standardId}, '%')
+    </if>
+    <if test="null != list_standardId" >
+      and gps.STANDARD_ID in (<foreach collection="list_standardId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_standardId" >
+      and gps.STANDARD_ID &gt;= #{begin_standardId}
+    </if>
+    <if test="null != end_standardId" >
+      and gps.STANDARD_ID &lt;= #{end_standardId}
+    </if>
+    <if test="null != name" >
+      and gps.NAME = #{name}
+    </if>
+    <if test="null != ne_name" >
+      and gps.NAME != #{ne_name}
+    </if>
+    <if test="null != like_name" >
+      and gps.NAME like CONCAT('%', #{like_name}, '%')
+    </if>
+    <if test="null != list_name" >
+      and gps.NAME in (<foreach collection="list_name" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_name" >
+      and gps.NAME &gt;= #{begin_name}
+    </if>
+    <if test="null != end_name" >
+      and gps.NAME &lt;= #{end_name}
+    </if>
+    <if test="null != iconFileId" >
+      and gps.ICON_FILE_ID = #{iconFileId}
+    </if>
+    <if test="null != ne_iconFileId" >
+      and gps.ICON_FILE_ID != #{ne_iconFileId}
+    </if>
+    <if test="null != like_iconFileId" >
+      and gps.ICON_FILE_ID like CONCAT('%', #{like_iconFileId}, '%')
+    </if>
+    <if test="null != list_iconFileId" >
+      and gps.ICON_FILE_ID in (<foreach collection="list_iconFileId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_iconFileId" >
+      and gps.ICON_FILE_ID &gt;= #{begin_iconFileId}
+    </if>
+    <if test="null != end_iconFileId" >
+      and gps.ICON_FILE_ID &lt;= #{end_iconFileId}
+    </if>
+    <if test="null != begin_createTime" >
+      and gps.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and gps.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != remark" >
+      and gps.REMARK = #{remark}
+    </if>
+    <if test="null != ne_remark" >
+      and gps.REMARK != #{ne_remark}
+    </if>
+    <if test="null != like_remark" >
+      and gps.REMARK like CONCAT('%', #{like_remark}, '%')
+    </if>
+    <if test="null != list_remark" >
+      and gps.REMARK in (<foreach collection="list_remark" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_remark" >
+      and gps.REMARK &gt;= #{begin_remark}
+    </if>
+    <if test="null != end_remark" >
+      and gps.REMARK &lt;= #{end_remark}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'standardId' == orderItem.column" >
+            gps.STANDARD_ID ${orderItem.dir}
+          </if>
+          <if test="'name' == orderItem.column" >
+            gps.NAME ${orderItem.dir}
+          </if>
+          <if test="'iconFileId' == orderItem.column" >
+            gps.ICON_FILE_ID ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            gps.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'remark' == orderItem.column" >
+            gps.REMARK ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    gps.STANDARD_ID, gps.NAME, gps.ICON_FILE_ID, gps.CREATE_TIME
+  </sql>
+  <sql id="Blob_Column_List" >
+    REMARK
+  </sql>
+  <select id="selectById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ga_pm_standard gps
+    where gps.STANDARD_ID = #{standardId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByMap" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ga_pm_standard gps
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from ga_pm_standard gps
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaPmStandard" >
+    <selectKey resultType="java.lang.String" keyProperty="standardId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into ga_pm_standard
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      STANDARD_ID,
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="iconFileId != null" >
+        ICON_FILE_ID,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{standardId,jdbcType=VARCHAR},
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="iconFileId != null" >
+        #{iconFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.String" >
+    delete from ga_pm_standard
+    where STANDARD_ID = #{standardId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from ga_pm_standard where STANDARD_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from gps using (ga_pm_standard as gps) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaPmStandard" >
+    update ga_pm_standard
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="iconFileId != null" >
+        ICON_FILE_ID = #{iconFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where STANDARD_ID = #{standardId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update ga_pm_standard gps
+    <set >
+      <if test="record.standardId != null" >
+        STANDARD_ID = #{record.standardId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.iconFileId != null" >
+        ICON_FILE_ID = #{record.iconFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.standardId" >
+        and gps.STANDARD_ID = #{map.standardId}
+      </if>
+      <if test="null != map.like_standardId" >
+        and gps.STANDARD_ID like '%' || #{map.like_standardId} || '%'
+      </if>
+      <if test="null != map.list_standardId" >
+        and gps.STANDARD_ID in (<foreach collection="map.list_standardId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.name" >
+        and gps.NAME = #{map.name}
+      </if>
+      <if test="null != map.like_name" >
+        and gps.NAME like '%' || #{map.like_name} || '%'
+      </if>
+      <if test="null != map.list_name" >
+        and gps.NAME in (<foreach collection="map.list_name" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.iconFileId" >
+        and gps.ICON_FILE_ID = #{map.iconFileId}
+      </if>
+      <if test="null != map.like_iconFileId" >
+        and gps.ICON_FILE_ID like '%' || #{map.like_iconFileId} || '%'
+      </if>
+      <if test="null != map.list_iconFileId" >
+        and gps.ICON_FILE_ID in (<foreach collection="map.list_iconFileId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and gps.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and gps.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.remark" >
+        and gps.REMARK = #{map.remark}
+      </if>
+      <if test="null != map.like_remark" >
+        and gps.REMARK like '%' || #{map.like_remark} || '%'
+      </if>
+      <if test="null != map.list_remark" >
+        and gps.REMARK in (<foreach collection="map.list_remark" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

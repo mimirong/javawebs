@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.UcDeptInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.UcDeptInfo" >
+    <id column="DEPT_ID" property="deptId" jdbcType="INTEGER" />
+    <result column="REF_DEPT_ID" property="refDeptId" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="ORG_ID" property="orgId" jdbcType="INTEGER" />
+    <result column="PARENT_DEPT_ID" property="parentDeptId" jdbcType="INTEGER" />
+    <result column="FULL_ID" property="fullId" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != deptId" >
+      and udi.DEPT_ID = #{deptId}
+    </if>
+    <if test="null != ne_deptId" >
+      and udi.DEPT_ID != #{ne_deptId}
+    </if>
+    <if test="null != list_deptId" >
+      and udi.DEPT_ID in (<foreach collection="list_deptId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != refDeptId" >
+      and udi.REF_DEPT_ID = #{refDeptId}
+    </if>
+    <if test="null != ne_refDeptId" >
+      and udi.REF_DEPT_ID != #{ne_refDeptId}
+    </if>
+    <if test="null != like_refDeptId" >
+      and udi.REF_DEPT_ID like CONCAT('%', #{like_refDeptId}, '%')
+    </if>
+    <if test="null != list_refDeptId" >
+      and udi.REF_DEPT_ID in (<foreach collection="list_refDeptId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_refDeptId" >
+      and udi.REF_DEPT_ID &gt;= #{begin_refDeptId}
+    </if>
+    <if test="null != end_refDeptId" >
+      and udi.REF_DEPT_ID &lt;= #{end_refDeptId}
+    </if>
+    <if test="null != name" >
+      and udi.NAME = #{name}
+    </if>
+    <if test="null != ne_name" >
+      and udi.NAME != #{ne_name}
+    </if>
+    <if test="null != like_name" >
+      and udi.NAME like CONCAT('%', #{like_name}, '%')
+    </if>
+    <if test="null != list_name" >
+      and udi.NAME in (<foreach collection="list_name" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_name" >
+      and udi.NAME &gt;= #{begin_name}
+    </if>
+    <if test="null != end_name" >
+      and udi.NAME &lt;= #{end_name}
+    </if>
+    <if test="null != orgId" >
+      and udi.ORG_ID = #{orgId}
+    </if>
+    <if test="null != ne_orgId" >
+      and udi.ORG_ID != #{ne_orgId}
+    </if>
+    <if test="null != list_orgId" >
+      and udi.ORG_ID in (<foreach collection="list_orgId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != parentDeptId" >
+      and udi.PARENT_DEPT_ID = #{parentDeptId}
+    </if>
+    <if test="null != ne_parentDeptId" >
+      and udi.PARENT_DEPT_ID != #{ne_parentDeptId}
+    </if>
+    <if test="null != list_parentDeptId" >
+      and udi.PARENT_DEPT_ID in (<foreach collection="list_parentDeptId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != fullId" >
+      and udi.FULL_ID = #{fullId}
+    </if>
+    <if test="null != ne_fullId" >
+      and udi.FULL_ID != #{ne_fullId}
+    </if>
+    <if test="null != like_fullId" >
+      and udi.FULL_ID like CONCAT('%', #{like_fullId}, '%')
+    </if>
+    <if test="null != list_fullId" >
+      and udi.FULL_ID in (<foreach collection="list_fullId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_fullId" >
+      and udi.FULL_ID &gt;= #{begin_fullId}
+    </if>
+    <if test="null != end_fullId" >
+      and udi.FULL_ID &lt;= #{end_fullId}
+    </if>
+    <if test="null != begin_createTime" >
+      and udi.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and udi.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_updateTime" >
+      and udi.UPDATE_TIME &gt;= #{begin_updateTime}
+    </if>
+    <if test="null != end_updateTime" >
+      and udi.UPDATE_TIME &lt;= #{end_updateTime}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'deptId' == orderItem.column" >
+            udi.DEPT_ID ${orderItem.dir}
+          </if>
+          <if test="'refDeptId' == orderItem.column" >
+            udi.REF_DEPT_ID ${orderItem.dir}
+          </if>
+          <if test="'name' == orderItem.column" >
+            udi.NAME ${orderItem.dir}
+          </if>
+          <if test="'orgId' == orderItem.column" >
+            udi.ORG_ID ${orderItem.dir}
+          </if>
+          <if test="'parentDeptId' == orderItem.column" >
+            udi.PARENT_DEPT_ID ${orderItem.dir}
+          </if>
+          <if test="'fullId' == orderItem.column" >
+            udi.FULL_ID ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            udi.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'updateTime' == orderItem.column" >
+            udi.UPDATE_TIME ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    udi.DEPT_ID, udi.REF_DEPT_ID, udi.NAME, udi.ORG_ID, udi.PARENT_DEPT_ID, udi.FULL_ID, 
+    udi.CREATE_TIME, udi.UPDATE_TIME
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from uc_dept_info udi
+    where udi.DEPT_ID = #{deptId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from uc_dept_info udi
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from uc_dept_info udi
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcDeptInfo" >
+    <selectKey resultType="java.lang.Integer" keyProperty="deptId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into uc_dept_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      DEPT_ID,
+      <if test="refDeptId != null" >
+        REF_DEPT_ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="orgId != null" >
+        ORG_ID,
+      </if>
+      <if test="parentDeptId != null" >
+        PARENT_DEPT_ID,
+      </if>
+      <if test="fullId != null" >
+        FULL_ID,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{deptId,jdbcType=INTEGER},
+      <if test="refDeptId != null" >
+        #{refDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="parentDeptId != null" >
+        #{parentDeptId,jdbcType=INTEGER},
+      </if>
+      <if test="fullId != null" >
+        #{fullId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from uc_dept_info
+    where DEPT_ID = #{deptId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from uc_dept_info where DEPT_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from udi using (uc_dept_info as udi) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcDeptInfo" >
+    update uc_dept_info
+    <set >
+      <if test="refDeptId != null" >
+        REF_DEPT_ID = #{refDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        ORG_ID = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="parentDeptId != null" >
+        PARENT_DEPT_ID = #{parentDeptId,jdbcType=INTEGER},
+      </if>
+      <if test="fullId != null" >
+        FULL_ID = #{fullId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where DEPT_ID = #{deptId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update uc_dept_info udi
+    <set >
+      <if test="record.deptId != null" >
+        DEPT_ID = #{record.deptId,jdbcType=INTEGER},
+      </if>
+      <if test="record.refDeptId != null" >
+        REF_DEPT_ID = #{record.refDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgId != null" >
+        ORG_ID = #{record.orgId,jdbcType=INTEGER},
+      </if>
+      <if test="record.parentDeptId != null" >
+        PARENT_DEPT_ID = #{record.parentDeptId,jdbcType=INTEGER},
+      </if>
+      <if test="record.fullId != null" >
+        FULL_ID = #{record.fullId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.deptId" >
+        and udi.DEPT_ID = #{map.deptId}
+      </if>
+      <if test="null != map.list_deptId" >
+        and udi.DEPT_ID in (<foreach collection="map.list_deptId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.refDeptId" >
+        and udi.REF_DEPT_ID = #{map.refDeptId}
+      </if>
+      <if test="null != map.like_refDeptId" >
+        and udi.REF_DEPT_ID like '%' || #{map.like_refDeptId} || '%'
+      </if>
+      <if test="null != map.list_refDeptId" >
+        and udi.REF_DEPT_ID in (<foreach collection="map.list_refDeptId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.name" >
+        and udi.NAME = #{map.name}
+      </if>
+      <if test="null != map.like_name" >
+        and udi.NAME like '%' || #{map.like_name} || '%'
+      </if>
+      <if test="null != map.list_name" >
+        and udi.NAME in (<foreach collection="map.list_name" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.orgId" >
+        and udi.ORG_ID = #{map.orgId}
+      </if>
+      <if test="null != map.list_orgId" >
+        and udi.ORG_ID in (<foreach collection="map.list_orgId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.parentDeptId" >
+        and udi.PARENT_DEPT_ID = #{map.parentDeptId}
+      </if>
+      <if test="null != map.list_parentDeptId" >
+        and udi.PARENT_DEPT_ID in (<foreach collection="map.list_parentDeptId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.fullId" >
+        and udi.FULL_ID = #{map.fullId}
+      </if>
+      <if test="null != map.like_fullId" >
+        and udi.FULL_ID like '%' || #{map.like_fullId} || '%'
+      </if>
+      <if test="null != map.list_fullId" >
+        and udi.FULL_ID in (<foreach collection="map.list_fullId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and udi.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and udi.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_updateTime" >
+        and udi.UPDATE_TIME &gt;= #{map.begin_updateTime}
+      </if>
+      <if test="null != map.end_updateTime" >
+        and udi.UPDATE_TIME &lt;= #{map.end_updateTime}
+      </if>
+    </where>
+  </update>
+</mapper>

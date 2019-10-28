@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.ApServiceCcMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.ApServiceCc" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="SERVICE_ID" property="serviceId" jdbcType="INTEGER" />
+    <result column="CC_USER_ID" property="ccUserId" jdbcType="INTEGER" />
+    <result column="CC_USER_NAME" property="ccUserName" jdbcType="VARCHAR" />
+    <result column="CC_DEPT_ID" property="ccDeptId" jdbcType="INTEGER" />
+    <result column="CC_DEPT_NAME" property="ccDeptName" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != id" >
+      and asc.ID = #{id}
+    </if>
+    <if test="null != ne_id" >
+      and asc.ID != #{ne_id}
+    </if>
+    <if test="null != list_id" >
+      and asc.ID in (<foreach collection="list_id" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != serviceId" >
+      and asc.SERVICE_ID = #{serviceId}
+    </if>
+    <if test="null != ne_serviceId" >
+      and asc.SERVICE_ID != #{ne_serviceId}
+    </if>
+    <if test="null != list_serviceId" >
+      and asc.SERVICE_ID in (<foreach collection="list_serviceId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != ccUserId" >
+      and asc.CC_USER_ID = #{ccUserId}
+    </if>
+    <if test="null != ne_ccUserId" >
+      and asc.CC_USER_ID != #{ne_ccUserId}
+    </if>
+    <if test="null != list_ccUserId" >
+      and asc.CC_USER_ID in (<foreach collection="list_ccUserId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != ccUserName" >
+      and asc.CC_USER_NAME = #{ccUserName}
+    </if>
+    <if test="null != ne_ccUserName" >
+      and asc.CC_USER_NAME != #{ne_ccUserName}
+    </if>
+    <if test="null != like_ccUserName" >
+      and asc.CC_USER_NAME like CONCAT('%', #{like_ccUserName}, '%')
+    </if>
+    <if test="null != list_ccUserName" >
+      and asc.CC_USER_NAME in (<foreach collection="list_ccUserName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_ccUserName" >
+      and asc.CC_USER_NAME &gt;= #{begin_ccUserName}
+    </if>
+    <if test="null != end_ccUserName" >
+      and asc.CC_USER_NAME &lt;= #{end_ccUserName}
+    </if>
+    <if test="null != ccDeptId" >
+      and asc.CC_DEPT_ID = #{ccDeptId}
+    </if>
+    <if test="null != ne_ccDeptId" >
+      and asc.CC_DEPT_ID != #{ne_ccDeptId}
+    </if>
+    <if test="null != list_ccDeptId" >
+      and asc.CC_DEPT_ID in (<foreach collection="list_ccDeptId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != ccDeptName" >
+      and asc.CC_DEPT_NAME = #{ccDeptName}
+    </if>
+    <if test="null != ne_ccDeptName" >
+      and asc.CC_DEPT_NAME != #{ne_ccDeptName}
+    </if>
+    <if test="null != like_ccDeptName" >
+      and asc.CC_DEPT_NAME like CONCAT('%', #{like_ccDeptName}, '%')
+    </if>
+    <if test="null != list_ccDeptName" >
+      and asc.CC_DEPT_NAME in (<foreach collection="list_ccDeptName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_ccDeptName" >
+      and asc.CC_DEPT_NAME &gt;= #{begin_ccDeptName}
+    </if>
+    <if test="null != end_ccDeptName" >
+      and asc.CC_DEPT_NAME &lt;= #{end_ccDeptName}
+    </if>
+    <if test="null != begin_createTime" >
+      and asc.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and asc.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'id' == orderItem.column" >
+            asc.ID ${orderItem.dir}
+          </if>
+          <if test="'serviceId' == orderItem.column" >
+            asc.SERVICE_ID ${orderItem.dir}
+          </if>
+          <if test="'ccUserId' == orderItem.column" >
+            asc.CC_USER_ID ${orderItem.dir}
+          </if>
+          <if test="'ccUserName' == orderItem.column" >
+            asc.CC_USER_NAME ${orderItem.dir}
+          </if>
+          <if test="'ccDeptId' == orderItem.column" >
+            asc.CC_DEPT_ID ${orderItem.dir}
+          </if>
+          <if test="'ccDeptName' == orderItem.column" >
+            asc.CC_DEPT_NAME ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            asc.CREATE_TIME ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    asc.ID, asc.SERVICE_ID, asc.CC_USER_ID, asc.CC_USER_NAME, asc.CC_DEPT_ID, asc.CC_DEPT_NAME, 
+    asc.CREATE_TIME
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ap_service_cc asc
+    where asc.ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from ap_service_cc asc
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from ap_service_cc asc
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.ApServiceCc" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into ap_service_cc
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      ID,
+      <if test="serviceId != null" >
+        SERVICE_ID,
+      </if>
+      <if test="ccUserId != null" >
+        CC_USER_ID,
+      </if>
+      <if test="ccUserName != null" >
+        CC_USER_NAME,
+      </if>
+      <if test="ccDeptId != null" >
+        CC_DEPT_ID,
+      </if>
+      <if test="ccDeptName != null" >
+        CC_DEPT_NAME,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{id,jdbcType=INTEGER},
+      <if test="serviceId != null" >
+        #{serviceId,jdbcType=INTEGER},
+      </if>
+      <if test="ccUserId != null" >
+        #{ccUserId,jdbcType=INTEGER},
+      </if>
+      <if test="ccUserName != null" >
+        #{ccUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="ccDeptId != null" >
+        #{ccDeptId,jdbcType=INTEGER},
+      </if>
+      <if test="ccDeptName != null" >
+        #{ccDeptName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from ap_service_cc
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from ap_service_cc where ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from asc using (ap_service_cc as asc) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.ApServiceCc" >
+    update ap_service_cc
+    <set >
+      <if test="serviceId != null" >
+        SERVICE_ID = #{serviceId,jdbcType=INTEGER},
+      </if>
+      <if test="ccUserId != null" >
+        CC_USER_ID = #{ccUserId,jdbcType=INTEGER},
+      </if>
+      <if test="ccUserName != null" >
+        CC_USER_NAME = #{ccUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="ccDeptId != null" >
+        CC_DEPT_ID = #{ccDeptId,jdbcType=INTEGER},
+      </if>
+      <if test="ccDeptName != null" >
+        CC_DEPT_NAME = #{ccDeptName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update ap_service_cc asc
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.serviceId != null" >
+        SERVICE_ID = #{record.serviceId,jdbcType=INTEGER},
+      </if>
+      <if test="record.ccUserId != null" >
+        CC_USER_ID = #{record.ccUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.ccUserName != null" >
+        CC_USER_NAME = #{record.ccUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ccDeptId != null" >
+        CC_DEPT_ID = #{record.ccDeptId,jdbcType=INTEGER},
+      </if>
+      <if test="record.ccDeptName != null" >
+        CC_DEPT_NAME = #{record.ccDeptName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.id" >
+        and asc.ID = #{map.id}
+      </if>
+      <if test="null != map.list_id" >
+        and asc.ID in (<foreach collection="map.list_id" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.serviceId" >
+        and asc.SERVICE_ID = #{map.serviceId}
+      </if>
+      <if test="null != map.list_serviceId" >
+        and asc.SERVICE_ID in (<foreach collection="map.list_serviceId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.ccUserId" >
+        and asc.CC_USER_ID = #{map.ccUserId}
+      </if>
+      <if test="null != map.list_ccUserId" >
+        and asc.CC_USER_ID in (<foreach collection="map.list_ccUserId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.ccUserName" >
+        and asc.CC_USER_NAME = #{map.ccUserName}
+      </if>
+      <if test="null != map.like_ccUserName" >
+        and asc.CC_USER_NAME like '%' || #{map.like_ccUserName} || '%'
+      </if>
+      <if test="null != map.list_ccUserName" >
+        and asc.CC_USER_NAME in (<foreach collection="map.list_ccUserName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.ccDeptId" >
+        and asc.CC_DEPT_ID = #{map.ccDeptId}
+      </if>
+      <if test="null != map.list_ccDeptId" >
+        and asc.CC_DEPT_ID in (<foreach collection="map.list_ccDeptId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.ccDeptName" >
+        and asc.CC_DEPT_NAME = #{map.ccDeptName}
+      </if>
+      <if test="null != map.like_ccDeptName" >
+        and asc.CC_DEPT_NAME like '%' || #{map.like_ccDeptName} || '%'
+      </if>
+      <if test="null != map.list_ccDeptName" >
+        and asc.CC_DEPT_NAME in (<foreach collection="map.list_ccDeptName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and asc.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and asc.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+    </where>
+  </update>
+</mapper>

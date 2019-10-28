@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.GaQuitRentInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.GaQuitRentInfo" >
+    <id column="INFO_ID" property="infoId" jdbcType="INTEGER" />
+    <result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR" />
+    <result column="RETURN_AMOUNT" property="returnAmount" jdbcType="INTEGER" />
+    <result column="APPLY_TIME" property="applyTime" jdbcType="TIMESTAMP" />
+    <result column="QUIT_TIME" property="quitTime" jdbcType="TIMESTAMP" />
+    <result column="RETURN_TIME" property="returnTime" jdbcType="TIMESTAMP" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != infoId" >
+      and gqri.INFO_ID = #{infoId}
+    </if>
+    <if test="null != ne_infoId" >
+      and gqri.INFO_ID != #{ne_infoId}
+    </if>
+    <if test="null != list_infoId" >
+      and gqri.INFO_ID in (<foreach collection="list_infoId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != companyName" >
+      and gqri.COMPANY_NAME = #{companyName}
+    </if>
+    <if test="null != ne_companyName" >
+      and gqri.COMPANY_NAME != #{ne_companyName}
+    </if>
+    <if test="null != like_companyName" >
+      and gqri.COMPANY_NAME like CONCAT('%', #{like_companyName}, '%')
+    </if>
+    <if test="null != list_companyName" >
+      and gqri.COMPANY_NAME in (<foreach collection="list_companyName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_companyName" >
+      and gqri.COMPANY_NAME &gt;= #{begin_companyName}
+    </if>
+    <if test="null != end_companyName" >
+      and gqri.COMPANY_NAME &lt;= #{end_companyName}
+    </if>
+    <if test="null != returnAmount" >
+      and gqri.RETURN_AMOUNT = #{returnAmount}
+    </if>
+    <if test="null != ne_returnAmount" >
+      and gqri.RETURN_AMOUNT != #{ne_returnAmount}
+    </if>
+    <if test="null != list_returnAmount" >
+      and gqri.RETURN_AMOUNT in (<foreach collection="list_returnAmount" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_applyTime" >
+      and gqri.APPLY_TIME &gt;= #{begin_applyTime}
+    </if>
+    <if test="null != end_applyTime" >
+      and gqri.APPLY_TIME &lt;= #{end_applyTime}
+    </if>
+    <if test="null != begin_quitTime" >
+      and gqri.QUIT_TIME &gt;= #{begin_quitTime}
+    </if>
+    <if test="null != end_quitTime" >
+      and gqri.QUIT_TIME &lt;= #{end_quitTime}
+    </if>
+    <if test="null != begin_returnTime" >
+      and gqri.RETURN_TIME &gt;= #{begin_returnTime}
+    </if>
+    <if test="null != end_returnTime" >
+      and gqri.RETURN_TIME &lt;= #{end_returnTime}
+    </if>
+    <if test="null != status" >
+      and gqri.STATUS = #{status}
+    </if>
+    <if test="null != ne_status" >
+      and gqri.STATUS != #{ne_status}
+    </if>
+    <if test="null != like_status" >
+      and gqri.STATUS like CONCAT('%', #{like_status}, '%')
+    </if>
+    <if test="null != list_status" >
+      and gqri.STATUS in (<foreach collection="list_status" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_status" >
+      and gqri.STATUS &gt;= #{begin_status}
+    </if>
+    <if test="null != end_status" >
+      and gqri.STATUS &lt;= #{end_status}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'infoId' == orderItem.column" >
+            gqri.INFO_ID ${orderItem.dir}
+          </if>
+          <if test="'companyName' == orderItem.column" >
+            gqri.COMPANY_NAME ${orderItem.dir}
+          </if>
+          <if test="'returnAmount' == orderItem.column" >
+            gqri.RETURN_AMOUNT ${orderItem.dir}
+          </if>
+          <if test="'applyTime' == orderItem.column" >
+            gqri.APPLY_TIME ${orderItem.dir}
+          </if>
+          <if test="'quitTime' == orderItem.column" >
+            gqri.QUIT_TIME ${orderItem.dir}
+          </if>
+          <if test="'returnTime' == orderItem.column" >
+            gqri.RETURN_TIME ${orderItem.dir}
+          </if>
+          <if test="'status' == orderItem.column" >
+            gqri.STATUS ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    gqri.INFO_ID, gqri.COMPANY_NAME, gqri.RETURN_AMOUNT, gqri.APPLY_TIME, gqri.QUIT_TIME, 
+    gqri.RETURN_TIME, gqri.STATUS
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ga_quit_rent_info gqri
+    where gqri.INFO_ID = #{infoId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from ga_quit_rent_info gqri
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from ga_quit_rent_info gqri
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaQuitRentInfo" >
+    <selectKey resultType="java.lang.Integer" keyProperty="infoId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into ga_quit_rent_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      INFO_ID,
+      <if test="companyName != null" >
+        COMPANY_NAME,
+      </if>
+      <if test="returnAmount != null" >
+        RETURN_AMOUNT,
+      </if>
+      <if test="applyTime != null" >
+        APPLY_TIME,
+      </if>
+      <if test="quitTime != null" >
+        QUIT_TIME,
+      </if>
+      <if test="returnTime != null" >
+        RETURN_TIME,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{infoId,jdbcType=INTEGER},
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="returnAmount != null" >
+        #{returnAmount,jdbcType=INTEGER},
+      </if>
+      <if test="applyTime != null" >
+        #{applyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="quitTime != null" >
+        #{quitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="returnTime != null" >
+        #{returnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from ga_quit_rent_info
+    where INFO_ID = #{infoId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from ga_quit_rent_info where INFO_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from gqri using (ga_quit_rent_info as gqri) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaQuitRentInfo" >
+    update ga_quit_rent_info
+    <set >
+      <if test="companyName != null" >
+        COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="returnAmount != null" >
+        RETURN_AMOUNT = #{returnAmount,jdbcType=INTEGER},
+      </if>
+      <if test="applyTime != null" >
+        APPLY_TIME = #{applyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="quitTime != null" >
+        QUIT_TIME = #{quitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="returnTime != null" >
+        RETURN_TIME = #{returnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where INFO_ID = #{infoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update ga_quit_rent_info gqri
+    <set >
+      <if test="record.infoId != null" >
+        INFO_ID = #{record.infoId,jdbcType=INTEGER},
+      </if>
+      <if test="record.companyName != null" >
+        COMPANY_NAME = #{record.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.returnAmount != null" >
+        RETURN_AMOUNT = #{record.returnAmount,jdbcType=INTEGER},
+      </if>
+      <if test="record.applyTime != null" >
+        APPLY_TIME = #{record.applyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.quitTime != null" >
+        QUIT_TIME = #{record.quitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.returnTime != null" >
+        RETURN_TIME = #{record.returnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.infoId" >
+        and gqri.INFO_ID = #{map.infoId}
+      </if>
+      <if test="null != map.list_infoId" >
+        and gqri.INFO_ID in (<foreach collection="map.list_infoId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.companyName" >
+        and gqri.COMPANY_NAME = #{map.companyName}
+      </if>
+      <if test="null != map.like_companyName" >
+        and gqri.COMPANY_NAME like '%' || #{map.like_companyName} || '%'
+      </if>
+      <if test="null != map.list_companyName" >
+        and gqri.COMPANY_NAME in (<foreach collection="map.list_companyName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.returnAmount" >
+        and gqri.RETURN_AMOUNT = #{map.returnAmount}
+      </if>
+      <if test="null != map.list_returnAmount" >
+        and gqri.RETURN_AMOUNT in (<foreach collection="map.list_returnAmount" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_applyTime" >
+        and gqri.APPLY_TIME &gt;= #{map.begin_applyTime}
+      </if>
+      <if test="null != map.end_applyTime" >
+        and gqri.APPLY_TIME &lt;= #{map.end_applyTime}
+      </if>
+      <if test="null != map.begin_quitTime" >
+        and gqri.QUIT_TIME &gt;= #{map.begin_quitTime}
+      </if>
+      <if test="null != map.end_quitTime" >
+        and gqri.QUIT_TIME &lt;= #{map.end_quitTime}
+      </if>
+      <if test="null != map.begin_returnTime" >
+        and gqri.RETURN_TIME &gt;= #{map.begin_returnTime}
+      </if>
+      <if test="null != map.end_returnTime" >
+        and gqri.RETURN_TIME &lt;= #{map.end_returnTime}
+      </if>
+      <if test="null != map.status" >
+        and gqri.STATUS = #{map.status}
+      </if>
+      <if test="null != map.like_status" >
+        and gqri.STATUS like '%' || #{map.like_status} || '%'
+      </if>
+      <if test="null != map.list_status" >
+        and gqri.STATUS in (<foreach collection="map.list_status" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

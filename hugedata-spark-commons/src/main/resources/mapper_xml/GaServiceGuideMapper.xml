@@ -1,0 +1,1169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.GaServiceGuideMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.GaServiceGuide" >
+    <id column="GUIDE_ID" property="guideId" jdbcType="INTEGER" />
+    <result column="DEPT_CODE" property="deptCode" jdbcType="VARCHAR" />
+    <result column="DEPT_NAME" property="deptName" jdbcType="VARCHAR" />
+    <result column="GUIDE_NAME" property="guideName" jdbcType="VARCHAR" />
+    <result column="GUIDE_TYPE" property="guideType" jdbcType="VARCHAR" />
+    <result column="SERVICE_SUBJECT" property="serviceSubject" jdbcType="VARCHAR" />
+    <result column="ACCORDING" property="according" jdbcType="VARCHAR" />
+    <result column="PRECONDITION" property="precondition" jdbcType="VARCHAR" />
+    <result column="JOINT_DEPT" property="jointDept" jdbcType="VARCHAR" />
+    <result column="LEGAL_TIME_LIMIT" property="legalTimeLimit" jdbcType="VARCHAR" />
+    <result column="PROMISED_TIME_LIMIT" property="promisedTimeLimit" jdbcType="VARCHAR" />
+    <result column="IS_CHARGE" property="isCharge" jdbcType="BIT" />
+    <result column="CHARGE_ACCORDING" property="chargeAccording" jdbcType="VARCHAR" />
+    <result column="CHARGE_STANDARD" property="chargeStandard" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="WORK_TIME" property="workTime" jdbcType="VARCHAR" />
+    <result column="TELEPHONE" property="telephone" jdbcType="VARCHAR" />
+    <result column="COMPLAINT_TELEPHONE" property="complaintTelephone" jdbcType="VARCHAR" />
+    <result column="FLOW_IMAGE_FILE_ID" property="flowImageFileId" jdbcType="VARCHAR" />
+    <result column="FLOW_IMAGE_FILE_NAME" property="flowImageFileName" jdbcType="VARCHAR" />
+    <result column="SORT_INDEX" property="sortIndex" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="IS_INTERNAL" property="isInternal" jdbcType="BIT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.com.hugedata.spark.commons.storage.entity.GaServiceGuide" extends="BaseResultMap" >
+    <result column="CONDITIONS" property="conditions" jdbcType="LONGVARCHAR" />
+    <result column="MATERIAL" property="material" jdbcType="LONGVARCHAR" />
+    <result column="PROCESS" property="process" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != guideId" >
+      and gsg.GUIDE_ID = #{guideId}
+    </if>
+    <if test="null != ne_guideId" >
+      and gsg.GUIDE_ID != #{ne_guideId}
+    </if>
+    <if test="null != list_guideId" >
+      and gsg.GUIDE_ID in (<foreach collection="list_guideId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != deptCode" >
+      and gsg.DEPT_CODE = #{deptCode}
+    </if>
+    <if test="null != ne_deptCode" >
+      and gsg.DEPT_CODE != #{ne_deptCode}
+    </if>
+    <if test="null != like_deptCode" >
+      and gsg.DEPT_CODE like CONCAT('%', #{like_deptCode}, '%')
+    </if>
+    <if test="null != list_deptCode" >
+      and gsg.DEPT_CODE in (<foreach collection="list_deptCode" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_deptCode" >
+      and gsg.DEPT_CODE &gt;= #{begin_deptCode}
+    </if>
+    <if test="null != end_deptCode" >
+      and gsg.DEPT_CODE &lt;= #{end_deptCode}
+    </if>
+    <if test="null != deptName" >
+      and gsg.DEPT_NAME = #{deptName}
+    </if>
+    <if test="null != ne_deptName" >
+      and gsg.DEPT_NAME != #{ne_deptName}
+    </if>
+    <if test="null != like_deptName" >
+      and gsg.DEPT_NAME like CONCAT('%', #{like_deptName}, '%')
+    </if>
+    <if test="null != list_deptName" >
+      and gsg.DEPT_NAME in (<foreach collection="list_deptName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_deptName" >
+      and gsg.DEPT_NAME &gt;= #{begin_deptName}
+    </if>
+    <if test="null != end_deptName" >
+      and gsg.DEPT_NAME &lt;= #{end_deptName}
+    </if>
+    <if test="null != guideName" >
+      and gsg.GUIDE_NAME = #{guideName}
+    </if>
+    <if test="null != ne_guideName" >
+      and gsg.GUIDE_NAME != #{ne_guideName}
+    </if>
+    <if test="null != like_guideName" >
+      and gsg.GUIDE_NAME like CONCAT('%', #{like_guideName}, '%')
+    </if>
+    <if test="null != list_guideName" >
+      and gsg.GUIDE_NAME in (<foreach collection="list_guideName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_guideName" >
+      and gsg.GUIDE_NAME &gt;= #{begin_guideName}
+    </if>
+    <if test="null != end_guideName" >
+      and gsg.GUIDE_NAME &lt;= #{end_guideName}
+    </if>
+    <if test="null != guideType" >
+      and gsg.GUIDE_TYPE = #{guideType}
+    </if>
+    <if test="null != ne_guideType" >
+      and gsg.GUIDE_TYPE != #{ne_guideType}
+    </if>
+    <if test="null != like_guideType" >
+      and gsg.GUIDE_TYPE like CONCAT('%', #{like_guideType}, '%')
+    </if>
+    <if test="null != list_guideType" >
+      and gsg.GUIDE_TYPE in (<foreach collection="list_guideType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_guideType" >
+      and gsg.GUIDE_TYPE &gt;= #{begin_guideType}
+    </if>
+    <if test="null != end_guideType" >
+      and gsg.GUIDE_TYPE &lt;= #{end_guideType}
+    </if>
+    <if test="null != serviceSubject" >
+      and gsg.SERVICE_SUBJECT = #{serviceSubject}
+    </if>
+    <if test="null != ne_serviceSubject" >
+      and gsg.SERVICE_SUBJECT != #{ne_serviceSubject}
+    </if>
+    <if test="null != like_serviceSubject" >
+      and gsg.SERVICE_SUBJECT like CONCAT('%', #{like_serviceSubject}, '%')
+    </if>
+    <if test="null != list_serviceSubject" >
+      and gsg.SERVICE_SUBJECT in (<foreach collection="list_serviceSubject" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_serviceSubject" >
+      and gsg.SERVICE_SUBJECT &gt;= #{begin_serviceSubject}
+    </if>
+    <if test="null != end_serviceSubject" >
+      and gsg.SERVICE_SUBJECT &lt;= #{end_serviceSubject}
+    </if>
+    <if test="null != according" >
+      and gsg.ACCORDING = #{according}
+    </if>
+    <if test="null != ne_according" >
+      and gsg.ACCORDING != #{ne_according}
+    </if>
+    <if test="null != like_according" >
+      and gsg.ACCORDING like CONCAT('%', #{like_according}, '%')
+    </if>
+    <if test="null != list_according" >
+      and gsg.ACCORDING in (<foreach collection="list_according" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_according" >
+      and gsg.ACCORDING &gt;= #{begin_according}
+    </if>
+    <if test="null != end_according" >
+      and gsg.ACCORDING &lt;= #{end_according}
+    </if>
+    <if test="null != precondition" >
+      and gsg.PRECONDITION = #{precondition}
+    </if>
+    <if test="null != ne_precondition" >
+      and gsg.PRECONDITION != #{ne_precondition}
+    </if>
+    <if test="null != like_precondition" >
+      and gsg.PRECONDITION like CONCAT('%', #{like_precondition}, '%')
+    </if>
+    <if test="null != list_precondition" >
+      and gsg.PRECONDITION in (<foreach collection="list_precondition" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_precondition" >
+      and gsg.PRECONDITION &gt;= #{begin_precondition}
+    </if>
+    <if test="null != end_precondition" >
+      and gsg.PRECONDITION &lt;= #{end_precondition}
+    </if>
+    <if test="null != jointDept" >
+      and gsg.JOINT_DEPT = #{jointDept}
+    </if>
+    <if test="null != ne_jointDept" >
+      and gsg.JOINT_DEPT != #{ne_jointDept}
+    </if>
+    <if test="null != like_jointDept" >
+      and gsg.JOINT_DEPT like CONCAT('%', #{like_jointDept}, '%')
+    </if>
+    <if test="null != list_jointDept" >
+      and gsg.JOINT_DEPT in (<foreach collection="list_jointDept" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_jointDept" >
+      and gsg.JOINT_DEPT &gt;= #{begin_jointDept}
+    </if>
+    <if test="null != end_jointDept" >
+      and gsg.JOINT_DEPT &lt;= #{end_jointDept}
+    </if>
+    <if test="null != legalTimeLimit" >
+      and gsg.LEGAL_TIME_LIMIT = #{legalTimeLimit}
+    </if>
+    <if test="null != ne_legalTimeLimit" >
+      and gsg.LEGAL_TIME_LIMIT != #{ne_legalTimeLimit}
+    </if>
+    <if test="null != like_legalTimeLimit" >
+      and gsg.LEGAL_TIME_LIMIT like CONCAT('%', #{like_legalTimeLimit}, '%')
+    </if>
+    <if test="null != list_legalTimeLimit" >
+      and gsg.LEGAL_TIME_LIMIT in (<foreach collection="list_legalTimeLimit" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_legalTimeLimit" >
+      and gsg.LEGAL_TIME_LIMIT &gt;= #{begin_legalTimeLimit}
+    </if>
+    <if test="null != end_legalTimeLimit" >
+      and gsg.LEGAL_TIME_LIMIT &lt;= #{end_legalTimeLimit}
+    </if>
+    <if test="null != promisedTimeLimit" >
+      and gsg.PROMISED_TIME_LIMIT = #{promisedTimeLimit}
+    </if>
+    <if test="null != ne_promisedTimeLimit" >
+      and gsg.PROMISED_TIME_LIMIT != #{ne_promisedTimeLimit}
+    </if>
+    <if test="null != like_promisedTimeLimit" >
+      and gsg.PROMISED_TIME_LIMIT like CONCAT('%', #{like_promisedTimeLimit}, '%')
+    </if>
+    <if test="null != list_promisedTimeLimit" >
+      and gsg.PROMISED_TIME_LIMIT in (<foreach collection="list_promisedTimeLimit" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_promisedTimeLimit" >
+      and gsg.PROMISED_TIME_LIMIT &gt;= #{begin_promisedTimeLimit}
+    </if>
+    <if test="null != end_promisedTimeLimit" >
+      and gsg.PROMISED_TIME_LIMIT &lt;= #{end_promisedTimeLimit}
+    </if>
+    <if test="null != isCharge" >
+      and gsg.IS_CHARGE = #{isCharge}
+    </if>
+    <if test="null != ne_isCharge" >
+      and gsg.IS_CHARGE != #{ne_isCharge}
+    </if>
+    <if test="null != list_isCharge" >
+      and gsg.IS_CHARGE in (<foreach collection="list_isCharge" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != chargeAccording" >
+      and gsg.CHARGE_ACCORDING = #{chargeAccording}
+    </if>
+    <if test="null != ne_chargeAccording" >
+      and gsg.CHARGE_ACCORDING != #{ne_chargeAccording}
+    </if>
+    <if test="null != like_chargeAccording" >
+      and gsg.CHARGE_ACCORDING like CONCAT('%', #{like_chargeAccording}, '%')
+    </if>
+    <if test="null != list_chargeAccording" >
+      and gsg.CHARGE_ACCORDING in (<foreach collection="list_chargeAccording" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_chargeAccording" >
+      and gsg.CHARGE_ACCORDING &gt;= #{begin_chargeAccording}
+    </if>
+    <if test="null != end_chargeAccording" >
+      and gsg.CHARGE_ACCORDING &lt;= #{end_chargeAccording}
+    </if>
+    <if test="null != chargeStandard" >
+      and gsg.CHARGE_STANDARD = #{chargeStandard}
+    </if>
+    <if test="null != ne_chargeStandard" >
+      and gsg.CHARGE_STANDARD != #{ne_chargeStandard}
+    </if>
+    <if test="null != like_chargeStandard" >
+      and gsg.CHARGE_STANDARD like CONCAT('%', #{like_chargeStandard}, '%')
+    </if>
+    <if test="null != list_chargeStandard" >
+      and gsg.CHARGE_STANDARD in (<foreach collection="list_chargeStandard" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_chargeStandard" >
+      and gsg.CHARGE_STANDARD &gt;= #{begin_chargeStandard}
+    </if>
+    <if test="null != end_chargeStandard" >
+      and gsg.CHARGE_STANDARD &lt;= #{end_chargeStandard}
+    </if>
+    <if test="null != address" >
+      and gsg.ADDRESS = #{address}
+    </if>
+    <if test="null != ne_address" >
+      and gsg.ADDRESS != #{ne_address}
+    </if>
+    <if test="null != like_address" >
+      and gsg.ADDRESS like CONCAT('%', #{like_address}, '%')
+    </if>
+    <if test="null != list_address" >
+      and gsg.ADDRESS in (<foreach collection="list_address" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_address" >
+      and gsg.ADDRESS &gt;= #{begin_address}
+    </if>
+    <if test="null != end_address" >
+      and gsg.ADDRESS &lt;= #{end_address}
+    </if>
+    <if test="null != workTime" >
+      and gsg.WORK_TIME = #{workTime}
+    </if>
+    <if test="null != ne_workTime" >
+      and gsg.WORK_TIME != #{ne_workTime}
+    </if>
+    <if test="null != like_workTime" >
+      and gsg.WORK_TIME like CONCAT('%', #{like_workTime}, '%')
+    </if>
+    <if test="null != list_workTime" >
+      and gsg.WORK_TIME in (<foreach collection="list_workTime" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_workTime" >
+      and gsg.WORK_TIME &gt;= #{begin_workTime}
+    </if>
+    <if test="null != end_workTime" >
+      and gsg.WORK_TIME &lt;= #{end_workTime}
+    </if>
+    <if test="null != telephone" >
+      and gsg.TELEPHONE = #{telephone}
+    </if>
+    <if test="null != ne_telephone" >
+      and gsg.TELEPHONE != #{ne_telephone}
+    </if>
+    <if test="null != like_telephone" >
+      and gsg.TELEPHONE like CONCAT('%', #{like_telephone}, '%')
+    </if>
+    <if test="null != list_telephone" >
+      and gsg.TELEPHONE in (<foreach collection="list_telephone" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_telephone" >
+      and gsg.TELEPHONE &gt;= #{begin_telephone}
+    </if>
+    <if test="null != end_telephone" >
+      and gsg.TELEPHONE &lt;= #{end_telephone}
+    </if>
+    <if test="null != complaintTelephone" >
+      and gsg.COMPLAINT_TELEPHONE = #{complaintTelephone}
+    </if>
+    <if test="null != ne_complaintTelephone" >
+      and gsg.COMPLAINT_TELEPHONE != #{ne_complaintTelephone}
+    </if>
+    <if test="null != like_complaintTelephone" >
+      and gsg.COMPLAINT_TELEPHONE like CONCAT('%', #{like_complaintTelephone}, '%')
+    </if>
+    <if test="null != list_complaintTelephone" >
+      and gsg.COMPLAINT_TELEPHONE in (<foreach collection="list_complaintTelephone" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_complaintTelephone" >
+      and gsg.COMPLAINT_TELEPHONE &gt;= #{begin_complaintTelephone}
+    </if>
+    <if test="null != end_complaintTelephone" >
+      and gsg.COMPLAINT_TELEPHONE &lt;= #{end_complaintTelephone}
+    </if>
+    <if test="null != flowImageFileId" >
+      and gsg.FLOW_IMAGE_FILE_ID = #{flowImageFileId}
+    </if>
+    <if test="null != ne_flowImageFileId" >
+      and gsg.FLOW_IMAGE_FILE_ID != #{ne_flowImageFileId}
+    </if>
+    <if test="null != like_flowImageFileId" >
+      and gsg.FLOW_IMAGE_FILE_ID like CONCAT('%', #{like_flowImageFileId}, '%')
+    </if>
+    <if test="null != list_flowImageFileId" >
+      and gsg.FLOW_IMAGE_FILE_ID in (<foreach collection="list_flowImageFileId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_flowImageFileId" >
+      and gsg.FLOW_IMAGE_FILE_ID &gt;= #{begin_flowImageFileId}
+    </if>
+    <if test="null != end_flowImageFileId" >
+      and gsg.FLOW_IMAGE_FILE_ID &lt;= #{end_flowImageFileId}
+    </if>
+    <if test="null != flowImageFileName" >
+      and gsg.FLOW_IMAGE_FILE_NAME = #{flowImageFileName}
+    </if>
+    <if test="null != ne_flowImageFileName" >
+      and gsg.FLOW_IMAGE_FILE_NAME != #{ne_flowImageFileName}
+    </if>
+    <if test="null != like_flowImageFileName" >
+      and gsg.FLOW_IMAGE_FILE_NAME like CONCAT('%', #{like_flowImageFileName}, '%')
+    </if>
+    <if test="null != list_flowImageFileName" >
+      and gsg.FLOW_IMAGE_FILE_NAME in (<foreach collection="list_flowImageFileName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_flowImageFileName" >
+      and gsg.FLOW_IMAGE_FILE_NAME &gt;= #{begin_flowImageFileName}
+    </if>
+    <if test="null != end_flowImageFileName" >
+      and gsg.FLOW_IMAGE_FILE_NAME &lt;= #{end_flowImageFileName}
+    </if>
+    <if test="null != sortIndex" >
+      and gsg.SORT_INDEX = #{sortIndex}
+    </if>
+    <if test="null != ne_sortIndex" >
+      and gsg.SORT_INDEX != #{ne_sortIndex}
+    </if>
+    <if test="null != list_sortIndex" >
+      and gsg.SORT_INDEX in (<foreach collection="list_sortIndex" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_createTime" >
+      and gsg.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and gsg.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_updateTime" >
+      and gsg.UPDATE_TIME &gt;= #{begin_updateTime}
+    </if>
+    <if test="null != end_updateTime" >
+      and gsg.UPDATE_TIME &lt;= #{end_updateTime}
+    </if>
+    <if test="null != isInternal" >
+      and gsg.IS_INTERNAL = #{isInternal}
+    </if>
+    <if test="null != ne_isInternal" >
+      and gsg.IS_INTERNAL != #{ne_isInternal}
+    </if>
+    <if test="null != list_isInternal" >
+      and gsg.IS_INTERNAL in (<foreach collection="list_isInternal" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != conditions" >
+      and gsg.CONDITIONS = #{conditions}
+    </if>
+    <if test="null != ne_conditions" >
+      and gsg.CONDITIONS != #{ne_conditions}
+    </if>
+    <if test="null != like_conditions" >
+      and gsg.CONDITIONS like CONCAT('%', #{like_conditions}, '%')
+    </if>
+    <if test="null != list_conditions" >
+      and gsg.CONDITIONS in (<foreach collection="list_conditions" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_conditions" >
+      and gsg.CONDITIONS &gt;= #{begin_conditions}
+    </if>
+    <if test="null != end_conditions" >
+      and gsg.CONDITIONS &lt;= #{end_conditions}
+    </if>
+    <if test="null != material" >
+      and gsg.MATERIAL = #{material}
+    </if>
+    <if test="null != ne_material" >
+      and gsg.MATERIAL != #{ne_material}
+    </if>
+    <if test="null != like_material" >
+      and gsg.MATERIAL like CONCAT('%', #{like_material}, '%')
+    </if>
+    <if test="null != list_material" >
+      and gsg.MATERIAL in (<foreach collection="list_material" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_material" >
+      and gsg.MATERIAL &gt;= #{begin_material}
+    </if>
+    <if test="null != end_material" >
+      and gsg.MATERIAL &lt;= #{end_material}
+    </if>
+    <if test="null != process" >
+      and gsg.PROCESS = #{process}
+    </if>
+    <if test="null != ne_process" >
+      and gsg.PROCESS != #{ne_process}
+    </if>
+    <if test="null != like_process" >
+      and gsg.PROCESS like CONCAT('%', #{like_process}, '%')
+    </if>
+    <if test="null != list_process" >
+      and gsg.PROCESS in (<foreach collection="list_process" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_process" >
+      and gsg.PROCESS &gt;= #{begin_process}
+    </if>
+    <if test="null != end_process" >
+      and gsg.PROCESS &lt;= #{end_process}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'guideId' == orderItem.column" >
+            gsg.GUIDE_ID ${orderItem.dir}
+          </if>
+          <if test="'deptCode' == orderItem.column" >
+            gsg.DEPT_CODE ${orderItem.dir}
+          </if>
+          <if test="'deptName' == orderItem.column" >
+            gsg.DEPT_NAME ${orderItem.dir}
+          </if>
+          <if test="'guideName' == orderItem.column" >
+            gsg.GUIDE_NAME ${orderItem.dir}
+          </if>
+          <if test="'guideType' == orderItem.column" >
+            gsg.GUIDE_TYPE ${orderItem.dir}
+          </if>
+          <if test="'serviceSubject' == orderItem.column" >
+            gsg.SERVICE_SUBJECT ${orderItem.dir}
+          </if>
+          <if test="'according' == orderItem.column" >
+            gsg.ACCORDING ${orderItem.dir}
+          </if>
+          <if test="'precondition' == orderItem.column" >
+            gsg.PRECONDITION ${orderItem.dir}
+          </if>
+          <if test="'jointDept' == orderItem.column" >
+            gsg.JOINT_DEPT ${orderItem.dir}
+          </if>
+          <if test="'legalTimeLimit' == orderItem.column" >
+            gsg.LEGAL_TIME_LIMIT ${orderItem.dir}
+          </if>
+          <if test="'promisedTimeLimit' == orderItem.column" >
+            gsg.PROMISED_TIME_LIMIT ${orderItem.dir}
+          </if>
+          <if test="'isCharge' == orderItem.column" >
+            gsg.IS_CHARGE ${orderItem.dir}
+          </if>
+          <if test="'chargeAccording' == orderItem.column" >
+            gsg.CHARGE_ACCORDING ${orderItem.dir}
+          </if>
+          <if test="'chargeStandard' == orderItem.column" >
+            gsg.CHARGE_STANDARD ${orderItem.dir}
+          </if>
+          <if test="'address' == orderItem.column" >
+            gsg.ADDRESS ${orderItem.dir}
+          </if>
+          <if test="'workTime' == orderItem.column" >
+            gsg.WORK_TIME ${orderItem.dir}
+          </if>
+          <if test="'telephone' == orderItem.column" >
+            gsg.TELEPHONE ${orderItem.dir}
+          </if>
+          <if test="'complaintTelephone' == orderItem.column" >
+            gsg.COMPLAINT_TELEPHONE ${orderItem.dir}
+          </if>
+          <if test="'flowImageFileId' == orderItem.column" >
+            gsg.FLOW_IMAGE_FILE_ID ${orderItem.dir}
+          </if>
+          <if test="'flowImageFileName' == orderItem.column" >
+            gsg.FLOW_IMAGE_FILE_NAME ${orderItem.dir}
+          </if>
+          <if test="'sortIndex' == orderItem.column" >
+            gsg.SORT_INDEX ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            gsg.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'updateTime' == orderItem.column" >
+            gsg.UPDATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'isInternal' == orderItem.column" >
+            gsg.IS_INTERNAL ${orderItem.dir}
+          </if>
+          <if test="'conditions' == orderItem.column" >
+            gsg.CONDITIONS ${orderItem.dir}
+          </if>
+          <if test="'material' == orderItem.column" >
+            gsg.MATERIAL ${orderItem.dir}
+          </if>
+          <if test="'process' == orderItem.column" >
+            gsg.PROCESS ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    gsg.GUIDE_ID, gsg.DEPT_CODE, gsg.DEPT_NAME, gsg.GUIDE_NAME, gsg.GUIDE_TYPE, gsg.SERVICE_SUBJECT, 
+    gsg.ACCORDING, gsg.PRECONDITION, gsg.JOINT_DEPT, gsg.LEGAL_TIME_LIMIT, gsg.PROMISED_TIME_LIMIT, 
+    gsg.IS_CHARGE, gsg.CHARGE_ACCORDING, gsg.CHARGE_STANDARD, gsg.ADDRESS, gsg.WORK_TIME, 
+    gsg.TELEPHONE, gsg.COMPLAINT_TELEPHONE, gsg.FLOW_IMAGE_FILE_ID, gsg.FLOW_IMAGE_FILE_NAME, 
+    gsg.SORT_INDEX, gsg.CREATE_TIME, gsg.UPDATE_TIME, gsg.IS_INTERNAL
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONDITIONS, MATERIAL, PROCESS
+  </sql>
+  <select id="selectById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ga_service_guide gsg
+    where gsg.GUIDE_ID = #{guideId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ga_service_guide gsg
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from ga_service_guide gsg
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaServiceGuide" >
+    <selectKey resultType="java.lang.Integer" keyProperty="guideId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into ga_service_guide
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      GUIDE_ID,
+      <if test="deptCode != null" >
+        DEPT_CODE,
+      </if>
+      <if test="deptName != null" >
+        DEPT_NAME,
+      </if>
+      <if test="guideName != null" >
+        GUIDE_NAME,
+      </if>
+      <if test="guideType != null" >
+        GUIDE_TYPE,
+      </if>
+      <if test="serviceSubject != null" >
+        SERVICE_SUBJECT,
+      </if>
+      <if test="according != null" >
+        ACCORDING,
+      </if>
+      <if test="precondition != null" >
+        PRECONDITION,
+      </if>
+      <if test="jointDept != null" >
+        JOINT_DEPT,
+      </if>
+      <if test="legalTimeLimit != null" >
+        LEGAL_TIME_LIMIT,
+      </if>
+      <if test="promisedTimeLimit != null" >
+        PROMISED_TIME_LIMIT,
+      </if>
+      <if test="isCharge != null" >
+        IS_CHARGE,
+      </if>
+      <if test="chargeAccording != null" >
+        CHARGE_ACCORDING,
+      </if>
+      <if test="chargeStandard != null" >
+        CHARGE_STANDARD,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="workTime != null" >
+        WORK_TIME,
+      </if>
+      <if test="telephone != null" >
+        TELEPHONE,
+      </if>
+      <if test="complaintTelephone != null" >
+        COMPLAINT_TELEPHONE,
+      </if>
+      <if test="flowImageFileId != null" >
+        FLOW_IMAGE_FILE_ID,
+      </if>
+      <if test="flowImageFileName != null" >
+        FLOW_IMAGE_FILE_NAME,
+      </if>
+      <if test="sortIndex != null" >
+        SORT_INDEX,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="isInternal != null" >
+        IS_INTERNAL,
+      </if>
+      <if test="conditions != null" >
+        CONDITIONS,
+      </if>
+      <if test="material != null" >
+        MATERIAL,
+      </if>
+      <if test="process != null" >
+        PROCESS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{guideId,jdbcType=INTEGER},
+      <if test="deptCode != null" >
+        #{deptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="guideName != null" >
+        #{guideName,jdbcType=VARCHAR},
+      </if>
+      <if test="guideType != null" >
+        #{guideType,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceSubject != null" >
+        #{serviceSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="according != null" >
+        #{according,jdbcType=VARCHAR},
+      </if>
+      <if test="precondition != null" >
+        #{precondition,jdbcType=VARCHAR},
+      </if>
+      <if test="jointDept != null" >
+        #{jointDept,jdbcType=VARCHAR},
+      </if>
+      <if test="legalTimeLimit != null" >
+        #{legalTimeLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="promisedTimeLimit != null" >
+        #{promisedTimeLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="isCharge != null" >
+        #{isCharge,jdbcType=BIT},
+      </if>
+      <if test="chargeAccording != null" >
+        #{chargeAccording,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeStandard != null" >
+        #{chargeStandard,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="workTime != null" >
+        #{workTime,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintTelephone != null" >
+        #{complaintTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="flowImageFileId != null" >
+        #{flowImageFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="flowImageFileName != null" >
+        #{flowImageFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="sortIndex != null" >
+        #{sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isInternal != null" >
+        #{isInternal,jdbcType=BIT},
+      </if>
+      <if test="conditions != null" >
+        #{conditions,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="material != null" >
+        #{material,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="process != null" >
+        #{process,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from ga_service_guide
+    where GUIDE_ID = #{guideId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from ga_service_guide where GUIDE_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from gsg using (ga_service_guide as gsg) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaServiceGuide" >
+    update ga_service_guide
+    <set >
+      <if test="deptCode != null" >
+        DEPT_CODE = #{deptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+        DEPT_NAME = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="guideName != null" >
+        GUIDE_NAME = #{guideName,jdbcType=VARCHAR},
+      </if>
+      <if test="guideType != null" >
+        GUIDE_TYPE = #{guideType,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceSubject != null" >
+        SERVICE_SUBJECT = #{serviceSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="according != null" >
+        ACCORDING = #{according,jdbcType=VARCHAR},
+      </if>
+      <if test="precondition != null" >
+        PRECONDITION = #{precondition,jdbcType=VARCHAR},
+      </if>
+      <if test="jointDept != null" >
+        JOINT_DEPT = #{jointDept,jdbcType=VARCHAR},
+      </if>
+      <if test="legalTimeLimit != null" >
+        LEGAL_TIME_LIMIT = #{legalTimeLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="promisedTimeLimit != null" >
+        PROMISED_TIME_LIMIT = #{promisedTimeLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="isCharge != null" >
+        IS_CHARGE = #{isCharge,jdbcType=BIT},
+      </if>
+      <if test="chargeAccording != null" >
+        CHARGE_ACCORDING = #{chargeAccording,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeStandard != null" >
+        CHARGE_STANDARD = #{chargeStandard,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="workTime != null" >
+        WORK_TIME = #{workTime,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        TELEPHONE = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintTelephone != null" >
+        COMPLAINT_TELEPHONE = #{complaintTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="flowImageFileId != null" >
+        FLOW_IMAGE_FILE_ID = #{flowImageFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="flowImageFileName != null" >
+        FLOW_IMAGE_FILE_NAME = #{flowImageFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="sortIndex != null" >
+        SORT_INDEX = #{sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isInternal != null" >
+        IS_INTERNAL = #{isInternal,jdbcType=BIT},
+      </if>
+      <if test="conditions != null" >
+        CONDITIONS = #{conditions,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="material != null" >
+        MATERIAL = #{material,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="process != null" >
+        PROCESS = #{process,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where GUIDE_ID = #{guideId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update ga_service_guide gsg
+    <set >
+      <if test="record.guideId != null" >
+        GUIDE_ID = #{record.guideId,jdbcType=INTEGER},
+      </if>
+      <if test="record.deptCode != null" >
+        DEPT_CODE = #{record.deptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deptName != null" >
+        DEPT_NAME = #{record.deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.guideName != null" >
+        GUIDE_NAME = #{record.guideName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.guideType != null" >
+        GUIDE_TYPE = #{record.guideType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceSubject != null" >
+        SERVICE_SUBJECT = #{record.serviceSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.according != null" >
+        ACCORDING = #{record.according,jdbcType=VARCHAR},
+      </if>
+      <if test="record.precondition != null" >
+        PRECONDITION = #{record.precondition,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jointDept != null" >
+        JOINT_DEPT = #{record.jointDept,jdbcType=VARCHAR},
+      </if>
+      <if test="record.legalTimeLimit != null" >
+        LEGAL_TIME_LIMIT = #{record.legalTimeLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.promisedTimeLimit != null" >
+        PROMISED_TIME_LIMIT = #{record.promisedTimeLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isCharge != null" >
+        IS_CHARGE = #{record.isCharge,jdbcType=BIT},
+      </if>
+      <if test="record.chargeAccording != null" >
+        CHARGE_ACCORDING = #{record.chargeAccording,jdbcType=VARCHAR},
+      </if>
+      <if test="record.chargeStandard != null" >
+        CHARGE_STANDARD = #{record.chargeStandard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        ADDRESS = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workTime != null" >
+        WORK_TIME = #{record.workTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telephone != null" >
+        TELEPHONE = #{record.telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.complaintTelephone != null" >
+        COMPLAINT_TELEPHONE = #{record.complaintTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.flowImageFileId != null" >
+        FLOW_IMAGE_FILE_ID = #{record.flowImageFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.flowImageFileName != null" >
+        FLOW_IMAGE_FILE_NAME = #{record.flowImageFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sortIndex != null" >
+        SORT_INDEX = #{record.sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isInternal != null" >
+        IS_INTERNAL = #{record.isInternal,jdbcType=BIT},
+      </if>
+      <if test="record.conditions != null" >
+        CONDITIONS = #{record.conditions,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.material != null" >
+        MATERIAL = #{record.material,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.process != null" >
+        PROCESS = #{record.process,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.guideId" >
+        and gsg.GUIDE_ID = #{map.guideId}
+      </if>
+      <if test="null != map.list_guideId" >
+        and gsg.GUIDE_ID in (<foreach collection="map.list_guideId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.deptCode" >
+        and gsg.DEPT_CODE = #{map.deptCode}
+      </if>
+      <if test="null != map.like_deptCode" >
+        and gsg.DEPT_CODE like '%' || #{map.like_deptCode} || '%'
+      </if>
+      <if test="null != map.list_deptCode" >
+        and gsg.DEPT_CODE in (<foreach collection="map.list_deptCode" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.deptName" >
+        and gsg.DEPT_NAME = #{map.deptName}
+      </if>
+      <if test="null != map.like_deptName" >
+        and gsg.DEPT_NAME like '%' || #{map.like_deptName} || '%'
+      </if>
+      <if test="null != map.list_deptName" >
+        and gsg.DEPT_NAME in (<foreach collection="map.list_deptName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.guideName" >
+        and gsg.GUIDE_NAME = #{map.guideName}
+      </if>
+      <if test="null != map.like_guideName" >
+        and gsg.GUIDE_NAME like '%' || #{map.like_guideName} || '%'
+      </if>
+      <if test="null != map.list_guideName" >
+        and gsg.GUIDE_NAME in (<foreach collection="map.list_guideName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.guideType" >
+        and gsg.GUIDE_TYPE = #{map.guideType}
+      </if>
+      <if test="null != map.like_guideType" >
+        and gsg.GUIDE_TYPE like '%' || #{map.like_guideType} || '%'
+      </if>
+      <if test="null != map.list_guideType" >
+        and gsg.GUIDE_TYPE in (<foreach collection="map.list_guideType" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.serviceSubject" >
+        and gsg.SERVICE_SUBJECT = #{map.serviceSubject}
+      </if>
+      <if test="null != map.like_serviceSubject" >
+        and gsg.SERVICE_SUBJECT like '%' || #{map.like_serviceSubject} || '%'
+      </if>
+      <if test="null != map.list_serviceSubject" >
+        and gsg.SERVICE_SUBJECT in (<foreach collection="map.list_serviceSubject" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.according" >
+        and gsg.ACCORDING = #{map.according}
+      </if>
+      <if test="null != map.like_according" >
+        and gsg.ACCORDING like '%' || #{map.like_according} || '%'
+      </if>
+      <if test="null != map.list_according" >
+        and gsg.ACCORDING in (<foreach collection="map.list_according" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.precondition" >
+        and gsg.PRECONDITION = #{map.precondition}
+      </if>
+      <if test="null != map.like_precondition" >
+        and gsg.PRECONDITION like '%' || #{map.like_precondition} || '%'
+      </if>
+      <if test="null != map.list_precondition" >
+        and gsg.PRECONDITION in (<foreach collection="map.list_precondition" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.jointDept" >
+        and gsg.JOINT_DEPT = #{map.jointDept}
+      </if>
+      <if test="null != map.like_jointDept" >
+        and gsg.JOINT_DEPT like '%' || #{map.like_jointDept} || '%'
+      </if>
+      <if test="null != map.list_jointDept" >
+        and gsg.JOINT_DEPT in (<foreach collection="map.list_jointDept" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.legalTimeLimit" >
+        and gsg.LEGAL_TIME_LIMIT = #{map.legalTimeLimit}
+      </if>
+      <if test="null != map.like_legalTimeLimit" >
+        and gsg.LEGAL_TIME_LIMIT like '%' || #{map.like_legalTimeLimit} || '%'
+      </if>
+      <if test="null != map.list_legalTimeLimit" >
+        and gsg.LEGAL_TIME_LIMIT in (<foreach collection="map.list_legalTimeLimit" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.promisedTimeLimit" >
+        and gsg.PROMISED_TIME_LIMIT = #{map.promisedTimeLimit}
+      </if>
+      <if test="null != map.like_promisedTimeLimit" >
+        and gsg.PROMISED_TIME_LIMIT like '%' || #{map.like_promisedTimeLimit} || '%'
+      </if>
+      <if test="null != map.list_promisedTimeLimit" >
+        and gsg.PROMISED_TIME_LIMIT in (<foreach collection="map.list_promisedTimeLimit" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.isCharge" >
+        and gsg.IS_CHARGE = #{map.isCharge}
+      </if>
+      <if test="null != map.list_isCharge" >
+        and gsg.IS_CHARGE in (<foreach collection="map.list_isCharge" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.chargeAccording" >
+        and gsg.CHARGE_ACCORDING = #{map.chargeAccording}
+      </if>
+      <if test="null != map.like_chargeAccording" >
+        and gsg.CHARGE_ACCORDING like '%' || #{map.like_chargeAccording} || '%'
+      </if>
+      <if test="null != map.list_chargeAccording" >
+        and gsg.CHARGE_ACCORDING in (<foreach collection="map.list_chargeAccording" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.chargeStandard" >
+        and gsg.CHARGE_STANDARD = #{map.chargeStandard}
+      </if>
+      <if test="null != map.like_chargeStandard" >
+        and gsg.CHARGE_STANDARD like '%' || #{map.like_chargeStandard} || '%'
+      </if>
+      <if test="null != map.list_chargeStandard" >
+        and gsg.CHARGE_STANDARD in (<foreach collection="map.list_chargeStandard" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.address" >
+        and gsg.ADDRESS = #{map.address}
+      </if>
+      <if test="null != map.like_address" >
+        and gsg.ADDRESS like '%' || #{map.like_address} || '%'
+      </if>
+      <if test="null != map.list_address" >
+        and gsg.ADDRESS in (<foreach collection="map.list_address" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.workTime" >
+        and gsg.WORK_TIME = #{map.workTime}
+      </if>
+      <if test="null != map.like_workTime" >
+        and gsg.WORK_TIME like '%' || #{map.like_workTime} || '%'
+      </if>
+      <if test="null != map.list_workTime" >
+        and gsg.WORK_TIME in (<foreach collection="map.list_workTime" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.telephone" >
+        and gsg.TELEPHONE = #{map.telephone}
+      </if>
+      <if test="null != map.like_telephone" >
+        and gsg.TELEPHONE like '%' || #{map.like_telephone} || '%'
+      </if>
+      <if test="null != map.list_telephone" >
+        and gsg.TELEPHONE in (<foreach collection="map.list_telephone" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.complaintTelephone" >
+        and gsg.COMPLAINT_TELEPHONE = #{map.complaintTelephone}
+      </if>
+      <if test="null != map.like_complaintTelephone" >
+        and gsg.COMPLAINT_TELEPHONE like '%' || #{map.like_complaintTelephone} || '%'
+      </if>
+      <if test="null != map.list_complaintTelephone" >
+        and gsg.COMPLAINT_TELEPHONE in (<foreach collection="map.list_complaintTelephone" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.flowImageFileId" >
+        and gsg.FLOW_IMAGE_FILE_ID = #{map.flowImageFileId}
+      </if>
+      <if test="null != map.like_flowImageFileId" >
+        and gsg.FLOW_IMAGE_FILE_ID like '%' || #{map.like_flowImageFileId} || '%'
+      </if>
+      <if test="null != map.list_flowImageFileId" >
+        and gsg.FLOW_IMAGE_FILE_ID in (<foreach collection="map.list_flowImageFileId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.flowImageFileName" >
+        and gsg.FLOW_IMAGE_FILE_NAME = #{map.flowImageFileName}
+      </if>
+      <if test="null != map.like_flowImageFileName" >
+        and gsg.FLOW_IMAGE_FILE_NAME like '%' || #{map.like_flowImageFileName} || '%'
+      </if>
+      <if test="null != map.list_flowImageFileName" >
+        and gsg.FLOW_IMAGE_FILE_NAME in (<foreach collection="map.list_flowImageFileName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.sortIndex" >
+        and gsg.SORT_INDEX = #{map.sortIndex}
+      </if>
+      <if test="null != map.list_sortIndex" >
+        and gsg.SORT_INDEX in (<foreach collection="map.list_sortIndex" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and gsg.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and gsg.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_updateTime" >
+        and gsg.UPDATE_TIME &gt;= #{map.begin_updateTime}
+      </if>
+      <if test="null != map.end_updateTime" >
+        and gsg.UPDATE_TIME &lt;= #{map.end_updateTime}
+      </if>
+      <if test="null != map.isInternal" >
+        and gsg.IS_INTERNAL = #{map.isInternal}
+      </if>
+      <if test="null != map.list_isInternal" >
+        and gsg.IS_INTERNAL in (<foreach collection="map.list_isInternal" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.conditions" >
+        and gsg.CONDITIONS = #{map.conditions}
+      </if>
+      <if test="null != map.like_conditions" >
+        and gsg.CONDITIONS like '%' || #{map.like_conditions} || '%'
+      </if>
+      <if test="null != map.list_conditions" >
+        and gsg.CONDITIONS in (<foreach collection="map.list_conditions" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.material" >
+        and gsg.MATERIAL = #{map.material}
+      </if>
+      <if test="null != map.like_material" >
+        and gsg.MATERIAL like '%' || #{map.like_material} || '%'
+      </if>
+      <if test="null != map.list_material" >
+        and gsg.MATERIAL in (<foreach collection="map.list_material" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.process" >
+        and gsg.PROCESS = #{map.process}
+      </if>
+      <if test="null != map.like_process" >
+        and gsg.PROCESS like '%' || #{map.like_process} || '%'
+      </if>
+      <if test="null != map.list_process" >
+        and gsg.PROCESS in (<foreach collection="map.list_process" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

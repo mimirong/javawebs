@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.ItSurveyQuestionMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.ItSurveyQuestion" >
+    <id column="QUESTION_ID" property="questionId" jdbcType="INTEGER" />
+    <result column="SURVEY_ID" property="surveyId" jdbcType="INTEGER" />
+    <result column="SORT_INDEX" property="sortIndex" jdbcType="INTEGER" />
+    <result column="QUESTION_TEXT" property="questionText" jdbcType="VARCHAR" />
+    <result column="IS_REQUIRED" property="isRequired" jdbcType="BIT" />
+    <result column="QUESTION_TYPE" property="questionType" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.com.hugedata.spark.commons.storage.entity.ItSurveyQuestion" extends="BaseResultMap" >
+    <result column="CONFIG_DATA" property="configData" jdbcType="LONGVARCHAR" />
+    <result column="SUMMARY_DATA" property="summaryData" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != questionId" >
+      and isq.QUESTION_ID = #{questionId}
+    </if>
+    <if test="null != ne_questionId" >
+      and isq.QUESTION_ID != #{ne_questionId}
+    </if>
+    <if test="null != list_questionId" >
+      and isq.QUESTION_ID in (<foreach collection="list_questionId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != surveyId" >
+      and isq.SURVEY_ID = #{surveyId}
+    </if>
+    <if test="null != ne_surveyId" >
+      and isq.SURVEY_ID != #{ne_surveyId}
+    </if>
+    <if test="null != list_surveyId" >
+      and isq.SURVEY_ID in (<foreach collection="list_surveyId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != sortIndex" >
+      and isq.SORT_INDEX = #{sortIndex}
+    </if>
+    <if test="null != ne_sortIndex" >
+      and isq.SORT_INDEX != #{ne_sortIndex}
+    </if>
+    <if test="null != list_sortIndex" >
+      and isq.SORT_INDEX in (<foreach collection="list_sortIndex" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != questionText" >
+      and isq.QUESTION_TEXT = #{questionText}
+    </if>
+    <if test="null != ne_questionText" >
+      and isq.QUESTION_TEXT != #{ne_questionText}
+    </if>
+    <if test="null != like_questionText" >
+      and isq.QUESTION_TEXT like CONCAT('%', #{like_questionText}, '%')
+    </if>
+    <if test="null != list_questionText" >
+      and isq.QUESTION_TEXT in (<foreach collection="list_questionText" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_questionText" >
+      and isq.QUESTION_TEXT &gt;= #{begin_questionText}
+    </if>
+    <if test="null != end_questionText" >
+      and isq.QUESTION_TEXT &lt;= #{end_questionText}
+    </if>
+    <if test="null != isRequired" >
+      and isq.IS_REQUIRED = #{isRequired}
+    </if>
+    <if test="null != ne_isRequired" >
+      and isq.IS_REQUIRED != #{ne_isRequired}
+    </if>
+    <if test="null != list_isRequired" >
+      and isq.IS_REQUIRED in (<foreach collection="list_isRequired" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != questionType" >
+      and isq.QUESTION_TYPE = #{questionType}
+    </if>
+    <if test="null != ne_questionType" >
+      and isq.QUESTION_TYPE != #{ne_questionType}
+    </if>
+    <if test="null != like_questionType" >
+      and isq.QUESTION_TYPE like CONCAT('%', #{like_questionType}, '%')
+    </if>
+    <if test="null != list_questionType" >
+      and isq.QUESTION_TYPE in (<foreach collection="list_questionType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_questionType" >
+      and isq.QUESTION_TYPE &gt;= #{begin_questionType}
+    </if>
+    <if test="null != end_questionType" >
+      and isq.QUESTION_TYPE &lt;= #{end_questionType}
+    </if>
+    <if test="null != configData" >
+      and isq.CONFIG_DATA = #{configData}
+    </if>
+    <if test="null != ne_configData" >
+      and isq.CONFIG_DATA != #{ne_configData}
+    </if>
+    <if test="null != like_configData" >
+      and isq.CONFIG_DATA like CONCAT('%', #{like_configData}, '%')
+    </if>
+    <if test="null != list_configData" >
+      and isq.CONFIG_DATA in (<foreach collection="list_configData" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_configData" >
+      and isq.CONFIG_DATA &gt;= #{begin_configData}
+    </if>
+    <if test="null != end_configData" >
+      and isq.CONFIG_DATA &lt;= #{end_configData}
+    </if>
+    <if test="null != summaryData" >
+      and isq.SUMMARY_DATA = #{summaryData}
+    </if>
+    <if test="null != ne_summaryData" >
+      and isq.SUMMARY_DATA != #{ne_summaryData}
+    </if>
+    <if test="null != like_summaryData" >
+      and isq.SUMMARY_DATA like CONCAT('%', #{like_summaryData}, '%')
+    </if>
+    <if test="null != list_summaryData" >
+      and isq.SUMMARY_DATA in (<foreach collection="list_summaryData" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_summaryData" >
+      and isq.SUMMARY_DATA &gt;= #{begin_summaryData}
+    </if>
+    <if test="null != end_summaryData" >
+      and isq.SUMMARY_DATA &lt;= #{end_summaryData}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'questionId' == orderItem.column" >
+            isq.QUESTION_ID ${orderItem.dir}
+          </if>
+          <if test="'surveyId' == orderItem.column" >
+            isq.SURVEY_ID ${orderItem.dir}
+          </if>
+          <if test="'sortIndex' == orderItem.column" >
+            isq.SORT_INDEX ${orderItem.dir}
+          </if>
+          <if test="'questionText' == orderItem.column" >
+            isq.QUESTION_TEXT ${orderItem.dir}
+          </if>
+          <if test="'isRequired' == orderItem.column" >
+            isq.IS_REQUIRED ${orderItem.dir}
+          </if>
+          <if test="'questionType' == orderItem.column" >
+            isq.QUESTION_TYPE ${orderItem.dir}
+          </if>
+          <if test="'configData' == orderItem.column" >
+            isq.CONFIG_DATA ${orderItem.dir}
+          </if>
+          <if test="'summaryData' == orderItem.column" >
+            isq.SUMMARY_DATA ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    isq.QUESTION_ID, isq.SURVEY_ID, isq.SORT_INDEX, isq.QUESTION_TEXT, isq.IS_REQUIRED, 
+    isq.QUESTION_TYPE
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONFIG_DATA, SUMMARY_DATA
+  </sql>
+  <select id="selectById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from it_survey_question isq
+    where isq.QUESTION_ID = #{questionId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from it_survey_question isq
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from it_survey_question isq
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.ItSurveyQuestion" >
+    <selectKey resultType="java.lang.Integer" keyProperty="questionId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into it_survey_question
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      QUESTION_ID,
+      <if test="surveyId != null" >
+        SURVEY_ID,
+      </if>
+      <if test="sortIndex != null" >
+        SORT_INDEX,
+      </if>
+      <if test="questionText != null" >
+        QUESTION_TEXT,
+      </if>
+      <if test="isRequired != null" >
+        IS_REQUIRED,
+      </if>
+      <if test="questionType != null" >
+        QUESTION_TYPE,
+      </if>
+      <if test="configData != null" >
+        CONFIG_DATA,
+      </if>
+      <if test="summaryData != null" >
+        SUMMARY_DATA,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{questionId,jdbcType=INTEGER},
+      <if test="surveyId != null" >
+        #{surveyId,jdbcType=INTEGER},
+      </if>
+      <if test="sortIndex != null" >
+        #{sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="questionText != null" >
+        #{questionText,jdbcType=VARCHAR},
+      </if>
+      <if test="isRequired != null" >
+        #{isRequired,jdbcType=BIT},
+      </if>
+      <if test="questionType != null" >
+        #{questionType,jdbcType=VARCHAR},
+      </if>
+      <if test="configData != null" >
+        #{configData,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="summaryData != null" >
+        #{summaryData,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from it_survey_question
+    where QUESTION_ID = #{questionId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from it_survey_question where QUESTION_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from isq using (it_survey_question as isq) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.ItSurveyQuestion" >
+    update it_survey_question
+    <set >
+      <if test="surveyId != null" >
+        SURVEY_ID = #{surveyId,jdbcType=INTEGER},
+      </if>
+      <if test="sortIndex != null" >
+        SORT_INDEX = #{sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="questionText != null" >
+        QUESTION_TEXT = #{questionText,jdbcType=VARCHAR},
+      </if>
+      <if test="isRequired != null" >
+        IS_REQUIRED = #{isRequired,jdbcType=BIT},
+      </if>
+      <if test="questionType != null" >
+        QUESTION_TYPE = #{questionType,jdbcType=VARCHAR},
+      </if>
+      <if test="configData != null" >
+        CONFIG_DATA = #{configData,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="summaryData != null" >
+        SUMMARY_DATA = #{summaryData,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where QUESTION_ID = #{questionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update it_survey_question isq
+    <set >
+      <if test="record.questionId != null" >
+        QUESTION_ID = #{record.questionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.surveyId != null" >
+        SURVEY_ID = #{record.surveyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.sortIndex != null" >
+        SORT_INDEX = #{record.sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="record.questionText != null" >
+        QUESTION_TEXT = #{record.questionText,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isRequired != null" >
+        IS_REQUIRED = #{record.isRequired,jdbcType=BIT},
+      </if>
+      <if test="record.questionType != null" >
+        QUESTION_TYPE = #{record.questionType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.configData != null" >
+        CONFIG_DATA = #{record.configData,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.summaryData != null" >
+        SUMMARY_DATA = #{record.summaryData,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.questionId" >
+        and isq.QUESTION_ID = #{map.questionId}
+      </if>
+      <if test="null != map.list_questionId" >
+        and isq.QUESTION_ID in (<foreach collection="map.list_questionId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.surveyId" >
+        and isq.SURVEY_ID = #{map.surveyId}
+      </if>
+      <if test="null != map.list_surveyId" >
+        and isq.SURVEY_ID in (<foreach collection="map.list_surveyId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.sortIndex" >
+        and isq.SORT_INDEX = #{map.sortIndex}
+      </if>
+      <if test="null != map.list_sortIndex" >
+        and isq.SORT_INDEX in (<foreach collection="map.list_sortIndex" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.questionText" >
+        and isq.QUESTION_TEXT = #{map.questionText}
+      </if>
+      <if test="null != map.like_questionText" >
+        and isq.QUESTION_TEXT like '%' || #{map.like_questionText} || '%'
+      </if>
+      <if test="null != map.list_questionText" >
+        and isq.QUESTION_TEXT in (<foreach collection="map.list_questionText" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.isRequired" >
+        and isq.IS_REQUIRED = #{map.isRequired}
+      </if>
+      <if test="null != map.list_isRequired" >
+        and isq.IS_REQUIRED in (<foreach collection="map.list_isRequired" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.questionType" >
+        and isq.QUESTION_TYPE = #{map.questionType}
+      </if>
+      <if test="null != map.like_questionType" >
+        and isq.QUESTION_TYPE like '%' || #{map.like_questionType} || '%'
+      </if>
+      <if test="null != map.list_questionType" >
+        and isq.QUESTION_TYPE in (<foreach collection="map.list_questionType" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.configData" >
+        and isq.CONFIG_DATA = #{map.configData}
+      </if>
+      <if test="null != map.like_configData" >
+        and isq.CONFIG_DATA like '%' || #{map.like_configData} || '%'
+      </if>
+      <if test="null != map.list_configData" >
+        and isq.CONFIG_DATA in (<foreach collection="map.list_configData" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.summaryData" >
+        and isq.SUMMARY_DATA = #{map.summaryData}
+      </if>
+      <if test="null != map.like_summaryData" >
+        and isq.SUMMARY_DATA like '%' || #{map.like_summaryData} || '%'
+      </if>
+      <if test="null != map.list_summaryData" >
+        and isq.SUMMARY_DATA in (<foreach collection="map.list_summaryData" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.querymapper.UcManageRightQueryMapper" >
+
+	<select id="queryRightsForUser" parameterType="map" resultMap="cn.com.hugedata.spark.commons.storage.mapper.UcManageRightMapper.BaseResultMap">
+		select distinct <include refid="cn.com.hugedata.spark.commons.storage.mapper.UcManageRightMapper.Base_Column_List" />
+		from uc_manage_right umr
+		inner join uc_manage_role_right rr on rr.right_id = umr.right_id
+		inner join uc_manage_role r on r.role_id = rr.role_id
+		inner join uc_manage_user_role ur on ur.role_id = r.role_id
+		where ur.user_id = #{userId, jdbcType=INTEGER}
+		<include refid="cn.com.hugedata.spark.commons.storage.mapper.UcManageRightMapper.Order_By_Clause" />
+	</select>
+
+	<select id="queryRightsForAdmin" parameterType="map" resultMap="cn.com.hugedata.spark.commons.storage.mapper.UcManageRightMapper.BaseResultMap">
+		select <include refid="cn.com.hugedata.spark.commons.storage.mapper.UcManageRightMapper.Base_Column_List" />
+		from uc_manage_right umr
+		<include refid="cn.com.hugedata.spark.commons.storage.mapper.UcManageRightMapper.Order_By_Clause" />
+	</select>
+
+	<select id="queryRightsForRole" parameterType="map" resultMap="cn.com.hugedata.spark.commons.storage.mapper.UcManageRightMapper.BaseResultMap">
+		select <include refid="cn.com.hugedata.spark.commons.storage.mapper.UcManageRightMapper.Base_Column_List" />
+		from uc_manage_right umr
+		inner join uc_manage_role_right rr on rr.right_id = umr.right_id
+		where rr.role_id = #{roleId, jdbcType=VARCHAR}
+		<include refid="cn.com.hugedata.spark.commons.storage.mapper.UcManageRightMapper.Order_By_Clause" />
+	</select>
+
+</mapper>

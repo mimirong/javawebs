@@ -1,0 +1,1 @@
+alter table AP_SERVICE_INFO add TIME_LIMIT VARCHAR(50);

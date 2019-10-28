@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.ItSurveyResultMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.ItSurveyResult" >
+    <id column="SURVEY_RESULT_ID" property="surveyResultId" jdbcType="INTEGER" />
+    <result column="SURVEY_ID" property="surveyId" jdbcType="INTEGER" />
+    <result column="SUBMITTER_USER_ID" property="submitterUserId" jdbcType="INTEGER" />
+    <result column="SUBMITTER_NAME" property="submitterName" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != surveyResultId" >
+      and isr.SURVEY_RESULT_ID = #{surveyResultId}
+    </if>
+    <if test="null != ne_surveyResultId" >
+      and isr.SURVEY_RESULT_ID != #{ne_surveyResultId}
+    </if>
+    <if test="null != list_surveyResultId" >
+      and isr.SURVEY_RESULT_ID in (<foreach collection="list_surveyResultId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != surveyId" >
+      and isr.SURVEY_ID = #{surveyId}
+    </if>
+    <if test="null != ne_surveyId" >
+      and isr.SURVEY_ID != #{ne_surveyId}
+    </if>
+    <if test="null != list_surveyId" >
+      and isr.SURVEY_ID in (<foreach collection="list_surveyId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != submitterUserId" >
+      and isr.SUBMITTER_USER_ID = #{submitterUserId}
+    </if>
+    <if test="null != ne_submitterUserId" >
+      and isr.SUBMITTER_USER_ID != #{ne_submitterUserId}
+    </if>
+    <if test="null != list_submitterUserId" >
+      and isr.SUBMITTER_USER_ID in (<foreach collection="list_submitterUserId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != submitterName" >
+      and isr.SUBMITTER_NAME = #{submitterName}
+    </if>
+    <if test="null != ne_submitterName" >
+      and isr.SUBMITTER_NAME != #{ne_submitterName}
+    </if>
+    <if test="null != like_submitterName" >
+      and isr.SUBMITTER_NAME like CONCAT('%', #{like_submitterName}, '%')
+    </if>
+    <if test="null != list_submitterName" >
+      and isr.SUBMITTER_NAME in (<foreach collection="list_submitterName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_submitterName" >
+      and isr.SUBMITTER_NAME &gt;= #{begin_submitterName}
+    </if>
+    <if test="null != end_submitterName" >
+      and isr.SUBMITTER_NAME &lt;= #{end_submitterName}
+    </if>
+    <if test="null != begin_createTime" >
+      and isr.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and isr.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'surveyResultId' == orderItem.column" >
+            isr.SURVEY_RESULT_ID ${orderItem.dir}
+          </if>
+          <if test="'surveyId' == orderItem.column" >
+            isr.SURVEY_ID ${orderItem.dir}
+          </if>
+          <if test="'submitterUserId' == orderItem.column" >
+            isr.SUBMITTER_USER_ID ${orderItem.dir}
+          </if>
+          <if test="'submitterName' == orderItem.column" >
+            isr.SUBMITTER_NAME ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            isr.CREATE_TIME ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    isr.SURVEY_RESULT_ID, isr.SURVEY_ID, isr.SUBMITTER_USER_ID, isr.SUBMITTER_NAME, isr.CREATE_TIME
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from it_survey_result isr
+    where isr.SURVEY_RESULT_ID = #{surveyResultId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from it_survey_result isr
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from it_survey_result isr
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.ItSurveyResult" >
+    <selectKey resultType="java.lang.Integer" keyProperty="surveyResultId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into it_survey_result
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      SURVEY_RESULT_ID,
+      <if test="surveyId != null" >
+        SURVEY_ID,
+      </if>
+      <if test="submitterUserId != null" >
+        SUBMITTER_USER_ID,
+      </if>
+      <if test="submitterName != null" >
+        SUBMITTER_NAME,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{surveyResultId,jdbcType=INTEGER},
+      <if test="surveyId != null" >
+        #{surveyId,jdbcType=INTEGER},
+      </if>
+      <if test="submitterUserId != null" >
+        #{submitterUserId,jdbcType=INTEGER},
+      </if>
+      <if test="submitterName != null" >
+        #{submitterName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from it_survey_result
+    where SURVEY_RESULT_ID = #{surveyResultId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from it_survey_result where SURVEY_RESULT_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from isr using (it_survey_result as isr) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.ItSurveyResult" >
+    update it_survey_result
+    <set >
+      <if test="surveyId != null" >
+        SURVEY_ID = #{surveyId,jdbcType=INTEGER},
+      </if>
+      <if test="submitterUserId != null" >
+        SUBMITTER_USER_ID = #{submitterUserId,jdbcType=INTEGER},
+      </if>
+      <if test="submitterName != null" >
+        SUBMITTER_NAME = #{submitterName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where SURVEY_RESULT_ID = #{surveyResultId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update it_survey_result isr
+    <set >
+      <if test="record.surveyResultId != null" >
+        SURVEY_RESULT_ID = #{record.surveyResultId,jdbcType=INTEGER},
+      </if>
+      <if test="record.surveyId != null" >
+        SURVEY_ID = #{record.surveyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.submitterUserId != null" >
+        SUBMITTER_USER_ID = #{record.submitterUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.submitterName != null" >
+        SUBMITTER_NAME = #{record.submitterName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.surveyResultId" >
+        and isr.SURVEY_RESULT_ID = #{map.surveyResultId}
+      </if>
+      <if test="null != map.list_surveyResultId" >
+        and isr.SURVEY_RESULT_ID in (<foreach collection="map.list_surveyResultId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.surveyId" >
+        and isr.SURVEY_ID = #{map.surveyId}
+      </if>
+      <if test="null != map.list_surveyId" >
+        and isr.SURVEY_ID in (<foreach collection="map.list_surveyId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.submitterUserId" >
+        and isr.SUBMITTER_USER_ID = #{map.submitterUserId}
+      </if>
+      <if test="null != map.list_submitterUserId" >
+        and isr.SUBMITTER_USER_ID in (<foreach collection="map.list_submitterUserId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.submitterName" >
+        and isr.SUBMITTER_NAME = #{map.submitterName}
+      </if>
+      <if test="null != map.like_submitterName" >
+        and isr.SUBMITTER_NAME like '%' || #{map.like_submitterName} || '%'
+      </if>
+      <if test="null != map.list_submitterName" >
+        and isr.SUBMITTER_NAME in (<foreach collection="map.list_submitterName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and isr.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and isr.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+    </where>
+  </update>
+</mapper>

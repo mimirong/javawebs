@@ -1,0 +1,1 @@
+alter table PT_TECH_IMAGE modify FILE_NAME VARCHAR(200);

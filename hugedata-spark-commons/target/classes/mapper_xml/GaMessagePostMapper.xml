@@ -1,0 +1,737 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.GaMessagePostMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.GaMessagePost" >
+    <id column="post_id" property="postId" jdbcType="INTEGER" />
+    <result column="post_time" property="postTime" jdbcType="TIMESTAMP" />
+    <result column="post_addr" property="postAddr" jdbcType="VARCHAR" />
+    <result column="event_desc" property="eventDesc" jdbcType="VARCHAR" />
+    <result column="post_level" property="postLevel" jdbcType="CHAR" />
+    <result column="happen_time" property="happenTime" jdbcType="TIMESTAMP" />
+    <result column="poster_name" property="posterName" jdbcType="VARCHAR" />
+    <result column="poster_mobile" property="posterMobile" jdbcType="VARCHAR" />
+    <result column="file1_id" property="file1Id" jdbcType="VARCHAR" />
+    <result column="file2_id" property="file2Id" jdbcType="VARCHAR" />
+    <result column="file3_id" property="file3Id" jdbcType="VARCHAR" />
+    <result column="file4_id" property="file4Id" jdbcType="VARCHAR" />
+    <result column="file5_id" property="file5Id" jdbcType="VARCHAR" />
+    <result column="file6_id" property="file6Id" jdbcType="VARCHAR" />
+    <result column="creater_id" property="createrId" jdbcType="INTEGER" />
+    <result column="creater_name" property="createrName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != postId" >
+      and gmp.post_id = #{postId}
+    </if>
+    <if test="null != ne_postId" >
+      and gmp.post_id != #{ne_postId}
+    </if>
+    <if test="null != list_postId" >
+      and gmp.post_id in (<foreach collection="list_postId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_postTime" >
+      and gmp.post_time &gt;= #{begin_postTime}
+    </if>
+    <if test="null != end_postTime" >
+      and gmp.post_time &lt;= #{end_postTime}
+    </if>
+    <if test="null != postAddr" >
+      and gmp.post_addr = #{postAddr}
+    </if>
+    <if test="null != ne_postAddr" >
+      and gmp.post_addr != #{ne_postAddr}
+    </if>
+    <if test="null != like_postAddr" >
+      and gmp.post_addr like CONCAT('%', #{like_postAddr}, '%')
+    </if>
+    <if test="null != list_postAddr" >
+      and gmp.post_addr in (<foreach collection="list_postAddr" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_postAddr" >
+      and gmp.post_addr &gt;= #{begin_postAddr}
+    </if>
+    <if test="null != end_postAddr" >
+      and gmp.post_addr &lt;= #{end_postAddr}
+    </if>
+    <if test="null != eventDesc" >
+      and gmp.event_desc = #{eventDesc}
+    </if>
+    <if test="null != ne_eventDesc" >
+      and gmp.event_desc != #{ne_eventDesc}
+    </if>
+    <if test="null != like_eventDesc" >
+      and gmp.event_desc like CONCAT('%', #{like_eventDesc}, '%')
+    </if>
+    <if test="null != list_eventDesc" >
+      and gmp.event_desc in (<foreach collection="list_eventDesc" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_eventDesc" >
+      and gmp.event_desc &gt;= #{begin_eventDesc}
+    </if>
+    <if test="null != end_eventDesc" >
+      and gmp.event_desc &lt;= #{end_eventDesc}
+    </if>
+    <if test="null != postLevel" >
+      and gmp.post_level = #{postLevel}
+    </if>
+    <if test="null != ne_postLevel" >
+      and gmp.post_level != #{ne_postLevel}
+    </if>
+    <if test="null != like_postLevel" >
+      and gmp.post_level like CONCAT('%', #{like_postLevel}, '%')
+    </if>
+    <if test="null != list_postLevel" >
+      and gmp.post_level in (<foreach collection="list_postLevel" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_postLevel" >
+      and gmp.post_level &gt;= #{begin_postLevel}
+    </if>
+    <if test="null != end_postLevel" >
+      and gmp.post_level &lt;= #{end_postLevel}
+    </if>
+    <if test="null != begin_happenTime" >
+      and gmp.happen_time &gt;= #{begin_happenTime}
+    </if>
+    <if test="null != end_happenTime" >
+      and gmp.happen_time &lt;= #{end_happenTime}
+    </if>
+    <if test="null != posterName" >
+      and gmp.poster_name = #{posterName}
+    </if>
+    <if test="null != ne_posterName" >
+      and gmp.poster_name != #{ne_posterName}
+    </if>
+    <if test="null != like_posterName" >
+      and gmp.poster_name like CONCAT('%', #{like_posterName}, '%')
+    </if>
+    <if test="null != list_posterName" >
+      and gmp.poster_name in (<foreach collection="list_posterName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_posterName" >
+      and gmp.poster_name &gt;= #{begin_posterName}
+    </if>
+    <if test="null != end_posterName" >
+      and gmp.poster_name &lt;= #{end_posterName}
+    </if>
+    <if test="null != posterMobile" >
+      and gmp.poster_mobile = #{posterMobile}
+    </if>
+    <if test="null != ne_posterMobile" >
+      and gmp.poster_mobile != #{ne_posterMobile}
+    </if>
+    <if test="null != like_posterMobile" >
+      and gmp.poster_mobile like CONCAT('%', #{like_posterMobile}, '%')
+    </if>
+    <if test="null != list_posterMobile" >
+      and gmp.poster_mobile in (<foreach collection="list_posterMobile" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_posterMobile" >
+      and gmp.poster_mobile &gt;= #{begin_posterMobile}
+    </if>
+    <if test="null != end_posterMobile" >
+      and gmp.poster_mobile &lt;= #{end_posterMobile}
+    </if>
+    <if test="null != file1Id" >
+      and gmp.file1_id = #{file1Id}
+    </if>
+    <if test="null != ne_file1Id" >
+      and gmp.file1_id != #{ne_file1Id}
+    </if>
+    <if test="null != like_file1Id" >
+      and gmp.file1_id like CONCAT('%', #{like_file1Id}, '%')
+    </if>
+    <if test="null != list_file1Id" >
+      and gmp.file1_id in (<foreach collection="list_file1Id" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_file1Id" >
+      and gmp.file1_id &gt;= #{begin_file1Id}
+    </if>
+    <if test="null != end_file1Id" >
+      and gmp.file1_id &lt;= #{end_file1Id}
+    </if>
+    <if test="null != file2Id" >
+      and gmp.file2_id = #{file2Id}
+    </if>
+    <if test="null != ne_file2Id" >
+      and gmp.file2_id != #{ne_file2Id}
+    </if>
+    <if test="null != like_file2Id" >
+      and gmp.file2_id like CONCAT('%', #{like_file2Id}, '%')
+    </if>
+    <if test="null != list_file2Id" >
+      and gmp.file2_id in (<foreach collection="list_file2Id" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_file2Id" >
+      and gmp.file2_id &gt;= #{begin_file2Id}
+    </if>
+    <if test="null != end_file2Id" >
+      and gmp.file2_id &lt;= #{end_file2Id}
+    </if>
+    <if test="null != file3Id" >
+      and gmp.file3_id = #{file3Id}
+    </if>
+    <if test="null != ne_file3Id" >
+      and gmp.file3_id != #{ne_file3Id}
+    </if>
+    <if test="null != like_file3Id" >
+      and gmp.file3_id like CONCAT('%', #{like_file3Id}, '%')
+    </if>
+    <if test="null != list_file3Id" >
+      and gmp.file3_id in (<foreach collection="list_file3Id" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_file3Id" >
+      and gmp.file3_id &gt;= #{begin_file3Id}
+    </if>
+    <if test="null != end_file3Id" >
+      and gmp.file3_id &lt;= #{end_file3Id}
+    </if>
+    <if test="null != file4Id" >
+      and gmp.file4_id = #{file4Id}
+    </if>
+    <if test="null != ne_file4Id" >
+      and gmp.file4_id != #{ne_file4Id}
+    </if>
+    <if test="null != like_file4Id" >
+      and gmp.file4_id like CONCAT('%', #{like_file4Id}, '%')
+    </if>
+    <if test="null != list_file4Id" >
+      and gmp.file4_id in (<foreach collection="list_file4Id" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_file4Id" >
+      and gmp.file4_id &gt;= #{begin_file4Id}
+    </if>
+    <if test="null != end_file4Id" >
+      and gmp.file4_id &lt;= #{end_file4Id}
+    </if>
+    <if test="null != file5Id" >
+      and gmp.file5_id = #{file5Id}
+    </if>
+    <if test="null != ne_file5Id" >
+      and gmp.file5_id != #{ne_file5Id}
+    </if>
+    <if test="null != like_file5Id" >
+      and gmp.file5_id like CONCAT('%', #{like_file5Id}, '%')
+    </if>
+    <if test="null != list_file5Id" >
+      and gmp.file5_id in (<foreach collection="list_file5Id" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_file5Id" >
+      and gmp.file5_id &gt;= #{begin_file5Id}
+    </if>
+    <if test="null != end_file5Id" >
+      and gmp.file5_id &lt;= #{end_file5Id}
+    </if>
+    <if test="null != file6Id" >
+      and gmp.file6_id = #{file6Id}
+    </if>
+    <if test="null != ne_file6Id" >
+      and gmp.file6_id != #{ne_file6Id}
+    </if>
+    <if test="null != like_file6Id" >
+      and gmp.file6_id like CONCAT('%', #{like_file6Id}, '%')
+    </if>
+    <if test="null != list_file6Id" >
+      and gmp.file6_id in (<foreach collection="list_file6Id" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_file6Id" >
+      and gmp.file6_id &gt;= #{begin_file6Id}
+    </if>
+    <if test="null != end_file6Id" >
+      and gmp.file6_id &lt;= #{end_file6Id}
+    </if>
+    <if test="null != createrId" >
+      and gmp.creater_id = #{createrId}
+    </if>
+    <if test="null != ne_createrId" >
+      and gmp.creater_id != #{ne_createrId}
+    </if>
+    <if test="null != list_createrId" >
+      and gmp.creater_id in (<foreach collection="list_createrId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != createrName" >
+      and gmp.creater_name = #{createrName}
+    </if>
+    <if test="null != ne_createrName" >
+      and gmp.creater_name != #{ne_createrName}
+    </if>
+    <if test="null != like_createrName" >
+      and gmp.creater_name like CONCAT('%', #{like_createrName}, '%')
+    </if>
+    <if test="null != list_createrName" >
+      and gmp.creater_name in (<foreach collection="list_createrName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_createrName" >
+      and gmp.creater_name &gt;= #{begin_createrName}
+    </if>
+    <if test="null != end_createrName" >
+      and gmp.creater_name &lt;= #{end_createrName}
+    </if>
+    <if test="null != begin_createTime" >
+      and gmp.create_time &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and gmp.create_time &lt;= #{end_createTime}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'postId' == orderItem.column" >
+            gmp.post_id ${orderItem.dir}
+          </if>
+          <if test="'postTime' == orderItem.column" >
+            gmp.post_time ${orderItem.dir}
+          </if>
+          <if test="'postAddr' == orderItem.column" >
+            gmp.post_addr ${orderItem.dir}
+          </if>
+          <if test="'eventDesc' == orderItem.column" >
+            gmp.event_desc ${orderItem.dir}
+          </if>
+          <if test="'postLevel' == orderItem.column" >
+            gmp.post_level ${orderItem.dir}
+          </if>
+          <if test="'happenTime' == orderItem.column" >
+            gmp.happen_time ${orderItem.dir}
+          </if>
+          <if test="'posterName' == orderItem.column" >
+            gmp.poster_name ${orderItem.dir}
+          </if>
+          <if test="'posterMobile' == orderItem.column" >
+            gmp.poster_mobile ${orderItem.dir}
+          </if>
+          <if test="'file1Id' == orderItem.column" >
+            gmp.file1_id ${orderItem.dir}
+          </if>
+          <if test="'file2Id' == orderItem.column" >
+            gmp.file2_id ${orderItem.dir}
+          </if>
+          <if test="'file3Id' == orderItem.column" >
+            gmp.file3_id ${orderItem.dir}
+          </if>
+          <if test="'file4Id' == orderItem.column" >
+            gmp.file4_id ${orderItem.dir}
+          </if>
+          <if test="'file5Id' == orderItem.column" >
+            gmp.file5_id ${orderItem.dir}
+          </if>
+          <if test="'file6Id' == orderItem.column" >
+            gmp.file6_id ${orderItem.dir}
+          </if>
+          <if test="'createrId' == orderItem.column" >
+            gmp.creater_id ${orderItem.dir}
+          </if>
+          <if test="'createrName' == orderItem.column" >
+            gmp.creater_name ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            gmp.create_time ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    gmp.post_id, gmp.post_time, gmp.post_addr, gmp.event_desc, gmp.post_level, gmp.happen_time, 
+    gmp.poster_name, gmp.poster_mobile, gmp.file1_id, gmp.file2_id, gmp.file3_id, gmp.file4_id, 
+    gmp.file5_id, gmp.file6_id, gmp.creater_id, gmp.creater_name, gmp.create_time
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ga_message_post gmp
+    where gmp.post_id = #{postId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from ga_message_post gmp
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from ga_message_post gmp
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaMessagePost" >
+    <selectKey resultType="java.lang.Integer" keyProperty="postId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into ga_message_post
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      post_id,
+      <if test="postTime != null" >
+        post_time,
+      </if>
+      <if test="postAddr != null" >
+        post_addr,
+      </if>
+      <if test="eventDesc != null" >
+        event_desc,
+      </if>
+      <if test="postLevel != null" >
+        post_level,
+      </if>
+      <if test="happenTime != null" >
+        happen_time,
+      </if>
+      <if test="posterName != null" >
+        poster_name,
+      </if>
+      <if test="posterMobile != null" >
+        poster_mobile,
+      </if>
+      <if test="file1Id != null" >
+        file1_id,
+      </if>
+      <if test="file2Id != null" >
+        file2_id,
+      </if>
+      <if test="file3Id != null" >
+        file3_id,
+      </if>
+      <if test="file4Id != null" >
+        file4_id,
+      </if>
+      <if test="file5Id != null" >
+        file5_id,
+      </if>
+      <if test="file6Id != null" >
+        file6_id,
+      </if>
+      <if test="createrId != null" >
+        creater_id,
+      </if>
+      <if test="createrName != null" >
+        creater_name,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{postId,jdbcType=INTEGER},
+      <if test="postTime != null" >
+        #{postTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="postAddr != null" >
+        #{postAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="eventDesc != null" >
+        #{eventDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="postLevel != null" >
+        #{postLevel,jdbcType=CHAR},
+      </if>
+      <if test="happenTime != null" >
+        #{happenTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="posterName != null" >
+        #{posterName,jdbcType=VARCHAR},
+      </if>
+      <if test="posterMobile != null" >
+        #{posterMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="file1Id != null" >
+        #{file1Id,jdbcType=VARCHAR},
+      </if>
+      <if test="file2Id != null" >
+        #{file2Id,jdbcType=VARCHAR},
+      </if>
+      <if test="file3Id != null" >
+        #{file3Id,jdbcType=VARCHAR},
+      </if>
+      <if test="file4Id != null" >
+        #{file4Id,jdbcType=VARCHAR},
+      </if>
+      <if test="file5Id != null" >
+        #{file5Id,jdbcType=VARCHAR},
+      </if>
+      <if test="file6Id != null" >
+        #{file6Id,jdbcType=VARCHAR},
+      </if>
+      <if test="createrId != null" >
+        #{createrId,jdbcType=INTEGER},
+      </if>
+      <if test="createrName != null" >
+        #{createrName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from ga_message_post
+    where post_id = #{postId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from ga_message_post where post_id in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from gmp using (ga_message_post as gmp) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaMessagePost" >
+    update ga_message_post
+    <set >
+      <if test="postTime != null" >
+        post_time = #{postTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="postAddr != null" >
+        post_addr = #{postAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="eventDesc != null" >
+        event_desc = #{eventDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="postLevel != null" >
+        post_level = #{postLevel,jdbcType=CHAR},
+      </if>
+      <if test="happenTime != null" >
+        happen_time = #{happenTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="posterName != null" >
+        poster_name = #{posterName,jdbcType=VARCHAR},
+      </if>
+      <if test="posterMobile != null" >
+        poster_mobile = #{posterMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="file1Id != null" >
+        file1_id = #{file1Id,jdbcType=VARCHAR},
+      </if>
+      <if test="file2Id != null" >
+        file2_id = #{file2Id,jdbcType=VARCHAR},
+      </if>
+      <if test="file3Id != null" >
+        file3_id = #{file3Id,jdbcType=VARCHAR},
+      </if>
+      <if test="file4Id != null" >
+        file4_id = #{file4Id,jdbcType=VARCHAR},
+      </if>
+      <if test="file5Id != null" >
+        file5_id = #{file5Id,jdbcType=VARCHAR},
+      </if>
+      <if test="file6Id != null" >
+        file6_id = #{file6Id,jdbcType=VARCHAR},
+      </if>
+      <if test="createrId != null" >
+        creater_id = #{createrId,jdbcType=INTEGER},
+      </if>
+      <if test="createrName != null" >
+        creater_name = #{createrName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where post_id = #{postId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update ga_message_post gmp
+    <set >
+      <if test="record.postId != null" >
+        post_id = #{record.postId,jdbcType=INTEGER},
+      </if>
+      <if test="record.postTime != null" >
+        post_time = #{record.postTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.postAddr != null" >
+        post_addr = #{record.postAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eventDesc != null" >
+        event_desc = #{record.eventDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postLevel != null" >
+        post_level = #{record.postLevel,jdbcType=CHAR},
+      </if>
+      <if test="record.happenTime != null" >
+        happen_time = #{record.happenTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.posterName != null" >
+        poster_name = #{record.posterName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.posterMobile != null" >
+        poster_mobile = #{record.posterMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.file1Id != null" >
+        file1_id = #{record.file1Id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.file2Id != null" >
+        file2_id = #{record.file2Id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.file3Id != null" >
+        file3_id = #{record.file3Id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.file4Id != null" >
+        file4_id = #{record.file4Id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.file5Id != null" >
+        file5_id = #{record.file5Id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.file6Id != null" >
+        file6_id = #{record.file6Id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createrId != null" >
+        creater_id = #{record.createrId,jdbcType=INTEGER},
+      </if>
+      <if test="record.createrName != null" >
+        creater_name = #{record.createrName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.postId" >
+        and gmp.post_id = #{map.postId}
+      </if>
+      <if test="null != map.list_postId" >
+        and gmp.post_id in (<foreach collection="map.list_postId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_postTime" >
+        and gmp.post_time &gt;= #{map.begin_postTime}
+      </if>
+      <if test="null != map.end_postTime" >
+        and gmp.post_time &lt;= #{map.end_postTime}
+      </if>
+      <if test="null != map.postAddr" >
+        and gmp.post_addr = #{map.postAddr}
+      </if>
+      <if test="null != map.like_postAddr" >
+        and gmp.post_addr like '%' || #{map.like_postAddr} || '%'
+      </if>
+      <if test="null != map.list_postAddr" >
+        and gmp.post_addr in (<foreach collection="map.list_postAddr" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.eventDesc" >
+        and gmp.event_desc = #{map.eventDesc}
+      </if>
+      <if test="null != map.like_eventDesc" >
+        and gmp.event_desc like '%' || #{map.like_eventDesc} || '%'
+      </if>
+      <if test="null != map.list_eventDesc" >
+        and gmp.event_desc in (<foreach collection="map.list_eventDesc" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.postLevel" >
+        and gmp.post_level = #{map.postLevel}
+      </if>
+      <if test="null != map.like_postLevel" >
+        and gmp.post_level like '%' || #{map.like_postLevel} || '%'
+      </if>
+      <if test="null != map.list_postLevel" >
+        and gmp.post_level in (<foreach collection="map.list_postLevel" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_happenTime" >
+        and gmp.happen_time &gt;= #{map.begin_happenTime}
+      </if>
+      <if test="null != map.end_happenTime" >
+        and gmp.happen_time &lt;= #{map.end_happenTime}
+      </if>
+      <if test="null != map.posterName" >
+        and gmp.poster_name = #{map.posterName}
+      </if>
+      <if test="null != map.like_posterName" >
+        and gmp.poster_name like '%' || #{map.like_posterName} || '%'
+      </if>
+      <if test="null != map.list_posterName" >
+        and gmp.poster_name in (<foreach collection="map.list_posterName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.posterMobile" >
+        and gmp.poster_mobile = #{map.posterMobile}
+      </if>
+      <if test="null != map.like_posterMobile" >
+        and gmp.poster_mobile like '%' || #{map.like_posterMobile} || '%'
+      </if>
+      <if test="null != map.list_posterMobile" >
+        and gmp.poster_mobile in (<foreach collection="map.list_posterMobile" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.file1Id" >
+        and gmp.file1_id = #{map.file1Id}
+      </if>
+      <if test="null != map.like_file1Id" >
+        and gmp.file1_id like '%' || #{map.like_file1Id} || '%'
+      </if>
+      <if test="null != map.list_file1Id" >
+        and gmp.file1_id in (<foreach collection="map.list_file1Id" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.file2Id" >
+        and gmp.file2_id = #{map.file2Id}
+      </if>
+      <if test="null != map.like_file2Id" >
+        and gmp.file2_id like '%' || #{map.like_file2Id} || '%'
+      </if>
+      <if test="null != map.list_file2Id" >
+        and gmp.file2_id in (<foreach collection="map.list_file2Id" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.file3Id" >
+        and gmp.file3_id = #{map.file3Id}
+      </if>
+      <if test="null != map.like_file3Id" >
+        and gmp.file3_id like '%' || #{map.like_file3Id} || '%'
+      </if>
+      <if test="null != map.list_file3Id" >
+        and gmp.file3_id in (<foreach collection="map.list_file3Id" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.file4Id" >
+        and gmp.file4_id = #{map.file4Id}
+      </if>
+      <if test="null != map.like_file4Id" >
+        and gmp.file4_id like '%' || #{map.like_file4Id} || '%'
+      </if>
+      <if test="null != map.list_file4Id" >
+        and gmp.file4_id in (<foreach collection="map.list_file4Id" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.file5Id" >
+        and gmp.file5_id = #{map.file5Id}
+      </if>
+      <if test="null != map.like_file5Id" >
+        and gmp.file5_id like '%' || #{map.like_file5Id} || '%'
+      </if>
+      <if test="null != map.list_file5Id" >
+        and gmp.file5_id in (<foreach collection="map.list_file5Id" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.file6Id" >
+        and gmp.file6_id = #{map.file6Id}
+      </if>
+      <if test="null != map.like_file6Id" >
+        and gmp.file6_id like '%' || #{map.like_file6Id} || '%'
+      </if>
+      <if test="null != map.list_file6Id" >
+        and gmp.file6_id in (<foreach collection="map.list_file6Id" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.createrId" >
+        and gmp.creater_id = #{map.createrId}
+      </if>
+      <if test="null != map.list_createrId" >
+        and gmp.creater_id in (<foreach collection="map.list_createrId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.createrName" >
+        and gmp.creater_name = #{map.createrName}
+      </if>
+      <if test="null != map.like_createrName" >
+        and gmp.creater_name like '%' || #{map.like_createrName} || '%'
+      </if>
+      <if test="null != map.list_createrName" >
+        and gmp.creater_name in (<foreach collection="map.list_createrName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and gmp.create_time &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and gmp.create_time &lt;= #{map.end_createTime}
+      </if>
+    </where>
+  </update>
+</mapper>

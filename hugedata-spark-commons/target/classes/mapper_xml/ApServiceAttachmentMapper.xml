@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.ApServiceAttachmentMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.ApServiceAttachment" >
+    <id column="ATTACHMENT_ID" property="attachmentId" jdbcType="INTEGER" />
+    <result column="SERVICE_ID" property="serviceId" jdbcType="INTEGER" />
+    <result column="ATT_CONFIG_ID" property="attConfigId" jdbcType="INTEGER" />
+    <result column="ATT_CONFIG_NAME" property="attConfigName" jdbcType="VARCHAR" />
+    <result column="FILE_ID" property="fileId" jdbcType="VARCHAR" />
+    <result column="FILE_NAME" property="fileName" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="APPROVE_STATUS" property="approveStatus" jdbcType="VARCHAR" />
+    <result column="SORT_INDEX" property="sortIndex" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != attachmentId" >
+      and asa.ATTACHMENT_ID = #{attachmentId}
+    </if>
+    <if test="null != ne_attachmentId" >
+      and asa.ATTACHMENT_ID != #{ne_attachmentId}
+    </if>
+    <if test="null != list_attachmentId" >
+      and asa.ATTACHMENT_ID in (<foreach collection="list_attachmentId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != serviceId" >
+      and asa.SERVICE_ID = #{serviceId}
+    </if>
+    <if test="null != ne_serviceId" >
+      and asa.SERVICE_ID != #{ne_serviceId}
+    </if>
+    <if test="null != list_serviceId" >
+      and asa.SERVICE_ID in (<foreach collection="list_serviceId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != attConfigId" >
+      and asa.ATT_CONFIG_ID = #{attConfigId}
+    </if>
+    <if test="null != ne_attConfigId" >
+      and asa.ATT_CONFIG_ID != #{ne_attConfigId}
+    </if>
+    <if test="null != list_attConfigId" >
+      and asa.ATT_CONFIG_ID in (<foreach collection="list_attConfigId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != attConfigName" >
+      and asa.ATT_CONFIG_NAME = #{attConfigName}
+    </if>
+    <if test="null != ne_attConfigName" >
+      and asa.ATT_CONFIG_NAME != #{ne_attConfigName}
+    </if>
+    <if test="null != like_attConfigName" >
+      and asa.ATT_CONFIG_NAME like CONCAT('%', #{like_attConfigName}, '%')
+    </if>
+    <if test="null != list_attConfigName" >
+      and asa.ATT_CONFIG_NAME in (<foreach collection="list_attConfigName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_attConfigName" >
+      and asa.ATT_CONFIG_NAME &gt;= #{begin_attConfigName}
+    </if>
+    <if test="null != end_attConfigName" >
+      and asa.ATT_CONFIG_NAME &lt;= #{end_attConfigName}
+    </if>
+    <if test="null != fileId" >
+      and asa.FILE_ID = #{fileId}
+    </if>
+    <if test="null != ne_fileId" >
+      and asa.FILE_ID != #{ne_fileId}
+    </if>
+    <if test="null != like_fileId" >
+      and asa.FILE_ID like CONCAT('%', #{like_fileId}, '%')
+    </if>
+    <if test="null != list_fileId" >
+      and asa.FILE_ID in (<foreach collection="list_fileId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_fileId" >
+      and asa.FILE_ID &gt;= #{begin_fileId}
+    </if>
+    <if test="null != end_fileId" >
+      and asa.FILE_ID &lt;= #{end_fileId}
+    </if>
+    <if test="null != fileName" >
+      and asa.FILE_NAME = #{fileName}
+    </if>
+    <if test="null != ne_fileName" >
+      and asa.FILE_NAME != #{ne_fileName}
+    </if>
+    <if test="null != like_fileName" >
+      and asa.FILE_NAME like CONCAT('%', #{like_fileName}, '%')
+    </if>
+    <if test="null != list_fileName" >
+      and asa.FILE_NAME in (<foreach collection="list_fileName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_fileName" >
+      and asa.FILE_NAME &gt;= #{begin_fileName}
+    </if>
+    <if test="null != end_fileName" >
+      and asa.FILE_NAME &lt;= #{end_fileName}
+    </if>
+    <if test="null != remark" >
+      and asa.REMARK = #{remark}
+    </if>
+    <if test="null != ne_remark" >
+      and asa.REMARK != #{ne_remark}
+    </if>
+    <if test="null != like_remark" >
+      and asa.REMARK like CONCAT('%', #{like_remark}, '%')
+    </if>
+    <if test="null != list_remark" >
+      and asa.REMARK in (<foreach collection="list_remark" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_remark" >
+      and asa.REMARK &gt;= #{begin_remark}
+    </if>
+    <if test="null != end_remark" >
+      and asa.REMARK &lt;= #{end_remark}
+    </if>
+    <if test="null != approveStatus" >
+      and asa.APPROVE_STATUS = #{approveStatus}
+    </if>
+    <if test="null != ne_approveStatus" >
+      and asa.APPROVE_STATUS != #{ne_approveStatus}
+    </if>
+    <if test="null != like_approveStatus" >
+      and asa.APPROVE_STATUS like CONCAT('%', #{like_approveStatus}, '%')
+    </if>
+    <if test="null != list_approveStatus" >
+      and asa.APPROVE_STATUS in (<foreach collection="list_approveStatus" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_approveStatus" >
+      and asa.APPROVE_STATUS &gt;= #{begin_approveStatus}
+    </if>
+    <if test="null != end_approveStatus" >
+      and asa.APPROVE_STATUS &lt;= #{end_approveStatus}
+    </if>
+    <if test="null != sortIndex" >
+      and asa.SORT_INDEX = #{sortIndex}
+    </if>
+    <if test="null != ne_sortIndex" >
+      and asa.SORT_INDEX != #{ne_sortIndex}
+    </if>
+    <if test="null != list_sortIndex" >
+      and asa.SORT_INDEX in (<foreach collection="list_sortIndex" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_createTime" >
+      and asa.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and asa.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'attachmentId' == orderItem.column" >
+            asa.ATTACHMENT_ID ${orderItem.dir}
+          </if>
+          <if test="'serviceId' == orderItem.column" >
+            asa.SERVICE_ID ${orderItem.dir}
+          </if>
+          <if test="'attConfigId' == orderItem.column" >
+            asa.ATT_CONFIG_ID ${orderItem.dir}
+          </if>
+          <if test="'attConfigName' == orderItem.column" >
+            asa.ATT_CONFIG_NAME ${orderItem.dir}
+          </if>
+          <if test="'fileId' == orderItem.column" >
+            asa.FILE_ID ${orderItem.dir}
+          </if>
+          <if test="'fileName' == orderItem.column" >
+            asa.FILE_NAME ${orderItem.dir}
+          </if>
+          <if test="'remark' == orderItem.column" >
+            asa.REMARK ${orderItem.dir}
+          </if>
+          <if test="'approveStatus' == orderItem.column" >
+            asa.APPROVE_STATUS ${orderItem.dir}
+          </if>
+          <if test="'sortIndex' == orderItem.column" >
+            asa.SORT_INDEX ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            asa.CREATE_TIME ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    asa.ATTACHMENT_ID, asa.SERVICE_ID, asa.ATT_CONFIG_ID, asa.ATT_CONFIG_NAME, asa.FILE_ID, 
+    asa.FILE_NAME, asa.REMARK, asa.APPROVE_STATUS, asa.SORT_INDEX, asa.CREATE_TIME
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ap_service_attachment asa
+    where asa.ATTACHMENT_ID = #{attachmentId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from ap_service_attachment asa
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from ap_service_attachment asa
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.ApServiceAttachment" >
+    <selectKey resultType="java.lang.Integer" keyProperty="attachmentId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into ap_service_attachment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      ATTACHMENT_ID,
+      <if test="serviceId != null" >
+        SERVICE_ID,
+      </if>
+      <if test="attConfigId != null" >
+        ATT_CONFIG_ID,
+      </if>
+      <if test="attConfigName != null" >
+        ATT_CONFIG_NAME,
+      </if>
+      <if test="fileId != null" >
+        FILE_ID,
+      </if>
+      <if test="fileName != null" >
+        FILE_NAME,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="approveStatus != null" >
+        APPROVE_STATUS,
+      </if>
+      <if test="sortIndex != null" >
+        SORT_INDEX,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{attachmentId,jdbcType=INTEGER},
+      <if test="serviceId != null" >
+        #{serviceId,jdbcType=INTEGER},
+      </if>
+      <if test="attConfigId != null" >
+        #{attConfigId,jdbcType=INTEGER},
+      </if>
+      <if test="attConfigName != null" >
+        #{attConfigName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileId != null" >
+        #{fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="approveStatus != null" >
+        #{approveStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="sortIndex != null" >
+        #{sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from ap_service_attachment
+    where ATTACHMENT_ID = #{attachmentId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from ap_service_attachment where ATTACHMENT_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from asa using (ap_service_attachment as asa) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.ApServiceAttachment" >
+    update ap_service_attachment
+    <set >
+      <if test="serviceId != null" >
+        SERVICE_ID = #{serviceId,jdbcType=INTEGER},
+      </if>
+      <if test="attConfigId != null" >
+        ATT_CONFIG_ID = #{attConfigId,jdbcType=INTEGER},
+      </if>
+      <if test="attConfigName != null" >
+        ATT_CONFIG_NAME = #{attConfigName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileId != null" >
+        FILE_ID = #{fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        FILE_NAME = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="approveStatus != null" >
+        APPROVE_STATUS = #{approveStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="sortIndex != null" >
+        SORT_INDEX = #{sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ATTACHMENT_ID = #{attachmentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update ap_service_attachment asa
+    <set >
+      <if test="record.attachmentId != null" >
+        ATTACHMENT_ID = #{record.attachmentId,jdbcType=INTEGER},
+      </if>
+      <if test="record.serviceId != null" >
+        SERVICE_ID = #{record.serviceId,jdbcType=INTEGER},
+      </if>
+      <if test="record.attConfigId != null" >
+        ATT_CONFIG_ID = #{record.attConfigId,jdbcType=INTEGER},
+      </if>
+      <if test="record.attConfigName != null" >
+        ATT_CONFIG_NAME = #{record.attConfigName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileId != null" >
+        FILE_ID = #{record.fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileName != null" >
+        FILE_NAME = #{record.fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.approveStatus != null" >
+        APPROVE_STATUS = #{record.approveStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sortIndex != null" >
+        SORT_INDEX = #{record.sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.attachmentId" >
+        and asa.ATTACHMENT_ID = #{map.attachmentId}
+      </if>
+      <if test="null != map.list_attachmentId" >
+        and asa.ATTACHMENT_ID in (<foreach collection="map.list_attachmentId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.serviceId" >
+        and asa.SERVICE_ID = #{map.serviceId}
+      </if>
+      <if test="null != map.list_serviceId" >
+        and asa.SERVICE_ID in (<foreach collection="map.list_serviceId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.attConfigId" >
+        and asa.ATT_CONFIG_ID = #{map.attConfigId}
+      </if>
+      <if test="null != map.list_attConfigId" >
+        and asa.ATT_CONFIG_ID in (<foreach collection="map.list_attConfigId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.attConfigName" >
+        and asa.ATT_CONFIG_NAME = #{map.attConfigName}
+      </if>
+      <if test="null != map.like_attConfigName" >
+        and asa.ATT_CONFIG_NAME like '%' || #{map.like_attConfigName} || '%'
+      </if>
+      <if test="null != map.list_attConfigName" >
+        and asa.ATT_CONFIG_NAME in (<foreach collection="map.list_attConfigName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.fileId" >
+        and asa.FILE_ID = #{map.fileId}
+      </if>
+      <if test="null != map.like_fileId" >
+        and asa.FILE_ID like '%' || #{map.like_fileId} || '%'
+      </if>
+      <if test="null != map.list_fileId" >
+        and asa.FILE_ID in (<foreach collection="map.list_fileId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.fileName" >
+        and asa.FILE_NAME = #{map.fileName}
+      </if>
+      <if test="null != map.like_fileName" >
+        and asa.FILE_NAME like '%' || #{map.like_fileName} || '%'
+      </if>
+      <if test="null != map.list_fileName" >
+        and asa.FILE_NAME in (<foreach collection="map.list_fileName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.remark" >
+        and asa.REMARK = #{map.remark}
+      </if>
+      <if test="null != map.like_remark" >
+        and asa.REMARK like '%' || #{map.like_remark} || '%'
+      </if>
+      <if test="null != map.list_remark" >
+        and asa.REMARK in (<foreach collection="map.list_remark" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.approveStatus" >
+        and asa.APPROVE_STATUS = #{map.approveStatus}
+      </if>
+      <if test="null != map.like_approveStatus" >
+        and asa.APPROVE_STATUS like '%' || #{map.like_approveStatus} || '%'
+      </if>
+      <if test="null != map.list_approveStatus" >
+        and asa.APPROVE_STATUS in (<foreach collection="map.list_approveStatus" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.sortIndex" >
+        and asa.SORT_INDEX = #{map.sortIndex}
+      </if>
+      <if test="null != map.list_sortIndex" >
+        and asa.SORT_INDEX in (<foreach collection="map.list_sortIndex" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and asa.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and asa.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+    </where>
+  </update>
+</mapper>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.UcManageUserRoleMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.UcManageUserRole" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="USER_ID" property="userId" jdbcType="INTEGER" />
+    <result column="ROLE_ID" property="roleId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != id" >
+      and umur.ID = #{id}
+    </if>
+    <if test="null != ne_id" >
+      and umur.ID != #{ne_id}
+    </if>
+    <if test="null != list_id" >
+      and umur.ID in (<foreach collection="list_id" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != userId" >
+      and umur.USER_ID = #{userId}
+    </if>
+    <if test="null != ne_userId" >
+      and umur.USER_ID != #{ne_userId}
+    </if>
+    <if test="null != list_userId" >
+      and umur.USER_ID in (<foreach collection="list_userId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != roleId" >
+      and umur.ROLE_ID = #{roleId}
+    </if>
+    <if test="null != ne_roleId" >
+      and umur.ROLE_ID != #{ne_roleId}
+    </if>
+    <if test="null != like_roleId" >
+      and umur.ROLE_ID like CONCAT('%', #{like_roleId}, '%')
+    </if>
+    <if test="null != list_roleId" >
+      and umur.ROLE_ID in (<foreach collection="list_roleId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_roleId" >
+      and umur.ROLE_ID &gt;= #{begin_roleId}
+    </if>
+    <if test="null != end_roleId" >
+      and umur.ROLE_ID &lt;= #{end_roleId}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'id' == orderItem.column" >
+            umur.ID ${orderItem.dir}
+          </if>
+          <if test="'userId' == orderItem.column" >
+            umur.USER_ID ${orderItem.dir}
+          </if>
+          <if test="'roleId' == orderItem.column" >
+            umur.ROLE_ID ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    umur.ID, umur.USER_ID, umur.ROLE_ID
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from uc_manage_user_role umur
+    where umur.ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from uc_manage_user_role umur
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from uc_manage_user_role umur
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcManageUserRole" >
+    insert into uc_manage_user_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="roleId != null" >
+        ROLE_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from uc_manage_user_role
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from uc_manage_user_role where ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from umur using (uc_manage_user_role as umur) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcManageUserRole" >
+    update uc_manage_user_role
+    <set >
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null" >
+        ROLE_ID = #{roleId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update uc_manage_user_role umur
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null" >
+        USER_ID = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.roleId != null" >
+        ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.id" >
+        and umur.ID = #{map.id}
+      </if>
+      <if test="null != map.list_id" >
+        and umur.ID in (<foreach collection="map.list_id" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.userId" >
+        and umur.USER_ID = #{map.userId}
+      </if>
+      <if test="null != map.list_userId" >
+        and umur.USER_ID in (<foreach collection="map.list_userId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.roleId" >
+        and umur.ROLE_ID = #{map.roleId}
+      </if>
+      <if test="null != map.like_roleId" >
+        and umur.ROLE_ID like '%' || #{map.like_roleId} || '%'
+      </if>
+      <if test="null != map.list_roleId" >
+        and umur.ROLE_ID in (<foreach collection="map.list_roleId" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

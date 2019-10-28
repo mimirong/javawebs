@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration  
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">  
+  
+<generatorConfiguration>  
+    <classPathEntry location="./target/classes/" />  
+    <classPathEntry location="./lib/mysql-connector-java-5.1.40.jar" />  
+    
+    <context id="Hugedataspark" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+    	<property name="javaFileEncoding" value="UTF-8"/>
+    	
+        <plugin type="cn.com.hugedata.spark.codegen.HugedataClientPlugin">
+        </plugin>
+        
+        <commentGenerator type="cn.com.hugedata.spark.codegen.HugedataCommentGenerator">
+            <property name="suppressDate" value="true" />  
+        </commentGenerator>  
+                
+  		<!--
+		改成你的数据库配置
+		-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://172.171.17.45:3306/spark?useUnicode=true&amp;characterEncoding=UTF-8"
+			userId="root" password="123456">  
+        </jdbcConnection>  
+  
+        <javaTypeResolver>  
+            <property name="forceBigDecimals" value="false" />  
+        </javaTypeResolver>  
+  
+  		<!-- 
+  			按要求修改targetPackage
+  		 -->
+        <javaModelGenerator targetPackage="cn.com.hugedata.spark.commons.storage.entity" targetProject="gen">
+            <property name="enableSubPackages" value="true" />  
+            <property name="trimStrings" value="true" />  
+            <property name="rootClass" value="cn.com.hugedata.spark.commons.storage.base.BaseEntity"/>
+        </javaModelGenerator>  
+  
+        <sqlMapGenerator 
+        	targetPackage="mapper_xml"  
+            targetProject="gen">  
+            <property name="enableSubPackages" value="true" />  
+        </sqlMapGenerator>  
+  
+		<!--修改targetPackage -->
+        <javaClientGenerator type="cn.com.hugedata.spark.codegen.HugedataJavaClientGenerator"
+            targetPackage="cn.com.hugedata.spark.commons.storage.mapper" targetProject="gen" >
+            <property name="enableSubPackages" value="true" />  
+            <property name="rootInterface" value="cn.com.hugedata.spark.commons.storage.base.BaseMapper"/>
+            <property name="managementInterface" value="cn.com.hugedata.spark.commons.storage.base.ManagementMapper" />
+        </javaClientGenerator>  
+  
+		<!-- 按需求修改表名、对象名 -->
+		
+		<!-- SYS -->
+        <table tableName="sys_file_info" domainObjectName="SysFileInfo">
+        </table>
+        <table tableName="sys_image_preview" domainObjectName="SysImagePreview">
+        </table>
+        
+		
+		<!-- LOG -->
+        <table tableName="log_operation" domainObjectName="LogOperation">
+        	<property name="hasConstants" value="true"/>
+        	<generatedKey column="user_id" sqlStatement="default" />
+        </table>
+        <table tableName="log_interface_call" domainObjectName="LogInterfaceCall">
+        	<generatedKey column="id" sqlStatement="default" />
+        </table>
+        
+		
+        <!-- UC -->
+        <table tableName="uc_user_info" domainObjectName="UcUserInfo">
+        	<property name="hasConstants" value="true"/>
+        	<generatedKey column="user_id" sqlStatement="default" />
+        </table>
+        <table tableName="uc_org_info" domainObjectName="UcOrgInfo">
+        	<generatedKey column="org_id" sqlStatement="default" />
+        </table>
+        <table tableName="uc_dept_info" domainObjectName="UcDeptInfo">
+        	<generatedKey column="dept_id" sqlStatement="default" />
+        </table>
+        <table tableName="uc_admin_user" domainObjectName="UcAdminUser">
+        </table>
+        <table tableName="uc_manage_user_role" domainObjectName="UcManageUserRole">
+        </table>
+        <table tableName="uc_manage_role" domainObjectName="UcManageRole">
+        </table>
+        <table tableName="uc_manage_role_right" domainObjectName="UcManageRoleRight">
+        </table>
+        <table tableName="uc_manage_right" domainObjectName="UcManageRight">
+        	<property name="hasConstants" value="true"/>
+        </table>
+        <table tableName="uc_user_verification_session" domainObjectName="UcUserVerificationSession">
+        	<property name="hasConstants" value="true"/>
+        </table>
+        <table tableName="uc_message" domainObjectName="UcMessage">
+        	<property name="hasConstants" value="true"/>
+        	<generatedKey column="message_id" sqlStatement="default" />
+        </table>
+        <table tableName="uc_company_info" domainObjectName="UcCompanyInfo">
+        	<property name="hasConstants" value="true"/>
+        	<generatedKey column="company_id" sqlStatement="default" />
+        </table>
+        <table tableName="uc_push_device" domainObjectName="UcPushDevice">
+        	<generatedKey column="registration_id" sqlStatement="default" />
+        </table>
+        <table tableName="uc_park_dept" domainObjectName="UcParkDept">
+        </table>
+        <table tableName="uc_user_dept" domainObjectName="UcUserDept">
+        	<generatedKey column="record_id" sqlStatement="default" />
+        </table>
+        
+        <!-- GA -->
+        <table tableName="ga_park_join_application" domainObjectName="GaParkJoinApplication">
+        	<property name="hasConstants" value="true"/>
+        	<generatedKey column="application_id" sqlStatement="default" />
+        </table>
+        <table tableName="ga_park_join_guide" domainObjectName="GaParkJoinGuide">
+        	<generatedKey column="guide_id" sqlStatement="default" />
+        </table>
+        <table tableName="ga_park_quit_application" domainObjectName="GaParkQuitApplication">
+        	<property name="hasConstants" value="true"/>
+        	<generatedKey column="application_id" sqlStatement="default" />
+        </table>
+        <table tableName="ga_park_quit_guide" domainObjectName="GaParkQuitGuide">
+        	<generatedKey column="guide_id" sqlStatement="default" />
+        </table>
+        <table tableName="ga_aptitude" domainObjectName="GaAptitude">
+        	<generatedKey column="aptitude_id" sqlStatement="default" />
+        </table>
+        <table tableName="ga_financing_guide" domainObjectName="GaFinancingGuide">
+        	<generatedKey column="guide_id" sqlStatement="default" />
+        </table>
+        <table tableName="ga_financing_application" domainObjectName="GaFinancingApplication">
+        	<property name="hasConstants" value="true"/>
+        	<generatedKey column="application_id" sqlStatement="default" />
+        </table>
+        <table tableName="ga_site_proof" domainObjectName="GaSiteProof">
+        	<generatedKey column="site_proof_id" sqlStatement="default" />
+        </table>
+        <table tableName="ga_report_template" domainObjectName="GaReportTemplate">
+        	<generatedKey column="template_id" sqlStatement="default" />
+        </table>
+        <table tableName="ga_report_submit" domainObjectName="GaReportSubmit">
+        	<generatedKey column="submit_id" sqlStatement="default" />
+        </table>
+        <table tableName="ga_rent_info" domainObjectName="GaRentInfo">
+        	<property name="hasConstants" value="true"/>
+        	<generatedKey column="rent_info_id" sqlStatement="default" />
+        </table>
+        <table tableName="ga_quit_rent_info" domainObjectName="GaQuitRentInfo">
+        	<property name="hasConstants" value="true"/>
+        	<generatedKey column="info_id" sqlStatement="default" />
+        </table>
+        <table tableName="ga_pm_bill" domainObjectName="GaPmBill">
+        	<property name="hasConstants" value="true"/>
+        	<generatedKey column="bill_id" sqlStatement="default" />
+        </table>
+        <table tableName="ga_pm_standard" domainObjectName="GaPmStandard">
+        	<property name="hasConstants" value="true"/>
+        	<generatedKey column="standard_id" sqlStatement="default" />
+        </table>
+        <table tableName="ga_pm_refund" domainObjectName="GaPmRefund">
+        	<property name="hasConstants" value="true"/>
+        	<generatedKey column="refund_id" sqlStatement="default" />
+        </table>
+        <table tableName="ga_service_guide" domainObjectName="GaServiceGuide">
+        	<property name="hasConstants" value="true"/>
+        	<generatedKey column="guide_id" sqlStatement="default" />
+        </table>
+        <table tableName="ga_service_guide_attachment" domainObjectName="GaServiceGuideAttachment">
+        	<property name="hasConstants" value="true"/>
+        	<generatedKey column="attachment_id" sqlStatement="default" />
+        </table>
+        <table tableName="ga_service_guide_att_config" domainObjectName="GaServiceGuideAttConfig">
+        	<generatedKey column="att_config_id" sqlStatement="default" />
+        </table>
+        
+        <table tableName="ga_message_post" domainObjectName="GaMessagePost">
+        	<generatedKey column="post_id" sqlStatement="default" />
+        </table>
+        
+        
+        <!-- AP -->
+	    <table tableName="ap_service_info" domainObjectName="ApServiceInfo">
+        	<property name="hasConstants" value="true"/>
+	        <generatedKey column="service_id" sqlStatement="default" />
+        </table>
+	    <table tableName="ap_service_attachment" domainObjectName="ApServiceAttachment">
+        	<property name="hasConstants" value="true"/>
+	        <generatedKey column="attachment_id" sqlStatement="default" />
+        </table>
+	    <table tableName="ap_service_process" domainObjectName="ApServiceProcess">
+        	<property name="hasConstants" value="true"/>
+	        <generatedKey column="process_id" sqlStatement="default" />
+        </table>
+	    <table tableName="ap_service_cc" domainObjectName="ApServiceCc">
+	        <generatedKey column="id" sqlStatement="default" />
+        </table>
+        
+        
+        <!-- PT -->
+	    <table tableName="pt_category" domainObjectName="PtCategory">
+        	<property name="hasConstants" value="true"/>
+	        <generatedKey column="service_id" sqlStatement="default" />
+        </table>
+	    <table tableName="pt_article" domainObjectName="PtArticle">
+	        <generatedKey column="article_id" sqlStatement="default" />
+        </table>
+	    <table tableName="pt_article_image" domainObjectName="PtArticleImage">
+	        <generatedKey column="image_id" sqlStatement="default" />
+        </table>
+	    <table tableName="pt_article_attachment" domainObjectName="PtArticleAttachment">
+	        <generatedKey column="attachment_id" sqlStatement="default" />
+        </table>
+	    <table tableName="pt_tech_image" domainObjectName="PtTechImage">
+        	<property name="hasConstants" value="true"/>
+	        <generatedKey column="image_id" sqlStatement="default" />
+        </table>
+	    <table tableName="pt_home_image" domainObjectName="PtHomeImage">
+        	<property name="hasConstants" value="true"/>
+	        <generatedKey column="image_id" sqlStatement="default" />
+        </table>
+	    <table tableName="pt_notice_banner" domainObjectName="PtNoticeBanner">
+        	<property name="hasConstants" value="true"/>
+	        <generatedKey column="image_id" sqlStatement="default" />
+        </table>
+        
+        <!-- IT -->
+         <table tableName="it_message" domainObjectName="ItMessage">
+	        <generatedKey column="message_id" sqlStatement="default" />
+        </table>
+          <table tableName="it_survey" domainObjectName="ItSurvey">
+	        <generatedKey column="survey_id" sqlStatement="default" />
+        </table>
+          <table tableName="it_survey_question" domainObjectName="ItSurveyQuestion">
+	        <generatedKey column="question_id" sqlStatement="default" />
+        </table>
+          <table tableName="it_survey_question_result" domainObjectName="ItSurveyQuestionResult">
+	        <generatedKey column="result_id" sqlStatement="default" />
+        </table>
+         <table tableName="it_survey_result" domainObjectName="ItSurveyResult">
+	        <generatedKey column="survey_result_id" sqlStatement="default" />
+        </table>
+         <table tableName="it_survey_option" domainObjectName="ItSurveyOption">
+	        <generatedKey column="option_id" sqlStatement="default" />
+        </table>
+        
+
+        <!-- DD -->
+	    <table tableName="dd_detection_apply" domainObjectName="DdDetectionApply">
+        	<property name="hasConstants" value="true"/>
+	        <generatedKey column="apply_id" sqlStatement="default" />
+        </table>
+        
+        <!-- PM -->
+        <table tableName="pm_project" domainObjectName="PmProject">
+	        <generatedKey column="project_id" sqlStatement="default" />
+        </table>
+        <table tableName="pm_doc_type" domainObjectName="PmDocType">
+	        <generatedKey column="type_id" sqlStatement="default" />
+        </table>
+        <table tableName="pm_project_doc" domainObjectName="PmProjectDoc">
+	        <generatedKey column="doc_id" sqlStatement="default" />
+        </table>
+        <table tableName="pm_month_report" domainObjectName="PmMonthReport">
+	        <generatedKey column="report_id" sqlStatement="default" />
+        </table>
+        <table tableName="pm_month_invest" domainObjectName="PmMonthInvest">
+	        <generatedKey column="invest_id" sqlStatement="default" />
+        </table>
+         <table tableName="pm_year_plan" domainObjectName="PmYearPlan">
+	        <generatedKey column="plan_id" sqlStatement="default" />
+        </table>
+        
+        <!-- OS -->
+        <table tableName="os_tech_service_apply" domainObjectName="OsTechServiceApply">
+        	<property name="hasConstants" value="true"/>
+        	<generatedKey column="apply_id" sqlStatement="default" />
+        </table>
+        <table tableName="os_tech_service_spec" domainObjectName="OsTechServiceSpec">
+        	<property name="hasConstants" value="true"/>
+        	<generatedKey column="apply_id" sqlStatement="default" />
+        </table>
+        <table tableName="os_tech_service_config" domainObjectName="OsTechServiceConfig">
+        	<property name="hasConstants" value="true"/>
+        </table>
+        <!-- 服务外包->成果转化->专家名录 -->
+        <table tableName="os_experts_list" domainObjectName="OsExpertsList">
+            <generatedKey column="expert_id" sqlStatement="default" />
+        </table>
+        <!-- 服务外包->成果转化->技术成果 -->
+        <table tableName="os_tech_achieve" domainObjectName="OsTechAchieve">
+            <generatedKey column="achieve_id" sqlStatement="default" />
+        </table>
+         <table tableName="os_require_info" domainObjectName="OsRequireInfo">
+        	<generatedKey column="require_id" sqlStatement="default" />
+        </table>
+        
+         <table tableName="os_require_att" domainObjectName="OsRequireAtt">
+        	<generatedKey column="att_id" sqlStatement="default" />
+        </table>
+        <!-- 服务外包->成果转化->会议培训 -->
+        <table tableName="os_meeting_training" domainObjectName="OsMeetingTraining">
+            <generatedKey column="training_id" sqlStatement="default" />
+        </table>
+
+
+        <!--  SP  -->
+        <table tableName="sp_service_project" domainObjectName="SpServiceProject">
+            <property name="hasConstants" value="true"/>
+            <generatedKey column="project_id" sqlStatement="default" />
+        </table>
+        <table tableName="sp_specification" domainObjectName="SpSpecification">
+            <property name="hasConstants" value="true"/>
+            <generatedKey column="spec_id" sqlStatement="default" />
+        </table>
+        <table tableName="sp_project_image" domainObjectName="SpProjectImage">
+            <generatedKey column="image_id" sqlStatement="default" />
+        </table>
+
+    </context>  
+</generatorConfiguration> 

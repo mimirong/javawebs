@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.ItSurveyQuestionResultMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.ItSurveyQuestionResult" >
+    <id column="RESULT_ID" property="resultId" jdbcType="INTEGER" />
+    <result column="QUESTION_ID" property="questionId" jdbcType="INTEGER" />
+    <result column="SURVEY_ID" property="surveyId" jdbcType="INTEGER" />
+    <result column="RESULT" property="result" jdbcType="VARCHAR" />
+    <result column="SURVEY_RESULT_ID" property="surveyResultId" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.com.hugedata.spark.commons.storage.entity.ItSurveyQuestionResult" extends="BaseResultMap" >
+    <result column="RESULT_TEXT" property="resultText" jdbcType="LONGVARCHAR" />
+    <result column="RESULT_DATA" property="resultData" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != resultId" >
+      and isqr.RESULT_ID = #{resultId}
+    </if>
+    <if test="null != ne_resultId" >
+      and isqr.RESULT_ID != #{ne_resultId}
+    </if>
+    <if test="null != list_resultId" >
+      and isqr.RESULT_ID in (<foreach collection="list_resultId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != questionId" >
+      and isqr.QUESTION_ID = #{questionId}
+    </if>
+    <if test="null != ne_questionId" >
+      and isqr.QUESTION_ID != #{ne_questionId}
+    </if>
+    <if test="null != list_questionId" >
+      and isqr.QUESTION_ID in (<foreach collection="list_questionId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != surveyId" >
+      and isqr.SURVEY_ID = #{surveyId}
+    </if>
+    <if test="null != ne_surveyId" >
+      and isqr.SURVEY_ID != #{ne_surveyId}
+    </if>
+    <if test="null != list_surveyId" >
+      and isqr.SURVEY_ID in (<foreach collection="list_surveyId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != result" >
+      and isqr.RESULT = #{result}
+    </if>
+    <if test="null != ne_result" >
+      and isqr.RESULT != #{ne_result}
+    </if>
+    <if test="null != like_result" >
+      and isqr.RESULT like CONCAT('%', #{like_result}, '%')
+    </if>
+    <if test="null != list_result" >
+      and isqr.RESULT in (<foreach collection="list_result" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_result" >
+      and isqr.RESULT &gt;= #{begin_result}
+    </if>
+    <if test="null != end_result" >
+      and isqr.RESULT &lt;= #{end_result}
+    </if>
+    <if test="null != surveyResultId" >
+      and isqr.SURVEY_RESULT_ID = #{surveyResultId}
+    </if>
+    <if test="null != ne_surveyResultId" >
+      and isqr.SURVEY_RESULT_ID != #{ne_surveyResultId}
+    </if>
+    <if test="null != list_surveyResultId" >
+      and isqr.SURVEY_RESULT_ID in (<foreach collection="list_surveyResultId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_createTime" >
+      and isqr.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and isqr.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != resultText" >
+      and isqr.RESULT_TEXT = #{resultText}
+    </if>
+    <if test="null != ne_resultText" >
+      and isqr.RESULT_TEXT != #{ne_resultText}
+    </if>
+    <if test="null != like_resultText" >
+      and isqr.RESULT_TEXT like CONCAT('%', #{like_resultText}, '%')
+    </if>
+    <if test="null != list_resultText" >
+      and isqr.RESULT_TEXT in (<foreach collection="list_resultText" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_resultText" >
+      and isqr.RESULT_TEXT &gt;= #{begin_resultText}
+    </if>
+    <if test="null != end_resultText" >
+      and isqr.RESULT_TEXT &lt;= #{end_resultText}
+    </if>
+    <if test="null != resultData" >
+      and isqr.RESULT_DATA = #{resultData}
+    </if>
+    <if test="null != ne_resultData" >
+      and isqr.RESULT_DATA != #{ne_resultData}
+    </if>
+    <if test="null != like_resultData" >
+      and isqr.RESULT_DATA like CONCAT('%', #{like_resultData}, '%')
+    </if>
+    <if test="null != list_resultData" >
+      and isqr.RESULT_DATA in (<foreach collection="list_resultData" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_resultData" >
+      and isqr.RESULT_DATA &gt;= #{begin_resultData}
+    </if>
+    <if test="null != end_resultData" >
+      and isqr.RESULT_DATA &lt;= #{end_resultData}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'resultId' == orderItem.column" >
+            isqr.RESULT_ID ${orderItem.dir}
+          </if>
+          <if test="'questionId' == orderItem.column" >
+            isqr.QUESTION_ID ${orderItem.dir}
+          </if>
+          <if test="'surveyId' == orderItem.column" >
+            isqr.SURVEY_ID ${orderItem.dir}
+          </if>
+          <if test="'result' == orderItem.column" >
+            isqr.RESULT ${orderItem.dir}
+          </if>
+          <if test="'surveyResultId' == orderItem.column" >
+            isqr.SURVEY_RESULT_ID ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            isqr.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'resultText' == orderItem.column" >
+            isqr.RESULT_TEXT ${orderItem.dir}
+          </if>
+          <if test="'resultData' == orderItem.column" >
+            isqr.RESULT_DATA ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    isqr.RESULT_ID, isqr.QUESTION_ID, isqr.SURVEY_ID, isqr.RESULT, isqr.SURVEY_RESULT_ID, 
+    isqr.CREATE_TIME
+  </sql>
+  <sql id="Blob_Column_List" >
+    RESULT_TEXT, RESULT_DATA
+  </sql>
+  <select id="selectById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from it_survey_question_result isqr
+    where isqr.RESULT_ID = #{resultId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from it_survey_question_result isqr
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from it_survey_question_result isqr
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.ItSurveyQuestionResult" >
+    <selectKey resultType="java.lang.Integer" keyProperty="resultId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into it_survey_question_result
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      RESULT_ID,
+      <if test="questionId != null" >
+        QUESTION_ID,
+      </if>
+      <if test="surveyId != null" >
+        SURVEY_ID,
+      </if>
+      <if test="result != null" >
+        RESULT,
+      </if>
+      <if test="surveyResultId != null" >
+        SURVEY_RESULT_ID,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="resultText != null" >
+        RESULT_TEXT,
+      </if>
+      <if test="resultData != null" >
+        RESULT_DATA,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{resultId,jdbcType=INTEGER},
+      <if test="questionId != null" >
+        #{questionId,jdbcType=INTEGER},
+      </if>
+      <if test="surveyId != null" >
+        #{surveyId,jdbcType=INTEGER},
+      </if>
+      <if test="result != null" >
+        #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="surveyResultId != null" >
+        #{surveyResultId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resultText != null" >
+        #{resultText,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="resultData != null" >
+        #{resultData,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from it_survey_question_result
+    where RESULT_ID = #{resultId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from it_survey_question_result where RESULT_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from isqr using (it_survey_question_result as isqr) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.ItSurveyQuestionResult" >
+    update it_survey_question_result
+    <set >
+      <if test="questionId != null" >
+        QUESTION_ID = #{questionId,jdbcType=INTEGER},
+      </if>
+      <if test="surveyId != null" >
+        SURVEY_ID = #{surveyId,jdbcType=INTEGER},
+      </if>
+      <if test="result != null" >
+        RESULT = #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="surveyResultId != null" >
+        SURVEY_RESULT_ID = #{surveyResultId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resultText != null" >
+        RESULT_TEXT = #{resultText,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="resultData != null" >
+        RESULT_DATA = #{resultData,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where RESULT_ID = #{resultId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update it_survey_question_result isqr
+    <set >
+      <if test="record.resultId != null" >
+        RESULT_ID = #{record.resultId,jdbcType=INTEGER},
+      </if>
+      <if test="record.questionId != null" >
+        QUESTION_ID = #{record.questionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.surveyId != null" >
+        SURVEY_ID = #{record.surveyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.result != null" >
+        RESULT = #{record.result,jdbcType=VARCHAR},
+      </if>
+      <if test="record.surveyResultId != null" >
+        SURVEY_RESULT_ID = #{record.surveyResultId,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.resultText != null" >
+        RESULT_TEXT = #{record.resultText,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.resultData != null" >
+        RESULT_DATA = #{record.resultData,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.resultId" >
+        and isqr.RESULT_ID = #{map.resultId}
+      </if>
+      <if test="null != map.list_resultId" >
+        and isqr.RESULT_ID in (<foreach collection="map.list_resultId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.questionId" >
+        and isqr.QUESTION_ID = #{map.questionId}
+      </if>
+      <if test="null != map.list_questionId" >
+        and isqr.QUESTION_ID in (<foreach collection="map.list_questionId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.surveyId" >
+        and isqr.SURVEY_ID = #{map.surveyId}
+      </if>
+      <if test="null != map.list_surveyId" >
+        and isqr.SURVEY_ID in (<foreach collection="map.list_surveyId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.result" >
+        and isqr.RESULT = #{map.result}
+      </if>
+      <if test="null != map.like_result" >
+        and isqr.RESULT like '%' || #{map.like_result} || '%'
+      </if>
+      <if test="null != map.list_result" >
+        and isqr.RESULT in (<foreach collection="map.list_result" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.surveyResultId" >
+        and isqr.SURVEY_RESULT_ID = #{map.surveyResultId}
+      </if>
+      <if test="null != map.list_surveyResultId" >
+        and isqr.SURVEY_RESULT_ID in (<foreach collection="map.list_surveyResultId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and isqr.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and isqr.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.resultText" >
+        and isqr.RESULT_TEXT = #{map.resultText}
+      </if>
+      <if test="null != map.like_resultText" >
+        and isqr.RESULT_TEXT like '%' || #{map.like_resultText} || '%'
+      </if>
+      <if test="null != map.list_resultText" >
+        and isqr.RESULT_TEXT in (<foreach collection="map.list_resultText" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.resultData" >
+        and isqr.RESULT_DATA = #{map.resultData}
+      </if>
+      <if test="null != map.like_resultData" >
+        and isqr.RESULT_DATA like '%' || #{map.like_resultData} || '%'
+      </if>
+      <if test="null != map.list_resultData" >
+        and isqr.RESULT_DATA in (<foreach collection="map.list_resultData" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

@@ -1,0 +1,1 @@
+alter table PT_TECH_IMAGE add CATEGORY_ID VARCHAR(50);

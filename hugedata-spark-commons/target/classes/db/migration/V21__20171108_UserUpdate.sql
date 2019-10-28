@@ -1,0 +1,1 @@
+alter table UC_COMPANY_INFO modify COMPANY_ID INTEGER not null auto_increment;

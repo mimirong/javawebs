@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.GaPmRefundMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.GaPmRefund" >
+    <id column="REFUND_ID" property="refundId" jdbcType="INTEGER" />
+    <result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="AMOUNT" property="amount" jdbcType="INTEGER" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="USER_ID" property="userId" jdbcType="INTEGER" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="ESTIMATED_REFUND_TIME" property="estimatedRefundTime" jdbcType="TIMESTAMP" />
+    <result column="REFUND_TIME" property="refundTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != refundId" >
+      and gpr.REFUND_ID = #{refundId}
+    </if>
+    <if test="null != ne_refundId" >
+      and gpr.REFUND_ID != #{ne_refundId}
+    </if>
+    <if test="null != list_refundId" >
+      and gpr.REFUND_ID in (<foreach collection="list_refundId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != companyName" >
+      and gpr.COMPANY_NAME = #{companyName}
+    </if>
+    <if test="null != ne_companyName" >
+      and gpr.COMPANY_NAME != #{ne_companyName}
+    </if>
+    <if test="null != like_companyName" >
+      and gpr.COMPANY_NAME like CONCAT('%', #{like_companyName}, '%')
+    </if>
+    <if test="null != list_companyName" >
+      and gpr.COMPANY_NAME in (<foreach collection="list_companyName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_companyName" >
+      and gpr.COMPANY_NAME &gt;= #{begin_companyName}
+    </if>
+    <if test="null != end_companyName" >
+      and gpr.COMPANY_NAME &lt;= #{end_companyName}
+    </if>
+    <if test="null != remark" >
+      and gpr.REMARK = #{remark}
+    </if>
+    <if test="null != ne_remark" >
+      and gpr.REMARK != #{ne_remark}
+    </if>
+    <if test="null != like_remark" >
+      and gpr.REMARK like CONCAT('%', #{like_remark}, '%')
+    </if>
+    <if test="null != list_remark" >
+      and gpr.REMARK in (<foreach collection="list_remark" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_remark" >
+      and gpr.REMARK &gt;= #{begin_remark}
+    </if>
+    <if test="null != end_remark" >
+      and gpr.REMARK &lt;= #{end_remark}
+    </if>
+    <if test="null != amount" >
+      and gpr.AMOUNT = #{amount}
+    </if>
+    <if test="null != ne_amount" >
+      and gpr.AMOUNT != #{ne_amount}
+    </if>
+    <if test="null != list_amount" >
+      and gpr.AMOUNT in (<foreach collection="list_amount" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != status" >
+      and gpr.STATUS = #{status}
+    </if>
+    <if test="null != ne_status" >
+      and gpr.STATUS != #{ne_status}
+    </if>
+    <if test="null != like_status" >
+      and gpr.STATUS like CONCAT('%', #{like_status}, '%')
+    </if>
+    <if test="null != list_status" >
+      and gpr.STATUS in (<foreach collection="list_status" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_status" >
+      and gpr.STATUS &gt;= #{begin_status}
+    </if>
+    <if test="null != end_status" >
+      and gpr.STATUS &lt;= #{end_status}
+    </if>
+    <if test="null != userId" >
+      and gpr.USER_ID = #{userId}
+    </if>
+    <if test="null != ne_userId" >
+      and gpr.USER_ID != #{ne_userId}
+    </if>
+    <if test="null != list_userId" >
+      and gpr.USER_ID in (<foreach collection="list_userId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != userName" >
+      and gpr.USER_NAME = #{userName}
+    </if>
+    <if test="null != ne_userName" >
+      and gpr.USER_NAME != #{ne_userName}
+    </if>
+    <if test="null != like_userName" >
+      and gpr.USER_NAME like CONCAT('%', #{like_userName}, '%')
+    </if>
+    <if test="null != list_userName" >
+      and gpr.USER_NAME in (<foreach collection="list_userName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_userName" >
+      and gpr.USER_NAME &gt;= #{begin_userName}
+    </if>
+    <if test="null != end_userName" >
+      and gpr.USER_NAME &lt;= #{end_userName}
+    </if>
+    <if test="null != begin_createTime" >
+      and gpr.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and gpr.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_estimatedRefundTime" >
+      and gpr.ESTIMATED_REFUND_TIME &gt;= #{begin_estimatedRefundTime}
+    </if>
+    <if test="null != end_estimatedRefundTime" >
+      and gpr.ESTIMATED_REFUND_TIME &lt;= #{end_estimatedRefundTime}
+    </if>
+    <if test="null != begin_refundTime" >
+      and gpr.REFUND_TIME &gt;= #{begin_refundTime}
+    </if>
+    <if test="null != end_refundTime" >
+      and gpr.REFUND_TIME &lt;= #{end_refundTime}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'refundId' == orderItem.column" >
+            gpr.REFUND_ID ${orderItem.dir}
+          </if>
+          <if test="'companyName' == orderItem.column" >
+            gpr.COMPANY_NAME ${orderItem.dir}
+          </if>
+          <if test="'remark' == orderItem.column" >
+            gpr.REMARK ${orderItem.dir}
+          </if>
+          <if test="'amount' == orderItem.column" >
+            gpr.AMOUNT ${orderItem.dir}
+          </if>
+          <if test="'status' == orderItem.column" >
+            gpr.STATUS ${orderItem.dir}
+          </if>
+          <if test="'userId' == orderItem.column" >
+            gpr.USER_ID ${orderItem.dir}
+          </if>
+          <if test="'userName' == orderItem.column" >
+            gpr.USER_NAME ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            gpr.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'estimatedRefundTime' == orderItem.column" >
+            gpr.ESTIMATED_REFUND_TIME ${orderItem.dir}
+          </if>
+          <if test="'refundTime' == orderItem.column" >
+            gpr.REFUND_TIME ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    gpr.REFUND_ID, gpr.COMPANY_NAME, gpr.REMARK, gpr.AMOUNT, gpr.STATUS, gpr.USER_ID, 
+    gpr.USER_NAME, gpr.CREATE_TIME, gpr.ESTIMATED_REFUND_TIME, gpr.REFUND_TIME
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ga_pm_refund gpr
+    where gpr.REFUND_ID = #{refundId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from ga_pm_refund gpr
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from ga_pm_refund gpr
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaPmRefund" >
+    <selectKey resultType="java.lang.Integer" keyProperty="refundId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into ga_pm_refund
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      REFUND_ID,
+      <if test="companyName != null" >
+        COMPANY_NAME,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="amount != null" >
+        AMOUNT,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="userName != null" >
+        USER_NAME,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="estimatedRefundTime != null" >
+        ESTIMATED_REFUND_TIME,
+      </if>
+      <if test="refundTime != null" >
+        REFUND_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{refundId,jdbcType=INTEGER},
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="estimatedRefundTime != null" >
+        #{estimatedRefundTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="refundTime != null" >
+        #{refundTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from ga_pm_refund
+    where REFUND_ID = #{refundId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from ga_pm_refund where REFUND_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from gpr using (ga_pm_refund as gpr) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaPmRefund" >
+    update ga_pm_refund
+    <set >
+      <if test="companyName != null" >
+        COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        AMOUNT = #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="estimatedRefundTime != null" >
+        ESTIMATED_REFUND_TIME = #{estimatedRefundTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="refundTime != null" >
+        REFUND_TIME = #{refundTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where REFUND_ID = #{refundId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update ga_pm_refund gpr
+    <set >
+      <if test="record.refundId != null" >
+        REFUND_ID = #{record.refundId,jdbcType=INTEGER},
+      </if>
+      <if test="record.companyName != null" >
+        COMPANY_NAME = #{record.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amount != null" >
+        AMOUNT = #{record.amount,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null" >
+        USER_ID = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userName != null" >
+        USER_NAME = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.estimatedRefundTime != null" >
+        ESTIMATED_REFUND_TIME = #{record.estimatedRefundTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.refundTime != null" >
+        REFUND_TIME = #{record.refundTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.refundId" >
+        and gpr.REFUND_ID = #{map.refundId}
+      </if>
+      <if test="null != map.list_refundId" >
+        and gpr.REFUND_ID in (<foreach collection="map.list_refundId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.companyName" >
+        and gpr.COMPANY_NAME = #{map.companyName}
+      </if>
+      <if test="null != map.like_companyName" >
+        and gpr.COMPANY_NAME like '%' || #{map.like_companyName} || '%'
+      </if>
+      <if test="null != map.list_companyName" >
+        and gpr.COMPANY_NAME in (<foreach collection="map.list_companyName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.remark" >
+        and gpr.REMARK = #{map.remark}
+      </if>
+      <if test="null != map.like_remark" >
+        and gpr.REMARK like '%' || #{map.like_remark} || '%'
+      </if>
+      <if test="null != map.list_remark" >
+        and gpr.REMARK in (<foreach collection="map.list_remark" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.amount" >
+        and gpr.AMOUNT = #{map.amount}
+      </if>
+      <if test="null != map.list_amount" >
+        and gpr.AMOUNT in (<foreach collection="map.list_amount" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.status" >
+        and gpr.STATUS = #{map.status}
+      </if>
+      <if test="null != map.like_status" >
+        and gpr.STATUS like '%' || #{map.like_status} || '%'
+      </if>
+      <if test="null != map.list_status" >
+        and gpr.STATUS in (<foreach collection="map.list_status" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.userId" >
+        and gpr.USER_ID = #{map.userId}
+      </if>
+      <if test="null != map.list_userId" >
+        and gpr.USER_ID in (<foreach collection="map.list_userId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.userName" >
+        and gpr.USER_NAME = #{map.userName}
+      </if>
+      <if test="null != map.like_userName" >
+        and gpr.USER_NAME like '%' || #{map.like_userName} || '%'
+      </if>
+      <if test="null != map.list_userName" >
+        and gpr.USER_NAME in (<foreach collection="map.list_userName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and gpr.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and gpr.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_estimatedRefundTime" >
+        and gpr.ESTIMATED_REFUND_TIME &gt;= #{map.begin_estimatedRefundTime}
+      </if>
+      <if test="null != map.end_estimatedRefundTime" >
+        and gpr.ESTIMATED_REFUND_TIME &lt;= #{map.end_estimatedRefundTime}
+      </if>
+      <if test="null != map.begin_refundTime" >
+        and gpr.REFUND_TIME &gt;= #{map.begin_refundTime}
+      </if>
+      <if test="null != map.end_refundTime" >
+        and gpr.REFUND_TIME &lt;= #{map.end_refundTime}
+      </if>
+    </where>
+  </update>
+</mapper>

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.ItSurveyOptionMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.ItSurveyOption" >
+    <id column="OPTION_ID" property="optionId" jdbcType="INTEGER" />
+    <result column="SURVEY_ID" property="surveyId" jdbcType="INTEGER" />
+    <result column="QUESTION_ID" property="questionId" jdbcType="INTEGER" />
+    <result column="OPTION_CODE" property="optionCode" jdbcType="INTEGER" />
+    <result column="OPTION_TEXT" property="optionText" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != optionId" >
+      and iso.OPTION_ID = #{optionId}
+    </if>
+    <if test="null != ne_optionId" >
+      and iso.OPTION_ID != #{ne_optionId}
+    </if>
+    <if test="null != list_optionId" >
+      and iso.OPTION_ID in (<foreach collection="list_optionId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != surveyId" >
+      and iso.SURVEY_ID = #{surveyId}
+    </if>
+    <if test="null != ne_surveyId" >
+      and iso.SURVEY_ID != #{ne_surveyId}
+    </if>
+    <if test="null != list_surveyId" >
+      and iso.SURVEY_ID in (<foreach collection="list_surveyId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != questionId" >
+      and iso.QUESTION_ID = #{questionId}
+    </if>
+    <if test="null != ne_questionId" >
+      and iso.QUESTION_ID != #{ne_questionId}
+    </if>
+    <if test="null != list_questionId" >
+      and iso.QUESTION_ID in (<foreach collection="list_questionId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != optionCode" >
+      and iso.OPTION_CODE = #{optionCode}
+    </if>
+    <if test="null != ne_optionCode" >
+      and iso.OPTION_CODE != #{ne_optionCode}
+    </if>
+    <if test="null != list_optionCode" >
+      and iso.OPTION_CODE in (<foreach collection="list_optionCode" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != optionText" >
+      and iso.OPTION_TEXT = #{optionText}
+    </if>
+    <if test="null != ne_optionText" >
+      and iso.OPTION_TEXT != #{ne_optionText}
+    </if>
+    <if test="null != like_optionText" >
+      and iso.OPTION_TEXT like CONCAT('%', #{like_optionText}, '%')
+    </if>
+    <if test="null != list_optionText" >
+      and iso.OPTION_TEXT in (<foreach collection="list_optionText" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_optionText" >
+      and iso.OPTION_TEXT &gt;= #{begin_optionText}
+    </if>
+    <if test="null != end_optionText" >
+      and iso.OPTION_TEXT &lt;= #{end_optionText}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'optionId' == orderItem.column" >
+            iso.OPTION_ID ${orderItem.dir}
+          </if>
+          <if test="'surveyId' == orderItem.column" >
+            iso.SURVEY_ID ${orderItem.dir}
+          </if>
+          <if test="'questionId' == orderItem.column" >
+            iso.QUESTION_ID ${orderItem.dir}
+          </if>
+          <if test="'optionCode' == orderItem.column" >
+            iso.OPTION_CODE ${orderItem.dir}
+          </if>
+          <if test="'optionText' == orderItem.column" >
+            iso.OPTION_TEXT ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    iso.OPTION_ID, iso.SURVEY_ID, iso.QUESTION_ID, iso.OPTION_CODE, iso.OPTION_TEXT
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from it_survey_option iso
+    where iso.OPTION_ID = #{optionId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from it_survey_option iso
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from it_survey_option iso
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.ItSurveyOption" >
+    <selectKey resultType="java.lang.Integer" keyProperty="optionId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into it_survey_option
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      OPTION_ID,
+      <if test="surveyId != null" >
+        SURVEY_ID,
+      </if>
+      <if test="questionId != null" >
+        QUESTION_ID,
+      </if>
+      <if test="optionCode != null" >
+        OPTION_CODE,
+      </if>
+      <if test="optionText != null" >
+        OPTION_TEXT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{optionId,jdbcType=INTEGER},
+      <if test="surveyId != null" >
+        #{surveyId,jdbcType=INTEGER},
+      </if>
+      <if test="questionId != null" >
+        #{questionId,jdbcType=INTEGER},
+      </if>
+      <if test="optionCode != null" >
+        #{optionCode,jdbcType=INTEGER},
+      </if>
+      <if test="optionText != null" >
+        #{optionText,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from it_survey_option
+    where OPTION_ID = #{optionId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from it_survey_option where OPTION_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from iso using (it_survey_option as iso) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.ItSurveyOption" >
+    update it_survey_option
+    <set >
+      <if test="surveyId != null" >
+        SURVEY_ID = #{surveyId,jdbcType=INTEGER},
+      </if>
+      <if test="questionId != null" >
+        QUESTION_ID = #{questionId,jdbcType=INTEGER},
+      </if>
+      <if test="optionCode != null" >
+        OPTION_CODE = #{optionCode,jdbcType=INTEGER},
+      </if>
+      <if test="optionText != null" >
+        OPTION_TEXT = #{optionText,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where OPTION_ID = #{optionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update it_survey_option iso
+    <set >
+      <if test="record.optionId != null" >
+        OPTION_ID = #{record.optionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.surveyId != null" >
+        SURVEY_ID = #{record.surveyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.questionId != null" >
+        QUESTION_ID = #{record.questionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.optionCode != null" >
+        OPTION_CODE = #{record.optionCode,jdbcType=INTEGER},
+      </if>
+      <if test="record.optionText != null" >
+        OPTION_TEXT = #{record.optionText,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.optionId" >
+        and iso.OPTION_ID = #{map.optionId}
+      </if>
+      <if test="null != map.list_optionId" >
+        and iso.OPTION_ID in (<foreach collection="map.list_optionId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.surveyId" >
+        and iso.SURVEY_ID = #{map.surveyId}
+      </if>
+      <if test="null != map.list_surveyId" >
+        and iso.SURVEY_ID in (<foreach collection="map.list_surveyId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.questionId" >
+        and iso.QUESTION_ID = #{map.questionId}
+      </if>
+      <if test="null != map.list_questionId" >
+        and iso.QUESTION_ID in (<foreach collection="map.list_questionId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.optionCode" >
+        and iso.OPTION_CODE = #{map.optionCode}
+      </if>
+      <if test="null != map.list_optionCode" >
+        and iso.OPTION_CODE in (<foreach collection="map.list_optionCode" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.optionText" >
+        and iso.OPTION_TEXT = #{map.optionText}
+      </if>
+      <if test="null != map.like_optionText" >
+        and iso.OPTION_TEXT like '%' || #{map.like_optionText} || '%'
+      </if>
+      <if test="null != map.list_optionText" >
+        and iso.OPTION_TEXT in (<foreach collection="map.list_optionText" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

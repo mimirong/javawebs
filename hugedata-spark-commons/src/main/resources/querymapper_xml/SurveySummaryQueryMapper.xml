@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.querymapper.SurveySummaryQueryMapper">
+
+	<select id="queryRadioSummary" parameterType="int" resultType="cn.com.hugedata.spark.commons.storage.queryentity.SurveySummaryRadioQuestions">
+		select
+			qr.result  as optionId, 
+			count(1)   as count
+		from it_survey_question_result qr
+		where qr.question_id = #{questionId}
+		group by qr.result;
+	</select>
+
+</mapper>

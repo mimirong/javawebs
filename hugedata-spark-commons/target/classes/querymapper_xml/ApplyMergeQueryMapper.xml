@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.querymapper.ApplyMergeQueryMapper">
+	<resultMap id="ApplyMergeInfoRM" type="cn.com.hugedata.spark.commons.storage.queryentity.ApplyMergeInfo">
+		<id column="apply_id" property="applyId" jdbcType="VARCHAR" />
+		<result column="apply_type" property="applyType" jdbcType="VARCHAR" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="applier_user_id" property="applierUserId" jdbcType="INTEGER" />
+		<result column="applier_name" property="applierName" jdbcType="VARCHAR" />
+		<result column="contact" property="contact" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	
+	<select id="listProjectAdvance" resultMap="cn.com.hugedata.spark.commons.storage.mapper.PmProjectMapper.BaseResultMap" parameterType="map">
+		select distinct p.* from  pm_project p left join  pm_year_plan y on p.project_id = y.project_id 
+		<where>
+			 p.begin_year  &gt;= #{startYear, jdbcType=INTEGER}
+			and p.end_year  &lt;= #{endYear, jdbcType=INTEGER}
+			 and p.project_deleted = '0'
+			<if test="gtYearAmount != null">and y.amount &gt;= #{gtYearAmount, jdbcType=DOUBLE}</if>
+			<if test="ltYearAmount != null">and y.amount &lt;= #{ltYearAmount, jdbcType=DOUBLE}</if>
+			<if test="gtTotalAmount != null">and p.invest_Total &gt;= #{gtTotalAmount, jdbcType=DOUBLE}</if>
+			<if test="ltTotalAmount != null">and p.invest_Total &lt;= #{ltTotalAmount, jdbcType=DOUBLE}</if>
+			<if test="projectArea != '-1'">and p.project_area = #{projectArea, jdbcType=VARCHAR}</if>
+			
+			
+		</where>
+		order by create_time desc
+	</select>
+	
+	<select id="countProjectAdvance" resultType="int" parameterType="map">
+		select count(1)
+		from   (select distinct p.* from  pm_project p  left join  pm_year_plan y on p.project_id = y.project_id 
+		where
+		 	 p.begin_year  &gt;= #{startYear, jdbcType=INTEGER}
+			 and p.end_year  &lt;= #{endYear, jdbcType=INTEGER}
+			 and p.project_deleted = '0'
+			<if test="gtYearAmount != null">and y.amount &gt;= #{gtYearAmount, jdbcType=DOUBLE}</if>
+			<if test="ltYearAmount != null">and y.amount &lt;= #{ltYearAmount, jdbcType=DOUBLE}</if>
+			<if test="gtTotalAmount != null">and p.invest_Total &gt;= #{gtTotalAmount, jdbcType=DOUBLE}</if>
+			<if test="ltTotalAmount != null">and p.invest_Total &lt;= #{ltTotalAmount, jdbcType=DOUBLE}</if>
+			<if test="projectArea != '-1'">and p.project_area = #{projectArea, jdbcType=VARCHAR}</if>
+			) a
+		 
+	</select>
+	
+	
+	
+  
+	<select id="queryByMap" resultMap="ApplyMergeInfoRM" parameterType="map">
+		select * from (
+			<include refid="queryMerged" />
+		) a
+		<where>
+			<if test="status != null">a.status = #{status, jdbcType=VARCHAR}</if>
+		</where>
+		order by create_time desc
+	</select>
+  
+	<select id="countByMap" resultType="int" parameterType="map">
+		select count(1) from (
+			<include refid="queryMerged" />
+		) a
+	</select>
+	
+	<sql id="queryMerged">
+		<include refid="queryParkJoinApply" />
+		union
+		<include refid="queryParkQuitApply" />
+		union
+		<include refid="queryDetectionApply" />
+		union
+		<include refid="queryApServiceApply" />
+	</sql>
+	
+	<sql id="queryParkJoinApply">
+		select
+			cast(application_id as char)               as apply_id,
+			'PARK_JOIN'                                as apply_type,
+			'入园申请'                                 as title,
+	        applier_user_id                            as applier_user_id,
+			applier_name                               as applier_name,
+			contact                                    as contact,
+			case status
+				when 'CREATED' then 'CREATED'
+				when 'APPROVED' then 'FINISHED'
+			end                                        as status,
+			create_time                                as create_time
+		from ga_park_join_application where applier_user_id = #{userId, jdbcType=INTEGER}
+	</sql>
+	
+	<sql id="queryParkQuitApply">
+		select
+			cast(application_id as char)               as apply_id,
+			'PARK_QUIT'                                as apply_type,
+			'退园申请'                                 as title,
+	        applier_user_id                            as applier_user_id,
+			applier_name                               as applier_name,
+			contact                                    as contact,
+			case status
+				when 'CREATED' then 'CREATED'
+				when 'APPROVED' then 'FINISHED'
+			end                                        as status,
+			create_time                                as create_time
+		from ga_park_quit_application where applier_user_id = #{userId, jdbcType=INTEGER}
+	</sql>
+	
+	<sql id="queryDetectionApply">
+		select
+			cast(apply_id as char)                     as apply_id,
+			apply_type                                 as apply_type,
+			resource_name                              as title,
+	        applier_user_id                            as applier_user_id,
+			company_name                               as applier_name,
+			contact                                    as contact,
+			status                                     as status,
+			create_time                                as create_time
+		from dd_detection_apply where applier_user_id = #{userId, jdbcType=INTEGER}
+	</sql>
+	
+	<sql id="queryApServiceApply">
+		select
+			cast(service_id as char)                   as apply_id,
+			'AP_SERVICE'                               as apply_type,
+			guidename                                  as title,
+	        create_user_id                             as applier_user_id,
+			business_dept_person                       as applier_name,
+			cellphone                                  as contact,
+			case status
+	            when 0 then 'CREATED'
+	            else 'FINISHED'
+	        end                                        as status,
+			create_time                                as create_time
+		from ap_service_info where create_user_id = #{userId, jdbcType=INTEGER}
+	</sql>
+	
+</mapper>

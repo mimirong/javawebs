@@ -1,0 +1,13 @@
+/* GA_SITE_PROOF */
+alter table GA_SITE_PROOF add (
+   PUBLISHER            VARCHAR(100),
+   PUBLISH_DEPT_ID      INTEGER,
+   PUBLISH_DEPT_NAME    VARCHAR(100)
+);
+
+/* GA_APTITUDE */
+alter table GA_APTITUDE add (
+   PUBLISHER            VARCHAR(100),
+   PUBLISH_DEPT_ID      INTEGER,
+   PUBLISH_DEPT_NAME    VARCHAR(100)
+);

@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.LogInterfaceCallMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.LogInterfaceCall" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="USER_ID" property="userId" jdbcType="INTEGER" />
+    <result column="METHOD" property="method" jdbcType="VARCHAR" />
+    <result column="CLIENT_TYPE" property="clientType" jdbcType="VARCHAR" />
+    <result column="CLIENT_VERSION" property="clientVersion" jdbcType="VARCHAR" />
+    <result column="CLIENT_VERSION_CODE" property="clientVersionCode" jdbcType="INTEGER" />
+    <result column="DEVICE_MODEL" property="deviceModel" jdbcType="VARCHAR" />
+    <result column="DEVICE_ID" property="deviceId" jdbcType="VARCHAR" />
+    <result column="SYSTEM_VERSION" property="systemVersion" jdbcType="VARCHAR" />
+    <result column="REQUEST_TIME" property="requestTime" jdbcType="TIMESTAMP" />
+    <result column="PROCESS_DURATION" property="processDuration" jdbcType="INTEGER" />
+    <result column="IS_SUCCESS" property="isSuccess" jdbcType="BIT" />
+    <result column="ERROR_MESSAGE" property="errorMessage" jdbcType="VARCHAR" />
+    <result column="REQUEST_LENGTH" property="requestLength" jdbcType="INTEGER" />
+    <result column="RESPONSE_LENGTH" property="responseLength" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != id" >
+      and lic.ID = #{id}
+    </if>
+    <if test="null != ne_id" >
+      and lic.ID != #{ne_id}
+    </if>
+    <if test="null != list_id" >
+      and lic.ID in (<foreach collection="list_id" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != userId" >
+      and lic.USER_ID = #{userId}
+    </if>
+    <if test="null != ne_userId" >
+      and lic.USER_ID != #{ne_userId}
+    </if>
+    <if test="null != list_userId" >
+      and lic.USER_ID in (<foreach collection="list_userId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != method" >
+      and lic.METHOD = #{method}
+    </if>
+    <if test="null != ne_method" >
+      and lic.METHOD != #{ne_method}
+    </if>
+    <if test="null != like_method" >
+      and lic.METHOD like CONCAT('%', #{like_method}, '%')
+    </if>
+    <if test="null != list_method" >
+      and lic.METHOD in (<foreach collection="list_method" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_method" >
+      and lic.METHOD &gt;= #{begin_method}
+    </if>
+    <if test="null != end_method" >
+      and lic.METHOD &lt;= #{end_method}
+    </if>
+    <if test="null != clientType" >
+      and lic.CLIENT_TYPE = #{clientType}
+    </if>
+    <if test="null != ne_clientType" >
+      and lic.CLIENT_TYPE != #{ne_clientType}
+    </if>
+    <if test="null != like_clientType" >
+      and lic.CLIENT_TYPE like CONCAT('%', #{like_clientType}, '%')
+    </if>
+    <if test="null != list_clientType" >
+      and lic.CLIENT_TYPE in (<foreach collection="list_clientType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_clientType" >
+      and lic.CLIENT_TYPE &gt;= #{begin_clientType}
+    </if>
+    <if test="null != end_clientType" >
+      and lic.CLIENT_TYPE &lt;= #{end_clientType}
+    </if>
+    <if test="null != clientVersion" >
+      and lic.CLIENT_VERSION = #{clientVersion}
+    </if>
+    <if test="null != ne_clientVersion" >
+      and lic.CLIENT_VERSION != #{ne_clientVersion}
+    </if>
+    <if test="null != like_clientVersion" >
+      and lic.CLIENT_VERSION like CONCAT('%', #{like_clientVersion}, '%')
+    </if>
+    <if test="null != list_clientVersion" >
+      and lic.CLIENT_VERSION in (<foreach collection="list_clientVersion" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_clientVersion" >
+      and lic.CLIENT_VERSION &gt;= #{begin_clientVersion}
+    </if>
+    <if test="null != end_clientVersion" >
+      and lic.CLIENT_VERSION &lt;= #{end_clientVersion}
+    </if>
+    <if test="null != clientVersionCode" >
+      and lic.CLIENT_VERSION_CODE = #{clientVersionCode}
+    </if>
+    <if test="null != ne_clientVersionCode" >
+      and lic.CLIENT_VERSION_CODE != #{ne_clientVersionCode}
+    </if>
+    <if test="null != list_clientVersionCode" >
+      and lic.CLIENT_VERSION_CODE in (<foreach collection="list_clientVersionCode" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != deviceModel" >
+      and lic.DEVICE_MODEL = #{deviceModel}
+    </if>
+    <if test="null != ne_deviceModel" >
+      and lic.DEVICE_MODEL != #{ne_deviceModel}
+    </if>
+    <if test="null != like_deviceModel" >
+      and lic.DEVICE_MODEL like CONCAT('%', #{like_deviceModel}, '%')
+    </if>
+    <if test="null != list_deviceModel" >
+      and lic.DEVICE_MODEL in (<foreach collection="list_deviceModel" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_deviceModel" >
+      and lic.DEVICE_MODEL &gt;= #{begin_deviceModel}
+    </if>
+    <if test="null != end_deviceModel" >
+      and lic.DEVICE_MODEL &lt;= #{end_deviceModel}
+    </if>
+    <if test="null != deviceId" >
+      and lic.DEVICE_ID = #{deviceId}
+    </if>
+    <if test="null != ne_deviceId" >
+      and lic.DEVICE_ID != #{ne_deviceId}
+    </if>
+    <if test="null != like_deviceId" >
+      and lic.DEVICE_ID like CONCAT('%', #{like_deviceId}, '%')
+    </if>
+    <if test="null != list_deviceId" >
+      and lic.DEVICE_ID in (<foreach collection="list_deviceId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_deviceId" >
+      and lic.DEVICE_ID &gt;= #{begin_deviceId}
+    </if>
+    <if test="null != end_deviceId" >
+      and lic.DEVICE_ID &lt;= #{end_deviceId}
+    </if>
+    <if test="null != systemVersion" >
+      and lic.SYSTEM_VERSION = #{systemVersion}
+    </if>
+    <if test="null != ne_systemVersion" >
+      and lic.SYSTEM_VERSION != #{ne_systemVersion}
+    </if>
+    <if test="null != like_systemVersion" >
+      and lic.SYSTEM_VERSION like CONCAT('%', #{like_systemVersion}, '%')
+    </if>
+    <if test="null != list_systemVersion" >
+      and lic.SYSTEM_VERSION in (<foreach collection="list_systemVersion" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_systemVersion" >
+      and lic.SYSTEM_VERSION &gt;= #{begin_systemVersion}
+    </if>
+    <if test="null != end_systemVersion" >
+      and lic.SYSTEM_VERSION &lt;= #{end_systemVersion}
+    </if>
+    <if test="null != begin_requestTime" >
+      and lic.REQUEST_TIME &gt;= #{begin_requestTime}
+    </if>
+    <if test="null != end_requestTime" >
+      and lic.REQUEST_TIME &lt;= #{end_requestTime}
+    </if>
+    <if test="null != processDuration" >
+      and lic.PROCESS_DURATION = #{processDuration}
+    </if>
+    <if test="null != ne_processDuration" >
+      and lic.PROCESS_DURATION != #{ne_processDuration}
+    </if>
+    <if test="null != list_processDuration" >
+      and lic.PROCESS_DURATION in (<foreach collection="list_processDuration" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != isSuccess" >
+      and lic.IS_SUCCESS = #{isSuccess}
+    </if>
+    <if test="null != ne_isSuccess" >
+      and lic.IS_SUCCESS != #{ne_isSuccess}
+    </if>
+    <if test="null != list_isSuccess" >
+      and lic.IS_SUCCESS in (<foreach collection="list_isSuccess" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != errorMessage" >
+      and lic.ERROR_MESSAGE = #{errorMessage}
+    </if>
+    <if test="null != ne_errorMessage" >
+      and lic.ERROR_MESSAGE != #{ne_errorMessage}
+    </if>
+    <if test="null != like_errorMessage" >
+      and lic.ERROR_MESSAGE like CONCAT('%', #{like_errorMessage}, '%')
+    </if>
+    <if test="null != list_errorMessage" >
+      and lic.ERROR_MESSAGE in (<foreach collection="list_errorMessage" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_errorMessage" >
+      and lic.ERROR_MESSAGE &gt;= #{begin_errorMessage}
+    </if>
+    <if test="null != end_errorMessage" >
+      and lic.ERROR_MESSAGE &lt;= #{end_errorMessage}
+    </if>
+    <if test="null != requestLength" >
+      and lic.REQUEST_LENGTH = #{requestLength}
+    </if>
+    <if test="null != ne_requestLength" >
+      and lic.REQUEST_LENGTH != #{ne_requestLength}
+    </if>
+    <if test="null != list_requestLength" >
+      and lic.REQUEST_LENGTH in (<foreach collection="list_requestLength" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != responseLength" >
+      and lic.RESPONSE_LENGTH = #{responseLength}
+    </if>
+    <if test="null != ne_responseLength" >
+      and lic.RESPONSE_LENGTH != #{ne_responseLength}
+    </if>
+    <if test="null != list_responseLength" >
+      and lic.RESPONSE_LENGTH in (<foreach collection="list_responseLength" item="i" separator=",">#{i}</foreach>)
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'id' == orderItem.column" >
+            lic.ID ${orderItem.dir}
+          </if>
+          <if test="'userId' == orderItem.column" >
+            lic.USER_ID ${orderItem.dir}
+          </if>
+          <if test="'method' == orderItem.column" >
+            lic.METHOD ${orderItem.dir}
+          </if>
+          <if test="'clientType' == orderItem.column" >
+            lic.CLIENT_TYPE ${orderItem.dir}
+          </if>
+          <if test="'clientVersion' == orderItem.column" >
+            lic.CLIENT_VERSION ${orderItem.dir}
+          </if>
+          <if test="'clientVersionCode' == orderItem.column" >
+            lic.CLIENT_VERSION_CODE ${orderItem.dir}
+          </if>
+          <if test="'deviceModel' == orderItem.column" >
+            lic.DEVICE_MODEL ${orderItem.dir}
+          </if>
+          <if test="'deviceId' == orderItem.column" >
+            lic.DEVICE_ID ${orderItem.dir}
+          </if>
+          <if test="'systemVersion' == orderItem.column" >
+            lic.SYSTEM_VERSION ${orderItem.dir}
+          </if>
+          <if test="'requestTime' == orderItem.column" >
+            lic.REQUEST_TIME ${orderItem.dir}
+          </if>
+          <if test="'processDuration' == orderItem.column" >
+            lic.PROCESS_DURATION ${orderItem.dir}
+          </if>
+          <if test="'isSuccess' == orderItem.column" >
+            lic.IS_SUCCESS ${orderItem.dir}
+          </if>
+          <if test="'errorMessage' == orderItem.column" >
+            lic.ERROR_MESSAGE ${orderItem.dir}
+          </if>
+          <if test="'requestLength' == orderItem.column" >
+            lic.REQUEST_LENGTH ${orderItem.dir}
+          </if>
+          <if test="'responseLength' == orderItem.column" >
+            lic.RESPONSE_LENGTH ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    lic.ID, lic.USER_ID, lic.METHOD, lic.CLIENT_TYPE, lic.CLIENT_VERSION, lic.CLIENT_VERSION_CODE, 
+    lic.DEVICE_MODEL, lic.DEVICE_ID, lic.SYSTEM_VERSION, lic.REQUEST_TIME, lic.PROCESS_DURATION, 
+    lic.IS_SUCCESS, lic.ERROR_MESSAGE, lic.REQUEST_LENGTH, lic.RESPONSE_LENGTH
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from log_interface_call lic
+    where lic.ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from log_interface_call lic
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from log_interface_call lic
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.LogInterfaceCall" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into log_interface_call
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      ID,
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="method != null" >
+        METHOD,
+      </if>
+      <if test="clientType != null" >
+        CLIENT_TYPE,
+      </if>
+      <if test="clientVersion != null" >
+        CLIENT_VERSION,
+      </if>
+      <if test="clientVersionCode != null" >
+        CLIENT_VERSION_CODE,
+      </if>
+      <if test="deviceModel != null" >
+        DEVICE_MODEL,
+      </if>
+      <if test="deviceId != null" >
+        DEVICE_ID,
+      </if>
+      <if test="systemVersion != null" >
+        SYSTEM_VERSION,
+      </if>
+      <if test="requestTime != null" >
+        REQUEST_TIME,
+      </if>
+      <if test="processDuration != null" >
+        PROCESS_DURATION,
+      </if>
+      <if test="isSuccess != null" >
+        IS_SUCCESS,
+      </if>
+      <if test="errorMessage != null" >
+        ERROR_MESSAGE,
+      </if>
+      <if test="requestLength != null" >
+        REQUEST_LENGTH,
+      </if>
+      <if test="responseLength != null" >
+        RESPONSE_LENGTH,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{id,jdbcType=INTEGER},
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="method != null" >
+        #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="clientType != null" >
+        #{clientType,jdbcType=VARCHAR},
+      </if>
+      <if test="clientVersion != null" >
+        #{clientVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="clientVersionCode != null" >
+        #{clientVersionCode,jdbcType=INTEGER},
+      </if>
+      <if test="deviceModel != null" >
+        #{deviceModel,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceId != null" >
+        #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="systemVersion != null" >
+        #{systemVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="requestTime != null" >
+        #{requestTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="processDuration != null" >
+        #{processDuration,jdbcType=INTEGER},
+      </if>
+      <if test="isSuccess != null" >
+        #{isSuccess,jdbcType=BIT},
+      </if>
+      <if test="errorMessage != null" >
+        #{errorMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="requestLength != null" >
+        #{requestLength,jdbcType=INTEGER},
+      </if>
+      <if test="responseLength != null" >
+        #{responseLength,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from log_interface_call
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from log_interface_call where ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from lic using (log_interface_call as lic) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.LogInterfaceCall" >
+    update log_interface_call
+    <set >
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="method != null" >
+        METHOD = #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="clientType != null" >
+        CLIENT_TYPE = #{clientType,jdbcType=VARCHAR},
+      </if>
+      <if test="clientVersion != null" >
+        CLIENT_VERSION = #{clientVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="clientVersionCode != null" >
+        CLIENT_VERSION_CODE = #{clientVersionCode,jdbcType=INTEGER},
+      </if>
+      <if test="deviceModel != null" >
+        DEVICE_MODEL = #{deviceModel,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceId != null" >
+        DEVICE_ID = #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="systemVersion != null" >
+        SYSTEM_VERSION = #{systemVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="requestTime != null" >
+        REQUEST_TIME = #{requestTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="processDuration != null" >
+        PROCESS_DURATION = #{processDuration,jdbcType=INTEGER},
+      </if>
+      <if test="isSuccess != null" >
+        IS_SUCCESS = #{isSuccess,jdbcType=BIT},
+      </if>
+      <if test="errorMessage != null" >
+        ERROR_MESSAGE = #{errorMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="requestLength != null" >
+        REQUEST_LENGTH = #{requestLength,jdbcType=INTEGER},
+      </if>
+      <if test="responseLength != null" >
+        RESPONSE_LENGTH = #{responseLength,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update log_interface_call lic
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null" >
+        USER_ID = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.method != null" >
+        METHOD = #{record.method,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clientType != null" >
+        CLIENT_TYPE = #{record.clientType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clientVersion != null" >
+        CLIENT_VERSION = #{record.clientVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clientVersionCode != null" >
+        CLIENT_VERSION_CODE = #{record.clientVersionCode,jdbcType=INTEGER},
+      </if>
+      <if test="record.deviceModel != null" >
+        DEVICE_MODEL = #{record.deviceModel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceId != null" >
+        DEVICE_ID = #{record.deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.systemVersion != null" >
+        SYSTEM_VERSION = #{record.systemVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requestTime != null" >
+        REQUEST_TIME = #{record.requestTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.processDuration != null" >
+        PROCESS_DURATION = #{record.processDuration,jdbcType=INTEGER},
+      </if>
+      <if test="record.isSuccess != null" >
+        IS_SUCCESS = #{record.isSuccess,jdbcType=BIT},
+      </if>
+      <if test="record.errorMessage != null" >
+        ERROR_MESSAGE = #{record.errorMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requestLength != null" >
+        REQUEST_LENGTH = #{record.requestLength,jdbcType=INTEGER},
+      </if>
+      <if test="record.responseLength != null" >
+        RESPONSE_LENGTH = #{record.responseLength,jdbcType=INTEGER},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.id" >
+        and lic.ID = #{map.id}
+      </if>
+      <if test="null != map.list_id" >
+        and lic.ID in (<foreach collection="map.list_id" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.userId" >
+        and lic.USER_ID = #{map.userId}
+      </if>
+      <if test="null != map.list_userId" >
+        and lic.USER_ID in (<foreach collection="map.list_userId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.method" >
+        and lic.METHOD = #{map.method}
+      </if>
+      <if test="null != map.like_method" >
+        and lic.METHOD like '%' || #{map.like_method} || '%'
+      </if>
+      <if test="null != map.list_method" >
+        and lic.METHOD in (<foreach collection="map.list_method" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.clientType" >
+        and lic.CLIENT_TYPE = #{map.clientType}
+      </if>
+      <if test="null != map.like_clientType" >
+        and lic.CLIENT_TYPE like '%' || #{map.like_clientType} || '%'
+      </if>
+      <if test="null != map.list_clientType" >
+        and lic.CLIENT_TYPE in (<foreach collection="map.list_clientType" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.clientVersion" >
+        and lic.CLIENT_VERSION = #{map.clientVersion}
+      </if>
+      <if test="null != map.like_clientVersion" >
+        and lic.CLIENT_VERSION like '%' || #{map.like_clientVersion} || '%'
+      </if>
+      <if test="null != map.list_clientVersion" >
+        and lic.CLIENT_VERSION in (<foreach collection="map.list_clientVersion" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.clientVersionCode" >
+        and lic.CLIENT_VERSION_CODE = #{map.clientVersionCode}
+      </if>
+      <if test="null != map.list_clientVersionCode" >
+        and lic.CLIENT_VERSION_CODE in (<foreach collection="map.list_clientVersionCode" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.deviceModel" >
+        and lic.DEVICE_MODEL = #{map.deviceModel}
+      </if>
+      <if test="null != map.like_deviceModel" >
+        and lic.DEVICE_MODEL like '%' || #{map.like_deviceModel} || '%'
+      </if>
+      <if test="null != map.list_deviceModel" >
+        and lic.DEVICE_MODEL in (<foreach collection="map.list_deviceModel" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.deviceId" >
+        and lic.DEVICE_ID = #{map.deviceId}
+      </if>
+      <if test="null != map.like_deviceId" >
+        and lic.DEVICE_ID like '%' || #{map.like_deviceId} || '%'
+      </if>
+      <if test="null != map.list_deviceId" >
+        and lic.DEVICE_ID in (<foreach collection="map.list_deviceId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.systemVersion" >
+        and lic.SYSTEM_VERSION = #{map.systemVersion}
+      </if>
+      <if test="null != map.like_systemVersion" >
+        and lic.SYSTEM_VERSION like '%' || #{map.like_systemVersion} || '%'
+      </if>
+      <if test="null != map.list_systemVersion" >
+        and lic.SYSTEM_VERSION in (<foreach collection="map.list_systemVersion" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_requestTime" >
+        and lic.REQUEST_TIME &gt;= #{map.begin_requestTime}
+      </if>
+      <if test="null != map.end_requestTime" >
+        and lic.REQUEST_TIME &lt;= #{map.end_requestTime}
+      </if>
+      <if test="null != map.processDuration" >
+        and lic.PROCESS_DURATION = #{map.processDuration}
+      </if>
+      <if test="null != map.list_processDuration" >
+        and lic.PROCESS_DURATION in (<foreach collection="map.list_processDuration" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.isSuccess" >
+        and lic.IS_SUCCESS = #{map.isSuccess}
+      </if>
+      <if test="null != map.list_isSuccess" >
+        and lic.IS_SUCCESS in (<foreach collection="map.list_isSuccess" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.errorMessage" >
+        and lic.ERROR_MESSAGE = #{map.errorMessage}
+      </if>
+      <if test="null != map.like_errorMessage" >
+        and lic.ERROR_MESSAGE like '%' || #{map.like_errorMessage} || '%'
+      </if>
+      <if test="null != map.list_errorMessage" >
+        and lic.ERROR_MESSAGE in (<foreach collection="map.list_errorMessage" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.requestLength" >
+        and lic.REQUEST_LENGTH = #{map.requestLength}
+      </if>
+      <if test="null != map.list_requestLength" >
+        and lic.REQUEST_LENGTH in (<foreach collection="map.list_requestLength" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.responseLength" >
+        and lic.RESPONSE_LENGTH = #{map.responseLength}
+      </if>
+      <if test="null != map.list_responseLength" >
+        and lic.RESPONSE_LENGTH in (<foreach collection="map.list_responseLength" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

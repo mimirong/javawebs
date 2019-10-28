@@ -1,0 +1,836 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.GaFinancingApplicationMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.GaFinancingApplication" >
+    <id column="APPLICATION_ID" property="applicationId" jdbcType="INTEGER" />
+    <result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR" />
+    <result column="CONTACT" property="contact" jdbcType="VARCHAR" />
+    <result column="CONTACT_MOBILE" property="contactMobile" jdbcType="VARCHAR" />
+    <result column="BUSINESS_INFO" property="businessInfo" jdbcType="VARCHAR" />
+    <result column="BUSINESS_LICENCE" property="businessLicence" jdbcType="VARCHAR" />
+    <result column="APPLICATION_FORM" property="applicationForm" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="APPLIER_USER_ID" property="applierUserId" jdbcType="INTEGER" />
+    <result column="APPLIER_NAME" property="applierName" jdbcType="VARCHAR" />
+    <result column="APPROVER_USER_ID" property="approverUserId" jdbcType="INTEGER" />
+    <result column="APPROVER_NAME" property="approverName" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="APPROVE_TIME" property="approveTime" jdbcType="TIMESTAMP" />
+    <result column="STAFF_SIZE" property="staffSize" jdbcType="VARCHAR" />
+    <result column="BUSINESS_LICENCE_FILENAME" property="businessLicenceFilename" jdbcType="VARCHAR" />
+    <result column="APPLICATION_FORM_FILENAME" property="applicationFormFilename" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.com.hugedata.spark.commons.storage.entity.GaFinancingApplication" extends="BaseResultMap" >
+    <result column="CONTENT" property="content" jdbcType="LONGVARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != applicationId" >
+      and gfa.APPLICATION_ID = #{applicationId}
+    </if>
+    <if test="null != ne_applicationId" >
+      and gfa.APPLICATION_ID != #{ne_applicationId}
+    </if>
+    <if test="null != list_applicationId" >
+      and gfa.APPLICATION_ID in (<foreach collection="list_applicationId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != companyName" >
+      and gfa.COMPANY_NAME = #{companyName}
+    </if>
+    <if test="null != ne_companyName" >
+      and gfa.COMPANY_NAME != #{ne_companyName}
+    </if>
+    <if test="null != like_companyName" >
+      and gfa.COMPANY_NAME like CONCAT('%', #{like_companyName}, '%')
+    </if>
+    <if test="null != list_companyName" >
+      and gfa.COMPANY_NAME in (<foreach collection="list_companyName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_companyName" >
+      and gfa.COMPANY_NAME &gt;= #{begin_companyName}
+    </if>
+    <if test="null != end_companyName" >
+      and gfa.COMPANY_NAME &lt;= #{end_companyName}
+    </if>
+    <if test="null != contact" >
+      and gfa.CONTACT = #{contact}
+    </if>
+    <if test="null != ne_contact" >
+      and gfa.CONTACT != #{ne_contact}
+    </if>
+    <if test="null != like_contact" >
+      and gfa.CONTACT like CONCAT('%', #{like_contact}, '%')
+    </if>
+    <if test="null != list_contact" >
+      and gfa.CONTACT in (<foreach collection="list_contact" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_contact" >
+      and gfa.CONTACT &gt;= #{begin_contact}
+    </if>
+    <if test="null != end_contact" >
+      and gfa.CONTACT &lt;= #{end_contact}
+    </if>
+    <if test="null != contactMobile" >
+      and gfa.CONTACT_MOBILE = #{contactMobile}
+    </if>
+    <if test="null != ne_contactMobile" >
+      and gfa.CONTACT_MOBILE != #{ne_contactMobile}
+    </if>
+    <if test="null != like_contactMobile" >
+      and gfa.CONTACT_MOBILE like CONCAT('%', #{like_contactMobile}, '%')
+    </if>
+    <if test="null != list_contactMobile" >
+      and gfa.CONTACT_MOBILE in (<foreach collection="list_contactMobile" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_contactMobile" >
+      and gfa.CONTACT_MOBILE &gt;= #{begin_contactMobile}
+    </if>
+    <if test="null != end_contactMobile" >
+      and gfa.CONTACT_MOBILE &lt;= #{end_contactMobile}
+    </if>
+    <if test="null != businessInfo" >
+      and gfa.BUSINESS_INFO = #{businessInfo}
+    </if>
+    <if test="null != ne_businessInfo" >
+      and gfa.BUSINESS_INFO != #{ne_businessInfo}
+    </if>
+    <if test="null != like_businessInfo" >
+      and gfa.BUSINESS_INFO like CONCAT('%', #{like_businessInfo}, '%')
+    </if>
+    <if test="null != list_businessInfo" >
+      and gfa.BUSINESS_INFO in (<foreach collection="list_businessInfo" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_businessInfo" >
+      and gfa.BUSINESS_INFO &gt;= #{begin_businessInfo}
+    </if>
+    <if test="null != end_businessInfo" >
+      and gfa.BUSINESS_INFO &lt;= #{end_businessInfo}
+    </if>
+    <if test="null != businessLicence" >
+      and gfa.BUSINESS_LICENCE = #{businessLicence}
+    </if>
+    <if test="null != ne_businessLicence" >
+      and gfa.BUSINESS_LICENCE != #{ne_businessLicence}
+    </if>
+    <if test="null != like_businessLicence" >
+      and gfa.BUSINESS_LICENCE like CONCAT('%', #{like_businessLicence}, '%')
+    </if>
+    <if test="null != list_businessLicence" >
+      and gfa.BUSINESS_LICENCE in (<foreach collection="list_businessLicence" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_businessLicence" >
+      and gfa.BUSINESS_LICENCE &gt;= #{begin_businessLicence}
+    </if>
+    <if test="null != end_businessLicence" >
+      and gfa.BUSINESS_LICENCE &lt;= #{end_businessLicence}
+    </if>
+    <if test="null != applicationForm" >
+      and gfa.APPLICATION_FORM = #{applicationForm}
+    </if>
+    <if test="null != ne_applicationForm" >
+      and gfa.APPLICATION_FORM != #{ne_applicationForm}
+    </if>
+    <if test="null != like_applicationForm" >
+      and gfa.APPLICATION_FORM like CONCAT('%', #{like_applicationForm}, '%')
+    </if>
+    <if test="null != list_applicationForm" >
+      and gfa.APPLICATION_FORM in (<foreach collection="list_applicationForm" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_applicationForm" >
+      and gfa.APPLICATION_FORM &gt;= #{begin_applicationForm}
+    </if>
+    <if test="null != end_applicationForm" >
+      and gfa.APPLICATION_FORM &lt;= #{end_applicationForm}
+    </if>
+    <if test="null != status" >
+      and gfa.STATUS = #{status}
+    </if>
+    <if test="null != ne_status" >
+      and gfa.STATUS != #{ne_status}
+    </if>
+    <if test="null != like_status" >
+      and gfa.STATUS like CONCAT('%', #{like_status}, '%')
+    </if>
+    <if test="null != list_status" >
+      and gfa.STATUS in (<foreach collection="list_status" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_status" >
+      and gfa.STATUS &gt;= #{begin_status}
+    </if>
+    <if test="null != end_status" >
+      and gfa.STATUS &lt;= #{end_status}
+    </if>
+    <if test="null != applierUserId" >
+      and gfa.APPLIER_USER_ID = #{applierUserId}
+    </if>
+    <if test="null != ne_applierUserId" >
+      and gfa.APPLIER_USER_ID != #{ne_applierUserId}
+    </if>
+    <if test="null != list_applierUserId" >
+      and gfa.APPLIER_USER_ID in (<foreach collection="list_applierUserId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != applierName" >
+      and gfa.APPLIER_NAME = #{applierName}
+    </if>
+    <if test="null != ne_applierName" >
+      and gfa.APPLIER_NAME != #{ne_applierName}
+    </if>
+    <if test="null != like_applierName" >
+      and gfa.APPLIER_NAME like CONCAT('%', #{like_applierName}, '%')
+    </if>
+    <if test="null != list_applierName" >
+      and gfa.APPLIER_NAME in (<foreach collection="list_applierName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_applierName" >
+      and gfa.APPLIER_NAME &gt;= #{begin_applierName}
+    </if>
+    <if test="null != end_applierName" >
+      and gfa.APPLIER_NAME &lt;= #{end_applierName}
+    </if>
+    <if test="null != approverUserId" >
+      and gfa.APPROVER_USER_ID = #{approverUserId}
+    </if>
+    <if test="null != ne_approverUserId" >
+      and gfa.APPROVER_USER_ID != #{ne_approverUserId}
+    </if>
+    <if test="null != list_approverUserId" >
+      and gfa.APPROVER_USER_ID in (<foreach collection="list_approverUserId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != approverName" >
+      and gfa.APPROVER_NAME = #{approverName}
+    </if>
+    <if test="null != ne_approverName" >
+      and gfa.APPROVER_NAME != #{ne_approverName}
+    </if>
+    <if test="null != like_approverName" >
+      and gfa.APPROVER_NAME like CONCAT('%', #{like_approverName}, '%')
+    </if>
+    <if test="null != list_approverName" >
+      and gfa.APPROVER_NAME in (<foreach collection="list_approverName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_approverName" >
+      and gfa.APPROVER_NAME &gt;= #{begin_approverName}
+    </if>
+    <if test="null != end_approverName" >
+      and gfa.APPROVER_NAME &lt;= #{end_approverName}
+    </if>
+    <if test="null != begin_createTime" >
+      and gfa.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and gfa.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_approveTime" >
+      and gfa.APPROVE_TIME &gt;= #{begin_approveTime}
+    </if>
+    <if test="null != end_approveTime" >
+      and gfa.APPROVE_TIME &lt;= #{end_approveTime}
+    </if>
+    <if test="null != staffSize" >
+      and gfa.STAFF_SIZE = #{staffSize}
+    </if>
+    <if test="null != ne_staffSize" >
+      and gfa.STAFF_SIZE != #{ne_staffSize}
+    </if>
+    <if test="null != like_staffSize" >
+      and gfa.STAFF_SIZE like CONCAT('%', #{like_staffSize}, '%')
+    </if>
+    <if test="null != list_staffSize" >
+      and gfa.STAFF_SIZE in (<foreach collection="list_staffSize" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_staffSize" >
+      and gfa.STAFF_SIZE &gt;= #{begin_staffSize}
+    </if>
+    <if test="null != end_staffSize" >
+      and gfa.STAFF_SIZE &lt;= #{end_staffSize}
+    </if>
+    <if test="null != businessLicenceFilename" >
+      and gfa.BUSINESS_LICENCE_FILENAME = #{businessLicenceFilename}
+    </if>
+    <if test="null != ne_businessLicenceFilename" >
+      and gfa.BUSINESS_LICENCE_FILENAME != #{ne_businessLicenceFilename}
+    </if>
+    <if test="null != like_businessLicenceFilename" >
+      and gfa.BUSINESS_LICENCE_FILENAME like CONCAT('%', #{like_businessLicenceFilename}, '%')
+    </if>
+    <if test="null != list_businessLicenceFilename" >
+      and gfa.BUSINESS_LICENCE_FILENAME in (<foreach collection="list_businessLicenceFilename" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_businessLicenceFilename" >
+      and gfa.BUSINESS_LICENCE_FILENAME &gt;= #{begin_businessLicenceFilename}
+    </if>
+    <if test="null != end_businessLicenceFilename" >
+      and gfa.BUSINESS_LICENCE_FILENAME &lt;= #{end_businessLicenceFilename}
+    </if>
+    <if test="null != applicationFormFilename" >
+      and gfa.APPLICATION_FORM_FILENAME = #{applicationFormFilename}
+    </if>
+    <if test="null != ne_applicationFormFilename" >
+      and gfa.APPLICATION_FORM_FILENAME != #{ne_applicationFormFilename}
+    </if>
+    <if test="null != like_applicationFormFilename" >
+      and gfa.APPLICATION_FORM_FILENAME like CONCAT('%', #{like_applicationFormFilename}, '%')
+    </if>
+    <if test="null != list_applicationFormFilename" >
+      and gfa.APPLICATION_FORM_FILENAME in (<foreach collection="list_applicationFormFilename" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_applicationFormFilename" >
+      and gfa.APPLICATION_FORM_FILENAME &gt;= #{begin_applicationFormFilename}
+    </if>
+    <if test="null != end_applicationFormFilename" >
+      and gfa.APPLICATION_FORM_FILENAME &lt;= #{end_applicationFormFilename}
+    </if>
+    <if test="null != content" >
+      and gfa.CONTENT = #{content}
+    </if>
+    <if test="null != ne_content" >
+      and gfa.CONTENT != #{ne_content}
+    </if>
+    <if test="null != like_content" >
+      and gfa.CONTENT like CONCAT('%', #{like_content}, '%')
+    </if>
+    <if test="null != list_content" >
+      and gfa.CONTENT in (<foreach collection="list_content" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_content" >
+      and gfa.CONTENT &gt;= #{begin_content}
+    </if>
+    <if test="null != end_content" >
+      and gfa.CONTENT &lt;= #{end_content}
+    </if>
+    <if test="null != remark" >
+      and gfa.REMARK = #{remark}
+    </if>
+    <if test="null != ne_remark" >
+      and gfa.REMARK != #{ne_remark}
+    </if>
+    <if test="null != like_remark" >
+      and gfa.REMARK like CONCAT('%', #{like_remark}, '%')
+    </if>
+    <if test="null != list_remark" >
+      and gfa.REMARK in (<foreach collection="list_remark" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_remark" >
+      and gfa.REMARK &gt;= #{begin_remark}
+    </if>
+    <if test="null != end_remark" >
+      and gfa.REMARK &lt;= #{end_remark}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'applicationId' == orderItem.column" >
+            gfa.APPLICATION_ID ${orderItem.dir}
+          </if>
+          <if test="'companyName' == orderItem.column" >
+            gfa.COMPANY_NAME ${orderItem.dir}
+          </if>
+          <if test="'contact' == orderItem.column" >
+            gfa.CONTACT ${orderItem.dir}
+          </if>
+          <if test="'contactMobile' == orderItem.column" >
+            gfa.CONTACT_MOBILE ${orderItem.dir}
+          </if>
+          <if test="'businessInfo' == orderItem.column" >
+            gfa.BUSINESS_INFO ${orderItem.dir}
+          </if>
+          <if test="'businessLicence' == orderItem.column" >
+            gfa.BUSINESS_LICENCE ${orderItem.dir}
+          </if>
+          <if test="'applicationForm' == orderItem.column" >
+            gfa.APPLICATION_FORM ${orderItem.dir}
+          </if>
+          <if test="'status' == orderItem.column" >
+            gfa.STATUS ${orderItem.dir}
+          </if>
+          <if test="'applierUserId' == orderItem.column" >
+            gfa.APPLIER_USER_ID ${orderItem.dir}
+          </if>
+          <if test="'applierName' == orderItem.column" >
+            gfa.APPLIER_NAME ${orderItem.dir}
+          </if>
+          <if test="'approverUserId' == orderItem.column" >
+            gfa.APPROVER_USER_ID ${orderItem.dir}
+          </if>
+          <if test="'approverName' == orderItem.column" >
+            gfa.APPROVER_NAME ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            gfa.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'approveTime' == orderItem.column" >
+            gfa.APPROVE_TIME ${orderItem.dir}
+          </if>
+          <if test="'staffSize' == orderItem.column" >
+            gfa.STAFF_SIZE ${orderItem.dir}
+          </if>
+          <if test="'businessLicenceFilename' == orderItem.column" >
+            gfa.BUSINESS_LICENCE_FILENAME ${orderItem.dir}
+          </if>
+          <if test="'applicationFormFilename' == orderItem.column" >
+            gfa.APPLICATION_FORM_FILENAME ${orderItem.dir}
+          </if>
+          <if test="'content' == orderItem.column" >
+            gfa.CONTENT ${orderItem.dir}
+          </if>
+          <if test="'remark' == orderItem.column" >
+            gfa.REMARK ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    gfa.APPLICATION_ID, gfa.COMPANY_NAME, gfa.CONTACT, gfa.CONTACT_MOBILE, gfa.BUSINESS_INFO, 
+    gfa.BUSINESS_LICENCE, gfa.APPLICATION_FORM, gfa.STATUS, gfa.APPLIER_USER_ID, gfa.APPLIER_NAME, 
+    gfa.APPROVER_USER_ID, gfa.APPROVER_NAME, gfa.CREATE_TIME, gfa.APPROVE_TIME, gfa.STAFF_SIZE, 
+    gfa.BUSINESS_LICENCE_FILENAME, gfa.APPLICATION_FORM_FILENAME
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONTENT, REMARK
+  </sql>
+  <select id="selectById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ga_financing_application gfa
+    where gfa.APPLICATION_ID = #{applicationId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ga_financing_application gfa
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from ga_financing_application gfa
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaFinancingApplication" >
+    <selectKey resultType="java.lang.Integer" keyProperty="applicationId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into ga_financing_application
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      APPLICATION_ID,
+      <if test="companyName != null" >
+        COMPANY_NAME,
+      </if>
+      <if test="contact != null" >
+        CONTACT,
+      </if>
+      <if test="contactMobile != null" >
+        CONTACT_MOBILE,
+      </if>
+      <if test="businessInfo != null" >
+        BUSINESS_INFO,
+      </if>
+      <if test="businessLicence != null" >
+        BUSINESS_LICENCE,
+      </if>
+      <if test="applicationForm != null" >
+        APPLICATION_FORM,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="applierUserId != null" >
+        APPLIER_USER_ID,
+      </if>
+      <if test="applierName != null" >
+        APPLIER_NAME,
+      </if>
+      <if test="approverUserId != null" >
+        APPROVER_USER_ID,
+      </if>
+      <if test="approverName != null" >
+        APPROVER_NAME,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="approveTime != null" >
+        APPROVE_TIME,
+      </if>
+      <if test="staffSize != null" >
+        STAFF_SIZE,
+      </if>
+      <if test="businessLicenceFilename != null" >
+        BUSINESS_LICENCE_FILENAME,
+      </if>
+      <if test="applicationFormFilename != null" >
+        APPLICATION_FORM_FILENAME,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{applicationId,jdbcType=INTEGER},
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactMobile != null" >
+        #{contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="businessInfo != null" >
+        #{businessInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicence != null" >
+        #{businessLicence,jdbcType=VARCHAR},
+      </if>
+      <if test="applicationForm != null" >
+        #{applicationForm,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="applierUserId != null" >
+        #{applierUserId,jdbcType=INTEGER},
+      </if>
+      <if test="applierName != null" >
+        #{applierName,jdbcType=VARCHAR},
+      </if>
+      <if test="approverUserId != null" >
+        #{approverUserId,jdbcType=INTEGER},
+      </if>
+      <if test="approverName != null" >
+        #{approverName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approveTime != null" >
+        #{approveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="staffSize != null" >
+        #{staffSize,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicenceFilename != null" >
+        #{businessLicenceFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="applicationFormFilename != null" >
+        #{applicationFormFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from ga_financing_application
+    where APPLICATION_ID = #{applicationId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from ga_financing_application where APPLICATION_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from gfa using (ga_financing_application as gfa) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaFinancingApplication" >
+    update ga_financing_application
+    <set >
+      <if test="companyName != null" >
+        COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        CONTACT = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactMobile != null" >
+        CONTACT_MOBILE = #{contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="businessInfo != null" >
+        BUSINESS_INFO = #{businessInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicence != null" >
+        BUSINESS_LICENCE = #{businessLicence,jdbcType=VARCHAR},
+      </if>
+      <if test="applicationForm != null" >
+        APPLICATION_FORM = #{applicationForm,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="applierUserId != null" >
+        APPLIER_USER_ID = #{applierUserId,jdbcType=INTEGER},
+      </if>
+      <if test="applierName != null" >
+        APPLIER_NAME = #{applierName,jdbcType=VARCHAR},
+      </if>
+      <if test="approverUserId != null" >
+        APPROVER_USER_ID = #{approverUserId,jdbcType=INTEGER},
+      </if>
+      <if test="approverName != null" >
+        APPROVER_NAME = #{approverName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approveTime != null" >
+        APPROVE_TIME = #{approveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="staffSize != null" >
+        STAFF_SIZE = #{staffSize,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicenceFilename != null" >
+        BUSINESS_LICENCE_FILENAME = #{businessLicenceFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="applicationFormFilename != null" >
+        APPLICATION_FORM_FILENAME = #{applicationFormFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where APPLICATION_ID = #{applicationId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update ga_financing_application gfa
+    <set >
+      <if test="record.applicationId != null" >
+        APPLICATION_ID = #{record.applicationId,jdbcType=INTEGER},
+      </if>
+      <if test="record.companyName != null" >
+        COMPANY_NAME = #{record.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contact != null" >
+        CONTACT = #{record.contact,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactMobile != null" >
+        CONTACT_MOBILE = #{record.contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessInfo != null" >
+        BUSINESS_INFO = #{record.businessInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessLicence != null" >
+        BUSINESS_LICENCE = #{record.businessLicence,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applicationForm != null" >
+        APPLICATION_FORM = #{record.applicationForm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applierUserId != null" >
+        APPLIER_USER_ID = #{record.applierUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.applierName != null" >
+        APPLIER_NAME = #{record.applierName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.approverUserId != null" >
+        APPROVER_USER_ID = #{record.approverUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.approverName != null" >
+        APPROVER_NAME = #{record.approverName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.approveTime != null" >
+        APPROVE_TIME = #{record.approveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.staffSize != null" >
+        STAFF_SIZE = #{record.staffSize,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessLicenceFilename != null" >
+        BUSINESS_LICENCE_FILENAME = #{record.businessLicenceFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applicationFormFilename != null" >
+        APPLICATION_FORM_FILENAME = #{record.applicationFormFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null" >
+        CONTENT = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.applicationId" >
+        and gfa.APPLICATION_ID = #{map.applicationId}
+      </if>
+      <if test="null != map.list_applicationId" >
+        and gfa.APPLICATION_ID in (<foreach collection="map.list_applicationId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.companyName" >
+        and gfa.COMPANY_NAME = #{map.companyName}
+      </if>
+      <if test="null != map.like_companyName" >
+        and gfa.COMPANY_NAME like '%' || #{map.like_companyName} || '%'
+      </if>
+      <if test="null != map.list_companyName" >
+        and gfa.COMPANY_NAME in (<foreach collection="map.list_companyName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.contact" >
+        and gfa.CONTACT = #{map.contact}
+      </if>
+      <if test="null != map.like_contact" >
+        and gfa.CONTACT like '%' || #{map.like_contact} || '%'
+      </if>
+      <if test="null != map.list_contact" >
+        and gfa.CONTACT in (<foreach collection="map.list_contact" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.contactMobile" >
+        and gfa.CONTACT_MOBILE = #{map.contactMobile}
+      </if>
+      <if test="null != map.like_contactMobile" >
+        and gfa.CONTACT_MOBILE like '%' || #{map.like_contactMobile} || '%'
+      </if>
+      <if test="null != map.list_contactMobile" >
+        and gfa.CONTACT_MOBILE in (<foreach collection="map.list_contactMobile" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.businessInfo" >
+        and gfa.BUSINESS_INFO = #{map.businessInfo}
+      </if>
+      <if test="null != map.like_businessInfo" >
+        and gfa.BUSINESS_INFO like '%' || #{map.like_businessInfo} || '%'
+      </if>
+      <if test="null != map.list_businessInfo" >
+        and gfa.BUSINESS_INFO in (<foreach collection="map.list_businessInfo" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.businessLicence" >
+        and gfa.BUSINESS_LICENCE = #{map.businessLicence}
+      </if>
+      <if test="null != map.like_businessLicence" >
+        and gfa.BUSINESS_LICENCE like '%' || #{map.like_businessLicence} || '%'
+      </if>
+      <if test="null != map.list_businessLicence" >
+        and gfa.BUSINESS_LICENCE in (<foreach collection="map.list_businessLicence" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.applicationForm" >
+        and gfa.APPLICATION_FORM = #{map.applicationForm}
+      </if>
+      <if test="null != map.like_applicationForm" >
+        and gfa.APPLICATION_FORM like '%' || #{map.like_applicationForm} || '%'
+      </if>
+      <if test="null != map.list_applicationForm" >
+        and gfa.APPLICATION_FORM in (<foreach collection="map.list_applicationForm" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.status" >
+        and gfa.STATUS = #{map.status}
+      </if>
+      <if test="null != map.like_status" >
+        and gfa.STATUS like '%' || #{map.like_status} || '%'
+      </if>
+      <if test="null != map.list_status" >
+        and gfa.STATUS in (<foreach collection="map.list_status" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.applierUserId" >
+        and gfa.APPLIER_USER_ID = #{map.applierUserId}
+      </if>
+      <if test="null != map.list_applierUserId" >
+        and gfa.APPLIER_USER_ID in (<foreach collection="map.list_applierUserId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.applierName" >
+        and gfa.APPLIER_NAME = #{map.applierName}
+      </if>
+      <if test="null != map.like_applierName" >
+        and gfa.APPLIER_NAME like '%' || #{map.like_applierName} || '%'
+      </if>
+      <if test="null != map.list_applierName" >
+        and gfa.APPLIER_NAME in (<foreach collection="map.list_applierName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.approverUserId" >
+        and gfa.APPROVER_USER_ID = #{map.approverUserId}
+      </if>
+      <if test="null != map.list_approverUserId" >
+        and gfa.APPROVER_USER_ID in (<foreach collection="map.list_approverUserId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.approverName" >
+        and gfa.APPROVER_NAME = #{map.approverName}
+      </if>
+      <if test="null != map.like_approverName" >
+        and gfa.APPROVER_NAME like '%' || #{map.like_approverName} || '%'
+      </if>
+      <if test="null != map.list_approverName" >
+        and gfa.APPROVER_NAME in (<foreach collection="map.list_approverName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and gfa.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and gfa.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_approveTime" >
+        and gfa.APPROVE_TIME &gt;= #{map.begin_approveTime}
+      </if>
+      <if test="null != map.end_approveTime" >
+        and gfa.APPROVE_TIME &lt;= #{map.end_approveTime}
+      </if>
+      <if test="null != map.staffSize" >
+        and gfa.STAFF_SIZE = #{map.staffSize}
+      </if>
+      <if test="null != map.like_staffSize" >
+        and gfa.STAFF_SIZE like '%' || #{map.like_staffSize} || '%'
+      </if>
+      <if test="null != map.list_staffSize" >
+        and gfa.STAFF_SIZE in (<foreach collection="map.list_staffSize" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.businessLicenceFilename" >
+        and gfa.BUSINESS_LICENCE_FILENAME = #{map.businessLicenceFilename}
+      </if>
+      <if test="null != map.like_businessLicenceFilename" >
+        and gfa.BUSINESS_LICENCE_FILENAME like '%' || #{map.like_businessLicenceFilename} || '%'
+      </if>
+      <if test="null != map.list_businessLicenceFilename" >
+        and gfa.BUSINESS_LICENCE_FILENAME in (<foreach collection="map.list_businessLicenceFilename" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.applicationFormFilename" >
+        and gfa.APPLICATION_FORM_FILENAME = #{map.applicationFormFilename}
+      </if>
+      <if test="null != map.like_applicationFormFilename" >
+        and gfa.APPLICATION_FORM_FILENAME like '%' || #{map.like_applicationFormFilename} || '%'
+      </if>
+      <if test="null != map.list_applicationFormFilename" >
+        and gfa.APPLICATION_FORM_FILENAME in (<foreach collection="map.list_applicationFormFilename" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.content" >
+        and gfa.CONTENT = #{map.content}
+      </if>
+      <if test="null != map.like_content" >
+        and gfa.CONTENT like '%' || #{map.like_content} || '%'
+      </if>
+      <if test="null != map.list_content" >
+        and gfa.CONTENT in (<foreach collection="map.list_content" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.remark" >
+        and gfa.REMARK = #{map.remark}
+      </if>
+      <if test="null != map.like_remark" >
+        and gfa.REMARK like '%' || #{map.like_remark} || '%'
+      </if>
+      <if test="null != map.list_remark" >
+        and gfa.REMARK in (<foreach collection="map.list_remark" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

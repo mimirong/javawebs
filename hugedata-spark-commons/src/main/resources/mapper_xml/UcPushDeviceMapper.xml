@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.UcPushDeviceMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.UcPushDevice" >
+    <id column="REGISTRATION_ID" property="registrationId" jdbcType="VARCHAR" />
+    <result column="USER_ID" property="userId" jdbcType="INTEGER" />
+    <result column="PLATFORM_CODE" property="platformCode" jdbcType="VARCHAR" />
+    <result column="LOGIN_TOKEN" property="loginToken" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != registrationId" >
+      and upd.REGISTRATION_ID = #{registrationId}
+    </if>
+    <if test="null != ne_registrationId" >
+      and upd.REGISTRATION_ID != #{ne_registrationId}
+    </if>
+    <if test="null != like_registrationId" >
+      and upd.REGISTRATION_ID like CONCAT('%', #{like_registrationId}, '%')
+    </if>
+    <if test="null != list_registrationId" >
+      and upd.REGISTRATION_ID in (<foreach collection="list_registrationId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_registrationId" >
+      and upd.REGISTRATION_ID &gt;= #{begin_registrationId}
+    </if>
+    <if test="null != end_registrationId" >
+      and upd.REGISTRATION_ID &lt;= #{end_registrationId}
+    </if>
+    <if test="null != userId" >
+      and upd.USER_ID = #{userId}
+    </if>
+    <if test="null != ne_userId" >
+      and upd.USER_ID != #{ne_userId}
+    </if>
+    <if test="null != list_userId" >
+      and upd.USER_ID in (<foreach collection="list_userId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != platformCode" >
+      and upd.PLATFORM_CODE = #{platformCode}
+    </if>
+    <if test="null != ne_platformCode" >
+      and upd.PLATFORM_CODE != #{ne_platformCode}
+    </if>
+    <if test="null != like_platformCode" >
+      and upd.PLATFORM_CODE like CONCAT('%', #{like_platformCode}, '%')
+    </if>
+    <if test="null != list_platformCode" >
+      and upd.PLATFORM_CODE in (<foreach collection="list_platformCode" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_platformCode" >
+      and upd.PLATFORM_CODE &gt;= #{begin_platformCode}
+    </if>
+    <if test="null != end_platformCode" >
+      and upd.PLATFORM_CODE &lt;= #{end_platformCode}
+    </if>
+    <if test="null != loginToken" >
+      and upd.LOGIN_TOKEN = #{loginToken}
+    </if>
+    <if test="null != ne_loginToken" >
+      and upd.LOGIN_TOKEN != #{ne_loginToken}
+    </if>
+    <if test="null != like_loginToken" >
+      and upd.LOGIN_TOKEN like CONCAT('%', #{like_loginToken}, '%')
+    </if>
+    <if test="null != list_loginToken" >
+      and upd.LOGIN_TOKEN in (<foreach collection="list_loginToken" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_loginToken" >
+      and upd.LOGIN_TOKEN &gt;= #{begin_loginToken}
+    </if>
+    <if test="null != end_loginToken" >
+      and upd.LOGIN_TOKEN &lt;= #{end_loginToken}
+    </if>
+    <if test="null != begin_updateTime" >
+      and upd.UPDATE_TIME &gt;= #{begin_updateTime}
+    </if>
+    <if test="null != end_updateTime" >
+      and upd.UPDATE_TIME &lt;= #{end_updateTime}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'registrationId' == orderItem.column" >
+            upd.REGISTRATION_ID ${orderItem.dir}
+          </if>
+          <if test="'userId' == orderItem.column" >
+            upd.USER_ID ${orderItem.dir}
+          </if>
+          <if test="'platformCode' == orderItem.column" >
+            upd.PLATFORM_CODE ${orderItem.dir}
+          </if>
+          <if test="'loginToken' == orderItem.column" >
+            upd.LOGIN_TOKEN ${orderItem.dir}
+          </if>
+          <if test="'updateTime' == orderItem.column" >
+            upd.UPDATE_TIME ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    upd.REGISTRATION_ID, upd.USER_ID, upd.PLATFORM_CODE, upd.LOGIN_TOKEN, upd.UPDATE_TIME
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from uc_push_device upd
+    where upd.REGISTRATION_ID = #{registrationId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from uc_push_device upd
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from uc_push_device upd
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcPushDevice" >
+    <selectKey resultType="java.lang.String" keyProperty="registrationId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into uc_push_device
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      REGISTRATION_ID,
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="platformCode != null" >
+        PLATFORM_CODE,
+      </if>
+      <if test="loginToken != null" >
+        LOGIN_TOKEN,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{registrationId,jdbcType=VARCHAR},
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="platformCode != null" >
+        #{platformCode,jdbcType=VARCHAR},
+      </if>
+      <if test="loginToken != null" >
+        #{loginToken,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.String" >
+    delete from uc_push_device
+    where REGISTRATION_ID = #{registrationId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from uc_push_device where REGISTRATION_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from upd using (uc_push_device as upd) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcPushDevice" >
+    update uc_push_device
+    <set >
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="platformCode != null" >
+        PLATFORM_CODE = #{platformCode,jdbcType=VARCHAR},
+      </if>
+      <if test="loginToken != null" >
+        LOGIN_TOKEN = #{loginToken,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where REGISTRATION_ID = #{registrationId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update uc_push_device upd
+    <set >
+      <if test="record.registrationId != null" >
+        REGISTRATION_ID = #{record.registrationId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null" >
+        USER_ID = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.platformCode != null" >
+        PLATFORM_CODE = #{record.platformCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.loginToken != null" >
+        LOGIN_TOKEN = #{record.loginToken,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.registrationId" >
+        and upd.REGISTRATION_ID = #{map.registrationId}
+      </if>
+      <if test="null != map.like_registrationId" >
+        and upd.REGISTRATION_ID like '%' || #{map.like_registrationId} || '%'
+      </if>
+      <if test="null != map.list_registrationId" >
+        and upd.REGISTRATION_ID in (<foreach collection="map.list_registrationId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.userId" >
+        and upd.USER_ID = #{map.userId}
+      </if>
+      <if test="null != map.list_userId" >
+        and upd.USER_ID in (<foreach collection="map.list_userId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.platformCode" >
+        and upd.PLATFORM_CODE = #{map.platformCode}
+      </if>
+      <if test="null != map.like_platformCode" >
+        and upd.PLATFORM_CODE like '%' || #{map.like_platformCode} || '%'
+      </if>
+      <if test="null != map.list_platformCode" >
+        and upd.PLATFORM_CODE in (<foreach collection="map.list_platformCode" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.loginToken" >
+        and upd.LOGIN_TOKEN = #{map.loginToken}
+      </if>
+      <if test="null != map.like_loginToken" >
+        and upd.LOGIN_TOKEN like '%' || #{map.like_loginToken} || '%'
+      </if>
+      <if test="null != map.list_loginToken" >
+        and upd.LOGIN_TOKEN in (<foreach collection="map.list_loginToken" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_updateTime" >
+        and upd.UPDATE_TIME &gt;= #{map.begin_updateTime}
+      </if>
+      <if test="null != map.end_updateTime" >
+        and upd.UPDATE_TIME &lt;= #{map.end_updateTime}
+      </if>
+    </where>
+  </update>
+</mapper>

@@ -1,0 +1,1 @@
+ UPDATE pt_article SET is_visible = 1 WHERE category_id = 'APP_MANAGE_MESSAGE';

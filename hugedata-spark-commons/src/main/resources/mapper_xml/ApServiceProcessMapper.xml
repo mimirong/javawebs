@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.ApServiceProcessMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.ApServiceProcess" >
+    <id column="PROCESS_ID" property="processId" jdbcType="INTEGER" />
+    <result column="SERVICE_ID" property="serviceId" jdbcType="INTEGER" />
+    <result column="SERVICE_STATUS" property="serviceStatus" jdbcType="VARCHAR" />
+    <result column="SEQ" property="seq" jdbcType="INTEGER" />
+    <result column="USER_ID" property="userId" jdbcType="INTEGER" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="DEPT_CODE" property="deptCode" jdbcType="VARCHAR" />
+    <result column="DEPT_NAME" property="deptName" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.com.hugedata.spark.commons.storage.entity.ApServiceProcess" extends="BaseResultMap" >
+    <result column="REMARK" property="remark" jdbcType="LONGVARCHAR" />
+    <result column="ATTACHMENTS_STATUS" property="attachmentsStatus" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != processId" >
+      and asp.PROCESS_ID = #{processId}
+    </if>
+    <if test="null != ne_processId" >
+      and asp.PROCESS_ID != #{ne_processId}
+    </if>
+    <if test="null != list_processId" >
+      and asp.PROCESS_ID in (<foreach collection="list_processId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != serviceId" >
+      and asp.SERVICE_ID = #{serviceId}
+    </if>
+    <if test="null != ne_serviceId" >
+      and asp.SERVICE_ID != #{ne_serviceId}
+    </if>
+    <if test="null != list_serviceId" >
+      and asp.SERVICE_ID in (<foreach collection="list_serviceId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != serviceStatus" >
+      and asp.SERVICE_STATUS = #{serviceStatus}
+    </if>
+    <if test="null != ne_serviceStatus" >
+      and asp.SERVICE_STATUS != #{ne_serviceStatus}
+    </if>
+    <if test="null != like_serviceStatus" >
+      and asp.SERVICE_STATUS like CONCAT('%', #{like_serviceStatus}, '%')
+    </if>
+    <if test="null != list_serviceStatus" >
+      and asp.SERVICE_STATUS in (<foreach collection="list_serviceStatus" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_serviceStatus" >
+      and asp.SERVICE_STATUS &gt;= #{begin_serviceStatus}
+    </if>
+    <if test="null != end_serviceStatus" >
+      and asp.SERVICE_STATUS &lt;= #{end_serviceStatus}
+    </if>
+    <if test="null != seq" >
+      and asp.SEQ = #{seq}
+    </if>
+    <if test="null != ne_seq" >
+      and asp.SEQ != #{ne_seq}
+    </if>
+    <if test="null != list_seq" >
+      and asp.SEQ in (<foreach collection="list_seq" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != userId" >
+      and asp.USER_ID = #{userId}
+    </if>
+    <if test="null != ne_userId" >
+      and asp.USER_ID != #{ne_userId}
+    </if>
+    <if test="null != list_userId" >
+      and asp.USER_ID in (<foreach collection="list_userId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != userName" >
+      and asp.USER_NAME = #{userName}
+    </if>
+    <if test="null != ne_userName" >
+      and asp.USER_NAME != #{ne_userName}
+    </if>
+    <if test="null != like_userName" >
+      and asp.USER_NAME like CONCAT('%', #{like_userName}, '%')
+    </if>
+    <if test="null != list_userName" >
+      and asp.USER_NAME in (<foreach collection="list_userName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_userName" >
+      and asp.USER_NAME &gt;= #{begin_userName}
+    </if>
+    <if test="null != end_userName" >
+      and asp.USER_NAME &lt;= #{end_userName}
+    </if>
+    <if test="null != deptCode" >
+      and asp.DEPT_CODE = #{deptCode}
+    </if>
+    <if test="null != ne_deptCode" >
+      and asp.DEPT_CODE != #{ne_deptCode}
+    </if>
+    <if test="null != like_deptCode" >
+      and asp.DEPT_CODE like CONCAT('%', #{like_deptCode}, '%')
+    </if>
+    <if test="null != list_deptCode" >
+      and asp.DEPT_CODE in (<foreach collection="list_deptCode" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_deptCode" >
+      and asp.DEPT_CODE &gt;= #{begin_deptCode}
+    </if>
+    <if test="null != end_deptCode" >
+      and asp.DEPT_CODE &lt;= #{end_deptCode}
+    </if>
+    <if test="null != deptName" >
+      and asp.DEPT_NAME = #{deptName}
+    </if>
+    <if test="null != ne_deptName" >
+      and asp.DEPT_NAME != #{ne_deptName}
+    </if>
+    <if test="null != like_deptName" >
+      and asp.DEPT_NAME like CONCAT('%', #{like_deptName}, '%')
+    </if>
+    <if test="null != list_deptName" >
+      and asp.DEPT_NAME in (<foreach collection="list_deptName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_deptName" >
+      and asp.DEPT_NAME &gt;= #{begin_deptName}
+    </if>
+    <if test="null != end_deptName" >
+      and asp.DEPT_NAME &lt;= #{end_deptName}
+    </if>
+    <if test="null != status" >
+      and asp.STATUS = #{status}
+    </if>
+    <if test="null != ne_status" >
+      and asp.STATUS != #{ne_status}
+    </if>
+    <if test="null != like_status" >
+      and asp.STATUS like CONCAT('%', #{like_status}, '%')
+    </if>
+    <if test="null != list_status" >
+      and asp.STATUS in (<foreach collection="list_status" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_status" >
+      and asp.STATUS &gt;= #{begin_status}
+    </if>
+    <if test="null != end_status" >
+      and asp.STATUS &lt;= #{end_status}
+    </if>
+    <if test="null != begin_createTime" >
+      and asp.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and asp.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != remark" >
+      and asp.REMARK = #{remark}
+    </if>
+    <if test="null != ne_remark" >
+      and asp.REMARK != #{ne_remark}
+    </if>
+    <if test="null != like_remark" >
+      and asp.REMARK like CONCAT('%', #{like_remark}, '%')
+    </if>
+    <if test="null != list_remark" >
+      and asp.REMARK in (<foreach collection="list_remark" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_remark" >
+      and asp.REMARK &gt;= #{begin_remark}
+    </if>
+    <if test="null != end_remark" >
+      and asp.REMARK &lt;= #{end_remark}
+    </if>
+    <if test="null != attachmentsStatus" >
+      and asp.ATTACHMENTS_STATUS = #{attachmentsStatus}
+    </if>
+    <if test="null != ne_attachmentsStatus" >
+      and asp.ATTACHMENTS_STATUS != #{ne_attachmentsStatus}
+    </if>
+    <if test="null != like_attachmentsStatus" >
+      and asp.ATTACHMENTS_STATUS like CONCAT('%', #{like_attachmentsStatus}, '%')
+    </if>
+    <if test="null != list_attachmentsStatus" >
+      and asp.ATTACHMENTS_STATUS in (<foreach collection="list_attachmentsStatus" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_attachmentsStatus" >
+      and asp.ATTACHMENTS_STATUS &gt;= #{begin_attachmentsStatus}
+    </if>
+    <if test="null != end_attachmentsStatus" >
+      and asp.ATTACHMENTS_STATUS &lt;= #{end_attachmentsStatus}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'processId' == orderItem.column" >
+            asp.PROCESS_ID ${orderItem.dir}
+          </if>
+          <if test="'serviceId' == orderItem.column" >
+            asp.SERVICE_ID ${orderItem.dir}
+          </if>
+          <if test="'serviceStatus' == orderItem.column" >
+            asp.SERVICE_STATUS ${orderItem.dir}
+          </if>
+          <if test="'seq' == orderItem.column" >
+            asp.SEQ ${orderItem.dir}
+          </if>
+          <if test="'userId' == orderItem.column" >
+            asp.USER_ID ${orderItem.dir}
+          </if>
+          <if test="'userName' == orderItem.column" >
+            asp.USER_NAME ${orderItem.dir}
+          </if>
+          <if test="'deptCode' == orderItem.column" >
+            asp.DEPT_CODE ${orderItem.dir}
+          </if>
+          <if test="'deptName' == orderItem.column" >
+            asp.DEPT_NAME ${orderItem.dir}
+          </if>
+          <if test="'status' == orderItem.column" >
+            asp.STATUS ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            asp.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'remark' == orderItem.column" >
+            asp.REMARK ${orderItem.dir}
+          </if>
+          <if test="'attachmentsStatus' == orderItem.column" >
+            asp.ATTACHMENTS_STATUS ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    asp.PROCESS_ID, asp.SERVICE_ID, asp.SERVICE_STATUS, asp.SEQ, asp.USER_ID, asp.USER_NAME, 
+    asp.DEPT_CODE, asp.DEPT_NAME, asp.STATUS, asp.CREATE_TIME
+  </sql>
+  <sql id="Blob_Column_List" >
+    REMARK, ATTACHMENTS_STATUS
+  </sql>
+  <select id="selectById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ap_service_process asp
+    where asp.PROCESS_ID = #{processId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ap_service_process asp
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from ap_service_process asp
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.ApServiceProcess" >
+    <selectKey resultType="java.lang.Integer" keyProperty="processId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into ap_service_process
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      PROCESS_ID,
+      <if test="serviceId != null" >
+        SERVICE_ID,
+      </if>
+      <if test="serviceStatus != null" >
+        SERVICE_STATUS,
+      </if>
+      <if test="seq != null" >
+        SEQ,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="userName != null" >
+        USER_NAME,
+      </if>
+      <if test="deptCode != null" >
+        DEPT_CODE,
+      </if>
+      <if test="deptName != null" >
+        DEPT_NAME,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="attachmentsStatus != null" >
+        ATTACHMENTS_STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{processId,jdbcType=INTEGER},
+      <if test="serviceId != null" >
+        #{serviceId,jdbcType=INTEGER},
+      </if>
+      <if test="serviceStatus != null" >
+        #{serviceStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="seq != null" >
+        #{seq,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptCode != null" >
+        #{deptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="attachmentsStatus != null" >
+        #{attachmentsStatus,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from ap_service_process
+    where PROCESS_ID = #{processId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from ap_service_process where PROCESS_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from asp using (ap_service_process as asp) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.ApServiceProcess" >
+    update ap_service_process
+    <set >
+      <if test="serviceId != null" >
+        SERVICE_ID = #{serviceId,jdbcType=INTEGER},
+      </if>
+      <if test="serviceStatus != null" >
+        SERVICE_STATUS = #{serviceStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="seq != null" >
+        SEQ = #{seq,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptCode != null" >
+        DEPT_CODE = #{deptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+        DEPT_NAME = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="attachmentsStatus != null" >
+        ATTACHMENTS_STATUS = #{attachmentsStatus,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where PROCESS_ID = #{processId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update ap_service_process asp
+    <set >
+      <if test="record.processId != null" >
+        PROCESS_ID = #{record.processId,jdbcType=INTEGER},
+      </if>
+      <if test="record.serviceId != null" >
+        SERVICE_ID = #{record.serviceId,jdbcType=INTEGER},
+      </if>
+      <if test="record.serviceStatus != null" >
+        SERVICE_STATUS = #{record.serviceStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.seq != null" >
+        SEQ = #{record.seq,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null" >
+        USER_ID = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userName != null" >
+        USER_NAME = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deptCode != null" >
+        DEPT_CODE = #{record.deptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deptName != null" >
+        DEPT_NAME = #{record.deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.attachmentsStatus != null" >
+        ATTACHMENTS_STATUS = #{record.attachmentsStatus,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.processId" >
+        and asp.PROCESS_ID = #{map.processId}
+      </if>
+      <if test="null != map.list_processId" >
+        and asp.PROCESS_ID in (<foreach collection="map.list_processId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.serviceId" >
+        and asp.SERVICE_ID = #{map.serviceId}
+      </if>
+      <if test="null != map.list_serviceId" >
+        and asp.SERVICE_ID in (<foreach collection="map.list_serviceId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.serviceStatus" >
+        and asp.SERVICE_STATUS = #{map.serviceStatus}
+      </if>
+      <if test="null != map.like_serviceStatus" >
+        and asp.SERVICE_STATUS like '%' || #{map.like_serviceStatus} || '%'
+      </if>
+      <if test="null != map.list_serviceStatus" >
+        and asp.SERVICE_STATUS in (<foreach collection="map.list_serviceStatus" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.seq" >
+        and asp.SEQ = #{map.seq}
+      </if>
+      <if test="null != map.list_seq" >
+        and asp.SEQ in (<foreach collection="map.list_seq" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.userId" >
+        and asp.USER_ID = #{map.userId}
+      </if>
+      <if test="null != map.list_userId" >
+        and asp.USER_ID in (<foreach collection="map.list_userId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.userName" >
+        and asp.USER_NAME = #{map.userName}
+      </if>
+      <if test="null != map.like_userName" >
+        and asp.USER_NAME like '%' || #{map.like_userName} || '%'
+      </if>
+      <if test="null != map.list_userName" >
+        and asp.USER_NAME in (<foreach collection="map.list_userName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.deptCode" >
+        and asp.DEPT_CODE = #{map.deptCode}
+      </if>
+      <if test="null != map.like_deptCode" >
+        and asp.DEPT_CODE like '%' || #{map.like_deptCode} || '%'
+      </if>
+      <if test="null != map.list_deptCode" >
+        and asp.DEPT_CODE in (<foreach collection="map.list_deptCode" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.deptName" >
+        and asp.DEPT_NAME = #{map.deptName}
+      </if>
+      <if test="null != map.like_deptName" >
+        and asp.DEPT_NAME like '%' || #{map.like_deptName} || '%'
+      </if>
+      <if test="null != map.list_deptName" >
+        and asp.DEPT_NAME in (<foreach collection="map.list_deptName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.status" >
+        and asp.STATUS = #{map.status}
+      </if>
+      <if test="null != map.like_status" >
+        and asp.STATUS like '%' || #{map.like_status} || '%'
+      </if>
+      <if test="null != map.list_status" >
+        and asp.STATUS in (<foreach collection="map.list_status" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and asp.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and asp.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.remark" >
+        and asp.REMARK = #{map.remark}
+      </if>
+      <if test="null != map.like_remark" >
+        and asp.REMARK like '%' || #{map.like_remark} || '%'
+      </if>
+      <if test="null != map.list_remark" >
+        and asp.REMARK in (<foreach collection="map.list_remark" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.attachmentsStatus" >
+        and asp.ATTACHMENTS_STATUS = #{map.attachmentsStatus}
+      </if>
+      <if test="null != map.like_attachmentsStatus" >
+        and asp.ATTACHMENTS_STATUS like '%' || #{map.like_attachmentsStatus} || '%'
+      </if>
+      <if test="null != map.list_attachmentsStatus" >
+        and asp.ATTACHMENTS_STATUS in (<foreach collection="map.list_attachmentsStatus" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

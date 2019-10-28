@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.insertmapper.UcUserInfoInsertMapper">
+
+    <insert id="insertAll" parameterType="java.util.ArrayList">
+        <selectKey resultType="java.lang.Integer" keyProperty="userId" order="AFTER">
+            select @@identity
+        </selectKey>
+        insert into uc_user_info
+        (USER_ID,REF_USER_ID,USER_TYPE,LOGIN_NAME,
+        LOGIN_NAME_UPPER,PASSWORD_HASH,PASSWORD,PASSWORD_KEY,DEPT_ID,
+        NAME,ID_CARD,MOBILE,TELEPHONE,EMAIL,EMAIL_UPPER,FULL_ADDRESS,
+        HEAD_IMAGE_PREVIEW_ID,HEAD_IMAGE_ID,SEX,BIRTHDAY,COMPANY_NAME,
+        APPROVE_STATUS,USABLE,CREATE_TIME,UPDATE_TIME)
+        values
+        <foreach collection="list" item="obj" index="index" separator=",">
+            (#{obj.userId,jdbcType=INTEGER},#{obj.refUserId,jdbcType=VARCHAR},#{obj.userType,jdbcType=VARCHAR},
+            #{obj.loginName,jdbcType=VARCHAR},#{obj.loginNameUpper,jdbcType=VARCHAR},#{obj.passwordHash,jdbcType=VARCHAR},
+            #{obj.password,jdbcType=VARCHAR},#{obj.passwordKey,jdbcType=VARCHAR},#{obj.deptId,jdbcType=INTEGER},
+            #{obj.name,jdbcType=VARCHAR},#{obj.idCard,jdbcType=VARCHAR},#{obj.mobile,jdbcType=VARCHAR},
+            #{obj.telephone,jdbcType=VARCHAR},#{obj.email,jdbcType=VARCHAR},#{obj.emailUpper,jdbcType=VARCHAR},
+            #{obj.fullAddress,jdbcType=VARCHAR},#{obj.headImagePreviewId,jdbcType=VARCHAR},#{obj.headImageId,jdbcType=VARCHAR},
+            #{obj.sex,jdbcType=CHAR},#{obj.birthday,jdbcType=VARCHAR},#{obj.companyName,jdbcType=VARCHAR},
+            #{obj.approveStatus,jdbcType=VARCHAR},#{obj.usable,jdbcType=BIT},#{obj.createTime,jdbcType=TIMESTAMP},
+            #{obj.updateTime,jdbcType=TIMESTAMP})
+        </foreach>
+        on duplicate key update
+        LOGIN_NAME = VALUES (LOGIN_NAME),LOGIN_NAME_UPPER = VALUES (LOGIN_NAME_UPPER),PASSWORD_HASH = VALUES (PASSWORD_HASH),
+        DEPT_ID = VALUES (DEPT_ID),NAME = VALUES (NAME),SEX = VALUES (SEX),UPDATE_TIME = VALUES (UPDATE_TIME)
+    </insert>
+
+    <update id="synchronizeDimissUsers" parameterType="java.util.ArrayList">
+        <foreach collection="list" item="obj" index="index" open="" close="" separator=";">
+            update uc_user_info
+            <set>
+                USABLE = #{obj.usable,jdbcType=BIT}, UPDATE_TIME = #{obj.updateTime,jdbcType=TIMESTAMP}
+            </set>
+            where REF_USER_ID = #{obj.refUserId,jdbcType=INTEGER}
+        </foreach>
+    </update>
+
+</mapper>

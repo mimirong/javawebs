@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.PtCategoryMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.PtCategory" >
+    <id column="CATEGORY_ID" property="categoryId" jdbcType="VARCHAR" />
+    <result column="CATEGORY_NAME" property="categoryName" jdbcType="VARCHAR" />
+    <result column="IS_INTERNAL" property="isInternal" jdbcType="BIT" />
+    <result column="IS_EDITABLE" property="isEditable" jdbcType="BIT" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != categoryId" >
+      and pc.CATEGORY_ID = #{categoryId}
+    </if>
+    <if test="null != ne_categoryId" >
+      and pc.CATEGORY_ID != #{ne_categoryId}
+    </if>
+    <if test="null != like_categoryId" >
+      and pc.CATEGORY_ID like CONCAT('%', #{like_categoryId}, '%')
+    </if>
+    <if test="null != list_categoryId" >
+      and pc.CATEGORY_ID in (<foreach collection="list_categoryId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_categoryId" >
+      and pc.CATEGORY_ID &gt;= #{begin_categoryId}
+    </if>
+    <if test="null != end_categoryId" >
+      and pc.CATEGORY_ID &lt;= #{end_categoryId}
+    </if>
+    <if test="null != categoryName" >
+      and pc.CATEGORY_NAME = #{categoryName}
+    </if>
+    <if test="null != ne_categoryName" >
+      and pc.CATEGORY_NAME != #{ne_categoryName}
+    </if>
+    <if test="null != like_categoryName" >
+      and pc.CATEGORY_NAME like CONCAT('%', #{like_categoryName}, '%')
+    </if>
+    <if test="null != list_categoryName" >
+      and pc.CATEGORY_NAME in (<foreach collection="list_categoryName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_categoryName" >
+      and pc.CATEGORY_NAME &gt;= #{begin_categoryName}
+    </if>
+    <if test="null != end_categoryName" >
+      and pc.CATEGORY_NAME &lt;= #{end_categoryName}
+    </if>
+    <if test="null != isInternal" >
+      and pc.IS_INTERNAL = #{isInternal}
+    </if>
+    <if test="null != ne_isInternal" >
+      and pc.IS_INTERNAL != #{ne_isInternal}
+    </if>
+    <if test="null != list_isInternal" >
+      and pc.IS_INTERNAL in (<foreach collection="list_isInternal" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != isEditable" >
+      and pc.IS_EDITABLE = #{isEditable}
+    </if>
+    <if test="null != ne_isEditable" >
+      and pc.IS_EDITABLE != #{ne_isEditable}
+    </if>
+    <if test="null != list_isEditable" >
+      and pc.IS_EDITABLE in (<foreach collection="list_isEditable" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_createTime" >
+      and pc.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and pc.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'categoryId' == orderItem.column" >
+            pc.CATEGORY_ID ${orderItem.dir}
+          </if>
+          <if test="'categoryName' == orderItem.column" >
+            pc.CATEGORY_NAME ${orderItem.dir}
+          </if>
+          <if test="'isInternal' == orderItem.column" >
+            pc.IS_INTERNAL ${orderItem.dir}
+          </if>
+          <if test="'isEditable' == orderItem.column" >
+            pc.IS_EDITABLE ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            pc.CREATE_TIME ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    pc.CATEGORY_ID, pc.CATEGORY_NAME, pc.IS_INTERNAL, pc.IS_EDITABLE, pc.CREATE_TIME
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from pt_category pc
+    where pc.CATEGORY_ID = #{categoryId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from pt_category pc
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from pt_category pc
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.PtCategory" >
+    insert into pt_category
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="categoryId != null" >
+        CATEGORY_ID,
+      </if>
+      <if test="categoryName != null" >
+        CATEGORY_NAME,
+      </if>
+      <if test="isInternal != null" >
+        IS_INTERNAL,
+      </if>
+      <if test="isEditable != null" >
+        IS_EDITABLE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="categoryId != null" >
+        #{categoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryName != null" >
+        #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="isInternal != null" >
+        #{isInternal,jdbcType=BIT},
+      </if>
+      <if test="isEditable != null" >
+        #{isEditable,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.String" >
+    delete from pt_category
+    where CATEGORY_ID = #{categoryId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from pt_category where CATEGORY_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from pc using (pt_category as pc) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.PtCategory" >
+    update pt_category
+    <set >
+      <if test="categoryName != null" >
+        CATEGORY_NAME = #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="isInternal != null" >
+        IS_INTERNAL = #{isInternal,jdbcType=BIT},
+      </if>
+      <if test="isEditable != null" >
+        IS_EDITABLE = #{isEditable,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where CATEGORY_ID = #{categoryId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update pt_category pc
+    <set >
+      <if test="record.categoryId != null" >
+        CATEGORY_ID = #{record.categoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.categoryName != null" >
+        CATEGORY_NAME = #{record.categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isInternal != null" >
+        IS_INTERNAL = #{record.isInternal,jdbcType=BIT},
+      </if>
+      <if test="record.isEditable != null" >
+        IS_EDITABLE = #{record.isEditable,jdbcType=BIT},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.categoryId" >
+        and pc.CATEGORY_ID = #{map.categoryId}
+      </if>
+      <if test="null != map.like_categoryId" >
+        and pc.CATEGORY_ID like '%' || #{map.like_categoryId} || '%'
+      </if>
+      <if test="null != map.list_categoryId" >
+        and pc.CATEGORY_ID in (<foreach collection="map.list_categoryId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.categoryName" >
+        and pc.CATEGORY_NAME = #{map.categoryName}
+      </if>
+      <if test="null != map.like_categoryName" >
+        and pc.CATEGORY_NAME like '%' || #{map.like_categoryName} || '%'
+      </if>
+      <if test="null != map.list_categoryName" >
+        and pc.CATEGORY_NAME in (<foreach collection="map.list_categoryName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.isInternal" >
+        and pc.IS_INTERNAL = #{map.isInternal}
+      </if>
+      <if test="null != map.list_isInternal" >
+        and pc.IS_INTERNAL in (<foreach collection="map.list_isInternal" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.isEditable" >
+        and pc.IS_EDITABLE = #{map.isEditable}
+      </if>
+      <if test="null != map.list_isEditable" >
+        and pc.IS_EDITABLE in (<foreach collection="map.list_isEditable" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and pc.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and pc.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+    </where>
+  </update>
+</mapper>

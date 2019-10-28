@@ -1,0 +1,945 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.SpServiceProjectMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.SpServiceProject" >
+    <id column="PROJECT_ID" property="projectId" jdbcType="INTEGER" />
+    <result column="SERVICE_FIELD" property="serviceField" jdbcType="VARCHAR" />
+    <result column="SUPPLY_TYPE" property="supplyType" jdbcType="VARCHAR" />
+    <result column="SUPPLY_THEME" property="supplyTheme" jdbcType="VARCHAR" />
+    <result column="SUPPLY_BRIEF" property="supplyBrief" jdbcType="VARCHAR" />
+    <result column="COVER_FILE_ID" property="coverFileId" jdbcType="VARCHAR" />
+    <result column="COVER_FILE_NAME" property="coverFileName" jdbcType="VARCHAR" />
+    <result column="DETAIL_DESC" property="detailDesc" jdbcType="VARCHAR" />
+    <result column="SEARCH_KEY" property="searchKey" jdbcType="VARCHAR" />
+    <result column="ADDRESS_DETAIL" property="addressDetail" jdbcType="VARCHAR" />
+    <result column="CONTACT" property="contact" jdbcType="VARCHAR" />
+    <result column="CONTACT_MOBILE" property="contactMobile" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="VISITOR_COUNT" property="visitorCount" jdbcType="INTEGER" />
+    <result column="PRICE" property="price" jdbcType="VARCHAR" />
+    <result column="PUBLISHER_USER_ID" property="publisherUserId" jdbcType="INTEGER" />
+    <result column="PUBLISHER_NAME" property="publisherName" jdbcType="VARCHAR" />
+    <result column="COMPANY_ID" property="companyId" jdbcType="INTEGER" />
+    <result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR" />
+    <result column="ADDRESS_PROVINCE" property="addressProvince" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != projectId" >
+      and ssp.PROJECT_ID = #{projectId}
+    </if>
+    <if test="null != ne_projectId" >
+      and ssp.PROJECT_ID != #{ne_projectId}
+    </if>
+    <if test="null != list_projectId" >
+      and ssp.PROJECT_ID in (<foreach collection="list_projectId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != serviceField" >
+      and ssp.SERVICE_FIELD = #{serviceField}
+    </if>
+    <if test="null != ne_serviceField" >
+      and ssp.SERVICE_FIELD != #{ne_serviceField}
+    </if>
+    <if test="null != like_serviceField" >
+      and ssp.SERVICE_FIELD like CONCAT('%', #{like_serviceField}, '%')
+    </if>
+    <if test="null != list_serviceField" >
+      and ssp.SERVICE_FIELD in (<foreach collection="list_serviceField" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_serviceField" >
+      and ssp.SERVICE_FIELD &gt;= #{begin_serviceField}
+    </if>
+    <if test="null != end_serviceField" >
+      and ssp.SERVICE_FIELD &lt;= #{end_serviceField}
+    </if>
+    <if test="null != supplyType" >
+      and ssp.SUPPLY_TYPE = #{supplyType}
+    </if>
+    <if test="null != ne_supplyType" >
+      and ssp.SUPPLY_TYPE != #{ne_supplyType}
+    </if>
+    <if test="null != like_supplyType" >
+      and ssp.SUPPLY_TYPE like CONCAT('%', #{like_supplyType}, '%')
+    </if>
+    <if test="null != list_supplyType" >
+      and ssp.SUPPLY_TYPE in (<foreach collection="list_supplyType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_supplyType" >
+      and ssp.SUPPLY_TYPE &gt;= #{begin_supplyType}
+    </if>
+    <if test="null != end_supplyType" >
+      and ssp.SUPPLY_TYPE &lt;= #{end_supplyType}
+    </if>
+    <if test="null != supplyTheme" >
+      and ssp.SUPPLY_THEME = #{supplyTheme}
+    </if>
+    <if test="null != ne_supplyTheme" >
+      and ssp.SUPPLY_THEME != #{ne_supplyTheme}
+    </if>
+    <if test="null != like_supplyTheme" >
+      and ssp.SUPPLY_THEME like CONCAT('%', #{like_supplyTheme}, '%')
+    </if>
+    <if test="null != list_supplyTheme" >
+      and ssp.SUPPLY_THEME in (<foreach collection="list_supplyTheme" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_supplyTheme" >
+      and ssp.SUPPLY_THEME &gt;= #{begin_supplyTheme}
+    </if>
+    <if test="null != end_supplyTheme" >
+      and ssp.SUPPLY_THEME &lt;= #{end_supplyTheme}
+    </if>
+    <if test="null != supplyBrief" >
+      and ssp.SUPPLY_BRIEF = #{supplyBrief}
+    </if>
+    <if test="null != ne_supplyBrief" >
+      and ssp.SUPPLY_BRIEF != #{ne_supplyBrief}
+    </if>
+    <if test="null != like_supplyBrief" >
+      and ssp.SUPPLY_BRIEF like CONCAT('%', #{like_supplyBrief}, '%')
+    </if>
+    <if test="null != list_supplyBrief" >
+      and ssp.SUPPLY_BRIEF in (<foreach collection="list_supplyBrief" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_supplyBrief" >
+      and ssp.SUPPLY_BRIEF &gt;= #{begin_supplyBrief}
+    </if>
+    <if test="null != end_supplyBrief" >
+      and ssp.SUPPLY_BRIEF &lt;= #{end_supplyBrief}
+    </if>
+    <if test="null != coverFileId" >
+      and ssp.COVER_FILE_ID = #{coverFileId}
+    </if>
+    <if test="null != ne_coverFileId" >
+      and ssp.COVER_FILE_ID != #{ne_coverFileId}
+    </if>
+    <if test="null != like_coverFileId" >
+      and ssp.COVER_FILE_ID like CONCAT('%', #{like_coverFileId}, '%')
+    </if>
+    <if test="null != list_coverFileId" >
+      and ssp.COVER_FILE_ID in (<foreach collection="list_coverFileId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_coverFileId" >
+      and ssp.COVER_FILE_ID &gt;= #{begin_coverFileId}
+    </if>
+    <if test="null != end_coverFileId" >
+      and ssp.COVER_FILE_ID &lt;= #{end_coverFileId}
+    </if>
+    <if test="null != coverFileName" >
+      and ssp.COVER_FILE_NAME = #{coverFileName}
+    </if>
+    <if test="null != ne_coverFileName" >
+      and ssp.COVER_FILE_NAME != #{ne_coverFileName}
+    </if>
+    <if test="null != like_coverFileName" >
+      and ssp.COVER_FILE_NAME like CONCAT('%', #{like_coverFileName}, '%')
+    </if>
+    <if test="null != list_coverFileName" >
+      and ssp.COVER_FILE_NAME in (<foreach collection="list_coverFileName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_coverFileName" >
+      and ssp.COVER_FILE_NAME &gt;= #{begin_coverFileName}
+    </if>
+    <if test="null != end_coverFileName" >
+      and ssp.COVER_FILE_NAME &lt;= #{end_coverFileName}
+    </if>
+    <if test="null != detailDesc" >
+      and ssp.DETAIL_DESC = #{detailDesc}
+    </if>
+    <if test="null != ne_detailDesc" >
+      and ssp.DETAIL_DESC != #{ne_detailDesc}
+    </if>
+    <if test="null != like_detailDesc" >
+      and ssp.DETAIL_DESC like CONCAT('%', #{like_detailDesc}, '%')
+    </if>
+    <if test="null != list_detailDesc" >
+      and ssp.DETAIL_DESC in (<foreach collection="list_detailDesc" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_detailDesc" >
+      and ssp.DETAIL_DESC &gt;= #{begin_detailDesc}
+    </if>
+    <if test="null != end_detailDesc" >
+      and ssp.DETAIL_DESC &lt;= #{end_detailDesc}
+    </if>
+    <if test="null != searchKey" >
+      and ssp.SEARCH_KEY = #{searchKey}
+    </if>
+    <if test="null != ne_searchKey" >
+      and ssp.SEARCH_KEY != #{ne_searchKey}
+    </if>
+    <if test="null != like_searchKey" >
+      and ssp.SEARCH_KEY like CONCAT('%', #{like_searchKey}, '%')
+    </if>
+    <if test="null != list_searchKey" >
+      and ssp.SEARCH_KEY in (<foreach collection="list_searchKey" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_searchKey" >
+      and ssp.SEARCH_KEY &gt;= #{begin_searchKey}
+    </if>
+    <if test="null != end_searchKey" >
+      and ssp.SEARCH_KEY &lt;= #{end_searchKey}
+    </if>
+    <if test="null != addressDetail" >
+      and ssp.ADDRESS_DETAIL = #{addressDetail}
+    </if>
+    <if test="null != ne_addressDetail" >
+      and ssp.ADDRESS_DETAIL != #{ne_addressDetail}
+    </if>
+    <if test="null != like_addressDetail" >
+      and ssp.ADDRESS_DETAIL like CONCAT('%', #{like_addressDetail}, '%')
+    </if>
+    <if test="null != list_addressDetail" >
+      and ssp.ADDRESS_DETAIL in (<foreach collection="list_addressDetail" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_addressDetail" >
+      and ssp.ADDRESS_DETAIL &gt;= #{begin_addressDetail}
+    </if>
+    <if test="null != end_addressDetail" >
+      and ssp.ADDRESS_DETAIL &lt;= #{end_addressDetail}
+    </if>
+    <if test="null != contact" >
+      and ssp.CONTACT = #{contact}
+    </if>
+    <if test="null != ne_contact" >
+      and ssp.CONTACT != #{ne_contact}
+    </if>
+    <if test="null != like_contact" >
+      and ssp.CONTACT like CONCAT('%', #{like_contact}, '%')
+    </if>
+    <if test="null != list_contact" >
+      and ssp.CONTACT in (<foreach collection="list_contact" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_contact" >
+      and ssp.CONTACT &gt;= #{begin_contact}
+    </if>
+    <if test="null != end_contact" >
+      and ssp.CONTACT &lt;= #{end_contact}
+    </if>
+    <if test="null != contactMobile" >
+      and ssp.CONTACT_MOBILE = #{contactMobile}
+    </if>
+    <if test="null != ne_contactMobile" >
+      and ssp.CONTACT_MOBILE != #{ne_contactMobile}
+    </if>
+    <if test="null != like_contactMobile" >
+      and ssp.CONTACT_MOBILE like CONCAT('%', #{like_contactMobile}, '%')
+    </if>
+    <if test="null != list_contactMobile" >
+      and ssp.CONTACT_MOBILE in (<foreach collection="list_contactMobile" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_contactMobile" >
+      and ssp.CONTACT_MOBILE &gt;= #{begin_contactMobile}
+    </if>
+    <if test="null != end_contactMobile" >
+      and ssp.CONTACT_MOBILE &lt;= #{end_contactMobile}
+    </if>
+    <if test="null != email" >
+      and ssp.EMAIL = #{email}
+    </if>
+    <if test="null != ne_email" >
+      and ssp.EMAIL != #{ne_email}
+    </if>
+    <if test="null != like_email" >
+      and ssp.EMAIL like CONCAT('%', #{like_email}, '%')
+    </if>
+    <if test="null != list_email" >
+      and ssp.EMAIL in (<foreach collection="list_email" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_email" >
+      and ssp.EMAIL &gt;= #{begin_email}
+    </if>
+    <if test="null != end_email" >
+      and ssp.EMAIL &lt;= #{end_email}
+    </if>
+    <if test="null != begin_createTime" >
+      and ssp.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and ssp.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_updateTime" >
+      and ssp.UPDATE_TIME &gt;= #{begin_updateTime}
+    </if>
+    <if test="null != end_updateTime" >
+      and ssp.UPDATE_TIME &lt;= #{end_updateTime}
+    </if>
+    <if test="null != visitorCount" >
+      and ssp.VISITOR_COUNT = #{visitorCount}
+    </if>
+    <if test="null != ne_visitorCount" >
+      and ssp.VISITOR_COUNT != #{ne_visitorCount}
+    </if>
+    <if test="null != list_visitorCount" >
+      and ssp.VISITOR_COUNT in (<foreach collection="list_visitorCount" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != price" >
+      and ssp.PRICE = #{price}
+    </if>
+    <if test="null != ne_price" >
+      and ssp.PRICE != #{ne_price}
+    </if>
+    <if test="null != like_price" >
+      and ssp.PRICE like CONCAT('%', #{like_price}, '%')
+    </if>
+    <if test="null != list_price" >
+      and ssp.PRICE in (<foreach collection="list_price" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_price" >
+      and ssp.PRICE &gt;= #{begin_price}
+    </if>
+    <if test="null != end_price" >
+      and ssp.PRICE &lt;= #{end_price}
+    </if>
+    <if test="null != publisherUserId" >
+      and ssp.PUBLISHER_USER_ID = #{publisherUserId}
+    </if>
+    <if test="null != ne_publisherUserId" >
+      and ssp.PUBLISHER_USER_ID != #{ne_publisherUserId}
+    </if>
+    <if test="null != list_publisherUserId" >
+      and ssp.PUBLISHER_USER_ID in (<foreach collection="list_publisherUserId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != publisherName" >
+      and ssp.PUBLISHER_NAME = #{publisherName}
+    </if>
+    <if test="null != ne_publisherName" >
+      and ssp.PUBLISHER_NAME != #{ne_publisherName}
+    </if>
+    <if test="null != like_publisherName" >
+      and ssp.PUBLISHER_NAME like CONCAT('%', #{like_publisherName}, '%')
+    </if>
+    <if test="null != list_publisherName" >
+      and ssp.PUBLISHER_NAME in (<foreach collection="list_publisherName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_publisherName" >
+      and ssp.PUBLISHER_NAME &gt;= #{begin_publisherName}
+    </if>
+    <if test="null != end_publisherName" >
+      and ssp.PUBLISHER_NAME &lt;= #{end_publisherName}
+    </if>
+    <if test="null != companyId" >
+      and ssp.COMPANY_ID = #{companyId}
+    </if>
+    <if test="null != ne_companyId" >
+      and ssp.COMPANY_ID != #{ne_companyId}
+    </if>
+    <if test="null != list_companyId" >
+      and ssp.COMPANY_ID in (<foreach collection="list_companyId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != companyName" >
+      and ssp.COMPANY_NAME = #{companyName}
+    </if>
+    <if test="null != ne_companyName" >
+      and ssp.COMPANY_NAME != #{ne_companyName}
+    </if>
+    <if test="null != like_companyName" >
+      and ssp.COMPANY_NAME like CONCAT('%', #{like_companyName}, '%')
+    </if>
+    <if test="null != list_companyName" >
+      and ssp.COMPANY_NAME in (<foreach collection="list_companyName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_companyName" >
+      and ssp.COMPANY_NAME &gt;= #{begin_companyName}
+    </if>
+    <if test="null != end_companyName" >
+      and ssp.COMPANY_NAME &lt;= #{end_companyName}
+    </if>
+    <if test="null != addressProvince" >
+      and ssp.ADDRESS_PROVINCE = #{addressProvince}
+    </if>
+    <if test="null != ne_addressProvince" >
+      and ssp.ADDRESS_PROVINCE != #{ne_addressProvince}
+    </if>
+    <if test="null != like_addressProvince" >
+      and ssp.ADDRESS_PROVINCE like CONCAT('%', #{like_addressProvince}, '%')
+    </if>
+    <if test="null != list_addressProvince" >
+      and ssp.ADDRESS_PROVINCE in (<foreach collection="list_addressProvince" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_addressProvince" >
+      and ssp.ADDRESS_PROVINCE &gt;= #{begin_addressProvince}
+    </if>
+    <if test="null != end_addressProvince" >
+      and ssp.ADDRESS_PROVINCE &lt;= #{end_addressProvince}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'projectId' == orderItem.column" >
+            ssp.PROJECT_ID ${orderItem.dir}
+          </if>
+          <if test="'serviceField' == orderItem.column" >
+            ssp.SERVICE_FIELD ${orderItem.dir}
+          </if>
+          <if test="'supplyType' == orderItem.column" >
+            ssp.SUPPLY_TYPE ${orderItem.dir}
+          </if>
+          <if test="'supplyTheme' == orderItem.column" >
+            ssp.SUPPLY_THEME ${orderItem.dir}
+          </if>
+          <if test="'supplyBrief' == orderItem.column" >
+            ssp.SUPPLY_BRIEF ${orderItem.dir}
+          </if>
+          <if test="'coverFileId' == orderItem.column" >
+            ssp.COVER_FILE_ID ${orderItem.dir}
+          </if>
+          <if test="'coverFileName' == orderItem.column" >
+            ssp.COVER_FILE_NAME ${orderItem.dir}
+          </if>
+          <if test="'detailDesc' == orderItem.column" >
+            ssp.DETAIL_DESC ${orderItem.dir}
+          </if>
+          <if test="'searchKey' == orderItem.column" >
+            ssp.SEARCH_KEY ${orderItem.dir}
+          </if>
+          <if test="'addressDetail' == orderItem.column" >
+            ssp.ADDRESS_DETAIL ${orderItem.dir}
+          </if>
+          <if test="'contact' == orderItem.column" >
+            ssp.CONTACT ${orderItem.dir}
+          </if>
+          <if test="'contactMobile' == orderItem.column" >
+            ssp.CONTACT_MOBILE ${orderItem.dir}
+          </if>
+          <if test="'email' == orderItem.column" >
+            ssp.EMAIL ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            ssp.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'updateTime' == orderItem.column" >
+            ssp.UPDATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'visitorCount' == orderItem.column" >
+            ssp.VISITOR_COUNT ${orderItem.dir}
+          </if>
+          <if test="'price' == orderItem.column" >
+            ssp.PRICE ${orderItem.dir}
+          </if>
+          <if test="'publisherUserId' == orderItem.column" >
+            ssp.PUBLISHER_USER_ID ${orderItem.dir}
+          </if>
+          <if test="'publisherName' == orderItem.column" >
+            ssp.PUBLISHER_NAME ${orderItem.dir}
+          </if>
+          <if test="'companyId' == orderItem.column" >
+            ssp.COMPANY_ID ${orderItem.dir}
+          </if>
+          <if test="'companyName' == orderItem.column" >
+            ssp.COMPANY_NAME ${orderItem.dir}
+          </if>
+          <if test="'addressProvince' == orderItem.column" >
+            ssp.ADDRESS_PROVINCE ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    ssp.PROJECT_ID, ssp.SERVICE_FIELD, ssp.SUPPLY_TYPE, ssp.SUPPLY_THEME, ssp.SUPPLY_BRIEF, 
+    ssp.COVER_FILE_ID, ssp.COVER_FILE_NAME, ssp.DETAIL_DESC, ssp.SEARCH_KEY, ssp.ADDRESS_DETAIL, 
+    ssp.CONTACT, ssp.CONTACT_MOBILE, ssp.EMAIL, ssp.CREATE_TIME, ssp.UPDATE_TIME, ssp.VISITOR_COUNT, 
+    ssp.PRICE, ssp.PUBLISHER_USER_ID, ssp.PUBLISHER_NAME, ssp.COMPANY_ID, ssp.COMPANY_NAME, 
+    ssp.ADDRESS_PROVINCE
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sp_service_project ssp
+    where ssp.PROJECT_ID = #{projectId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from sp_service_project ssp
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from sp_service_project ssp
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.SpServiceProject" >
+    <selectKey resultType="java.lang.Integer" keyProperty="projectId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into sp_service_project
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      PROJECT_ID,
+      <if test="serviceField != null" >
+        SERVICE_FIELD,
+      </if>
+      <if test="supplyType != null" >
+        SUPPLY_TYPE,
+      </if>
+      <if test="supplyTheme != null" >
+        SUPPLY_THEME,
+      </if>
+      <if test="supplyBrief != null" >
+        SUPPLY_BRIEF,
+      </if>
+      <if test="coverFileId != null" >
+        COVER_FILE_ID,
+      </if>
+      <if test="coverFileName != null" >
+        COVER_FILE_NAME,
+      </if>
+      <if test="detailDesc != null" >
+        DETAIL_DESC,
+      </if>
+      <if test="searchKey != null" >
+        SEARCH_KEY,
+      </if>
+      <if test="addressDetail != null" >
+        ADDRESS_DETAIL,
+      </if>
+      <if test="contact != null" >
+        CONTACT,
+      </if>
+      <if test="contactMobile != null" >
+        CONTACT_MOBILE,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="visitorCount != null" >
+        VISITOR_COUNT,
+      </if>
+      <if test="price != null" >
+        PRICE,
+      </if>
+      <if test="publisherUserId != null" >
+        PUBLISHER_USER_ID,
+      </if>
+      <if test="publisherName != null" >
+        PUBLISHER_NAME,
+      </if>
+      <if test="companyId != null" >
+        COMPANY_ID,
+      </if>
+      <if test="companyName != null" >
+        COMPANY_NAME,
+      </if>
+      <if test="addressProvince != null" >
+        ADDRESS_PROVINCE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{projectId,jdbcType=INTEGER},
+      <if test="serviceField != null" >
+        #{serviceField,jdbcType=VARCHAR},
+      </if>
+      <if test="supplyType != null" >
+        #{supplyType,jdbcType=VARCHAR},
+      </if>
+      <if test="supplyTheme != null" >
+        #{supplyTheme,jdbcType=VARCHAR},
+      </if>
+      <if test="supplyBrief != null" >
+        #{supplyBrief,jdbcType=VARCHAR},
+      </if>
+      <if test="coverFileId != null" >
+        #{coverFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="coverFileName != null" >
+        #{coverFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="detailDesc != null" >
+        #{detailDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="searchKey != null" >
+        #{searchKey,jdbcType=VARCHAR},
+      </if>
+      <if test="addressDetail != null" >
+        #{addressDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactMobile != null" >
+        #{contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="visitorCount != null" >
+        #{visitorCount,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="publisherUserId != null" >
+        #{publisherUserId,jdbcType=INTEGER},
+      </if>
+      <if test="publisherName != null" >
+        #{publisherName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="addressProvince != null" >
+        #{addressProvince,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from sp_service_project
+    where PROJECT_ID = #{projectId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from sp_service_project where PROJECT_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from ssp using (sp_service_project as ssp) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.SpServiceProject" >
+    update sp_service_project
+    <set >
+      <if test="serviceField != null" >
+        SERVICE_FIELD = #{serviceField,jdbcType=VARCHAR},
+      </if>
+      <if test="supplyType != null" >
+        SUPPLY_TYPE = #{supplyType,jdbcType=VARCHAR},
+      </if>
+      <if test="supplyTheme != null" >
+        SUPPLY_THEME = #{supplyTheme,jdbcType=VARCHAR},
+      </if>
+      <if test="supplyBrief != null" >
+        SUPPLY_BRIEF = #{supplyBrief,jdbcType=VARCHAR},
+      </if>
+      <if test="coverFileId != null" >
+        COVER_FILE_ID = #{coverFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="coverFileName != null" >
+        COVER_FILE_NAME = #{coverFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="detailDesc != null" >
+        DETAIL_DESC = #{detailDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="searchKey != null" >
+        SEARCH_KEY = #{searchKey,jdbcType=VARCHAR},
+      </if>
+      <if test="addressDetail != null" >
+        ADDRESS_DETAIL = #{addressDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        CONTACT = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactMobile != null" >
+        CONTACT_MOBILE = #{contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="visitorCount != null" >
+        VISITOR_COUNT = #{visitorCount,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        PRICE = #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="publisherUserId != null" >
+        PUBLISHER_USER_ID = #{publisherUserId,jdbcType=INTEGER},
+      </if>
+      <if test="publisherName != null" >
+        PUBLISHER_NAME = #{publisherName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        COMPANY_ID = #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null" >
+        COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="addressProvince != null" >
+        ADDRESS_PROVINCE = #{addressProvince,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PROJECT_ID = #{projectId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update sp_service_project ssp
+    <set >
+      <if test="record.projectId != null" >
+        PROJECT_ID = #{record.projectId,jdbcType=INTEGER},
+      </if>
+      <if test="record.serviceField != null" >
+        SERVICE_FIELD = #{record.serviceField,jdbcType=VARCHAR},
+      </if>
+      <if test="record.supplyType != null" >
+        SUPPLY_TYPE = #{record.supplyType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.supplyTheme != null" >
+        SUPPLY_THEME = #{record.supplyTheme,jdbcType=VARCHAR},
+      </if>
+      <if test="record.supplyBrief != null" >
+        SUPPLY_BRIEF = #{record.supplyBrief,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coverFileId != null" >
+        COVER_FILE_ID = #{record.coverFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coverFileName != null" >
+        COVER_FILE_NAME = #{record.coverFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.detailDesc != null" >
+        DETAIL_DESC = #{record.detailDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.searchKey != null" >
+        SEARCH_KEY = #{record.searchKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addressDetail != null" >
+        ADDRESS_DETAIL = #{record.addressDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contact != null" >
+        CONTACT = #{record.contact,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactMobile != null" >
+        CONTACT_MOBILE = #{record.contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        EMAIL = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.visitorCount != null" >
+        VISITOR_COUNT = #{record.visitorCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.price != null" >
+        PRICE = #{record.price,jdbcType=VARCHAR},
+      </if>
+      <if test="record.publisherUserId != null" >
+        PUBLISHER_USER_ID = #{record.publisherUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.publisherName != null" >
+        PUBLISHER_NAME = #{record.publisherName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyId != null" >
+        COMPANY_ID = #{record.companyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.companyName != null" >
+        COMPANY_NAME = #{record.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addressProvince != null" >
+        ADDRESS_PROVINCE = #{record.addressProvince,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.projectId" >
+        and ssp.PROJECT_ID = #{map.projectId}
+      </if>
+      <if test="null != map.list_projectId" >
+        and ssp.PROJECT_ID in (<foreach collection="map.list_projectId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.serviceField" >
+        and ssp.SERVICE_FIELD = #{map.serviceField}
+      </if>
+      <if test="null != map.like_serviceField" >
+        and ssp.SERVICE_FIELD like '%' || #{map.like_serviceField} || '%'
+      </if>
+      <if test="null != map.list_serviceField" >
+        and ssp.SERVICE_FIELD in (<foreach collection="map.list_serviceField" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.supplyType" >
+        and ssp.SUPPLY_TYPE = #{map.supplyType}
+      </if>
+      <if test="null != map.like_supplyType" >
+        and ssp.SUPPLY_TYPE like '%' || #{map.like_supplyType} || '%'
+      </if>
+      <if test="null != map.list_supplyType" >
+        and ssp.SUPPLY_TYPE in (<foreach collection="map.list_supplyType" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.supplyTheme" >
+        and ssp.SUPPLY_THEME = #{map.supplyTheme}
+      </if>
+      <if test="null != map.like_supplyTheme" >
+        and ssp.SUPPLY_THEME like '%' || #{map.like_supplyTheme} || '%'
+      </if>
+      <if test="null != map.list_supplyTheme" >
+        and ssp.SUPPLY_THEME in (<foreach collection="map.list_supplyTheme" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.supplyBrief" >
+        and ssp.SUPPLY_BRIEF = #{map.supplyBrief}
+      </if>
+      <if test="null != map.like_supplyBrief" >
+        and ssp.SUPPLY_BRIEF like '%' || #{map.like_supplyBrief} || '%'
+      </if>
+      <if test="null != map.list_supplyBrief" >
+        and ssp.SUPPLY_BRIEF in (<foreach collection="map.list_supplyBrief" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.coverFileId" >
+        and ssp.COVER_FILE_ID = #{map.coverFileId}
+      </if>
+      <if test="null != map.like_coverFileId" >
+        and ssp.COVER_FILE_ID like '%' || #{map.like_coverFileId} || '%'
+      </if>
+      <if test="null != map.list_coverFileId" >
+        and ssp.COVER_FILE_ID in (<foreach collection="map.list_coverFileId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.coverFileName" >
+        and ssp.COVER_FILE_NAME = #{map.coverFileName}
+      </if>
+      <if test="null != map.like_coverFileName" >
+        and ssp.COVER_FILE_NAME like '%' || #{map.like_coverFileName} || '%'
+      </if>
+      <if test="null != map.list_coverFileName" >
+        and ssp.COVER_FILE_NAME in (<foreach collection="map.list_coverFileName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.detailDesc" >
+        and ssp.DETAIL_DESC = #{map.detailDesc}
+      </if>
+      <if test="null != map.like_detailDesc" >
+        and ssp.DETAIL_DESC like '%' || #{map.like_detailDesc} || '%'
+      </if>
+      <if test="null != map.list_detailDesc" >
+        and ssp.DETAIL_DESC in (<foreach collection="map.list_detailDesc" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.searchKey" >
+        and ssp.SEARCH_KEY = #{map.searchKey}
+      </if>
+      <if test="null != map.like_searchKey" >
+        and ssp.SEARCH_KEY like '%' || #{map.like_searchKey} || '%'
+      </if>
+      <if test="null != map.list_searchKey" >
+        and ssp.SEARCH_KEY in (<foreach collection="map.list_searchKey" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.addressDetail" >
+        and ssp.ADDRESS_DETAIL = #{map.addressDetail}
+      </if>
+      <if test="null != map.like_addressDetail" >
+        and ssp.ADDRESS_DETAIL like '%' || #{map.like_addressDetail} || '%'
+      </if>
+      <if test="null != map.list_addressDetail" >
+        and ssp.ADDRESS_DETAIL in (<foreach collection="map.list_addressDetail" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.contact" >
+        and ssp.CONTACT = #{map.contact}
+      </if>
+      <if test="null != map.like_contact" >
+        and ssp.CONTACT like '%' || #{map.like_contact} || '%'
+      </if>
+      <if test="null != map.list_contact" >
+        and ssp.CONTACT in (<foreach collection="map.list_contact" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.contactMobile" >
+        and ssp.CONTACT_MOBILE = #{map.contactMobile}
+      </if>
+      <if test="null != map.like_contactMobile" >
+        and ssp.CONTACT_MOBILE like '%' || #{map.like_contactMobile} || '%'
+      </if>
+      <if test="null != map.list_contactMobile" >
+        and ssp.CONTACT_MOBILE in (<foreach collection="map.list_contactMobile" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.email" >
+        and ssp.EMAIL = #{map.email}
+      </if>
+      <if test="null != map.like_email" >
+        and ssp.EMAIL like '%' || #{map.like_email} || '%'
+      </if>
+      <if test="null != map.list_email" >
+        and ssp.EMAIL in (<foreach collection="map.list_email" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and ssp.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and ssp.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_updateTime" >
+        and ssp.UPDATE_TIME &gt;= #{map.begin_updateTime}
+      </if>
+      <if test="null != map.end_updateTime" >
+        and ssp.UPDATE_TIME &lt;= #{map.end_updateTime}
+      </if>
+      <if test="null != map.visitorCount" >
+        and ssp.VISITOR_COUNT = #{map.visitorCount}
+      </if>
+      <if test="null != map.list_visitorCount" >
+        and ssp.VISITOR_COUNT in (<foreach collection="map.list_visitorCount" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.price" >
+        and ssp.PRICE = #{map.price}
+      </if>
+      <if test="null != map.like_price" >
+        and ssp.PRICE like '%' || #{map.like_price} || '%'
+      </if>
+      <if test="null != map.list_price" >
+        and ssp.PRICE in (<foreach collection="map.list_price" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.publisherUserId" >
+        and ssp.PUBLISHER_USER_ID = #{map.publisherUserId}
+      </if>
+      <if test="null != map.list_publisherUserId" >
+        and ssp.PUBLISHER_USER_ID in (<foreach collection="map.list_publisherUserId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.publisherName" >
+        and ssp.PUBLISHER_NAME = #{map.publisherName}
+      </if>
+      <if test="null != map.like_publisherName" >
+        and ssp.PUBLISHER_NAME like '%' || #{map.like_publisherName} || '%'
+      </if>
+      <if test="null != map.list_publisherName" >
+        and ssp.PUBLISHER_NAME in (<foreach collection="map.list_publisherName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.companyId" >
+        and ssp.COMPANY_ID = #{map.companyId}
+      </if>
+      <if test="null != map.list_companyId" >
+        and ssp.COMPANY_ID in (<foreach collection="map.list_companyId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.companyName" >
+        and ssp.COMPANY_NAME = #{map.companyName}
+      </if>
+      <if test="null != map.like_companyName" >
+        and ssp.COMPANY_NAME like '%' || #{map.like_companyName} || '%'
+      </if>
+      <if test="null != map.list_companyName" >
+        and ssp.COMPANY_NAME in (<foreach collection="map.list_companyName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.addressProvince" >
+        and ssp.ADDRESS_PROVINCE = #{map.addressProvince}
+      </if>
+      <if test="null != map.like_addressProvince" >
+        and ssp.ADDRESS_PROVINCE like '%' || #{map.like_addressProvince} || '%'
+      </if>
+      <if test="null != map.list_addressProvince" >
+        and ssp.ADDRESS_PROVINCE in (<foreach collection="map.list_addressProvince" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

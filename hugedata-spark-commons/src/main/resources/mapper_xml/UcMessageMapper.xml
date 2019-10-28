@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.UcMessageMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.UcMessage" >
+    <id column="MESSAGE_ID" property="messageId" jdbcType="INTEGER" />
+    <result column="MESSAGE_TYPE" property="messageType" jdbcType="VARCHAR" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="SENDER_ID" property="senderId" jdbcType="INTEGER" />
+    <result column="SENDER_NAME" property="senderName" jdbcType="VARCHAR" />
+    <result column="RECEIVER_ID" property="receiverId" jdbcType="INTEGER" />
+    <result column="RECEIVER_NAME" property="receiverName" jdbcType="VARCHAR" />
+    <result column="IS_READ" property="isRead" jdbcType="BIT" />
+    <result column="SEND_TIME" property="sendTime" jdbcType="TIMESTAMP" />
+    <result column="READ_TIME" property="readTime" jdbcType="TIMESTAMP" />
+    <result column="REFERENCE_ID" property="referenceId" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.com.hugedata.spark.commons.storage.entity.UcMessage" extends="BaseResultMap" >
+    <result column="CONTENT" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != messageId" >
+      and um.MESSAGE_ID = #{messageId}
+    </if>
+    <if test="null != ne_messageId" >
+      and um.MESSAGE_ID != #{ne_messageId}
+    </if>
+    <if test="null != list_messageId" >
+      and um.MESSAGE_ID in (<foreach collection="list_messageId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != messageType" >
+      and um.MESSAGE_TYPE = #{messageType}
+    </if>
+    <if test="null != ne_messageType" >
+      and um.MESSAGE_TYPE != #{ne_messageType}
+    </if>
+    <if test="null != like_messageType" >
+      and um.MESSAGE_TYPE like CONCAT('%', #{like_messageType}, '%')
+    </if>
+    <if test="null != list_messageType" >
+      and um.MESSAGE_TYPE in (<foreach collection="list_messageType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_messageType" >
+      and um.MESSAGE_TYPE &gt;= #{begin_messageType}
+    </if>
+    <if test="null != end_messageType" >
+      and um.MESSAGE_TYPE &lt;= #{end_messageType}
+    </if>
+    <if test="null != title" >
+      and um.TITLE = #{title}
+    </if>
+    <if test="null != ne_title" >
+      and um.TITLE != #{ne_title}
+    </if>
+    <if test="null != like_title" >
+      and um.TITLE like CONCAT('%', #{like_title}, '%')
+    </if>
+    <if test="null != list_title" >
+      and um.TITLE in (<foreach collection="list_title" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_title" >
+      and um.TITLE &gt;= #{begin_title}
+    </if>
+    <if test="null != end_title" >
+      and um.TITLE &lt;= #{end_title}
+    </if>
+    <if test="null != senderId" >
+      and um.SENDER_ID = #{senderId}
+    </if>
+    <if test="null != ne_senderId" >
+      and um.SENDER_ID != #{ne_senderId}
+    </if>
+    <if test="null != list_senderId" >
+      and um.SENDER_ID in (<foreach collection="list_senderId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != senderName" >
+      and um.SENDER_NAME = #{senderName}
+    </if>
+    <if test="null != ne_senderName" >
+      and um.SENDER_NAME != #{ne_senderName}
+    </if>
+    <if test="null != like_senderName" >
+      and um.SENDER_NAME like CONCAT('%', #{like_senderName}, '%')
+    </if>
+    <if test="null != list_senderName" >
+      and um.SENDER_NAME in (<foreach collection="list_senderName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_senderName" >
+      and um.SENDER_NAME &gt;= #{begin_senderName}
+    </if>
+    <if test="null != end_senderName" >
+      and um.SENDER_NAME &lt;= #{end_senderName}
+    </if>
+    <if test="null != receiverId" >
+      and um.RECEIVER_ID = #{receiverId}
+    </if>
+    <if test="null != ne_receiverId" >
+      and um.RECEIVER_ID != #{ne_receiverId}
+    </if>
+    <if test="null != list_receiverId" >
+      and um.RECEIVER_ID in (<foreach collection="list_receiverId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != receiverName" >
+      and um.RECEIVER_NAME = #{receiverName}
+    </if>
+    <if test="null != ne_receiverName" >
+      and um.RECEIVER_NAME != #{ne_receiverName}
+    </if>
+    <if test="null != like_receiverName" >
+      and um.RECEIVER_NAME like CONCAT('%', #{like_receiverName}, '%')
+    </if>
+    <if test="null != list_receiverName" >
+      and um.RECEIVER_NAME in (<foreach collection="list_receiverName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_receiverName" >
+      and um.RECEIVER_NAME &gt;= #{begin_receiverName}
+    </if>
+    <if test="null != end_receiverName" >
+      and um.RECEIVER_NAME &lt;= #{end_receiverName}
+    </if>
+    <if test="null != isRead" >
+      and um.IS_READ = #{isRead}
+    </if>
+    <if test="null != ne_isRead" >
+      and um.IS_READ != #{ne_isRead}
+    </if>
+    <if test="null != list_isRead" >
+      and um.IS_READ in (<foreach collection="list_isRead" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_sendTime" >
+      and um.SEND_TIME &gt;= #{begin_sendTime}
+    </if>
+    <if test="null != end_sendTime" >
+      and um.SEND_TIME &lt;= #{end_sendTime}
+    </if>
+    <if test="null != begin_readTime" >
+      and um.READ_TIME &gt;= #{begin_readTime}
+    </if>
+    <if test="null != end_readTime" >
+      and um.READ_TIME &lt;= #{end_readTime}
+    </if>
+    <if test="null != referenceId" >
+      and um.REFERENCE_ID = #{referenceId}
+    </if>
+    <if test="null != ne_referenceId" >
+      and um.REFERENCE_ID != #{ne_referenceId}
+    </if>
+    <if test="null != like_referenceId" >
+      and um.REFERENCE_ID like CONCAT('%', #{like_referenceId}, '%')
+    </if>
+    <if test="null != list_referenceId" >
+      and um.REFERENCE_ID in (<foreach collection="list_referenceId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_referenceId" >
+      and um.REFERENCE_ID &gt;= #{begin_referenceId}
+    </if>
+    <if test="null != end_referenceId" >
+      and um.REFERENCE_ID &lt;= #{end_referenceId}
+    </if>
+    <if test="null != content" >
+      and um.CONTENT = #{content}
+    </if>
+    <if test="null != ne_content" >
+      and um.CONTENT != #{ne_content}
+    </if>
+    <if test="null != like_content" >
+      and um.CONTENT like CONCAT('%', #{like_content}, '%')
+    </if>
+    <if test="null != list_content" >
+      and um.CONTENT in (<foreach collection="list_content" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_content" >
+      and um.CONTENT &gt;= #{begin_content}
+    </if>
+    <if test="null != end_content" >
+      and um.CONTENT &lt;= #{end_content}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'messageId' == orderItem.column" >
+            um.MESSAGE_ID ${orderItem.dir}
+          </if>
+          <if test="'messageType' == orderItem.column" >
+            um.MESSAGE_TYPE ${orderItem.dir}
+          </if>
+          <if test="'title' == orderItem.column" >
+            um.TITLE ${orderItem.dir}
+          </if>
+          <if test="'senderId' == orderItem.column" >
+            um.SENDER_ID ${orderItem.dir}
+          </if>
+          <if test="'senderName' == orderItem.column" >
+            um.SENDER_NAME ${orderItem.dir}
+          </if>
+          <if test="'receiverId' == orderItem.column" >
+            um.RECEIVER_ID ${orderItem.dir}
+          </if>
+          <if test="'receiverName' == orderItem.column" >
+            um.RECEIVER_NAME ${orderItem.dir}
+          </if>
+          <if test="'isRead' == orderItem.column" >
+            um.IS_READ ${orderItem.dir}
+          </if>
+          <if test="'sendTime' == orderItem.column" >
+            um.SEND_TIME ${orderItem.dir}
+          </if>
+          <if test="'readTime' == orderItem.column" >
+            um.READ_TIME ${orderItem.dir}
+          </if>
+          <if test="'referenceId' == orderItem.column" >
+            um.REFERENCE_ID ${orderItem.dir}
+          </if>
+          <if test="'content' == orderItem.column" >
+            um.CONTENT ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    um.MESSAGE_ID, um.MESSAGE_TYPE, um.TITLE, um.SENDER_ID, um.SENDER_NAME, um.RECEIVER_ID, 
+    um.RECEIVER_NAME, um.IS_READ, um.SEND_TIME, um.READ_TIME, um.REFERENCE_ID
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONTENT
+  </sql>
+  <select id="selectById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from uc_message um
+    where um.MESSAGE_ID = #{messageId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from uc_message um
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from uc_message um
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcMessage" >
+    <selectKey resultType="java.lang.Integer" keyProperty="messageId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into uc_message
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      MESSAGE_ID,
+      <if test="messageType != null" >
+        MESSAGE_TYPE,
+      </if>
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="senderId != null" >
+        SENDER_ID,
+      </if>
+      <if test="senderName != null" >
+        SENDER_NAME,
+      </if>
+      <if test="receiverId != null" >
+        RECEIVER_ID,
+      </if>
+      <if test="receiverName != null" >
+        RECEIVER_NAME,
+      </if>
+      <if test="isRead != null" >
+        IS_READ,
+      </if>
+      <if test="sendTime != null" >
+        SEND_TIME,
+      </if>
+      <if test="readTime != null" >
+        READ_TIME,
+      </if>
+      <if test="referenceId != null" >
+        REFERENCE_ID,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{messageId,jdbcType=INTEGER},
+      <if test="messageType != null" >
+        #{messageType,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="senderId != null" >
+        #{senderId,jdbcType=INTEGER},
+      </if>
+      <if test="senderName != null" >
+        #{senderName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverId != null" >
+        #{receiverId,jdbcType=INTEGER},
+      </if>
+      <if test="receiverName != null" >
+        #{receiverName,jdbcType=VARCHAR},
+      </if>
+      <if test="isRead != null" >
+        #{isRead,jdbcType=BIT},
+      </if>
+      <if test="sendTime != null" >
+        #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="readTime != null" >
+        #{readTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="referenceId != null" >
+        #{referenceId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from uc_message
+    where MESSAGE_ID = #{messageId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from uc_message where MESSAGE_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from um using (uc_message as um) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcMessage" >
+    update uc_message
+    <set >
+      <if test="messageType != null" >
+        MESSAGE_TYPE = #{messageType,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="senderId != null" >
+        SENDER_ID = #{senderId,jdbcType=INTEGER},
+      </if>
+      <if test="senderName != null" >
+        SENDER_NAME = #{senderName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverId != null" >
+        RECEIVER_ID = #{receiverId,jdbcType=INTEGER},
+      </if>
+      <if test="receiverName != null" >
+        RECEIVER_NAME = #{receiverName,jdbcType=VARCHAR},
+      </if>
+      <if test="isRead != null" >
+        IS_READ = #{isRead,jdbcType=BIT},
+      </if>
+      <if test="sendTime != null" >
+        SEND_TIME = #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="readTime != null" >
+        READ_TIME = #{readTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="referenceId != null" >
+        REFERENCE_ID = #{referenceId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where MESSAGE_ID = #{messageId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update uc_message um
+    <set >
+      <if test="record.messageId != null" >
+        MESSAGE_ID = #{record.messageId,jdbcType=INTEGER},
+      </if>
+      <if test="record.messageType != null" >
+        MESSAGE_TYPE = #{record.messageType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title != null" >
+        TITLE = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.senderId != null" >
+        SENDER_ID = #{record.senderId,jdbcType=INTEGER},
+      </if>
+      <if test="record.senderName != null" >
+        SENDER_NAME = #{record.senderName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiverId != null" >
+        RECEIVER_ID = #{record.receiverId,jdbcType=INTEGER},
+      </if>
+      <if test="record.receiverName != null" >
+        RECEIVER_NAME = #{record.receiverName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isRead != null" >
+        IS_READ = #{record.isRead,jdbcType=BIT},
+      </if>
+      <if test="record.sendTime != null" >
+        SEND_TIME = #{record.sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.readTime != null" >
+        READ_TIME = #{record.readTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.referenceId != null" >
+        REFERENCE_ID = #{record.referenceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null" >
+        CONTENT = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.messageId" >
+        and um.MESSAGE_ID = #{map.messageId}
+      </if>
+      <if test="null != map.list_messageId" >
+        and um.MESSAGE_ID in (<foreach collection="map.list_messageId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.messageType" >
+        and um.MESSAGE_TYPE = #{map.messageType}
+      </if>
+      <if test="null != map.like_messageType" >
+        and um.MESSAGE_TYPE like '%' || #{map.like_messageType} || '%'
+      </if>
+      <if test="null != map.list_messageType" >
+        and um.MESSAGE_TYPE in (<foreach collection="map.list_messageType" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.title" >
+        and um.TITLE = #{map.title}
+      </if>
+      <if test="null != map.like_title" >
+        and um.TITLE like '%' || #{map.like_title} || '%'
+      </if>
+      <if test="null != map.list_title" >
+        and um.TITLE in (<foreach collection="map.list_title" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.senderId" >
+        and um.SENDER_ID = #{map.senderId}
+      </if>
+      <if test="null != map.list_senderId" >
+        and um.SENDER_ID in (<foreach collection="map.list_senderId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.senderName" >
+        and um.SENDER_NAME = #{map.senderName}
+      </if>
+      <if test="null != map.like_senderName" >
+        and um.SENDER_NAME like '%' || #{map.like_senderName} || '%'
+      </if>
+      <if test="null != map.list_senderName" >
+        and um.SENDER_NAME in (<foreach collection="map.list_senderName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.receiverId" >
+        and um.RECEIVER_ID = #{map.receiverId}
+      </if>
+      <if test="null != map.list_receiverId" >
+        and um.RECEIVER_ID in (<foreach collection="map.list_receiverId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.receiverName" >
+        and um.RECEIVER_NAME = #{map.receiverName}
+      </if>
+      <if test="null != map.like_receiverName" >
+        and um.RECEIVER_NAME like '%' || #{map.like_receiverName} || '%'
+      </if>
+      <if test="null != map.list_receiverName" >
+        and um.RECEIVER_NAME in (<foreach collection="map.list_receiverName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.isRead" >
+        and um.IS_READ = #{map.isRead}
+      </if>
+      <if test="null != map.list_isRead" >
+        and um.IS_READ in (<foreach collection="map.list_isRead" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_sendTime" >
+        and um.SEND_TIME &gt;= #{map.begin_sendTime}
+      </if>
+      <if test="null != map.end_sendTime" >
+        and um.SEND_TIME &lt;= #{map.end_sendTime}
+      </if>
+      <if test="null != map.begin_readTime" >
+        and um.READ_TIME &gt;= #{map.begin_readTime}
+      </if>
+      <if test="null != map.end_readTime" >
+        and um.READ_TIME &lt;= #{map.end_readTime}
+      </if>
+      <if test="null != map.referenceId" >
+        and um.REFERENCE_ID = #{map.referenceId}
+      </if>
+      <if test="null != map.like_referenceId" >
+        and um.REFERENCE_ID like '%' || #{map.like_referenceId} || '%'
+      </if>
+      <if test="null != map.list_referenceId" >
+        and um.REFERENCE_ID in (<foreach collection="map.list_referenceId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.content" >
+        and um.CONTENT = #{map.content}
+      </if>
+      <if test="null != map.like_content" >
+        and um.CONTENT like '%' || #{map.like_content} || '%'
+      </if>
+      <if test="null != map.list_content" >
+        and um.CONTENT in (<foreach collection="map.list_content" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

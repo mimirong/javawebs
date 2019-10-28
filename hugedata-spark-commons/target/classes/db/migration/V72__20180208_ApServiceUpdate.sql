@@ -1,0 +1,3 @@
+alter table AP_SERVICE_INFO
+    add CURRENT_DEPT_ID    INTEGER,
+    add CURRENT_DEPT_NAME  VARCHAR(100);

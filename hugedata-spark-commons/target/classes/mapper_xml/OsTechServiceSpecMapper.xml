@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.OsTechServiceSpecMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.OsTechServiceSpec" >
+    <id column="SPEC_ID" property="specId" jdbcType="INTEGER" />
+    <result column="SPEC_NAME" property="specName" jdbcType="VARCHAR" />
+    <result column="SPEC_TYPE" property="specType" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="PRICE" property="price" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.com.hugedata.spark.commons.storage.entity.OsTechServiceSpec" extends="BaseResultMap" >
+    <result column="SPEC_DATA" property="specData" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != specId" >
+      and otss.SPEC_ID = #{specId}
+    </if>
+    <if test="null != ne_specId" >
+      and otss.SPEC_ID != #{ne_specId}
+    </if>
+    <if test="null != list_specId" >
+      and otss.SPEC_ID in (<foreach collection="list_specId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != specName" >
+      and otss.SPEC_NAME = #{specName}
+    </if>
+    <if test="null != ne_specName" >
+      and otss.SPEC_NAME != #{ne_specName}
+    </if>
+    <if test="null != like_specName" >
+      and otss.SPEC_NAME like CONCAT('%', #{like_specName}, '%')
+    </if>
+    <if test="null != list_specName" >
+      and otss.SPEC_NAME in (<foreach collection="list_specName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_specName" >
+      and otss.SPEC_NAME &gt;= #{begin_specName}
+    </if>
+    <if test="null != end_specName" >
+      and otss.SPEC_NAME &lt;= #{end_specName}
+    </if>
+    <if test="null != specType" >
+      and otss.SPEC_TYPE = #{specType}
+    </if>
+    <if test="null != ne_specType" >
+      and otss.SPEC_TYPE != #{ne_specType}
+    </if>
+    <if test="null != like_specType" >
+      and otss.SPEC_TYPE like CONCAT('%', #{like_specType}, '%')
+    </if>
+    <if test="null != list_specType" >
+      and otss.SPEC_TYPE in (<foreach collection="list_specType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_specType" >
+      and otss.SPEC_TYPE &gt;= #{begin_specType}
+    </if>
+    <if test="null != end_specType" >
+      and otss.SPEC_TYPE &lt;= #{end_specType}
+    </if>
+    <if test="null != remark" >
+      and otss.REMARK = #{remark}
+    </if>
+    <if test="null != ne_remark" >
+      and otss.REMARK != #{ne_remark}
+    </if>
+    <if test="null != like_remark" >
+      and otss.REMARK like CONCAT('%', #{like_remark}, '%')
+    </if>
+    <if test="null != list_remark" >
+      and otss.REMARK in (<foreach collection="list_remark" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_remark" >
+      and otss.REMARK &gt;= #{begin_remark}
+    </if>
+    <if test="null != end_remark" >
+      and otss.REMARK &lt;= #{end_remark}
+    </if>
+    <if test="null != price" >
+      and otss.PRICE = #{price}
+    </if>
+    <if test="null != ne_price" >
+      and otss.PRICE != #{ne_price}
+    </if>
+    <if test="null != list_price" >
+      and otss.PRICE in (<foreach collection="list_price" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_createTime" >
+      and otss.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and otss.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_updateTime" >
+      and otss.UPDATE_TIME &gt;= #{begin_updateTime}
+    </if>
+    <if test="null != end_updateTime" >
+      and otss.UPDATE_TIME &lt;= #{end_updateTime}
+    </if>
+    <if test="null != specData" >
+      and otss.SPEC_DATA = #{specData}
+    </if>
+    <if test="null != ne_specData" >
+      and otss.SPEC_DATA != #{ne_specData}
+    </if>
+    <if test="null != like_specData" >
+      and otss.SPEC_DATA like CONCAT('%', #{like_specData}, '%')
+    </if>
+    <if test="null != list_specData" >
+      and otss.SPEC_DATA in (<foreach collection="list_specData" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_specData" >
+      and otss.SPEC_DATA &gt;= #{begin_specData}
+    </if>
+    <if test="null != end_specData" >
+      and otss.SPEC_DATA &lt;= #{end_specData}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'specId' == orderItem.column" >
+            otss.SPEC_ID ${orderItem.dir}
+          </if>
+          <if test="'specName' == orderItem.column" >
+            otss.SPEC_NAME ${orderItem.dir}
+          </if>
+          <if test="'specType' == orderItem.column" >
+            otss.SPEC_TYPE ${orderItem.dir}
+          </if>
+          <if test="'remark' == orderItem.column" >
+            otss.REMARK ${orderItem.dir}
+          </if>
+          <if test="'price' == orderItem.column" >
+            otss.PRICE ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            otss.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'updateTime' == orderItem.column" >
+            otss.UPDATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'specData' == orderItem.column" >
+            otss.SPEC_DATA ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    otss.SPEC_ID, otss.SPEC_NAME, otss.SPEC_TYPE, otss.REMARK, otss.PRICE, otss.CREATE_TIME, 
+    otss.UPDATE_TIME
+  </sql>
+  <sql id="Blob_Column_List" >
+    SPEC_DATA
+  </sql>
+  <select id="selectById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from os_tech_service_spec otss
+    where otss.SPEC_ID = #{specId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from os_tech_service_spec otss
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from os_tech_service_spec otss
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.OsTechServiceSpec" >
+    insert into os_tech_service_spec
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="specId != null" >
+        SPEC_ID,
+      </if>
+      <if test="specName != null" >
+        SPEC_NAME,
+      </if>
+      <if test="specType != null" >
+        SPEC_TYPE,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="price != null" >
+        PRICE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="specData != null" >
+        SPEC_DATA,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="specId != null" >
+        #{specId,jdbcType=INTEGER},
+      </if>
+      <if test="specName != null" >
+        #{specName,jdbcType=VARCHAR},
+      </if>
+      <if test="specType != null" >
+        #{specType,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="specData != null" >
+        #{specData,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from os_tech_service_spec
+    where SPEC_ID = #{specId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from os_tech_service_spec where SPEC_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from otss using (os_tech_service_spec as otss) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.OsTechServiceSpec" >
+    update os_tech_service_spec
+    <set >
+      <if test="specName != null" >
+        SPEC_NAME = #{specName,jdbcType=VARCHAR},
+      </if>
+      <if test="specType != null" >
+        SPEC_TYPE = #{specType,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        PRICE = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="specData != null" >
+        SPEC_DATA = #{specData,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where SPEC_ID = #{specId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update os_tech_service_spec otss
+    <set >
+      <if test="record.specId != null" >
+        SPEC_ID = #{record.specId,jdbcType=INTEGER},
+      </if>
+      <if test="record.specName != null" >
+        SPEC_NAME = #{record.specName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.specType != null" >
+        SPEC_TYPE = #{record.specType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null" >
+        PRICE = #{record.price,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.specData != null" >
+        SPEC_DATA = #{record.specData,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.specId" >
+        and otss.SPEC_ID = #{map.specId}
+      </if>
+      <if test="null != map.list_specId" >
+        and otss.SPEC_ID in (<foreach collection="map.list_specId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.specName" >
+        and otss.SPEC_NAME = #{map.specName}
+      </if>
+      <if test="null != map.like_specName" >
+        and otss.SPEC_NAME like '%' || #{map.like_specName} || '%'
+      </if>
+      <if test="null != map.list_specName" >
+        and otss.SPEC_NAME in (<foreach collection="map.list_specName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.specType" >
+        and otss.SPEC_TYPE = #{map.specType}
+      </if>
+      <if test="null != map.like_specType" >
+        and otss.SPEC_TYPE like '%' || #{map.like_specType} || '%'
+      </if>
+      <if test="null != map.list_specType" >
+        and otss.SPEC_TYPE in (<foreach collection="map.list_specType" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.remark" >
+        and otss.REMARK = #{map.remark}
+      </if>
+      <if test="null != map.like_remark" >
+        and otss.REMARK like '%' || #{map.like_remark} || '%'
+      </if>
+      <if test="null != map.list_remark" >
+        and otss.REMARK in (<foreach collection="map.list_remark" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.price" >
+        and otss.PRICE = #{map.price}
+      </if>
+      <if test="null != map.list_price" >
+        and otss.PRICE in (<foreach collection="map.list_price" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and otss.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and otss.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_updateTime" >
+        and otss.UPDATE_TIME &gt;= #{map.begin_updateTime}
+      </if>
+      <if test="null != map.end_updateTime" >
+        and otss.UPDATE_TIME &lt;= #{map.end_updateTime}
+      </if>
+      <if test="null != map.specData" >
+        and otss.SPEC_DATA = #{map.specData}
+      </if>
+      <if test="null != map.like_specData" >
+        and otss.SPEC_DATA like '%' || #{map.like_specData} || '%'
+      </if>
+      <if test="null != map.list_specData" >
+        and otss.SPEC_DATA in (<foreach collection="map.list_specData" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

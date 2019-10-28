@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.GaRentInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.GaRentInfo" >
+    <id column="RENT_INFO_ID" property="rentInfoId" jdbcType="INTEGER" />
+    <result column="BUILDING_NO" property="buildingNo" jdbcType="VARCHAR" />
+    <result column="FLOOR" property="floor" jdbcType="VARCHAR" />
+    <result column="ROOM_NO" property="roomNo" jdbcType="VARCHAR" />
+    <result column="AREA" property="area" jdbcType="VARCHAR" />
+    <result column="IS_RENT" property="isRent" jdbcType="BIT" />
+    <result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != rentInfoId" >
+      and gri.RENT_INFO_ID = #{rentInfoId}
+    </if>
+    <if test="null != ne_rentInfoId" >
+      and gri.RENT_INFO_ID != #{ne_rentInfoId}
+    </if>
+    <if test="null != list_rentInfoId" >
+      and gri.RENT_INFO_ID in (<foreach collection="list_rentInfoId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != buildingNo" >
+      and gri.BUILDING_NO = #{buildingNo}
+    </if>
+    <if test="null != ne_buildingNo" >
+      and gri.BUILDING_NO != #{ne_buildingNo}
+    </if>
+    <if test="null != like_buildingNo" >
+      and gri.BUILDING_NO like CONCAT('%', #{like_buildingNo}, '%')
+    </if>
+    <if test="null != list_buildingNo" >
+      and gri.BUILDING_NO in (<foreach collection="list_buildingNo" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_buildingNo" >
+      and gri.BUILDING_NO &gt;= #{begin_buildingNo}
+    </if>
+    <if test="null != end_buildingNo" >
+      and gri.BUILDING_NO &lt;= #{end_buildingNo}
+    </if>
+    <if test="null != floor" >
+      and gri.FLOOR = #{floor}
+    </if>
+    <if test="null != ne_floor" >
+      and gri.FLOOR != #{ne_floor}
+    </if>
+    <if test="null != like_floor" >
+      and gri.FLOOR like CONCAT('%', #{like_floor}, '%')
+    </if>
+    <if test="null != list_floor" >
+      and gri.FLOOR in (<foreach collection="list_floor" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_floor" >
+      and gri.FLOOR &gt;= #{begin_floor}
+    </if>
+    <if test="null != end_floor" >
+      and gri.FLOOR &lt;= #{end_floor}
+    </if>
+    <if test="null != roomNo" >
+      and gri.ROOM_NO = #{roomNo}
+    </if>
+    <if test="null != ne_roomNo" >
+      and gri.ROOM_NO != #{ne_roomNo}
+    </if>
+    <if test="null != like_roomNo" >
+      and gri.ROOM_NO like CONCAT('%', #{like_roomNo}, '%')
+    </if>
+    <if test="null != list_roomNo" >
+      and gri.ROOM_NO in (<foreach collection="list_roomNo" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_roomNo" >
+      and gri.ROOM_NO &gt;= #{begin_roomNo}
+    </if>
+    <if test="null != end_roomNo" >
+      and gri.ROOM_NO &lt;= #{end_roomNo}
+    </if>
+    <if test="null != area" >
+      and gri.AREA = #{area}
+    </if>
+    <if test="null != ne_area" >
+      and gri.AREA != #{ne_area}
+    </if>
+    <if test="null != like_area" >
+      and gri.AREA like CONCAT('%', #{like_area}, '%')
+    </if>
+    <if test="null != list_area" >
+      and gri.AREA in (<foreach collection="list_area" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_area" >
+      and gri.AREA &gt;= #{begin_area}
+    </if>
+    <if test="null != end_area" >
+      and gri.AREA &lt;= #{end_area}
+    </if>
+    <if test="null != isRent" >
+      and gri.IS_RENT = #{isRent}
+    </if>
+    <if test="null != ne_isRent" >
+      and gri.IS_RENT != #{ne_isRent}
+    </if>
+    <if test="null != list_isRent" >
+      and gri.IS_RENT in (<foreach collection="list_isRent" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != companyName" >
+      and gri.COMPANY_NAME = #{companyName}
+    </if>
+    <if test="null != ne_companyName" >
+      and gri.COMPANY_NAME != #{ne_companyName}
+    </if>
+    <if test="null != like_companyName" >
+      and gri.COMPANY_NAME like CONCAT('%', #{like_companyName}, '%')
+    </if>
+    <if test="null != list_companyName" >
+      and gri.COMPANY_NAME in (<foreach collection="list_companyName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_companyName" >
+      and gri.COMPANY_NAME &gt;= #{begin_companyName}
+    </if>
+    <if test="null != end_companyName" >
+      and gri.COMPANY_NAME &lt;= #{end_companyName}
+    </if>
+    <if test="null != begin_createTime" >
+      and gri.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and gri.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_updateTime" >
+      and gri.UPDATE_TIME &gt;= #{begin_updateTime}
+    </if>
+    <if test="null != end_updateTime" >
+      and gri.UPDATE_TIME &lt;= #{end_updateTime}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'rentInfoId' == orderItem.column" >
+            gri.RENT_INFO_ID ${orderItem.dir}
+          </if>
+          <if test="'buildingNo' == orderItem.column" >
+            gri.BUILDING_NO ${orderItem.dir}
+          </if>
+          <if test="'floor' == orderItem.column" >
+            gri.FLOOR ${orderItem.dir}
+          </if>
+          <if test="'roomNo' == orderItem.column" >
+            gri.ROOM_NO ${orderItem.dir}
+          </if>
+          <if test="'area' == orderItem.column" >
+            gri.AREA ${orderItem.dir}
+          </if>
+          <if test="'isRent' == orderItem.column" >
+            gri.IS_RENT ${orderItem.dir}
+          </if>
+          <if test="'companyName' == orderItem.column" >
+            gri.COMPANY_NAME ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            gri.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'updateTime' == orderItem.column" >
+            gri.UPDATE_TIME ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    gri.RENT_INFO_ID, gri.BUILDING_NO, gri.FLOOR, gri.ROOM_NO, gri.AREA, gri.IS_RENT, 
+    gri.COMPANY_NAME, gri.CREATE_TIME, gri.UPDATE_TIME
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ga_rent_info gri
+    where gri.RENT_INFO_ID = #{rentInfoId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from ga_rent_info gri
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from ga_rent_info gri
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaRentInfo" >
+    <selectKey resultType="java.lang.Integer" keyProperty="rentInfoId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into ga_rent_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      RENT_INFO_ID,
+      <if test="buildingNo != null" >
+        BUILDING_NO,
+      </if>
+      <if test="floor != null" >
+        FLOOR,
+      </if>
+      <if test="roomNo != null" >
+        ROOM_NO,
+      </if>
+      <if test="area != null" >
+        AREA,
+      </if>
+      <if test="isRent != null" >
+        IS_RENT,
+      </if>
+      <if test="companyName != null" >
+        COMPANY_NAME,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{rentInfoId,jdbcType=INTEGER},
+      <if test="buildingNo != null" >
+        #{buildingNo,jdbcType=VARCHAR},
+      </if>
+      <if test="floor != null" >
+        #{floor,jdbcType=VARCHAR},
+      </if>
+      <if test="roomNo != null" >
+        #{roomNo,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="isRent != null" >
+        #{isRent,jdbcType=BIT},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from ga_rent_info
+    where RENT_INFO_ID = #{rentInfoId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from ga_rent_info where RENT_INFO_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from gri using (ga_rent_info as gri) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaRentInfo" >
+    update ga_rent_info
+    <set >
+      <if test="buildingNo != null" >
+        BUILDING_NO = #{buildingNo,jdbcType=VARCHAR},
+      </if>
+      <if test="floor != null" >
+        FLOOR = #{floor,jdbcType=VARCHAR},
+      </if>
+      <if test="roomNo != null" >
+        ROOM_NO = #{roomNo,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        AREA = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="isRent != null" >
+        IS_RENT = #{isRent,jdbcType=BIT},
+      </if>
+      <if test="companyName != null" >
+        COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where RENT_INFO_ID = #{rentInfoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update ga_rent_info gri
+    <set >
+      <if test="record.rentInfoId != null" >
+        RENT_INFO_ID = #{record.rentInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="record.buildingNo != null" >
+        BUILDING_NO = #{record.buildingNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.floor != null" >
+        FLOOR = #{record.floor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roomNo != null" >
+        ROOM_NO = #{record.roomNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.area != null" >
+        AREA = #{record.area,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isRent != null" >
+        IS_RENT = #{record.isRent,jdbcType=BIT},
+      </if>
+      <if test="record.companyName != null" >
+        COMPANY_NAME = #{record.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.rentInfoId" >
+        and gri.RENT_INFO_ID = #{map.rentInfoId}
+      </if>
+      <if test="null != map.list_rentInfoId" >
+        and gri.RENT_INFO_ID in (<foreach collection="map.list_rentInfoId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.buildingNo" >
+        and gri.BUILDING_NO = #{map.buildingNo}
+      </if>
+      <if test="null != map.like_buildingNo" >
+        and gri.BUILDING_NO like '%' || #{map.like_buildingNo} || '%'
+      </if>
+      <if test="null != map.list_buildingNo" >
+        and gri.BUILDING_NO in (<foreach collection="map.list_buildingNo" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.floor" >
+        and gri.FLOOR = #{map.floor}
+      </if>
+      <if test="null != map.like_floor" >
+        and gri.FLOOR like '%' || #{map.like_floor} || '%'
+      </if>
+      <if test="null != map.list_floor" >
+        and gri.FLOOR in (<foreach collection="map.list_floor" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.roomNo" >
+        and gri.ROOM_NO = #{map.roomNo}
+      </if>
+      <if test="null != map.like_roomNo" >
+        and gri.ROOM_NO like '%' || #{map.like_roomNo} || '%'
+      </if>
+      <if test="null != map.list_roomNo" >
+        and gri.ROOM_NO in (<foreach collection="map.list_roomNo" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.area" >
+        and gri.AREA = #{map.area}
+      </if>
+      <if test="null != map.like_area" >
+        and gri.AREA like '%' || #{map.like_area} || '%'
+      </if>
+      <if test="null != map.list_area" >
+        and gri.AREA in (<foreach collection="map.list_area" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.isRent" >
+        and gri.IS_RENT = #{map.isRent}
+      </if>
+      <if test="null != map.list_isRent" >
+        and gri.IS_RENT in (<foreach collection="map.list_isRent" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.companyName" >
+        and gri.COMPANY_NAME = #{map.companyName}
+      </if>
+      <if test="null != map.like_companyName" >
+        and gri.COMPANY_NAME like '%' || #{map.like_companyName} || '%'
+      </if>
+      <if test="null != map.list_companyName" >
+        and gri.COMPANY_NAME in (<foreach collection="map.list_companyName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and gri.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and gri.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_updateTime" >
+        and gri.UPDATE_TIME &gt;= #{map.begin_updateTime}
+      </if>
+      <if test="null != map.end_updateTime" >
+        and gri.UPDATE_TIME &lt;= #{map.end_updateTime}
+      </if>
+    </where>
+  </update>
+</mapper>

@@ -1,0 +1,1275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.OsMeetingTrainingMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.OsMeetingTraining" >
+    <id column="TRAINING_ID" property="trainingId" jdbcType="INTEGER" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="TRAINING_TYPE" property="trainingType" jdbcType="VARCHAR" />
+    <result column="ADAPT_OBJECT" property="adaptObject" jdbcType="VARCHAR" />
+    <result column="REGISTRATION_TIME" property="registrationTime" jdbcType="TIMESTAMP" />
+    <result column="REGISTRATION_DEADLINE" property="registrationDeadline" jdbcType="TIMESTAMP" />
+    <result column="TRAINING_START_TIME" property="trainingStartTime" jdbcType="TIMESTAMP" />
+    <result column="TRAINING_END_TIME" property="trainingEndTime" jdbcType="TIMESTAMP" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="REGISTRATION_WAY" property="registrationWay" jdbcType="VARCHAR" />
+    <result column="MAX_PLAYERS" property="maxPlayers" jdbcType="INTEGER" />
+    <result column="TRAINING_WAY" property="trainingWay" jdbcType="VARCHAR" />
+    <result column="PRICE" property="price" jdbcType="INTEGER" />
+    <result column="FILE_ID" property="fileId" jdbcType="VARCHAR" />
+    <result column="FILE_NAME" property="fileName" jdbcType="VARCHAR" />
+    <result column="PREVIEW_FILE_ID" property="previewFileId" jdbcType="VARCHAR" />
+    <result column="PREVIEW_FILE_NAME" property="previewFileName" jdbcType="VARCHAR" />
+    <result column="BRIEF" property="brief" jdbcType="VARCHAR" />
+    <result column="BRIEF_FILE_ID" property="briefFileId" jdbcType="VARCHAR" />
+    <result column="BRIEF_FILE_NAME" property="briefFileName" jdbcType="VARCHAR" />
+    <result column="ANNOUNCEMENTS" property="announcements" jdbcType="VARCHAR" />
+    <result column="ANNO_FILE_ID" property="annoFileId" jdbcType="VARCHAR" />
+    <result column="ANNO_FILE_NAME" property="annoFileName" jdbcType="VARCHAR" />
+    <result column="CONTACT" property="contact" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="SORT_INDEX" property="sortIndex" jdbcType="INTEGER" />
+    <result column="IS_VISIBLE" property="isVisible" jdbcType="BIT" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != trainingId" >
+      and omt.TRAINING_ID = #{trainingId}
+    </if>
+    <if test="null != ne_trainingId" >
+      and omt.TRAINING_ID != #{ne_trainingId}
+    </if>
+    <if test="null != list_trainingId" >
+      and omt.TRAINING_ID in (<foreach collection="list_trainingId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != name" >
+      and omt.NAME = #{name}
+    </if>
+    <if test="null != ne_name" >
+      and omt.NAME != #{ne_name}
+    </if>
+    <if test="null != like_name" >
+      and omt.NAME like CONCAT('%', #{like_name}, '%')
+    </if>
+    <if test="null != list_name" >
+      and omt.NAME in (<foreach collection="list_name" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_name" >
+      and omt.NAME &gt;= #{begin_name}
+    </if>
+    <if test="null != end_name" >
+      and omt.NAME &lt;= #{end_name}
+    </if>
+    <if test="null != trainingType" >
+      and omt.TRAINING_TYPE = #{trainingType}
+    </if>
+    <if test="null != ne_trainingType" >
+      and omt.TRAINING_TYPE != #{ne_trainingType}
+    </if>
+    <if test="null != like_trainingType" >
+      and omt.TRAINING_TYPE like CONCAT('%', #{like_trainingType}, '%')
+    </if>
+    <if test="null != list_trainingType" >
+      and omt.TRAINING_TYPE in (<foreach collection="list_trainingType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_trainingType" >
+      and omt.TRAINING_TYPE &gt;= #{begin_trainingType}
+    </if>
+    <if test="null != end_trainingType" >
+      and omt.TRAINING_TYPE &lt;= #{end_trainingType}
+    </if>
+    <if test="null != adaptObject" >
+      and omt.ADAPT_OBJECT = #{adaptObject}
+    </if>
+    <if test="null != ne_adaptObject" >
+      and omt.ADAPT_OBJECT != #{ne_adaptObject}
+    </if>
+    <if test="null != like_adaptObject" >
+      and omt.ADAPT_OBJECT like CONCAT('%', #{like_adaptObject}, '%')
+    </if>
+    <if test="null != list_adaptObject" >
+      and omt.ADAPT_OBJECT in (<foreach collection="list_adaptObject" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_adaptObject" >
+      and omt.ADAPT_OBJECT &gt;= #{begin_adaptObject}
+    </if>
+    <if test="null != end_adaptObject" >
+      and omt.ADAPT_OBJECT &lt;= #{end_adaptObject}
+    </if>
+    <if test="null != begin_registrationTime" >
+      and omt.REGISTRATION_TIME &gt;= #{begin_registrationTime}
+    </if>
+    <if test="null != end_registrationTime" >
+      and omt.REGISTRATION_TIME &lt;= #{end_registrationTime}
+    </if>
+    <if test="null != begin_registrationDeadline" >
+      and omt.REGISTRATION_DEADLINE &gt;= #{begin_registrationDeadline}
+    </if>
+    <if test="null != end_registrationDeadline" >
+      and omt.REGISTRATION_DEADLINE &lt;= #{end_registrationDeadline}
+    </if>
+    <if test="null != begin_trainingStartTime" >
+      and omt.TRAINING_START_TIME &gt;= #{begin_trainingStartTime}
+    </if>
+    <if test="null != end_trainingStartTime" >
+      and omt.TRAINING_START_TIME &lt;= #{end_trainingStartTime}
+    </if>
+    <if test="null != begin_trainingEndTime" >
+      and omt.TRAINING_END_TIME &gt;= #{begin_trainingEndTime}
+    </if>
+    <if test="null != end_trainingEndTime" >
+      and omt.TRAINING_END_TIME &lt;= #{end_trainingEndTime}
+    </if>
+    <if test="null != address" >
+      and omt.ADDRESS = #{address}
+    </if>
+    <if test="null != ne_address" >
+      and omt.ADDRESS != #{ne_address}
+    </if>
+    <if test="null != like_address" >
+      and omt.ADDRESS like CONCAT('%', #{like_address}, '%')
+    </if>
+    <if test="null != list_address" >
+      and omt.ADDRESS in (<foreach collection="list_address" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_address" >
+      and omt.ADDRESS &gt;= #{begin_address}
+    </if>
+    <if test="null != end_address" >
+      and omt.ADDRESS &lt;= #{end_address}
+    </if>
+    <if test="null != registrationWay" >
+      and omt.REGISTRATION_WAY = #{registrationWay}
+    </if>
+    <if test="null != ne_registrationWay" >
+      and omt.REGISTRATION_WAY != #{ne_registrationWay}
+    </if>
+    <if test="null != like_registrationWay" >
+      and omt.REGISTRATION_WAY like CONCAT('%', #{like_registrationWay}, '%')
+    </if>
+    <if test="null != list_registrationWay" >
+      and omt.REGISTRATION_WAY in (<foreach collection="list_registrationWay" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_registrationWay" >
+      and omt.REGISTRATION_WAY &gt;= #{begin_registrationWay}
+    </if>
+    <if test="null != end_registrationWay" >
+      and omt.REGISTRATION_WAY &lt;= #{end_registrationWay}
+    </if>
+    <if test="null != maxPlayers" >
+      and omt.MAX_PLAYERS = #{maxPlayers}
+    </if>
+    <if test="null != ne_maxPlayers" >
+      and omt.MAX_PLAYERS != #{ne_maxPlayers}
+    </if>
+    <if test="null != list_maxPlayers" >
+      and omt.MAX_PLAYERS in (<foreach collection="list_maxPlayers" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != trainingWay" >
+      and omt.TRAINING_WAY = #{trainingWay}
+    </if>
+    <if test="null != ne_trainingWay" >
+      and omt.TRAINING_WAY != #{ne_trainingWay}
+    </if>
+    <if test="null != like_trainingWay" >
+      and omt.TRAINING_WAY like CONCAT('%', #{like_trainingWay}, '%')
+    </if>
+    <if test="null != list_trainingWay" >
+      and omt.TRAINING_WAY in (<foreach collection="list_trainingWay" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_trainingWay" >
+      and omt.TRAINING_WAY &gt;= #{begin_trainingWay}
+    </if>
+    <if test="null != end_trainingWay" >
+      and omt.TRAINING_WAY &lt;= #{end_trainingWay}
+    </if>
+    <if test="null != price" >
+      and omt.PRICE = #{price}
+    </if>
+    <if test="null != ne_price" >
+      and omt.PRICE != #{ne_price}
+    </if>
+    <if test="null != list_price" >
+      and omt.PRICE in (<foreach collection="list_price" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != fileId" >
+      and omt.FILE_ID = #{fileId}
+    </if>
+    <if test="null != ne_fileId" >
+      and omt.FILE_ID != #{ne_fileId}
+    </if>
+    <if test="null != like_fileId" >
+      and omt.FILE_ID like CONCAT('%', #{like_fileId}, '%')
+    </if>
+    <if test="null != list_fileId" >
+      and omt.FILE_ID in (<foreach collection="list_fileId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_fileId" >
+      and omt.FILE_ID &gt;= #{begin_fileId}
+    </if>
+    <if test="null != end_fileId" >
+      and omt.FILE_ID &lt;= #{end_fileId}
+    </if>
+    <if test="null != fileName" >
+      and omt.FILE_NAME = #{fileName}
+    </if>
+    <if test="null != ne_fileName" >
+      and omt.FILE_NAME != #{ne_fileName}
+    </if>
+    <if test="null != like_fileName" >
+      and omt.FILE_NAME like CONCAT('%', #{like_fileName}, '%')
+    </if>
+    <if test="null != list_fileName" >
+      and omt.FILE_NAME in (<foreach collection="list_fileName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_fileName" >
+      and omt.FILE_NAME &gt;= #{begin_fileName}
+    </if>
+    <if test="null != end_fileName" >
+      and omt.FILE_NAME &lt;= #{end_fileName}
+    </if>
+    <if test="null != previewFileId" >
+      and omt.PREVIEW_FILE_ID = #{previewFileId}
+    </if>
+    <if test="null != ne_previewFileId" >
+      and omt.PREVIEW_FILE_ID != #{ne_previewFileId}
+    </if>
+    <if test="null != like_previewFileId" >
+      and omt.PREVIEW_FILE_ID like CONCAT('%', #{like_previewFileId}, '%')
+    </if>
+    <if test="null != list_previewFileId" >
+      and omt.PREVIEW_FILE_ID in (<foreach collection="list_previewFileId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_previewFileId" >
+      and omt.PREVIEW_FILE_ID &gt;= #{begin_previewFileId}
+    </if>
+    <if test="null != end_previewFileId" >
+      and omt.PREVIEW_FILE_ID &lt;= #{end_previewFileId}
+    </if>
+    <if test="null != previewFileName" >
+      and omt.PREVIEW_FILE_NAME = #{previewFileName}
+    </if>
+    <if test="null != ne_previewFileName" >
+      and omt.PREVIEW_FILE_NAME != #{ne_previewFileName}
+    </if>
+    <if test="null != like_previewFileName" >
+      and omt.PREVIEW_FILE_NAME like CONCAT('%', #{like_previewFileName}, '%')
+    </if>
+    <if test="null != list_previewFileName" >
+      and omt.PREVIEW_FILE_NAME in (<foreach collection="list_previewFileName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_previewFileName" >
+      and omt.PREVIEW_FILE_NAME &gt;= #{begin_previewFileName}
+    </if>
+    <if test="null != end_previewFileName" >
+      and omt.PREVIEW_FILE_NAME &lt;= #{end_previewFileName}
+    </if>
+    <if test="null != brief" >
+      and omt.BRIEF = #{brief}
+    </if>
+    <if test="null != ne_brief" >
+      and omt.BRIEF != #{ne_brief}
+    </if>
+    <if test="null != like_brief" >
+      and omt.BRIEF like CONCAT('%', #{like_brief}, '%')
+    </if>
+    <if test="null != list_brief" >
+      and omt.BRIEF in (<foreach collection="list_brief" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_brief" >
+      and omt.BRIEF &gt;= #{begin_brief}
+    </if>
+    <if test="null != end_brief" >
+      and omt.BRIEF &lt;= #{end_brief}
+    </if>
+    <if test="null != briefFileId" >
+      and omt.BRIEF_FILE_ID = #{briefFileId}
+    </if>
+    <if test="null != ne_briefFileId" >
+      and omt.BRIEF_FILE_ID != #{ne_briefFileId}
+    </if>
+    <if test="null != like_briefFileId" >
+      and omt.BRIEF_FILE_ID like CONCAT('%', #{like_briefFileId}, '%')
+    </if>
+    <if test="null != list_briefFileId" >
+      and omt.BRIEF_FILE_ID in (<foreach collection="list_briefFileId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_briefFileId" >
+      and omt.BRIEF_FILE_ID &gt;= #{begin_briefFileId}
+    </if>
+    <if test="null != end_briefFileId" >
+      and omt.BRIEF_FILE_ID &lt;= #{end_briefFileId}
+    </if>
+    <if test="null != briefFileName" >
+      and omt.BRIEF_FILE_NAME = #{briefFileName}
+    </if>
+    <if test="null != ne_briefFileName" >
+      and omt.BRIEF_FILE_NAME != #{ne_briefFileName}
+    </if>
+    <if test="null != like_briefFileName" >
+      and omt.BRIEF_FILE_NAME like CONCAT('%', #{like_briefFileName}, '%')
+    </if>
+    <if test="null != list_briefFileName" >
+      and omt.BRIEF_FILE_NAME in (<foreach collection="list_briefFileName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_briefFileName" >
+      and omt.BRIEF_FILE_NAME &gt;= #{begin_briefFileName}
+    </if>
+    <if test="null != end_briefFileName" >
+      and omt.BRIEF_FILE_NAME &lt;= #{end_briefFileName}
+    </if>
+    <if test="null != announcements" >
+      and omt.ANNOUNCEMENTS = #{announcements}
+    </if>
+    <if test="null != ne_announcements" >
+      and omt.ANNOUNCEMENTS != #{ne_announcements}
+    </if>
+    <if test="null != like_announcements" >
+      and omt.ANNOUNCEMENTS like CONCAT('%', #{like_announcements}, '%')
+    </if>
+    <if test="null != list_announcements" >
+      and omt.ANNOUNCEMENTS in (<foreach collection="list_announcements" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_announcements" >
+      and omt.ANNOUNCEMENTS &gt;= #{begin_announcements}
+    </if>
+    <if test="null != end_announcements" >
+      and omt.ANNOUNCEMENTS &lt;= #{end_announcements}
+    </if>
+    <if test="null != annoFileId" >
+      and omt.ANNO_FILE_ID = #{annoFileId}
+    </if>
+    <if test="null != ne_annoFileId" >
+      and omt.ANNO_FILE_ID != #{ne_annoFileId}
+    </if>
+    <if test="null != like_annoFileId" >
+      and omt.ANNO_FILE_ID like CONCAT('%', #{like_annoFileId}, '%')
+    </if>
+    <if test="null != list_annoFileId" >
+      and omt.ANNO_FILE_ID in (<foreach collection="list_annoFileId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_annoFileId" >
+      and omt.ANNO_FILE_ID &gt;= #{begin_annoFileId}
+    </if>
+    <if test="null != end_annoFileId" >
+      and omt.ANNO_FILE_ID &lt;= #{end_annoFileId}
+    </if>
+    <if test="null != annoFileName" >
+      and omt.ANNO_FILE_NAME = #{annoFileName}
+    </if>
+    <if test="null != ne_annoFileName" >
+      and omt.ANNO_FILE_NAME != #{ne_annoFileName}
+    </if>
+    <if test="null != like_annoFileName" >
+      and omt.ANNO_FILE_NAME like CONCAT('%', #{like_annoFileName}, '%')
+    </if>
+    <if test="null != list_annoFileName" >
+      and omt.ANNO_FILE_NAME in (<foreach collection="list_annoFileName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_annoFileName" >
+      and omt.ANNO_FILE_NAME &gt;= #{begin_annoFileName}
+    </if>
+    <if test="null != end_annoFileName" >
+      and omt.ANNO_FILE_NAME &lt;= #{end_annoFileName}
+    </if>
+    <if test="null != contact" >
+      and omt.CONTACT = #{contact}
+    </if>
+    <if test="null != ne_contact" >
+      and omt.CONTACT != #{ne_contact}
+    </if>
+    <if test="null != like_contact" >
+      and omt.CONTACT like CONCAT('%', #{like_contact}, '%')
+    </if>
+    <if test="null != list_contact" >
+      and omt.CONTACT in (<foreach collection="list_contact" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_contact" >
+      and omt.CONTACT &gt;= #{begin_contact}
+    </if>
+    <if test="null != end_contact" >
+      and omt.CONTACT &lt;= #{end_contact}
+    </if>
+    <if test="null != phone" >
+      and omt.PHONE = #{phone}
+    </if>
+    <if test="null != ne_phone" >
+      and omt.PHONE != #{ne_phone}
+    </if>
+    <if test="null != like_phone" >
+      and omt.PHONE like CONCAT('%', #{like_phone}, '%')
+    </if>
+    <if test="null != list_phone" >
+      and omt.PHONE in (<foreach collection="list_phone" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_phone" >
+      and omt.PHONE &gt;= #{begin_phone}
+    </if>
+    <if test="null != end_phone" >
+      and omt.PHONE &lt;= #{end_phone}
+    </if>
+    <if test="null != mobile" >
+      and omt.MOBILE = #{mobile}
+    </if>
+    <if test="null != ne_mobile" >
+      and omt.MOBILE != #{ne_mobile}
+    </if>
+    <if test="null != like_mobile" >
+      and omt.MOBILE like CONCAT('%', #{like_mobile}, '%')
+    </if>
+    <if test="null != list_mobile" >
+      and omt.MOBILE in (<foreach collection="list_mobile" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_mobile" >
+      and omt.MOBILE &gt;= #{begin_mobile}
+    </if>
+    <if test="null != end_mobile" >
+      and omt.MOBILE &lt;= #{end_mobile}
+    </if>
+    <if test="null != email" >
+      and omt.EMAIL = #{email}
+    </if>
+    <if test="null != ne_email" >
+      and omt.EMAIL != #{ne_email}
+    </if>
+    <if test="null != like_email" >
+      and omt.EMAIL like CONCAT('%', #{like_email}, '%')
+    </if>
+    <if test="null != list_email" >
+      and omt.EMAIL in (<foreach collection="list_email" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_email" >
+      and omt.EMAIL &gt;= #{begin_email}
+    </if>
+    <if test="null != end_email" >
+      and omt.EMAIL &lt;= #{end_email}
+    </if>
+    <if test="null != sortIndex" >
+      and omt.SORT_INDEX = #{sortIndex}
+    </if>
+    <if test="null != ne_sortIndex" >
+      and omt.SORT_INDEX != #{ne_sortIndex}
+    </if>
+    <if test="null != list_sortIndex" >
+      and omt.SORT_INDEX in (<foreach collection="list_sortIndex" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != isVisible" >
+      and omt.IS_VISIBLE = #{isVisible}
+    </if>
+    <if test="null != ne_isVisible" >
+      and omt.IS_VISIBLE != #{ne_isVisible}
+    </if>
+    <if test="null != list_isVisible" >
+      and omt.IS_VISIBLE in (<foreach collection="list_isVisible" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_createTime" >
+      and omt.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and omt.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_updateTime" >
+      and omt.UPDATE_TIME &gt;= #{begin_updateTime}
+    </if>
+    <if test="null != end_updateTime" >
+      and omt.UPDATE_TIME &lt;= #{end_updateTime}
+    </if>
+    <if test="null != like_keyWord" >
+      and ( omt.NAME like CONCAT('%', #{like_keyWord}, '%') or
+      omt.TRAINING_TYPE like CONCAT('%', #{like_keyWord}, '%') or
+      omt.ADAPT_OBJECT like CONCAT('%', #{like_keyWord}, '%') or
+      omt.ADDRESS like CONCAT('%', #{like_keyWord}, '%') or
+      omt.TRAINING_WAY like CONCAT('%', #{like_keyWord}, '%') or
+      omt.BRIEF like CONCAT('%', #{like_keyWord}, '%') or
+      omt.ANNOUNCEMENTS like CONCAT('%', #{like_keyWord}, '%') or
+      omt.CONTACT like CONCAT('%', #{like_keyWord}, '%') or
+      omt.PHONE like CONCAT('%', #{like_keyWord}, '%') or
+      omt.MOBILE like CONCAT('%', #{like_keyWord}, '%') or
+      omt.EMAIL like CONCAT('%', #{like_keyWord}, '%') )
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'trainingId' == orderItem.column" >
+            omt.TRAINING_ID ${orderItem.dir}
+          </if>
+          <if test="'name' == orderItem.column" >
+            omt.NAME ${orderItem.dir}
+          </if>
+          <if test="'trainingType' == orderItem.column" >
+            omt.TRAINING_TYPE ${orderItem.dir}
+          </if>
+          <if test="'adaptObject' == orderItem.column" >
+            omt.ADAPT_OBJECT ${orderItem.dir}
+          </if>
+          <if test="'registrationTime' == orderItem.column" >
+            omt.REGISTRATION_TIME ${orderItem.dir}
+          </if>
+          <if test="'registrationDeadline' == orderItem.column" >
+            omt.REGISTRATION_DEADLINE ${orderItem.dir}
+          </if>
+          <if test="'trainingStartTime' == orderItem.column" >
+            omt.TRAINING_START_TIME ${orderItem.dir}
+          </if>
+          <if test="'trainingEndTime' == orderItem.column" >
+            omt.TRAINING_END_TIME ${orderItem.dir}
+          </if>
+          <if test="'address' == orderItem.column" >
+            omt.ADDRESS ${orderItem.dir}
+          </if>
+          <if test="'registrationWay' == orderItem.column" >
+            omt.REGISTRATION_WAY ${orderItem.dir}
+          </if>
+          <if test="'maxPlayers' == orderItem.column" >
+            omt.MAX_PLAYERS ${orderItem.dir}
+          </if>
+          <if test="'trainingWay' == orderItem.column" >
+            omt.TRAINING_WAY ${orderItem.dir}
+          </if>
+          <if test="'price' == orderItem.column" >
+            omt.PRICE ${orderItem.dir}
+          </if>
+          <if test="'fileId' == orderItem.column" >
+            omt.FILE_ID ${orderItem.dir}
+          </if>
+          <if test="'fileName' == orderItem.column" >
+            omt.FILE_NAME ${orderItem.dir}
+          </if>
+          <if test="'previewFileId' == orderItem.column" >
+            omt.PREVIEW_FILE_ID ${orderItem.dir}
+          </if>
+          <if test="'previewFileName' == orderItem.column" >
+            omt.PREVIEW_FILE_NAME ${orderItem.dir}
+          </if>
+          <if test="'brief' == orderItem.column" >
+            omt.BRIEF ${orderItem.dir}
+          </if>
+          <if test="'briefFileId' == orderItem.column" >
+            omt.BRIEF_FILE_ID ${orderItem.dir}
+          </if>
+          <if test="'briefFileName' == orderItem.column" >
+            omt.BRIEF_FILE_NAME ${orderItem.dir}
+          </if>
+          <if test="'announcements' == orderItem.column" >
+            omt.ANNOUNCEMENTS ${orderItem.dir}
+          </if>
+          <if test="'annoFileId' == orderItem.column" >
+            omt.ANNO_FILE_ID ${orderItem.dir}
+          </if>
+          <if test="'annoFileName' == orderItem.column" >
+            omt.ANNO_FILE_NAME ${orderItem.dir}
+          </if>
+          <if test="'contact' == orderItem.column" >
+            omt.CONTACT ${orderItem.dir}
+          </if>
+          <if test="'phone' == orderItem.column" >
+            omt.PHONE ${orderItem.dir}
+          </if>
+          <if test="'mobile' == orderItem.column" >
+            omt.MOBILE ${orderItem.dir}
+          </if>
+          <if test="'email' == orderItem.column" >
+            omt.EMAIL ${orderItem.dir}
+          </if>
+          <if test="'sortIndex' == orderItem.column" >
+            omt.SORT_INDEX ${orderItem.dir}
+          </if>
+          <if test="'isVisible' == orderItem.column" >
+            omt.IS_VISIBLE ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            omt.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'updateTime' == orderItem.column" >
+            omt.UPDATE_TIME ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    omt.TRAINING_ID, omt.NAME, omt.TRAINING_TYPE, omt.ADAPT_OBJECT, omt.REGISTRATION_TIME, 
+    omt.REGISTRATION_DEADLINE, omt.TRAINING_START_TIME, omt.TRAINING_END_TIME, omt.ADDRESS, 
+    omt.REGISTRATION_WAY, omt.MAX_PLAYERS, omt.TRAINING_WAY, omt.PRICE, omt.FILE_ID, 
+    omt.FILE_NAME, omt.PREVIEW_FILE_ID, omt.PREVIEW_FILE_NAME, omt.BRIEF, omt.BRIEF_FILE_ID, 
+    omt.BRIEF_FILE_NAME, omt.ANNOUNCEMENTS, omt.ANNO_FILE_ID, omt.ANNO_FILE_NAME, omt.CONTACT, 
+    omt.PHONE, omt.MOBILE, omt.EMAIL, omt.SORT_INDEX, omt.IS_VISIBLE, omt.CREATE_TIME, 
+    omt.UPDATE_TIME
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from os_meeting_training omt
+    where omt.TRAINING_ID = #{trainingId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from os_meeting_training omt
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from os_meeting_training omt
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.OsMeetingTraining" >
+    <selectKey resultType="java.lang.Integer" keyProperty="trainingId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into os_meeting_training
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      TRAINING_ID,
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="trainingType != null" >
+        TRAINING_TYPE,
+      </if>
+      <if test="adaptObject != null" >
+        ADAPT_OBJECT,
+      </if>
+      <if test="registrationTime != null" >
+        REGISTRATION_TIME,
+      </if>
+      <if test="registrationDeadline != null" >
+        REGISTRATION_DEADLINE,
+      </if>
+      <if test="trainingStartTime != null" >
+        TRAINING_START_TIME,
+      </if>
+      <if test="trainingEndTime != null" >
+        TRAINING_END_TIME,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="registrationWay != null" >
+        REGISTRATION_WAY,
+      </if>
+      <if test="maxPlayers != null" >
+        MAX_PLAYERS,
+      </if>
+      <if test="trainingWay != null" >
+        TRAINING_WAY,
+      </if>
+      <if test="price != null" >
+        PRICE,
+      </if>
+      <if test="fileId != null" >
+        FILE_ID,
+      </if>
+      <if test="fileName != null" >
+        FILE_NAME,
+      </if>
+      <if test="previewFileId != null" >
+        PREVIEW_FILE_ID,
+      </if>
+      <if test="previewFileName != null" >
+        PREVIEW_FILE_NAME,
+      </if>
+      <if test="brief != null" >
+        BRIEF,
+      </if>
+      <if test="briefFileId != null" >
+        BRIEF_FILE_ID,
+      </if>
+      <if test="briefFileName != null" >
+        BRIEF_FILE_NAME,
+      </if>
+      <if test="announcements != null" >
+        ANNOUNCEMENTS,
+      </if>
+      <if test="annoFileId != null" >
+        ANNO_FILE_ID,
+      </if>
+      <if test="annoFileName != null" >
+        ANNO_FILE_NAME,
+      </if>
+      <if test="contact != null" >
+        CONTACT,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="mobile != null" >
+        MOBILE,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="sortIndex != null" >
+        SORT_INDEX,
+      </if>
+      <if test="isVisible != null" >
+        IS_VISIBLE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{trainingId,jdbcType=INTEGER},
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="trainingType != null" >
+        #{trainingType,jdbcType=VARCHAR},
+      </if>
+      <if test="adaptObject != null" >
+        #{adaptObject,jdbcType=VARCHAR},
+      </if>
+      <if test="registrationTime != null" >
+        #{registrationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registrationDeadline != null" >
+        #{registrationDeadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trainingStartTime != null" >
+        #{trainingStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trainingEndTime != null" >
+        #{trainingEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="registrationWay != null" >
+        #{registrationWay,jdbcType=VARCHAR},
+      </if>
+      <if test="maxPlayers != null" >
+        #{maxPlayers,jdbcType=INTEGER},
+      </if>
+      <if test="trainingWay != null" >
+        #{trainingWay,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="fileId != null" >
+        #{fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="previewFileId != null" >
+        #{previewFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="previewFileName != null" >
+        #{previewFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="brief != null" >
+        #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="briefFileId != null" >
+        #{briefFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="briefFileName != null" >
+        #{briefFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="announcements != null" >
+        #{announcements,jdbcType=VARCHAR},
+      </if>
+      <if test="annoFileId != null" >
+        #{annoFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="annoFileName != null" >
+        #{annoFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="sortIndex != null" >
+        #{sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="isVisible != null" >
+        #{isVisible,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from os_meeting_training
+    where TRAINING_ID = #{trainingId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from os_meeting_training where TRAINING_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from omt using (os_meeting_training as omt) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.OsMeetingTraining" >
+    update os_meeting_training
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="trainingType != null" >
+        TRAINING_TYPE = #{trainingType,jdbcType=VARCHAR},
+      </if>
+      <if test="adaptObject != null" >
+        ADAPT_OBJECT = #{adaptObject,jdbcType=VARCHAR},
+      </if>
+      <if test="registrationTime != null" >
+        REGISTRATION_TIME = #{registrationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registrationDeadline != null" >
+        REGISTRATION_DEADLINE = #{registrationDeadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trainingStartTime != null" >
+        TRAINING_START_TIME = #{trainingStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trainingEndTime != null" >
+        TRAINING_END_TIME = #{trainingEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="registrationWay != null" >
+        REGISTRATION_WAY = #{registrationWay,jdbcType=VARCHAR},
+      </if>
+      <if test="maxPlayers != null" >
+        MAX_PLAYERS = #{maxPlayers,jdbcType=INTEGER},
+      </if>
+      <if test="trainingWay != null" >
+        TRAINING_WAY = #{trainingWay,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        PRICE = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="fileId != null" >
+        FILE_ID = #{fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        FILE_NAME = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="previewFileId != null" >
+        PREVIEW_FILE_ID = #{previewFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="previewFileName != null" >
+        PREVIEW_FILE_NAME = #{previewFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="brief != null" >
+        BRIEF = #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="briefFileId != null" >
+        BRIEF_FILE_ID = #{briefFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="briefFileName != null" >
+        BRIEF_FILE_NAME = #{briefFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="announcements != null" >
+        ANNOUNCEMENTS = #{announcements,jdbcType=VARCHAR},
+      </if>
+      <if test="annoFileId != null" >
+        ANNO_FILE_ID = #{annoFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="annoFileName != null" >
+        ANNO_FILE_NAME = #{annoFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        CONTACT = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        MOBILE = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="sortIndex != null" >
+        SORT_INDEX = #{sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="isVisible != null" >
+        IS_VISIBLE = #{isVisible,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where TRAINING_ID = #{trainingId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update os_meeting_training omt
+    <set >
+      <if test="record.trainingId != null" >
+        TRAINING_ID = #{record.trainingId,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trainingType != null" >
+        TRAINING_TYPE = #{record.trainingType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adaptObject != null" >
+        ADAPT_OBJECT = #{record.adaptObject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registrationTime != null" >
+        REGISTRATION_TIME = #{record.registrationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.registrationDeadline != null" >
+        REGISTRATION_DEADLINE = #{record.registrationDeadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.trainingStartTime != null" >
+        TRAINING_START_TIME = #{record.trainingStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.trainingEndTime != null" >
+        TRAINING_END_TIME = #{record.trainingEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.address != null" >
+        ADDRESS = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registrationWay != null" >
+        REGISTRATION_WAY = #{record.registrationWay,jdbcType=VARCHAR},
+      </if>
+      <if test="record.maxPlayers != null" >
+        MAX_PLAYERS = #{record.maxPlayers,jdbcType=INTEGER},
+      </if>
+      <if test="record.trainingWay != null" >
+        TRAINING_WAY = #{record.trainingWay,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null" >
+        PRICE = #{record.price,jdbcType=INTEGER},
+      </if>
+      <if test="record.fileId != null" >
+        FILE_ID = #{record.fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileName != null" >
+        FILE_NAME = #{record.fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.previewFileId != null" >
+        PREVIEW_FILE_ID = #{record.previewFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.previewFileName != null" >
+        PREVIEW_FILE_NAME = #{record.previewFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brief != null" >
+        BRIEF = #{record.brief,jdbcType=VARCHAR},
+      </if>
+      <if test="record.briefFileId != null" >
+        BRIEF_FILE_ID = #{record.briefFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.briefFileName != null" >
+        BRIEF_FILE_NAME = #{record.briefFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.announcements != null" >
+        ANNOUNCEMENTS = #{record.announcements,jdbcType=VARCHAR},
+      </if>
+      <if test="record.annoFileId != null" >
+        ANNO_FILE_ID = #{record.annoFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.annoFileName != null" >
+        ANNO_FILE_NAME = #{record.annoFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contact != null" >
+        CONTACT = #{record.contact,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        PHONE = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobile != null" >
+        MOBILE = #{record.mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        EMAIL = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sortIndex != null" >
+        SORT_INDEX = #{record.sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="record.isVisible != null" >
+        IS_VISIBLE = #{record.isVisible,jdbcType=BIT},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.trainingId" >
+        and omt.TRAINING_ID = #{map.trainingId}
+      </if>
+      <if test="null != map.list_trainingId" >
+        and omt.TRAINING_ID in (<foreach collection="map.list_trainingId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.name" >
+        and omt.NAME = #{map.name}
+      </if>
+      <if test="null != map.like_name" >
+        and omt.NAME like '%' || #{map.like_name} || '%'
+      </if>
+      <if test="null != map.list_name" >
+        and omt.NAME in (<foreach collection="map.list_name" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.trainingType" >
+        and omt.TRAINING_TYPE = #{map.trainingType}
+      </if>
+      <if test="null != map.like_trainingType" >
+        and omt.TRAINING_TYPE like '%' || #{map.like_trainingType} || '%'
+      </if>
+      <if test="null != map.list_trainingType" >
+        and omt.TRAINING_TYPE in (<foreach collection="map.list_trainingType" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.adaptObject" >
+        and omt.ADAPT_OBJECT = #{map.adaptObject}
+      </if>
+      <if test="null != map.like_adaptObject" >
+        and omt.ADAPT_OBJECT like '%' || #{map.like_adaptObject} || '%'
+      </if>
+      <if test="null != map.list_adaptObject" >
+        and omt.ADAPT_OBJECT in (<foreach collection="map.list_adaptObject" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_registrationTime" >
+        and omt.REGISTRATION_TIME &gt;= #{map.begin_registrationTime}
+      </if>
+      <if test="null != map.end_registrationTime" >
+        and omt.REGISTRATION_TIME &lt;= #{map.end_registrationTime}
+      </if>
+      <if test="null != map.begin_registrationDeadline" >
+        and omt.REGISTRATION_DEADLINE &gt;= #{map.begin_registrationDeadline}
+      </if>
+      <if test="null != map.end_registrationDeadline" >
+        and omt.REGISTRATION_DEADLINE &lt;= #{map.end_registrationDeadline}
+      </if>
+      <if test="null != map.begin_trainingStartTime" >
+        and omt.TRAINING_START_TIME &gt;= #{map.begin_trainingStartTime}
+      </if>
+      <if test="null != map.end_trainingStartTime" >
+        and omt.TRAINING_START_TIME &lt;= #{map.end_trainingStartTime}
+      </if>
+      <if test="null != map.begin_trainingEndTime" >
+        and omt.TRAINING_END_TIME &gt;= #{map.begin_trainingEndTime}
+      </if>
+      <if test="null != map.end_trainingEndTime" >
+        and omt.TRAINING_END_TIME &lt;= #{map.end_trainingEndTime}
+      </if>
+      <if test="null != map.address" >
+        and omt.ADDRESS = #{map.address}
+      </if>
+      <if test="null != map.like_address" >
+        and omt.ADDRESS like '%' || #{map.like_address} || '%'
+      </if>
+      <if test="null != map.list_address" >
+        and omt.ADDRESS in (<foreach collection="map.list_address" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.registrationWay" >
+        and omt.REGISTRATION_WAY = #{map.registrationWay}
+      </if>
+      <if test="null != map.like_registrationWay" >
+        and omt.REGISTRATION_WAY like '%' || #{map.like_registrationWay} || '%'
+      </if>
+      <if test="null != map.list_registrationWay" >
+        and omt.REGISTRATION_WAY in (<foreach collection="map.list_registrationWay" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.maxPlayers" >
+        and omt.MAX_PLAYERS = #{map.maxPlayers}
+      </if>
+      <if test="null != map.list_maxPlayers" >
+        and omt.MAX_PLAYERS in (<foreach collection="map.list_maxPlayers" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.trainingWay" >
+        and omt.TRAINING_WAY = #{map.trainingWay}
+      </if>
+      <if test="null != map.like_trainingWay" >
+        and omt.TRAINING_WAY like '%' || #{map.like_trainingWay} || '%'
+      </if>
+      <if test="null != map.list_trainingWay" >
+        and omt.TRAINING_WAY in (<foreach collection="map.list_trainingWay" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.price" >
+        and omt.PRICE = #{map.price}
+      </if>
+      <if test="null != map.list_price" >
+        and omt.PRICE in (<foreach collection="map.list_price" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.fileId" >
+        and omt.FILE_ID = #{map.fileId}
+      </if>
+      <if test="null != map.like_fileId" >
+        and omt.FILE_ID like '%' || #{map.like_fileId} || '%'
+      </if>
+      <if test="null != map.list_fileId" >
+        and omt.FILE_ID in (<foreach collection="map.list_fileId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.fileName" >
+        and omt.FILE_NAME = #{map.fileName}
+      </if>
+      <if test="null != map.like_fileName" >
+        and omt.FILE_NAME like '%' || #{map.like_fileName} || '%'
+      </if>
+      <if test="null != map.list_fileName" >
+        and omt.FILE_NAME in (<foreach collection="map.list_fileName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.previewFileId" >
+        and omt.PREVIEW_FILE_ID = #{map.previewFileId}
+      </if>
+      <if test="null != map.like_previewFileId" >
+        and omt.PREVIEW_FILE_ID like '%' || #{map.like_previewFileId} || '%'
+      </if>
+      <if test="null != map.list_previewFileId" >
+        and omt.PREVIEW_FILE_ID in (<foreach collection="map.list_previewFileId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.previewFileName" >
+        and omt.PREVIEW_FILE_NAME = #{map.previewFileName}
+      </if>
+      <if test="null != map.like_previewFileName" >
+        and omt.PREVIEW_FILE_NAME like '%' || #{map.like_previewFileName} || '%'
+      </if>
+      <if test="null != map.list_previewFileName" >
+        and omt.PREVIEW_FILE_NAME in (<foreach collection="map.list_previewFileName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.brief" >
+        and omt.BRIEF = #{map.brief}
+      </if>
+      <if test="null != map.like_brief" >
+        and omt.BRIEF like '%' || #{map.like_brief} || '%'
+      </if>
+      <if test="null != map.list_brief" >
+        and omt.BRIEF in (<foreach collection="map.list_brief" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.briefFileId" >
+        and omt.BRIEF_FILE_ID = #{map.briefFileId}
+      </if>
+      <if test="null != map.like_briefFileId" >
+        and omt.BRIEF_FILE_ID like '%' || #{map.like_briefFileId} || '%'
+      </if>
+      <if test="null != map.list_briefFileId" >
+        and omt.BRIEF_FILE_ID in (<foreach collection="map.list_briefFileId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.briefFileName" >
+        and omt.BRIEF_FILE_NAME = #{map.briefFileName}
+      </if>
+      <if test="null != map.like_briefFileName" >
+        and omt.BRIEF_FILE_NAME like '%' || #{map.like_briefFileName} || '%'
+      </if>
+      <if test="null != map.list_briefFileName" >
+        and omt.BRIEF_FILE_NAME in (<foreach collection="map.list_briefFileName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.announcements" >
+        and omt.ANNOUNCEMENTS = #{map.announcements}
+      </if>
+      <if test="null != map.like_announcements" >
+        and omt.ANNOUNCEMENTS like '%' || #{map.like_announcements} || '%'
+      </if>
+      <if test="null != map.list_announcements" >
+        and omt.ANNOUNCEMENTS in (<foreach collection="map.list_announcements" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.annoFileId" >
+        and omt.ANNO_FILE_ID = #{map.annoFileId}
+      </if>
+      <if test="null != map.like_annoFileId" >
+        and omt.ANNO_FILE_ID like '%' || #{map.like_annoFileId} || '%'
+      </if>
+      <if test="null != map.list_annoFileId" >
+        and omt.ANNO_FILE_ID in (<foreach collection="map.list_annoFileId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.annoFileName" >
+        and omt.ANNO_FILE_NAME = #{map.annoFileName}
+      </if>
+      <if test="null != map.like_annoFileName" >
+        and omt.ANNO_FILE_NAME like '%' || #{map.like_annoFileName} || '%'
+      </if>
+      <if test="null != map.list_annoFileName" >
+        and omt.ANNO_FILE_NAME in (<foreach collection="map.list_annoFileName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.contact" >
+        and omt.CONTACT = #{map.contact}
+      </if>
+      <if test="null != map.like_contact" >
+        and omt.CONTACT like '%' || #{map.like_contact} || '%'
+      </if>
+      <if test="null != map.list_contact" >
+        and omt.CONTACT in (<foreach collection="map.list_contact" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.phone" >
+        and omt.PHONE = #{map.phone}
+      </if>
+      <if test="null != map.like_phone" >
+        and omt.PHONE like '%' || #{map.like_phone} || '%'
+      </if>
+      <if test="null != map.list_phone" >
+        and omt.PHONE in (<foreach collection="map.list_phone" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.mobile" >
+        and omt.MOBILE = #{map.mobile}
+      </if>
+      <if test="null != map.like_mobile" >
+        and omt.MOBILE like '%' || #{map.like_mobile} || '%'
+      </if>
+      <if test="null != map.list_mobile" >
+        and omt.MOBILE in (<foreach collection="map.list_mobile" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.email" >
+        and omt.EMAIL = #{map.email}
+      </if>
+      <if test="null != map.like_email" >
+        and omt.EMAIL like '%' || #{map.like_email} || '%'
+      </if>
+      <if test="null != map.list_email" >
+        and omt.EMAIL in (<foreach collection="map.list_email" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.sortIndex" >
+        and omt.SORT_INDEX = #{map.sortIndex}
+      </if>
+      <if test="null != map.list_sortIndex" >
+        and omt.SORT_INDEX in (<foreach collection="map.list_sortIndex" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.isVisible" >
+        and omt.IS_VISIBLE = #{map.isVisible}
+      </if>
+      <if test="null != map.list_isVisible" >
+        and omt.IS_VISIBLE in (<foreach collection="map.list_isVisible" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and omt.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and omt.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_updateTime" >
+        and omt.UPDATE_TIME &gt;= #{map.begin_updateTime}
+      </if>
+      <if test="null != map.end_updateTime" >
+        and omt.UPDATE_TIME &lt;= #{map.end_updateTime}
+      </if>
+    </where>
+  </update>
+</mapper>

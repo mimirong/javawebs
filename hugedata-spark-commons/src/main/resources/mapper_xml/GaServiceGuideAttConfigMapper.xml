@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.GaServiceGuideAttConfigMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.GaServiceGuideAttConfig" >
+    <id column="ATT_CONFIG_ID" property="attConfigId" jdbcType="INTEGER" />
+    <result column="ATT_CONFIG_NAME" property="attConfigName" jdbcType="VARCHAR" />
+    <result column="GUIDE_ID" property="guideId" jdbcType="INTEGER" />
+    <result column="IS_REQUIRED" property="isRequired" jdbcType="BIT" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != attConfigId" >
+      and gsgac.ATT_CONFIG_ID = #{attConfigId}
+    </if>
+    <if test="null != ne_attConfigId" >
+      and gsgac.ATT_CONFIG_ID != #{ne_attConfigId}
+    </if>
+    <if test="null != list_attConfigId" >
+      and gsgac.ATT_CONFIG_ID in (<foreach collection="list_attConfigId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != attConfigName" >
+      and gsgac.ATT_CONFIG_NAME = #{attConfigName}
+    </if>
+    <if test="null != ne_attConfigName" >
+      and gsgac.ATT_CONFIG_NAME != #{ne_attConfigName}
+    </if>
+    <if test="null != like_attConfigName" >
+      and gsgac.ATT_CONFIG_NAME like CONCAT('%', #{like_attConfigName}, '%')
+    </if>
+    <if test="null != list_attConfigName" >
+      and gsgac.ATT_CONFIG_NAME in (<foreach collection="list_attConfigName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_attConfigName" >
+      and gsgac.ATT_CONFIG_NAME &gt;= #{begin_attConfigName}
+    </if>
+    <if test="null != end_attConfigName" >
+      and gsgac.ATT_CONFIG_NAME &lt;= #{end_attConfigName}
+    </if>
+    <if test="null != guideId" >
+      and gsgac.GUIDE_ID = #{guideId}
+    </if>
+    <if test="null != ne_guideId" >
+      and gsgac.GUIDE_ID != #{ne_guideId}
+    </if>
+    <if test="null != list_guideId" >
+      and gsgac.GUIDE_ID in (<foreach collection="list_guideId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != isRequired" >
+      and gsgac.IS_REQUIRED = #{isRequired}
+    </if>
+    <if test="null != ne_isRequired" >
+      and gsgac.IS_REQUIRED != #{ne_isRequired}
+    </if>
+    <if test="null != list_isRequired" >
+      and gsgac.IS_REQUIRED in (<foreach collection="list_isRequired" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_createTime" >
+      and gsgac.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and gsgac.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'attConfigId' == orderItem.column" >
+            gsgac.ATT_CONFIG_ID ${orderItem.dir}
+          </if>
+          <if test="'attConfigName' == orderItem.column" >
+            gsgac.ATT_CONFIG_NAME ${orderItem.dir}
+          </if>
+          <if test="'guideId' == orderItem.column" >
+            gsgac.GUIDE_ID ${orderItem.dir}
+          </if>
+          <if test="'isRequired' == orderItem.column" >
+            gsgac.IS_REQUIRED ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            gsgac.CREATE_TIME ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    gsgac.ATT_CONFIG_ID, gsgac.ATT_CONFIG_NAME, gsgac.GUIDE_ID, gsgac.IS_REQUIRED, gsgac.CREATE_TIME
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ga_service_guide_att_config gsgac
+    where gsgac.ATT_CONFIG_ID = #{attConfigId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from ga_service_guide_att_config gsgac
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from ga_service_guide_att_config gsgac
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaServiceGuideAttConfig" >
+    <selectKey resultType="java.lang.Integer" keyProperty="attConfigId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into ga_service_guide_att_config
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      ATT_CONFIG_ID,
+      <if test="attConfigName != null" >
+        ATT_CONFIG_NAME,
+      </if>
+      <if test="guideId != null" >
+        GUIDE_ID,
+      </if>
+      <if test="isRequired != null" >
+        IS_REQUIRED,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{attConfigId,jdbcType=INTEGER},
+      <if test="attConfigName != null" >
+        #{attConfigName,jdbcType=VARCHAR},
+      </if>
+      <if test="guideId != null" >
+        #{guideId,jdbcType=INTEGER},
+      </if>
+      <if test="isRequired != null" >
+        #{isRequired,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from ga_service_guide_att_config
+    where ATT_CONFIG_ID = #{attConfigId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from ga_service_guide_att_config where ATT_CONFIG_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from gsgac using (ga_service_guide_att_config as gsgac) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.GaServiceGuideAttConfig" >
+    update ga_service_guide_att_config
+    <set >
+      <if test="attConfigName != null" >
+        ATT_CONFIG_NAME = #{attConfigName,jdbcType=VARCHAR},
+      </if>
+      <if test="guideId != null" >
+        GUIDE_ID = #{guideId,jdbcType=INTEGER},
+      </if>
+      <if test="isRequired != null" >
+        IS_REQUIRED = #{isRequired,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ATT_CONFIG_ID = #{attConfigId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update ga_service_guide_att_config gsgac
+    <set >
+      <if test="record.attConfigId != null" >
+        ATT_CONFIG_ID = #{record.attConfigId,jdbcType=INTEGER},
+      </if>
+      <if test="record.attConfigName != null" >
+        ATT_CONFIG_NAME = #{record.attConfigName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.guideId != null" >
+        GUIDE_ID = #{record.guideId,jdbcType=INTEGER},
+      </if>
+      <if test="record.isRequired != null" >
+        IS_REQUIRED = #{record.isRequired,jdbcType=BIT},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.attConfigId" >
+        and gsgac.ATT_CONFIG_ID = #{map.attConfigId}
+      </if>
+      <if test="null != map.list_attConfigId" >
+        and gsgac.ATT_CONFIG_ID in (<foreach collection="map.list_attConfigId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.attConfigName" >
+        and gsgac.ATT_CONFIG_NAME = #{map.attConfigName}
+      </if>
+      <if test="null != map.like_attConfigName" >
+        and gsgac.ATT_CONFIG_NAME like '%' || #{map.like_attConfigName} || '%'
+      </if>
+      <if test="null != map.list_attConfigName" >
+        and gsgac.ATT_CONFIG_NAME in (<foreach collection="map.list_attConfigName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.guideId" >
+        and gsgac.GUIDE_ID = #{map.guideId}
+      </if>
+      <if test="null != map.list_guideId" >
+        and gsgac.GUIDE_ID in (<foreach collection="map.list_guideId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.isRequired" >
+        and gsgac.IS_REQUIRED = #{map.isRequired}
+      </if>
+      <if test="null != map.list_isRequired" >
+        and gsgac.IS_REQUIRED in (<foreach collection="map.list_isRequired" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and gsgac.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and gsgac.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+    </where>
+  </update>
+</mapper>

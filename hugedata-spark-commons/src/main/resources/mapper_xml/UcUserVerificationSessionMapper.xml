@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.UcUserVerificationSessionMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.UcUserVerificationSession" >
+    <id column="SESSION_ID" property="sessionId" jdbcType="CHAR" />
+    <result column="SESSION_KEY" property="sessionKey" jdbcType="CHAR" />
+    <result column="CODE" property="code" jdbcType="VARCHAR" />
+    <result column="VERIFICATION_TYPE" property="verificationType" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="VALIDITY_TIME" property="validityTime" jdbcType="TIMESTAMP" />
+    <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="EXTRA_DATA" property="extraData" jdbcType="VARCHAR" />
+    <result column="FINISH_TIME" property="finishTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != sessionId" >
+      and uuvs.SESSION_ID = #{sessionId}
+    </if>
+    <if test="null != ne_sessionId" >
+      and uuvs.SESSION_ID != #{ne_sessionId}
+    </if>
+    <if test="null != like_sessionId" >
+      and uuvs.SESSION_ID like CONCAT('%', #{like_sessionId}, '%')
+    </if>
+    <if test="null != list_sessionId" >
+      and uuvs.SESSION_ID in (<foreach collection="list_sessionId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_sessionId" >
+      and uuvs.SESSION_ID &gt;= #{begin_sessionId}
+    </if>
+    <if test="null != end_sessionId" >
+      and uuvs.SESSION_ID &lt;= #{end_sessionId}
+    </if>
+    <if test="null != sessionKey" >
+      and uuvs.SESSION_KEY = #{sessionKey}
+    </if>
+    <if test="null != ne_sessionKey" >
+      and uuvs.SESSION_KEY != #{ne_sessionKey}
+    </if>
+    <if test="null != like_sessionKey" >
+      and uuvs.SESSION_KEY like CONCAT('%', #{like_sessionKey}, '%')
+    </if>
+    <if test="null != list_sessionKey" >
+      and uuvs.SESSION_KEY in (<foreach collection="list_sessionKey" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_sessionKey" >
+      and uuvs.SESSION_KEY &gt;= #{begin_sessionKey}
+    </if>
+    <if test="null != end_sessionKey" >
+      and uuvs.SESSION_KEY &lt;= #{end_sessionKey}
+    </if>
+    <if test="null != code" >
+      and uuvs.CODE = #{code}
+    </if>
+    <if test="null != ne_code" >
+      and uuvs.CODE != #{ne_code}
+    </if>
+    <if test="null != like_code" >
+      and uuvs.CODE like CONCAT('%', #{like_code}, '%')
+    </if>
+    <if test="null != list_code" >
+      and uuvs.CODE in (<foreach collection="list_code" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_code" >
+      and uuvs.CODE &gt;= #{begin_code}
+    </if>
+    <if test="null != end_code" >
+      and uuvs.CODE &lt;= #{end_code}
+    </if>
+    <if test="null != verificationType" >
+      and uuvs.VERIFICATION_TYPE = #{verificationType}
+    </if>
+    <if test="null != ne_verificationType" >
+      and uuvs.VERIFICATION_TYPE != #{ne_verificationType}
+    </if>
+    <if test="null != like_verificationType" >
+      and uuvs.VERIFICATION_TYPE like CONCAT('%', #{like_verificationType}, '%')
+    </if>
+    <if test="null != list_verificationType" >
+      and uuvs.VERIFICATION_TYPE in (<foreach collection="list_verificationType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_verificationType" >
+      and uuvs.VERIFICATION_TYPE &gt;= #{begin_verificationType}
+    </if>
+    <if test="null != end_verificationType" >
+      and uuvs.VERIFICATION_TYPE &lt;= #{end_verificationType}
+    </if>
+    <if test="null != status" >
+      and uuvs.STATUS = #{status}
+    </if>
+    <if test="null != ne_status" >
+      and uuvs.STATUS != #{ne_status}
+    </if>
+    <if test="null != like_status" >
+      and uuvs.STATUS like CONCAT('%', #{like_status}, '%')
+    </if>
+    <if test="null != list_status" >
+      and uuvs.STATUS in (<foreach collection="list_status" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_status" >
+      and uuvs.STATUS &gt;= #{begin_status}
+    </if>
+    <if test="null != end_status" >
+      and uuvs.STATUS &lt;= #{end_status}
+    </if>
+    <if test="null != email" >
+      and uuvs.EMAIL = #{email}
+    </if>
+    <if test="null != ne_email" >
+      and uuvs.EMAIL != #{ne_email}
+    </if>
+    <if test="null != like_email" >
+      and uuvs.EMAIL like CONCAT('%', #{like_email}, '%')
+    </if>
+    <if test="null != list_email" >
+      and uuvs.EMAIL in (<foreach collection="list_email" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_email" >
+      and uuvs.EMAIL &gt;= #{begin_email}
+    </if>
+    <if test="null != end_email" >
+      and uuvs.EMAIL &lt;= #{end_email}
+    </if>
+    <if test="null != mobile" >
+      and uuvs.MOBILE = #{mobile}
+    </if>
+    <if test="null != ne_mobile" >
+      and uuvs.MOBILE != #{ne_mobile}
+    </if>
+    <if test="null != like_mobile" >
+      and uuvs.MOBILE like CONCAT('%', #{like_mobile}, '%')
+    </if>
+    <if test="null != list_mobile" >
+      and uuvs.MOBILE in (<foreach collection="list_mobile" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_mobile" >
+      and uuvs.MOBILE &gt;= #{begin_mobile}
+    </if>
+    <if test="null != end_mobile" >
+      and uuvs.MOBILE &lt;= #{end_mobile}
+    </if>
+    <if test="null != begin_createTime" >
+      and uuvs.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and uuvs.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_validityTime" >
+      and uuvs.VALIDITY_TIME &gt;= #{begin_validityTime}
+    </if>
+    <if test="null != end_validityTime" >
+      and uuvs.VALIDITY_TIME &lt;= #{end_validityTime}
+    </if>
+    <if test="null != userId" >
+      and uuvs.USER_ID = #{userId}
+    </if>
+    <if test="null != ne_userId" >
+      and uuvs.USER_ID != #{ne_userId}
+    </if>
+    <if test="null != like_userId" >
+      and uuvs.USER_ID like CONCAT('%', #{like_userId}, '%')
+    </if>
+    <if test="null != list_userId" >
+      and uuvs.USER_ID in (<foreach collection="list_userId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_userId" >
+      and uuvs.USER_ID &gt;= #{begin_userId}
+    </if>
+    <if test="null != end_userId" >
+      and uuvs.USER_ID &lt;= #{end_userId}
+    </if>
+    <if test="null != extraData" >
+      and uuvs.EXTRA_DATA = #{extraData}
+    </if>
+    <if test="null != ne_extraData" >
+      and uuvs.EXTRA_DATA != #{ne_extraData}
+    </if>
+    <if test="null != like_extraData" >
+      and uuvs.EXTRA_DATA like CONCAT('%', #{like_extraData}, '%')
+    </if>
+    <if test="null != list_extraData" >
+      and uuvs.EXTRA_DATA in (<foreach collection="list_extraData" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_extraData" >
+      and uuvs.EXTRA_DATA &gt;= #{begin_extraData}
+    </if>
+    <if test="null != end_extraData" >
+      and uuvs.EXTRA_DATA &lt;= #{end_extraData}
+    </if>
+    <if test="null != begin_finishTime" >
+      and uuvs.FINISH_TIME &gt;= #{begin_finishTime}
+    </if>
+    <if test="null != end_finishTime" >
+      and uuvs.FINISH_TIME &lt;= #{end_finishTime}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'sessionId' == orderItem.column" >
+            uuvs.SESSION_ID ${orderItem.dir}
+          </if>
+          <if test="'sessionKey' == orderItem.column" >
+            uuvs.SESSION_KEY ${orderItem.dir}
+          </if>
+          <if test="'code' == orderItem.column" >
+            uuvs.CODE ${orderItem.dir}
+          </if>
+          <if test="'verificationType' == orderItem.column" >
+            uuvs.VERIFICATION_TYPE ${orderItem.dir}
+          </if>
+          <if test="'status' == orderItem.column" >
+            uuvs.STATUS ${orderItem.dir}
+          </if>
+          <if test="'email' == orderItem.column" >
+            uuvs.EMAIL ${orderItem.dir}
+          </if>
+          <if test="'mobile' == orderItem.column" >
+            uuvs.MOBILE ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            uuvs.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'validityTime' == orderItem.column" >
+            uuvs.VALIDITY_TIME ${orderItem.dir}
+          </if>
+          <if test="'userId' == orderItem.column" >
+            uuvs.USER_ID ${orderItem.dir}
+          </if>
+          <if test="'extraData' == orderItem.column" >
+            uuvs.EXTRA_DATA ${orderItem.dir}
+          </if>
+          <if test="'finishTime' == orderItem.column" >
+            uuvs.FINISH_TIME ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    uuvs.SESSION_ID, uuvs.SESSION_KEY, uuvs.CODE, uuvs.VERIFICATION_TYPE, uuvs.STATUS, 
+    uuvs.EMAIL, uuvs.MOBILE, uuvs.CREATE_TIME, uuvs.VALIDITY_TIME, uuvs.USER_ID, uuvs.EXTRA_DATA, 
+    uuvs.FINISH_TIME
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from uc_user_verification_session uuvs
+    where uuvs.SESSION_ID = #{sessionId,jdbcType=CHAR}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from uc_user_verification_session uuvs
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from uc_user_verification_session uuvs
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcUserVerificationSession" >
+    insert into uc_user_verification_session
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sessionId != null" >
+        SESSION_ID,
+      </if>
+      <if test="sessionKey != null" >
+        SESSION_KEY,
+      </if>
+      <if test="code != null" >
+        CODE,
+      </if>
+      <if test="verificationType != null" >
+        VERIFICATION_TYPE,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="mobile != null" >
+        MOBILE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="validityTime != null" >
+        VALIDITY_TIME,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="extraData != null" >
+        EXTRA_DATA,
+      </if>
+      <if test="finishTime != null" >
+        FINISH_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sessionId != null" >
+        #{sessionId,jdbcType=CHAR},
+      </if>
+      <if test="sessionKey != null" >
+        #{sessionKey,jdbcType=CHAR},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="verificationType != null" >
+        #{verificationType,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validityTime != null" >
+        #{validityTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="extraData != null" >
+        #{extraData,jdbcType=VARCHAR},
+      </if>
+      <if test="finishTime != null" >
+        #{finishTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.String" >
+    delete from uc_user_verification_session
+    where SESSION_ID = #{sessionId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from uc_user_verification_session where SESSION_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from uuvs using (uc_user_verification_session as uuvs) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcUserVerificationSession" >
+    update uc_user_verification_session
+    <set >
+      <if test="sessionKey != null" >
+        SESSION_KEY = #{sessionKey,jdbcType=CHAR},
+      </if>
+      <if test="code != null" >
+        CODE = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="verificationType != null" >
+        VERIFICATION_TYPE = #{verificationType,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        MOBILE = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validityTime != null" >
+        VALIDITY_TIME = #{validityTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="extraData != null" >
+        EXTRA_DATA = #{extraData,jdbcType=VARCHAR},
+      </if>
+      <if test="finishTime != null" >
+        FINISH_TIME = #{finishTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where SESSION_ID = #{sessionId,jdbcType=CHAR}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update uc_user_verification_session uuvs
+    <set >
+      <if test="record.sessionId != null" >
+        SESSION_ID = #{record.sessionId,jdbcType=CHAR},
+      </if>
+      <if test="record.sessionKey != null" >
+        SESSION_KEY = #{record.sessionKey,jdbcType=CHAR},
+      </if>
+      <if test="record.code != null" >
+        CODE = #{record.code,jdbcType=VARCHAR},
+      </if>
+      <if test="record.verificationType != null" >
+        VERIFICATION_TYPE = #{record.verificationType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        EMAIL = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobile != null" >
+        MOBILE = #{record.mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.validityTime != null" >
+        VALIDITY_TIME = #{record.validityTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.userId != null" >
+        USER_ID = #{record.userId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.extraData != null" >
+        EXTRA_DATA = #{record.extraData,jdbcType=VARCHAR},
+      </if>
+      <if test="record.finishTime != null" >
+        FINISH_TIME = #{record.finishTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.sessionId" >
+        and uuvs.SESSION_ID = #{map.sessionId}
+      </if>
+      <if test="null != map.like_sessionId" >
+        and uuvs.SESSION_ID like '%' || #{map.like_sessionId} || '%'
+      </if>
+      <if test="null != map.list_sessionId" >
+        and uuvs.SESSION_ID in (<foreach collection="map.list_sessionId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.sessionKey" >
+        and uuvs.SESSION_KEY = #{map.sessionKey}
+      </if>
+      <if test="null != map.like_sessionKey" >
+        and uuvs.SESSION_KEY like '%' || #{map.like_sessionKey} || '%'
+      </if>
+      <if test="null != map.list_sessionKey" >
+        and uuvs.SESSION_KEY in (<foreach collection="map.list_sessionKey" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.code" >
+        and uuvs.CODE = #{map.code}
+      </if>
+      <if test="null != map.like_code" >
+        and uuvs.CODE like '%' || #{map.like_code} || '%'
+      </if>
+      <if test="null != map.list_code" >
+        and uuvs.CODE in (<foreach collection="map.list_code" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.verificationType" >
+        and uuvs.VERIFICATION_TYPE = #{map.verificationType}
+      </if>
+      <if test="null != map.like_verificationType" >
+        and uuvs.VERIFICATION_TYPE like '%' || #{map.like_verificationType} || '%'
+      </if>
+      <if test="null != map.list_verificationType" >
+        and uuvs.VERIFICATION_TYPE in (<foreach collection="map.list_verificationType" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.status" >
+        and uuvs.STATUS = #{map.status}
+      </if>
+      <if test="null != map.like_status" >
+        and uuvs.STATUS like '%' || #{map.like_status} || '%'
+      </if>
+      <if test="null != map.list_status" >
+        and uuvs.STATUS in (<foreach collection="map.list_status" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.email" >
+        and uuvs.EMAIL = #{map.email}
+      </if>
+      <if test="null != map.like_email" >
+        and uuvs.EMAIL like '%' || #{map.like_email} || '%'
+      </if>
+      <if test="null != map.list_email" >
+        and uuvs.EMAIL in (<foreach collection="map.list_email" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.mobile" >
+        and uuvs.MOBILE = #{map.mobile}
+      </if>
+      <if test="null != map.like_mobile" >
+        and uuvs.MOBILE like '%' || #{map.like_mobile} || '%'
+      </if>
+      <if test="null != map.list_mobile" >
+        and uuvs.MOBILE in (<foreach collection="map.list_mobile" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and uuvs.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and uuvs.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_validityTime" >
+        and uuvs.VALIDITY_TIME &gt;= #{map.begin_validityTime}
+      </if>
+      <if test="null != map.end_validityTime" >
+        and uuvs.VALIDITY_TIME &lt;= #{map.end_validityTime}
+      </if>
+      <if test="null != map.userId" >
+        and uuvs.USER_ID = #{map.userId}
+      </if>
+      <if test="null != map.like_userId" >
+        and uuvs.USER_ID like '%' || #{map.like_userId} || '%'
+      </if>
+      <if test="null != map.list_userId" >
+        and uuvs.USER_ID in (<foreach collection="map.list_userId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.extraData" >
+        and uuvs.EXTRA_DATA = #{map.extraData}
+      </if>
+      <if test="null != map.like_extraData" >
+        and uuvs.EXTRA_DATA like '%' || #{map.like_extraData} || '%'
+      </if>
+      <if test="null != map.list_extraData" >
+        and uuvs.EXTRA_DATA in (<foreach collection="map.list_extraData" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_finishTime" >
+        and uuvs.FINISH_TIME &gt;= #{map.begin_finishTime}
+      </if>
+      <if test="null != map.end_finishTime" >
+        and uuvs.FINISH_TIME &lt;= #{map.end_finishTime}
+      </if>
+    </where>
+  </update>
+</mapper>

@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.UcManageRightMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.UcManageRight" >
+    <id column="RIGHT_ID" property="rightId" jdbcType="VARCHAR" />
+    <result column="PARENT_ID" property="parentId" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="SYSTEM_TYPE" property="systemType" jdbcType="VARCHAR" />
+    <result column="URL" property="url" jdbcType="VARCHAR" />
+    <result column="DISPLAY" property="display" jdbcType="BIT" />
+    <result column="SORT_INDEX" property="sortIndex" jdbcType="INTEGER" />
+    <result column="ICON_NAME" property="iconName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != rightId" >
+      and umr.RIGHT_ID = #{rightId}
+    </if>
+    <if test="null != ne_rightId" >
+      and umr.RIGHT_ID != #{ne_rightId}
+    </if>
+    <if test="null != like_rightId" >
+      and umr.RIGHT_ID like CONCAT('%', #{like_rightId}, '%')
+    </if>
+    <if test="null != list_rightId" >
+      and umr.RIGHT_ID in (<foreach collection="list_rightId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_rightId" >
+      and umr.RIGHT_ID &gt;= #{begin_rightId}
+    </if>
+    <if test="null != end_rightId" >
+      and umr.RIGHT_ID &lt;= #{end_rightId}
+    </if>
+    <if test="null != parentId" >
+      and umr.PARENT_ID = #{parentId}
+    </if>
+    <if test="null != ne_parentId" >
+      and umr.PARENT_ID != #{ne_parentId}
+    </if>
+    <if test="null != like_parentId" >
+      and umr.PARENT_ID like CONCAT('%', #{like_parentId}, '%')
+    </if>
+    <if test="null != list_parentId" >
+      and umr.PARENT_ID in (<foreach collection="list_parentId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_parentId" >
+      and umr.PARENT_ID &gt;= #{begin_parentId}
+    </if>
+    <if test="null != end_parentId" >
+      and umr.PARENT_ID &lt;= #{end_parentId}
+    </if>
+    <if test="null != name" >
+      and umr.NAME = #{name}
+    </if>
+    <if test="null != ne_name" >
+      and umr.NAME != #{ne_name}
+    </if>
+    <if test="null != like_name" >
+      and umr.NAME like CONCAT('%', #{like_name}, '%')
+    </if>
+    <if test="null != list_name" >
+      and umr.NAME in (<foreach collection="list_name" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_name" >
+      and umr.NAME &gt;= #{begin_name}
+    </if>
+    <if test="null != end_name" >
+      and umr.NAME &lt;= #{end_name}
+    </if>
+    <if test="null != systemType" >
+      and umr.SYSTEM_TYPE = #{systemType}
+    </if>
+    <if test="null != ne_systemType" >
+      and umr.SYSTEM_TYPE != #{ne_systemType}
+    </if>
+    <if test="null != like_systemType" >
+      and umr.SYSTEM_TYPE like CONCAT('%', #{like_systemType}, '%')
+    </if>
+    <if test="null != list_systemType" >
+      and umr.SYSTEM_TYPE in (<foreach collection="list_systemType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_systemType" >
+      and umr.SYSTEM_TYPE &gt;= #{begin_systemType}
+    </if>
+    <if test="null != end_systemType" >
+      and umr.SYSTEM_TYPE &lt;= #{end_systemType}
+    </if>
+    <if test="null != url" >
+      and umr.URL = #{url}
+    </if>
+    <if test="null != ne_url" >
+      and umr.URL != #{ne_url}
+    </if>
+    <if test="null != like_url" >
+      and umr.URL like CONCAT('%', #{like_url}, '%')
+    </if>
+    <if test="null != list_url" >
+      and umr.URL in (<foreach collection="list_url" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_url" >
+      and umr.URL &gt;= #{begin_url}
+    </if>
+    <if test="null != end_url" >
+      and umr.URL &lt;= #{end_url}
+    </if>
+    <if test="null != display" >
+      and umr.DISPLAY = #{display}
+    </if>
+    <if test="null != ne_display" >
+      and umr.DISPLAY != #{ne_display}
+    </if>
+    <if test="null != list_display" >
+      and umr.DISPLAY in (<foreach collection="list_display" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != sortIndex" >
+      and umr.SORT_INDEX = #{sortIndex}
+    </if>
+    <if test="null != ne_sortIndex" >
+      and umr.SORT_INDEX != #{ne_sortIndex}
+    </if>
+    <if test="null != list_sortIndex" >
+      and umr.SORT_INDEX in (<foreach collection="list_sortIndex" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != iconName" >
+      and umr.ICON_NAME = #{iconName}
+    </if>
+    <if test="null != ne_iconName" >
+      and umr.ICON_NAME != #{ne_iconName}
+    </if>
+    <if test="null != like_iconName" >
+      and umr.ICON_NAME like CONCAT('%', #{like_iconName}, '%')
+    </if>
+    <if test="null != list_iconName" >
+      and umr.ICON_NAME in (<foreach collection="list_iconName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_iconName" >
+      and umr.ICON_NAME &gt;= #{begin_iconName}
+    </if>
+    <if test="null != end_iconName" >
+      and umr.ICON_NAME &lt;= #{end_iconName}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'rightId' == orderItem.column" >
+            umr.RIGHT_ID ${orderItem.dir}
+          </if>
+          <if test="'parentId' == orderItem.column" >
+            umr.PARENT_ID ${orderItem.dir}
+          </if>
+          <if test="'name' == orderItem.column" >
+            umr.NAME ${orderItem.dir}
+          </if>
+          <if test="'systemType' == orderItem.column" >
+            umr.SYSTEM_TYPE ${orderItem.dir}
+          </if>
+          <if test="'url' == orderItem.column" >
+            umr.URL ${orderItem.dir}
+          </if>
+          <if test="'display' == orderItem.column" >
+            umr.DISPLAY ${orderItem.dir}
+          </if>
+          <if test="'sortIndex' == orderItem.column" >
+            umr.SORT_INDEX ${orderItem.dir}
+          </if>
+          <if test="'iconName' == orderItem.column" >
+            umr.ICON_NAME ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    umr.RIGHT_ID, umr.PARENT_ID, umr.NAME, umr.SYSTEM_TYPE, umr.URL, umr.DISPLAY, umr.SORT_INDEX, 
+    umr.ICON_NAME
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from uc_manage_right umr
+    where umr.RIGHT_ID = #{rightId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from uc_manage_right umr
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from uc_manage_right umr
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcManageRight" >
+    insert into uc_manage_right
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rightId != null" >
+        RIGHT_ID,
+      </if>
+      <if test="parentId != null" >
+        PARENT_ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="systemType != null" >
+        SYSTEM_TYPE,
+      </if>
+      <if test="url != null" >
+        URL,
+      </if>
+      <if test="display != null" >
+        DISPLAY,
+      </if>
+      <if test="sortIndex != null" >
+        SORT_INDEX,
+      </if>
+      <if test="iconName != null" >
+        ICON_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rightId != null" >
+        #{rightId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="systemType != null" >
+        #{systemType,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="display != null" >
+        #{display,jdbcType=BIT},
+      </if>
+      <if test="sortIndex != null" >
+        #{sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="iconName != null" >
+        #{iconName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.String" >
+    delete from uc_manage_right
+    where RIGHT_ID = #{rightId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from uc_manage_right where RIGHT_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from umr using (uc_manage_right as umr) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcManageRight" >
+    update uc_manage_right
+    <set >
+      <if test="parentId != null" >
+        PARENT_ID = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="systemType != null" >
+        SYSTEM_TYPE = #{systemType,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        URL = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="display != null" >
+        DISPLAY = #{display,jdbcType=BIT},
+      </if>
+      <if test="sortIndex != null" >
+        SORT_INDEX = #{sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="iconName != null" >
+        ICON_NAME = #{iconName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where RIGHT_ID = #{rightId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update uc_manage_right umr
+    <set >
+      <if test="record.rightId != null" >
+        RIGHT_ID = #{record.rightId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parentId != null" >
+        PARENT_ID = #{record.parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.systemType != null" >
+        SYSTEM_TYPE = #{record.systemType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url != null" >
+        URL = #{record.url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.display != null" >
+        DISPLAY = #{record.display,jdbcType=BIT},
+      </if>
+      <if test="record.sortIndex != null" >
+        SORT_INDEX = #{record.sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="record.iconName != null" >
+        ICON_NAME = #{record.iconName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.rightId" >
+        and umr.RIGHT_ID = #{map.rightId}
+      </if>
+      <if test="null != map.like_rightId" >
+        and umr.RIGHT_ID like '%' || #{map.like_rightId} || '%'
+      </if>
+      <if test="null != map.list_rightId" >
+        and umr.RIGHT_ID in (<foreach collection="map.list_rightId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.parentId" >
+        and umr.PARENT_ID = #{map.parentId}
+      </if>
+      <if test="null != map.like_parentId" >
+        and umr.PARENT_ID like '%' || #{map.like_parentId} || '%'
+      </if>
+      <if test="null != map.list_parentId" >
+        and umr.PARENT_ID in (<foreach collection="map.list_parentId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.name" >
+        and umr.NAME = #{map.name}
+      </if>
+      <if test="null != map.like_name" >
+        and umr.NAME like '%' || #{map.like_name} || '%'
+      </if>
+      <if test="null != map.list_name" >
+        and umr.NAME in (<foreach collection="map.list_name" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.systemType" >
+        and umr.SYSTEM_TYPE = #{map.systemType}
+      </if>
+      <if test="null != map.like_systemType" >
+        and umr.SYSTEM_TYPE like '%' || #{map.like_systemType} || '%'
+      </if>
+      <if test="null != map.list_systemType" >
+        and umr.SYSTEM_TYPE in (<foreach collection="map.list_systemType" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.url" >
+        and umr.URL = #{map.url}
+      </if>
+      <if test="null != map.like_url" >
+        and umr.URL like '%' || #{map.like_url} || '%'
+      </if>
+      <if test="null != map.list_url" >
+        and umr.URL in (<foreach collection="map.list_url" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.display" >
+        and umr.DISPLAY = #{map.display}
+      </if>
+      <if test="null != map.list_display" >
+        and umr.DISPLAY in (<foreach collection="map.list_display" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.sortIndex" >
+        and umr.SORT_INDEX = #{map.sortIndex}
+      </if>
+      <if test="null != map.list_sortIndex" >
+        and umr.SORT_INDEX in (<foreach collection="map.list_sortIndex" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.iconName" >
+        and umr.ICON_NAME = #{map.iconName}
+      </if>
+      <if test="null != map.like_iconName" >
+        and umr.ICON_NAME like '%' || #{map.like_iconName} || '%'
+      </if>
+      <if test="null != map.list_iconName" >
+        and umr.ICON_NAME in (<foreach collection="map.list_iconName" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

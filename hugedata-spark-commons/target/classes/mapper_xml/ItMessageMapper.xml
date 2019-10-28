@@ -1,0 +1,878 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.ItMessageMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.ItMessage" >
+    <id column="MESSAGE_ID" property="messageId" jdbcType="INTEGER" />
+    <result column="MESSAGE_TYPE" property="messageType" jdbcType="VARCHAR" />
+    <result column="USER_ID" property="userId" jdbcType="INTEGER" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="USER_TYPE" property="userType" jdbcType="VARCHAR" />
+    <result column="ID_CARD" property="idCard" jdbcType="VARCHAR" />
+    <result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="IS_DELETED" property="isDeleted" jdbcType="BIT" />
+    <result column="SUBMIT_TIME" property="submitTime" jdbcType="TIMESTAMP" />
+    <result column="REPLY_TIME" property="replyTime" jdbcType="TIMESTAMP" />
+    <result column="MESSAGE_CODE" property="messageCode" jdbcType="VARCHAR" />
+    <result column="REPLIER_COMPANY" property="replierCompany" jdbcType="VARCHAR" />
+    <result column="REPLIER_NAME" property="replierName" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.com.hugedata.spark.commons.storage.entity.ItMessage" extends="BaseResultMap" >
+    <result column="CONTENT" property="content" jdbcType="LONGVARCHAR" />
+    <result column="REPLY_CONTENT" property="replyContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != messageId" >
+      and im.MESSAGE_ID = #{messageId}
+    </if>
+    <if test="null != ne_messageId" >
+      and im.MESSAGE_ID != #{ne_messageId}
+    </if>
+    <if test="null != list_messageId" >
+      and im.MESSAGE_ID in (<foreach collection="list_messageId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != messageType" >
+      and im.MESSAGE_TYPE = #{messageType}
+    </if>
+    <if test="null != ne_messageType" >
+      and im.MESSAGE_TYPE != #{ne_messageType}
+    </if>
+    <if test="null != like_messageType" >
+      and im.MESSAGE_TYPE like CONCAT('%', #{like_messageType}, '%')
+    </if>
+    <if test="null != list_messageType" >
+      and im.MESSAGE_TYPE in (<foreach collection="list_messageType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_messageType" >
+      and im.MESSAGE_TYPE &gt;= #{begin_messageType}
+    </if>
+    <if test="null != end_messageType" >
+      and im.MESSAGE_TYPE &lt;= #{end_messageType}
+    </if>
+    <if test="null != userId" >
+      and im.USER_ID = #{userId}
+    </if>
+    <if test="null != ne_userId" >
+      and im.USER_ID != #{ne_userId}
+    </if>
+    <if test="null != list_userId" >
+      and im.USER_ID in (<foreach collection="list_userId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != name" >
+      and im.NAME = #{name}
+    </if>
+    <if test="null != ne_name" >
+      and im.NAME != #{ne_name}
+    </if>
+    <if test="null != like_name" >
+      and im.NAME like CONCAT('%', #{like_name}, '%')
+    </if>
+    <if test="null != list_name" >
+      and im.NAME in (<foreach collection="list_name" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_name" >
+      and im.NAME &gt;= #{begin_name}
+    </if>
+    <if test="null != end_name" >
+      and im.NAME &lt;= #{end_name}
+    </if>
+    <if test="null != userType" >
+      and im.USER_TYPE = #{userType}
+    </if>
+    <if test="null != ne_userType" >
+      and im.USER_TYPE != #{ne_userType}
+    </if>
+    <if test="null != like_userType" >
+      and im.USER_TYPE like CONCAT('%', #{like_userType}, '%')
+    </if>
+    <if test="null != list_userType" >
+      and im.USER_TYPE in (<foreach collection="list_userType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_userType" >
+      and im.USER_TYPE &gt;= #{begin_userType}
+    </if>
+    <if test="null != end_userType" >
+      and im.USER_TYPE &lt;= #{end_userType}
+    </if>
+    <if test="null != idCard" >
+      and im.ID_CARD = #{idCard}
+    </if>
+    <if test="null != ne_idCard" >
+      and im.ID_CARD != #{ne_idCard}
+    </if>
+    <if test="null != like_idCard" >
+      and im.ID_CARD like CONCAT('%', #{like_idCard}, '%')
+    </if>
+    <if test="null != list_idCard" >
+      and im.ID_CARD in (<foreach collection="list_idCard" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_idCard" >
+      and im.ID_CARD &gt;= #{begin_idCard}
+    </if>
+    <if test="null != end_idCard" >
+      and im.ID_CARD &lt;= #{end_idCard}
+    </if>
+    <if test="null != mobile" >
+      and im.MOBILE = #{mobile}
+    </if>
+    <if test="null != ne_mobile" >
+      and im.MOBILE != #{ne_mobile}
+    </if>
+    <if test="null != like_mobile" >
+      and im.MOBILE like CONCAT('%', #{like_mobile}, '%')
+    </if>
+    <if test="null != list_mobile" >
+      and im.MOBILE in (<foreach collection="list_mobile" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_mobile" >
+      and im.MOBILE &gt;= #{begin_mobile}
+    </if>
+    <if test="null != end_mobile" >
+      and im.MOBILE &lt;= #{end_mobile}
+    </if>
+    <if test="null != email" >
+      and im.EMAIL = #{email}
+    </if>
+    <if test="null != ne_email" >
+      and im.EMAIL != #{ne_email}
+    </if>
+    <if test="null != like_email" >
+      and im.EMAIL like CONCAT('%', #{like_email}, '%')
+    </if>
+    <if test="null != list_email" >
+      and im.EMAIL in (<foreach collection="list_email" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_email" >
+      and im.EMAIL &gt;= #{begin_email}
+    </if>
+    <if test="null != end_email" >
+      and im.EMAIL &lt;= #{end_email}
+    </if>
+    <if test="null != address" >
+      and im.ADDRESS = #{address}
+    </if>
+    <if test="null != ne_address" >
+      and im.ADDRESS != #{ne_address}
+    </if>
+    <if test="null != like_address" >
+      and im.ADDRESS like CONCAT('%', #{like_address}, '%')
+    </if>
+    <if test="null != list_address" >
+      and im.ADDRESS in (<foreach collection="list_address" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_address" >
+      and im.ADDRESS &gt;= #{begin_address}
+    </if>
+    <if test="null != end_address" >
+      and im.ADDRESS &lt;= #{end_address}
+    </if>
+    <if test="null != title" >
+      and im.TITLE = #{title}
+    </if>
+    <if test="null != ne_title" >
+      and im.TITLE != #{ne_title}
+    </if>
+    <if test="null != like_title" >
+      and im.TITLE like CONCAT('%', #{like_title}, '%')
+    </if>
+    <if test="null != list_title" >
+      and im.TITLE in (<foreach collection="list_title" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_title" >
+      and im.TITLE &gt;= #{begin_title}
+    </if>
+    <if test="null != end_title" >
+      and im.TITLE &lt;= #{end_title}
+    </if>
+    <if test="null != password" >
+      and im.PASSWORD = #{password}
+    </if>
+    <if test="null != ne_password" >
+      and im.PASSWORD != #{ne_password}
+    </if>
+    <if test="null != like_password" >
+      and im.PASSWORD like CONCAT('%', #{like_password}, '%')
+    </if>
+    <if test="null != list_password" >
+      and im.PASSWORD in (<foreach collection="list_password" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_password" >
+      and im.PASSWORD &gt;= #{begin_password}
+    </if>
+    <if test="null != end_password" >
+      and im.PASSWORD &lt;= #{end_password}
+    </if>
+    <if test="null != status" >
+      and im.STATUS = #{status}
+    </if>
+    <if test="null != ne_status" >
+      and im.STATUS != #{ne_status}
+    </if>
+    <if test="null != like_status" >
+      and im.STATUS like CONCAT('%', #{like_status}, '%')
+    </if>
+    <if test="null != list_status" >
+      and im.STATUS in (<foreach collection="list_status" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_status" >
+      and im.STATUS &gt;= #{begin_status}
+    </if>
+    <if test="null != end_status" >
+      and im.STATUS &lt;= #{end_status}
+    </if>
+    <if test="null != isDeleted" >
+      and im.IS_DELETED = #{isDeleted}
+    </if>
+    <if test="null != ne_isDeleted" >
+      and im.IS_DELETED != #{ne_isDeleted}
+    </if>
+    <if test="null != list_isDeleted" >
+      and im.IS_DELETED in (<foreach collection="list_isDeleted" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_submitTime" >
+      and im.SUBMIT_TIME &gt;= #{begin_submitTime}
+    </if>
+    <if test="null != end_submitTime" >
+      and im.SUBMIT_TIME &lt;= #{end_submitTime}
+    </if>
+    <if test="null != begin_replyTime" >
+      and im.REPLY_TIME &gt;= #{begin_replyTime}
+    </if>
+    <if test="null != end_replyTime" >
+      and im.REPLY_TIME &lt;= #{end_replyTime}
+    </if>
+    <if test="null != messageCode" >
+      and im.MESSAGE_CODE = #{messageCode}
+    </if>
+    <if test="null != ne_messageCode" >
+      and im.MESSAGE_CODE != #{ne_messageCode}
+    </if>
+    <if test="null != like_messageCode" >
+      and im.MESSAGE_CODE like CONCAT('%', #{like_messageCode}, '%')
+    </if>
+    <if test="null != list_messageCode" >
+      and im.MESSAGE_CODE in (<foreach collection="list_messageCode" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_messageCode" >
+      and im.MESSAGE_CODE &gt;= #{begin_messageCode}
+    </if>
+    <if test="null != end_messageCode" >
+      and im.MESSAGE_CODE &lt;= #{end_messageCode}
+    </if>
+    <if test="null != replierCompany" >
+      and im.REPLIER_COMPANY = #{replierCompany}
+    </if>
+    <if test="null != ne_replierCompany" >
+      and im.REPLIER_COMPANY != #{ne_replierCompany}
+    </if>
+    <if test="null != like_replierCompany" >
+      and im.REPLIER_COMPANY like CONCAT('%', #{like_replierCompany}, '%')
+    </if>
+    <if test="null != list_replierCompany" >
+      and im.REPLIER_COMPANY in (<foreach collection="list_replierCompany" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_replierCompany" >
+      and im.REPLIER_COMPANY &gt;= #{begin_replierCompany}
+    </if>
+    <if test="null != end_replierCompany" >
+      and im.REPLIER_COMPANY &lt;= #{end_replierCompany}
+    </if>
+    <if test="null != replierName" >
+      and im.REPLIER_NAME = #{replierName}
+    </if>
+    <if test="null != ne_replierName" >
+      and im.REPLIER_NAME != #{ne_replierName}
+    </if>
+    <if test="null != like_replierName" >
+      and im.REPLIER_NAME like CONCAT('%', #{like_replierName}, '%')
+    </if>
+    <if test="null != list_replierName" >
+      and im.REPLIER_NAME in (<foreach collection="list_replierName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_replierName" >
+      and im.REPLIER_NAME &gt;= #{begin_replierName}
+    </if>
+    <if test="null != end_replierName" >
+      and im.REPLIER_NAME &lt;= #{end_replierName}
+    </if>
+    <if test="null != content" >
+      and im.CONTENT = #{content}
+    </if>
+    <if test="null != ne_content" >
+      and im.CONTENT != #{ne_content}
+    </if>
+    <if test="null != like_content" >
+      and im.CONTENT like CONCAT('%', #{like_content}, '%')
+    </if>
+    <if test="null != list_content" >
+      and im.CONTENT in (<foreach collection="list_content" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_content" >
+      and im.CONTENT &gt;= #{begin_content}
+    </if>
+    <if test="null != end_content" >
+      and im.CONTENT &lt;= #{end_content}
+    </if>
+    <if test="null != replyContent" >
+      and im.REPLY_CONTENT = #{replyContent}
+    </if>
+    <if test="null != ne_replyContent" >
+      and im.REPLY_CONTENT != #{ne_replyContent}
+    </if>
+    <if test="null != like_replyContent" >
+      and im.REPLY_CONTENT like CONCAT('%', #{like_replyContent}, '%')
+    </if>
+    <if test="null != list_replyContent" >
+      and im.REPLY_CONTENT in (<foreach collection="list_replyContent" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_replyContent" >
+      and im.REPLY_CONTENT &gt;= #{begin_replyContent}
+    </if>
+    <if test="null != end_replyContent" >
+      and im.REPLY_CONTENT &lt;= #{end_replyContent}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'messageId' == orderItem.column" >
+            im.MESSAGE_ID ${orderItem.dir}
+          </if>
+          <if test="'messageType' == orderItem.column" >
+            im.MESSAGE_TYPE ${orderItem.dir}
+          </if>
+          <if test="'userId' == orderItem.column" >
+            im.USER_ID ${orderItem.dir}
+          </if>
+          <if test="'name' == orderItem.column" >
+            im.NAME ${orderItem.dir}
+          </if>
+          <if test="'userType' == orderItem.column" >
+            im.USER_TYPE ${orderItem.dir}
+          </if>
+          <if test="'idCard' == orderItem.column" >
+            im.ID_CARD ${orderItem.dir}
+          </if>
+          <if test="'mobile' == orderItem.column" >
+            im.MOBILE ${orderItem.dir}
+          </if>
+          <if test="'email' == orderItem.column" >
+            im.EMAIL ${orderItem.dir}
+          </if>
+          <if test="'address' == orderItem.column" >
+            im.ADDRESS ${orderItem.dir}
+          </if>
+          <if test="'title' == orderItem.column" >
+            im.TITLE ${orderItem.dir}
+          </if>
+          <if test="'password' == orderItem.column" >
+            im.PASSWORD ${orderItem.dir}
+          </if>
+          <if test="'status' == orderItem.column" >
+            im.STATUS ${orderItem.dir}
+          </if>
+          <if test="'isDeleted' == orderItem.column" >
+            im.IS_DELETED ${orderItem.dir}
+          </if>
+          <if test="'submitTime' == orderItem.column" >
+            im.SUBMIT_TIME ${orderItem.dir}
+          </if>
+          <if test="'replyTime' == orderItem.column" >
+            im.REPLY_TIME ${orderItem.dir}
+          </if>
+          <if test="'messageCode' == orderItem.column" >
+            im.MESSAGE_CODE ${orderItem.dir}
+          </if>
+          <if test="'replierCompany' == orderItem.column" >
+            im.REPLIER_COMPANY ${orderItem.dir}
+          </if>
+          <if test="'replierName' == orderItem.column" >
+            im.REPLIER_NAME ${orderItem.dir}
+          </if>
+          <if test="'content' == orderItem.column" >
+            im.CONTENT ${orderItem.dir}
+          </if>
+          <if test="'replyContent' == orderItem.column" >
+            im.REPLY_CONTENT ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    im.MESSAGE_ID, im.MESSAGE_TYPE, im.USER_ID, im.NAME, im.USER_TYPE, im.ID_CARD, im.MOBILE, 
+    im.EMAIL, im.ADDRESS, im.TITLE, im.PASSWORD, im.STATUS, im.IS_DELETED, im.SUBMIT_TIME, 
+    im.REPLY_TIME, im.MESSAGE_CODE, im.REPLIER_COMPANY, im.REPLIER_NAME
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONTENT, REPLY_CONTENT
+  </sql>
+  <select id="selectById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from it_message im
+    where im.MESSAGE_ID = #{messageId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from it_message im
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from it_message im
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.ItMessage" >
+    <selectKey resultType="java.lang.Integer" keyProperty="messageId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into it_message
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      MESSAGE_ID,
+      <if test="messageType != null" >
+        MESSAGE_TYPE,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="userType != null" >
+        USER_TYPE,
+      </if>
+      <if test="idCard != null" >
+        ID_CARD,
+      </if>
+      <if test="mobile != null" >
+        MOBILE,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="password != null" >
+        PASSWORD,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="isDeleted != null" >
+        IS_DELETED,
+      </if>
+      <if test="submitTime != null" >
+        SUBMIT_TIME,
+      </if>
+      <if test="replyTime != null" >
+        REPLY_TIME,
+      </if>
+      <if test="messageCode != null" >
+        MESSAGE_CODE,
+      </if>
+      <if test="replierCompany != null" >
+        REPLIER_COMPANY,
+      </if>
+      <if test="replierName != null" >
+        REPLIER_NAME,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+      <if test="replyContent != null" >
+        REPLY_CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{messageId,jdbcType=INTEGER},
+      <if test="messageType != null" >
+        #{messageType,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null" >
+        #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="submitTime != null" >
+        #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replyTime != null" >
+        #{replyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="messageCode != null" >
+        #{messageCode,jdbcType=VARCHAR},
+      </if>
+      <if test="replierCompany != null" >
+        #{replierCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="replierName != null" >
+        #{replierName,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="replyContent != null" >
+        #{replyContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from it_message
+    where MESSAGE_ID = #{messageId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from it_message where MESSAGE_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from im using (it_message as im) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.ItMessage" >
+    update it_message
+    <set >
+      <if test="messageType != null" >
+        MESSAGE_TYPE = #{messageType,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        USER_TYPE = #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null" >
+        ID_CARD = #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        MOBILE = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null" >
+        IS_DELETED = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="submitTime != null" >
+        SUBMIT_TIME = #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replyTime != null" >
+        REPLY_TIME = #{replyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="messageCode != null" >
+        MESSAGE_CODE = #{messageCode,jdbcType=VARCHAR},
+      </if>
+      <if test="replierCompany != null" >
+        REPLIER_COMPANY = #{replierCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="replierName != null" >
+        REPLIER_NAME = #{replierName,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="replyContent != null" >
+        REPLY_CONTENT = #{replyContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where MESSAGE_ID = #{messageId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update it_message im
+    <set >
+      <if test="record.messageId != null" >
+        MESSAGE_ID = #{record.messageId,jdbcType=INTEGER},
+      </if>
+      <if test="record.messageType != null" >
+        MESSAGE_TYPE = #{record.messageType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null" >
+        USER_ID = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userType != null" >
+        USER_TYPE = #{record.userType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idCard != null" >
+        ID_CARD = #{record.idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobile != null" >
+        MOBILE = #{record.mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        EMAIL = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        ADDRESS = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title != null" >
+        TITLE = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null" >
+        PASSWORD = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDeleted != null" >
+        IS_DELETED = #{record.isDeleted,jdbcType=BIT},
+      </if>
+      <if test="record.submitTime != null" >
+        SUBMIT_TIME = #{record.submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.replyTime != null" >
+        REPLY_TIME = #{record.replyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.messageCode != null" >
+        MESSAGE_CODE = #{record.messageCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.replierCompany != null" >
+        REPLIER_COMPANY = #{record.replierCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.replierName != null" >
+        REPLIER_NAME = #{record.replierName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null" >
+        CONTENT = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.replyContent != null" >
+        REPLY_CONTENT = #{record.replyContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.messageId" >
+        and im.MESSAGE_ID = #{map.messageId}
+      </if>
+      <if test="null != map.list_messageId" >
+        and im.MESSAGE_ID in (<foreach collection="map.list_messageId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.messageType" >
+        and im.MESSAGE_TYPE = #{map.messageType}
+      </if>
+      <if test="null != map.like_messageType" >
+        and im.MESSAGE_TYPE like '%' || #{map.like_messageType} || '%'
+      </if>
+      <if test="null != map.list_messageType" >
+        and im.MESSAGE_TYPE in (<foreach collection="map.list_messageType" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.userId" >
+        and im.USER_ID = #{map.userId}
+      </if>
+      <if test="null != map.list_userId" >
+        and im.USER_ID in (<foreach collection="map.list_userId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.name" >
+        and im.NAME = #{map.name}
+      </if>
+      <if test="null != map.like_name" >
+        and im.NAME like '%' || #{map.like_name} || '%'
+      </if>
+      <if test="null != map.list_name" >
+        and im.NAME in (<foreach collection="map.list_name" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.userType" >
+        and im.USER_TYPE = #{map.userType}
+      </if>
+      <if test="null != map.like_userType" >
+        and im.USER_TYPE like '%' || #{map.like_userType} || '%'
+      </if>
+      <if test="null != map.list_userType" >
+        and im.USER_TYPE in (<foreach collection="map.list_userType" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.idCard" >
+        and im.ID_CARD = #{map.idCard}
+      </if>
+      <if test="null != map.like_idCard" >
+        and im.ID_CARD like '%' || #{map.like_idCard} || '%'
+      </if>
+      <if test="null != map.list_idCard" >
+        and im.ID_CARD in (<foreach collection="map.list_idCard" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.mobile" >
+        and im.MOBILE = #{map.mobile}
+      </if>
+      <if test="null != map.like_mobile" >
+        and im.MOBILE like '%' || #{map.like_mobile} || '%'
+      </if>
+      <if test="null != map.list_mobile" >
+        and im.MOBILE in (<foreach collection="map.list_mobile" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.email" >
+        and im.EMAIL = #{map.email}
+      </if>
+      <if test="null != map.like_email" >
+        and im.EMAIL like '%' || #{map.like_email} || '%'
+      </if>
+      <if test="null != map.list_email" >
+        and im.EMAIL in (<foreach collection="map.list_email" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.address" >
+        and im.ADDRESS = #{map.address}
+      </if>
+      <if test="null != map.like_address" >
+        and im.ADDRESS like '%' || #{map.like_address} || '%'
+      </if>
+      <if test="null != map.list_address" >
+        and im.ADDRESS in (<foreach collection="map.list_address" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.title" >
+        and im.TITLE = #{map.title}
+      </if>
+      <if test="null != map.like_title" >
+        and im.TITLE like '%' || #{map.like_title} || '%'
+      </if>
+      <if test="null != map.list_title" >
+        and im.TITLE in (<foreach collection="map.list_title" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.password" >
+        and im.PASSWORD = #{map.password}
+      </if>
+      <if test="null != map.like_password" >
+        and im.PASSWORD like '%' || #{map.like_password} || '%'
+      </if>
+      <if test="null != map.list_password" >
+        and im.PASSWORD in (<foreach collection="map.list_password" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.status" >
+        and im.STATUS = #{map.status}
+      </if>
+      <if test="null != map.like_status" >
+        and im.STATUS like '%' || #{map.like_status} || '%'
+      </if>
+      <if test="null != map.list_status" >
+        and im.STATUS in (<foreach collection="map.list_status" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.isDeleted" >
+        and im.IS_DELETED = #{map.isDeleted}
+      </if>
+      <if test="null != map.list_isDeleted" >
+        and im.IS_DELETED in (<foreach collection="map.list_isDeleted" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_submitTime" >
+        and im.SUBMIT_TIME &gt;= #{map.begin_submitTime}
+      </if>
+      <if test="null != map.end_submitTime" >
+        and im.SUBMIT_TIME &lt;= #{map.end_submitTime}
+      </if>
+      <if test="null != map.begin_replyTime" >
+        and im.REPLY_TIME &gt;= #{map.begin_replyTime}
+      </if>
+      <if test="null != map.end_replyTime" >
+        and im.REPLY_TIME &lt;= #{map.end_replyTime}
+      </if>
+      <if test="null != map.messageCode" >
+        and im.MESSAGE_CODE = #{map.messageCode}
+      </if>
+      <if test="null != map.like_messageCode" >
+        and im.MESSAGE_CODE like '%' || #{map.like_messageCode} || '%'
+      </if>
+      <if test="null != map.list_messageCode" >
+        and im.MESSAGE_CODE in (<foreach collection="map.list_messageCode" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.replierCompany" >
+        and im.REPLIER_COMPANY = #{map.replierCompany}
+      </if>
+      <if test="null != map.like_replierCompany" >
+        and im.REPLIER_COMPANY like '%' || #{map.like_replierCompany} || '%'
+      </if>
+      <if test="null != map.list_replierCompany" >
+        and im.REPLIER_COMPANY in (<foreach collection="map.list_replierCompany" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.replierName" >
+        and im.REPLIER_NAME = #{map.replierName}
+      </if>
+      <if test="null != map.like_replierName" >
+        and im.REPLIER_NAME like '%' || #{map.like_replierName} || '%'
+      </if>
+      <if test="null != map.list_replierName" >
+        and im.REPLIER_NAME in (<foreach collection="map.list_replierName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.content" >
+        and im.CONTENT = #{map.content}
+      </if>
+      <if test="null != map.like_content" >
+        and im.CONTENT like '%' || #{map.like_content} || '%'
+      </if>
+      <if test="null != map.list_content" >
+        and im.CONTENT in (<foreach collection="map.list_content" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.replyContent" >
+        and im.REPLY_CONTENT = #{map.replyContent}
+      </if>
+      <if test="null != map.like_replyContent" >
+        and im.REPLY_CONTENT like '%' || #{map.like_replyContent} || '%'
+      </if>
+      <if test="null != map.list_replyContent" >
+        and im.REPLY_CONTENT in (<foreach collection="map.list_replyContent" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

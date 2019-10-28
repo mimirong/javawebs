@@ -1,0 +1,1501 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.ApServiceInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.ApServiceInfo" >
+    <id column="SERVICE_ID" property="serviceId" jdbcType="INTEGER" />
+    <result column="BUSINESS_NO" property="businessNo" jdbcType="VARCHAR" />
+    <result column="BUSINESS_DEPT_PERSON" property="businessDeptPerson" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="CELLPHONE" property="cellphone" jdbcType="VARCHAR" />
+    <result column="DEPTCODE" property="deptcode" jdbcType="INTEGER" />
+    <result column="DEPTNAME" property="deptname" jdbcType="VARCHAR" />
+    <result column="GUIDECODE" property="guidecode" jdbcType="VARCHAR" />
+    <result column="GUIDENAME" property="guidename" jdbcType="VARCHAR" />
+    <result column="BUSINESS_TYPE" property="businessType" jdbcType="VARCHAR" />
+    <result column="CREATE_USER_ID" property="createUserId" jdbcType="VARCHAR" />
+    <result column="CREATE_USER_NAME" property="createUserName" jdbcType="VARCHAR" />
+    <result column="CREATE_WINDOW_ID" property="createWindowId" jdbcType="VARCHAR" />
+    <result column="CREATE_WINDOW_NAME" property="createWindowName" jdbcType="VARCHAR" />
+    <result column="CREATE_CELLPHONE" property="createCellphone" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="ACCEPT_USER_ID" property="acceptUserId" jdbcType="VARCHAR" />
+    <result column="ACCEPT_USER_NAME" property="acceptUserName" jdbcType="VARCHAR" />
+    <result column="ACCEPT_WINDOW_ID" property="acceptWindowId" jdbcType="VARCHAR" />
+    <result column="ACCEPT_WINDOW_NAME" property="acceptWindowName" jdbcType="VARCHAR" />
+    <result column="ACCEPT_CELLPHONE" property="acceptCellphone" jdbcType="VARCHAR" />
+    <result column="ACCEPT_TIME" property="acceptTime" jdbcType="TIMESTAMP" />
+    <result column="FILE_ID" property="fileId" jdbcType="VARCHAR" />
+    <result column="FILE_NAME" property="fileName" jdbcType="VARCHAR" />
+    <result column="TIME_LIMIT" property="timeLimit" jdbcType="VARCHAR" />
+    <result column="CURRENT_USER_ID" property="currentUserId" jdbcType="INTEGER" />
+    <result column="CURRENT_USER_NAME" property="currentUserName" jdbcType="VARCHAR" />
+    <result column="ACCEPT_NOTICE_FILE_ID" property="acceptNoticeFileId" jdbcType="VARCHAR" />
+    <result column="ACCEPT_NOTICE_FILE_NAME" property="acceptNoticeFileName" jdbcType="VARCHAR" />
+    <result column="FINISH_DOC_FILE_ID" property="finishDocFileId" jdbcType="VARCHAR" />
+    <result column="FINISH_DOC_FILE_NAME" property="finishDocFileName" jdbcType="VARCHAR" />
+    <result column="FINISH_TIME" property="finishTime" jdbcType="TIMESTAMP" />
+    <result column="CURRENT_DEPT_ID" property="currentDeptId" jdbcType="INTEGER" />
+    <result column="CURRENT_DEPT_NAME" property="currentDeptName" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.com.hugedata.spark.commons.storage.entity.ApServiceInfo" extends="BaseResultMap" >
+    <result column="REMARK" property="remark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != serviceId" >
+      and asi.SERVICE_ID = #{serviceId}
+    </if>
+    <if test="null != ne_serviceId" >
+      and asi.SERVICE_ID != #{ne_serviceId}
+    </if>
+    <if test="null != list_serviceId" >
+      and asi.SERVICE_ID in (<foreach collection="list_serviceId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != businessNo" >
+      and asi.BUSINESS_NO = #{businessNo}
+    </if>
+    <if test="null != ne_businessNo" >
+      and asi.BUSINESS_NO != #{ne_businessNo}
+    </if>
+    <if test="null != like_businessNo" >
+      and asi.BUSINESS_NO like CONCAT('%', #{like_businessNo}, '%')
+    </if>
+    <if test="null != list_businessNo" >
+      and asi.BUSINESS_NO in (<foreach collection="list_businessNo" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_businessNo" >
+      and asi.BUSINESS_NO &gt;= #{begin_businessNo}
+    </if>
+    <if test="null != end_businessNo" >
+      and asi.BUSINESS_NO &lt;= #{end_businessNo}
+    </if>
+    <if test="null != businessDeptPerson" >
+      and asi.BUSINESS_DEPT_PERSON = #{businessDeptPerson}
+    </if>
+    <if test="null != ne_businessDeptPerson" >
+      and asi.BUSINESS_DEPT_PERSON != #{ne_businessDeptPerson}
+    </if>
+    <if test="null != like_businessDeptPerson" >
+      and asi.BUSINESS_DEPT_PERSON like CONCAT('%', #{like_businessDeptPerson}, '%')
+    </if>
+    <if test="null != list_businessDeptPerson" >
+      and asi.BUSINESS_DEPT_PERSON in (<foreach collection="list_businessDeptPerson" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_businessDeptPerson" >
+      and asi.BUSINESS_DEPT_PERSON &gt;= #{begin_businessDeptPerson}
+    </if>
+    <if test="null != end_businessDeptPerson" >
+      and asi.BUSINESS_DEPT_PERSON &lt;= #{end_businessDeptPerson}
+    </if>
+    <if test="null != status" >
+      and asi.STATUS = #{status}
+    </if>
+    <if test="null != ne_status" >
+      and asi.STATUS != #{ne_status}
+    </if>
+    <if test="null != like_status" >
+      and asi.STATUS like CONCAT('%', #{like_status}, '%')
+    </if>
+    <if test="null != list_status" >
+      and asi.STATUS in (<foreach collection="list_status" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_status" >
+      and asi.STATUS &gt;= #{begin_status}
+    </if>
+    <if test="null != end_status" >
+      and asi.STATUS &lt;= #{end_status}
+    </if>
+    <if test="null != cellphone" >
+      and asi.CELLPHONE = #{cellphone}
+    </if>
+    <if test="null != ne_cellphone" >
+      and asi.CELLPHONE != #{ne_cellphone}
+    </if>
+    <if test="null != like_cellphone" >
+      and asi.CELLPHONE like CONCAT('%', #{like_cellphone}, '%')
+    </if>
+    <if test="null != list_cellphone" >
+      and asi.CELLPHONE in (<foreach collection="list_cellphone" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_cellphone" >
+      and asi.CELLPHONE &gt;= #{begin_cellphone}
+    </if>
+    <if test="null != end_cellphone" >
+      and asi.CELLPHONE &lt;= #{end_cellphone}
+    </if>
+    <if test="null != deptcode" >
+      and asi.DEPTCODE = #{deptcode}
+    </if>
+    <if test="null != ne_deptcode" >
+      and asi.DEPTCODE != #{ne_deptcode}
+    </if>
+    <if test="null != list_deptcode" >
+      and asi.DEPTCODE in (<foreach collection="list_deptcode" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != deptname" >
+      and asi.DEPTNAME = #{deptname}
+    </if>
+    <if test="null != ne_deptname" >
+      and asi.DEPTNAME != #{ne_deptname}
+    </if>
+    <if test="null != like_deptname" >
+      and asi.DEPTNAME like CONCAT('%', #{like_deptname}, '%')
+    </if>
+    <if test="null != list_deptname" >
+      and asi.DEPTNAME in (<foreach collection="list_deptname" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_deptname" >
+      and asi.DEPTNAME &gt;= #{begin_deptname}
+    </if>
+    <if test="null != end_deptname" >
+      and asi.DEPTNAME &lt;= #{end_deptname}
+    </if>
+    <if test="null != guidecode" >
+      and asi.GUIDECODE = #{guidecode}
+    </if>
+    <if test="null != ne_guidecode" >
+      and asi.GUIDECODE != #{ne_guidecode}
+    </if>
+    <if test="null != like_guidecode" >
+      and asi.GUIDECODE like CONCAT('%', #{like_guidecode}, '%')
+    </if>
+    <if test="null != list_guidecode" >
+      and asi.GUIDECODE in (<foreach collection="list_guidecode" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_guidecode" >
+      and asi.GUIDECODE &gt;= #{begin_guidecode}
+    </if>
+    <if test="null != end_guidecode" >
+      and asi.GUIDECODE &lt;= #{end_guidecode}
+    </if>
+    <if test="null != guidename" >
+      and asi.GUIDENAME = #{guidename}
+    </if>
+    <if test="null != ne_guidename" >
+      and asi.GUIDENAME != #{ne_guidename}
+    </if>
+    <if test="null != like_guidename" >
+      and asi.GUIDENAME like CONCAT('%', #{like_guidename}, '%')
+    </if>
+    <if test="null != list_guidename" >
+      and asi.GUIDENAME in (<foreach collection="list_guidename" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_guidename" >
+      and asi.GUIDENAME &gt;= #{begin_guidename}
+    </if>
+    <if test="null != end_guidename" >
+      and asi.GUIDENAME &lt;= #{end_guidename}
+    </if>
+    <if test="null != businessType" >
+      and asi.BUSINESS_TYPE = #{businessType}
+    </if>
+    <if test="null != ne_businessType" >
+      and asi.BUSINESS_TYPE != #{ne_businessType}
+    </if>
+    <if test="null != like_businessType" >
+      and asi.BUSINESS_TYPE like CONCAT('%', #{like_businessType}, '%')
+    </if>
+    <if test="null != list_businessType" >
+      and asi.BUSINESS_TYPE in (<foreach collection="list_businessType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_businessType" >
+      and asi.BUSINESS_TYPE &gt;= #{begin_businessType}
+    </if>
+    <if test="null != end_businessType" >
+      and asi.BUSINESS_TYPE &lt;= #{end_businessType}
+    </if>
+    <if test="null != createUserId" >
+      and asi.CREATE_USER_ID = #{createUserId}
+    </if>
+    <if test="null != ne_createUserId" >
+      and asi.CREATE_USER_ID != #{ne_createUserId}
+    </if>
+    <if test="null != like_createUserId" >
+      and asi.CREATE_USER_ID like CONCAT('%', #{like_createUserId}, '%')
+    </if>
+    <if test="null != list_createUserId" >
+      and asi.CREATE_USER_ID in (<foreach collection="list_createUserId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_createUserId" >
+      and asi.CREATE_USER_ID &gt;= #{begin_createUserId}
+    </if>
+    <if test="null != end_createUserId" >
+      and asi.CREATE_USER_ID &lt;= #{end_createUserId}
+    </if>
+    <if test="null != createUserName" >
+      and asi.CREATE_USER_NAME = #{createUserName}
+    </if>
+    <if test="null != ne_createUserName" >
+      and asi.CREATE_USER_NAME != #{ne_createUserName}
+    </if>
+    <if test="null != like_createUserName" >
+      and asi.CREATE_USER_NAME like CONCAT('%', #{like_createUserName}, '%')
+    </if>
+    <if test="null != list_createUserName" >
+      and asi.CREATE_USER_NAME in (<foreach collection="list_createUserName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_createUserName" >
+      and asi.CREATE_USER_NAME &gt;= #{begin_createUserName}
+    </if>
+    <if test="null != end_createUserName" >
+      and asi.CREATE_USER_NAME &lt;= #{end_createUserName}
+    </if>
+    <if test="null != createWindowId" >
+      and asi.CREATE_WINDOW_ID = #{createWindowId}
+    </if>
+    <if test="null != ne_createWindowId" >
+      and asi.CREATE_WINDOW_ID != #{ne_createWindowId}
+    </if>
+    <if test="null != like_createWindowId" >
+      and asi.CREATE_WINDOW_ID like CONCAT('%', #{like_createWindowId}, '%')
+    </if>
+    <if test="null != list_createWindowId" >
+      and asi.CREATE_WINDOW_ID in (<foreach collection="list_createWindowId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_createWindowId" >
+      and asi.CREATE_WINDOW_ID &gt;= #{begin_createWindowId}
+    </if>
+    <if test="null != end_createWindowId" >
+      and asi.CREATE_WINDOW_ID &lt;= #{end_createWindowId}
+    </if>
+    <if test="null != createWindowName" >
+      and asi.CREATE_WINDOW_NAME = #{createWindowName}
+    </if>
+    <if test="null != ne_createWindowName" >
+      and asi.CREATE_WINDOW_NAME != #{ne_createWindowName}
+    </if>
+    <if test="null != like_createWindowName" >
+      and asi.CREATE_WINDOW_NAME like CONCAT('%', #{like_createWindowName}, '%')
+    </if>
+    <if test="null != list_createWindowName" >
+      and asi.CREATE_WINDOW_NAME in (<foreach collection="list_createWindowName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_createWindowName" >
+      and asi.CREATE_WINDOW_NAME &gt;= #{begin_createWindowName}
+    </if>
+    <if test="null != end_createWindowName" >
+      and asi.CREATE_WINDOW_NAME &lt;= #{end_createWindowName}
+    </if>
+    <if test="null != createCellphone" >
+      and asi.CREATE_CELLPHONE = #{createCellphone}
+    </if>
+    <if test="null != ne_createCellphone" >
+      and asi.CREATE_CELLPHONE != #{ne_createCellphone}
+    </if>
+    <if test="null != like_createCellphone" >
+      and asi.CREATE_CELLPHONE like CONCAT('%', #{like_createCellphone}, '%')
+    </if>
+    <if test="null != list_createCellphone" >
+      and asi.CREATE_CELLPHONE in (<foreach collection="list_createCellphone" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_createCellphone" >
+      and asi.CREATE_CELLPHONE &gt;= #{begin_createCellphone}
+    </if>
+    <if test="null != end_createCellphone" >
+      and asi.CREATE_CELLPHONE &lt;= #{end_createCellphone}
+    </if>
+    <if test="null != begin_createTime" >
+      and asi.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and asi.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != acceptUserId" >
+      and asi.ACCEPT_USER_ID = #{acceptUserId}
+    </if>
+    <if test="null != ne_acceptUserId" >
+      and asi.ACCEPT_USER_ID != #{ne_acceptUserId}
+    </if>
+    <if test="null != like_acceptUserId" >
+      and asi.ACCEPT_USER_ID like CONCAT('%', #{like_acceptUserId}, '%')
+    </if>
+    <if test="null != list_acceptUserId" >
+      and asi.ACCEPT_USER_ID in (<foreach collection="list_acceptUserId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_acceptUserId" >
+      and asi.ACCEPT_USER_ID &gt;= #{begin_acceptUserId}
+    </if>
+    <if test="null != end_acceptUserId" >
+      and asi.ACCEPT_USER_ID &lt;= #{end_acceptUserId}
+    </if>
+    <if test="null != acceptUserName" >
+      and asi.ACCEPT_USER_NAME = #{acceptUserName}
+    </if>
+    <if test="null != ne_acceptUserName" >
+      and asi.ACCEPT_USER_NAME != #{ne_acceptUserName}
+    </if>
+    <if test="null != like_acceptUserName" >
+      and asi.ACCEPT_USER_NAME like CONCAT('%', #{like_acceptUserName}, '%')
+    </if>
+    <if test="null != list_acceptUserName" >
+      and asi.ACCEPT_USER_NAME in (<foreach collection="list_acceptUserName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_acceptUserName" >
+      and asi.ACCEPT_USER_NAME &gt;= #{begin_acceptUserName}
+    </if>
+    <if test="null != end_acceptUserName" >
+      and asi.ACCEPT_USER_NAME &lt;= #{end_acceptUserName}
+    </if>
+    <if test="null != acceptWindowId" >
+      and asi.ACCEPT_WINDOW_ID = #{acceptWindowId}
+    </if>
+    <if test="null != ne_acceptWindowId" >
+      and asi.ACCEPT_WINDOW_ID != #{ne_acceptWindowId}
+    </if>
+    <if test="null != like_acceptWindowId" >
+      and asi.ACCEPT_WINDOW_ID like CONCAT('%', #{like_acceptWindowId}, '%')
+    </if>
+    <if test="null != list_acceptWindowId" >
+      and asi.ACCEPT_WINDOW_ID in (<foreach collection="list_acceptWindowId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_acceptWindowId" >
+      and asi.ACCEPT_WINDOW_ID &gt;= #{begin_acceptWindowId}
+    </if>
+    <if test="null != end_acceptWindowId" >
+      and asi.ACCEPT_WINDOW_ID &lt;= #{end_acceptWindowId}
+    </if>
+    <if test="null != acceptWindowName" >
+      and asi.ACCEPT_WINDOW_NAME = #{acceptWindowName}
+    </if>
+    <if test="null != ne_acceptWindowName" >
+      and asi.ACCEPT_WINDOW_NAME != #{ne_acceptWindowName}
+    </if>
+    <if test="null != like_acceptWindowName" >
+      and asi.ACCEPT_WINDOW_NAME like CONCAT('%', #{like_acceptWindowName}, '%')
+    </if>
+    <if test="null != list_acceptWindowName" >
+      and asi.ACCEPT_WINDOW_NAME in (<foreach collection="list_acceptWindowName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_acceptWindowName" >
+      and asi.ACCEPT_WINDOW_NAME &gt;= #{begin_acceptWindowName}
+    </if>
+    <if test="null != end_acceptWindowName" >
+      and asi.ACCEPT_WINDOW_NAME &lt;= #{end_acceptWindowName}
+    </if>
+    <if test="null != acceptCellphone" >
+      and asi.ACCEPT_CELLPHONE = #{acceptCellphone}
+    </if>
+    <if test="null != ne_acceptCellphone" >
+      and asi.ACCEPT_CELLPHONE != #{ne_acceptCellphone}
+    </if>
+    <if test="null != like_acceptCellphone" >
+      and asi.ACCEPT_CELLPHONE like CONCAT('%', #{like_acceptCellphone}, '%')
+    </if>
+    <if test="null != list_acceptCellphone" >
+      and asi.ACCEPT_CELLPHONE in (<foreach collection="list_acceptCellphone" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_acceptCellphone" >
+      and asi.ACCEPT_CELLPHONE &gt;= #{begin_acceptCellphone}
+    </if>
+    <if test="null != end_acceptCellphone" >
+      and asi.ACCEPT_CELLPHONE &lt;= #{end_acceptCellphone}
+    </if>
+    <if test="null != begin_acceptTime" >
+      and asi.ACCEPT_TIME &gt;= #{begin_acceptTime}
+    </if>
+    <if test="null != end_acceptTime" >
+      and asi.ACCEPT_TIME &lt;= #{end_acceptTime}
+    </if>
+    <if test="null != fileId" >
+      and asi.FILE_ID = #{fileId}
+    </if>
+    <if test="null != ne_fileId" >
+      and asi.FILE_ID != #{ne_fileId}
+    </if>
+    <if test="null != like_fileId" >
+      and asi.FILE_ID like CONCAT('%', #{like_fileId}, '%')
+    </if>
+    <if test="null != list_fileId" >
+      and asi.FILE_ID in (<foreach collection="list_fileId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_fileId" >
+      and asi.FILE_ID &gt;= #{begin_fileId}
+    </if>
+    <if test="null != end_fileId" >
+      and asi.FILE_ID &lt;= #{end_fileId}
+    </if>
+    <if test="null != fileName" >
+      and asi.FILE_NAME = #{fileName}
+    </if>
+    <if test="null != ne_fileName" >
+      and asi.FILE_NAME != #{ne_fileName}
+    </if>
+    <if test="null != like_fileName" >
+      and asi.FILE_NAME like CONCAT('%', #{like_fileName}, '%')
+    </if>
+    <if test="null != list_fileName" >
+      and asi.FILE_NAME in (<foreach collection="list_fileName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_fileName" >
+      and asi.FILE_NAME &gt;= #{begin_fileName}
+    </if>
+    <if test="null != end_fileName" >
+      and asi.FILE_NAME &lt;= #{end_fileName}
+    </if>
+    <if test="null != timeLimit" >
+      and asi.TIME_LIMIT = #{timeLimit}
+    </if>
+    <if test="null != ne_timeLimit" >
+      and asi.TIME_LIMIT != #{ne_timeLimit}
+    </if>
+    <if test="null != like_timeLimit" >
+      and asi.TIME_LIMIT like CONCAT('%', #{like_timeLimit}, '%')
+    </if>
+    <if test="null != list_timeLimit" >
+      and asi.TIME_LIMIT in (<foreach collection="list_timeLimit" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_timeLimit" >
+      and asi.TIME_LIMIT &gt;= #{begin_timeLimit}
+    </if>
+    <if test="null != end_timeLimit" >
+      and asi.TIME_LIMIT &lt;= #{end_timeLimit}
+    </if>
+    <if test="null != currentUserId" >
+      and asi.CURRENT_USER_ID = #{currentUserId}
+    </if>
+    <if test="null != ne_currentUserId" >
+      and asi.CURRENT_USER_ID != #{ne_currentUserId}
+    </if>
+    <if test="null != list_currentUserId" >
+      and asi.CURRENT_USER_ID in (<foreach collection="list_currentUserId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != currentUserName" >
+      and asi.CURRENT_USER_NAME = #{currentUserName}
+    </if>
+    <if test="null != ne_currentUserName" >
+      and asi.CURRENT_USER_NAME != #{ne_currentUserName}
+    </if>
+    <if test="null != like_currentUserName" >
+      and asi.CURRENT_USER_NAME like CONCAT('%', #{like_currentUserName}, '%')
+    </if>
+    <if test="null != list_currentUserName" >
+      and asi.CURRENT_USER_NAME in (<foreach collection="list_currentUserName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_currentUserName" >
+      and asi.CURRENT_USER_NAME &gt;= #{begin_currentUserName}
+    </if>
+    <if test="null != end_currentUserName" >
+      and asi.CURRENT_USER_NAME &lt;= #{end_currentUserName}
+    </if>
+    <if test="null != acceptNoticeFileId" >
+      and asi.ACCEPT_NOTICE_FILE_ID = #{acceptNoticeFileId}
+    </if>
+    <if test="null != ne_acceptNoticeFileId" >
+      and asi.ACCEPT_NOTICE_FILE_ID != #{ne_acceptNoticeFileId}
+    </if>
+    <if test="null != like_acceptNoticeFileId" >
+      and asi.ACCEPT_NOTICE_FILE_ID like CONCAT('%', #{like_acceptNoticeFileId}, '%')
+    </if>
+    <if test="null != list_acceptNoticeFileId" >
+      and asi.ACCEPT_NOTICE_FILE_ID in (<foreach collection="list_acceptNoticeFileId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_acceptNoticeFileId" >
+      and asi.ACCEPT_NOTICE_FILE_ID &gt;= #{begin_acceptNoticeFileId}
+    </if>
+    <if test="null != end_acceptNoticeFileId" >
+      and asi.ACCEPT_NOTICE_FILE_ID &lt;= #{end_acceptNoticeFileId}
+    </if>
+    <if test="null != acceptNoticeFileName" >
+      and asi.ACCEPT_NOTICE_FILE_NAME = #{acceptNoticeFileName}
+    </if>
+    <if test="null != ne_acceptNoticeFileName" >
+      and asi.ACCEPT_NOTICE_FILE_NAME != #{ne_acceptNoticeFileName}
+    </if>
+    <if test="null != like_acceptNoticeFileName" >
+      and asi.ACCEPT_NOTICE_FILE_NAME like CONCAT('%', #{like_acceptNoticeFileName}, '%')
+    </if>
+    <if test="null != list_acceptNoticeFileName" >
+      and asi.ACCEPT_NOTICE_FILE_NAME in (<foreach collection="list_acceptNoticeFileName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_acceptNoticeFileName" >
+      and asi.ACCEPT_NOTICE_FILE_NAME &gt;= #{begin_acceptNoticeFileName}
+    </if>
+    <if test="null != end_acceptNoticeFileName" >
+      and asi.ACCEPT_NOTICE_FILE_NAME &lt;= #{end_acceptNoticeFileName}
+    </if>
+    <if test="null != finishDocFileId" >
+      and asi.FINISH_DOC_FILE_ID = #{finishDocFileId}
+    </if>
+    <if test="null != ne_finishDocFileId" >
+      and asi.FINISH_DOC_FILE_ID != #{ne_finishDocFileId}
+    </if>
+    <if test="null != like_finishDocFileId" >
+      and asi.FINISH_DOC_FILE_ID like CONCAT('%', #{like_finishDocFileId}, '%')
+    </if>
+    <if test="null != list_finishDocFileId" >
+      and asi.FINISH_DOC_FILE_ID in (<foreach collection="list_finishDocFileId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_finishDocFileId" >
+      and asi.FINISH_DOC_FILE_ID &gt;= #{begin_finishDocFileId}
+    </if>
+    <if test="null != end_finishDocFileId" >
+      and asi.FINISH_DOC_FILE_ID &lt;= #{end_finishDocFileId}
+    </if>
+    <if test="null != finishDocFileName" >
+      and asi.FINISH_DOC_FILE_NAME = #{finishDocFileName}
+    </if>
+    <if test="null != ne_finishDocFileName" >
+      and asi.FINISH_DOC_FILE_NAME != #{ne_finishDocFileName}
+    </if>
+    <if test="null != like_finishDocFileName" >
+      and asi.FINISH_DOC_FILE_NAME like CONCAT('%', #{like_finishDocFileName}, '%')
+    </if>
+    <if test="null != list_finishDocFileName" >
+      and asi.FINISH_DOC_FILE_NAME in (<foreach collection="list_finishDocFileName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_finishDocFileName" >
+      and asi.FINISH_DOC_FILE_NAME &gt;= #{begin_finishDocFileName}
+    </if>
+    <if test="null != end_finishDocFileName" >
+      and asi.FINISH_DOC_FILE_NAME &lt;= #{end_finishDocFileName}
+    </if>
+    <if test="null != begin_finishTime" >
+      and asi.FINISH_TIME &gt;= #{begin_finishTime}
+    </if>
+    <if test="null != end_finishTime" >
+      and asi.FINISH_TIME &lt;= #{end_finishTime}
+    </if>
+    <if test="null != currentDeptId" >
+      and asi.CURRENT_DEPT_ID = #{currentDeptId}
+    </if>
+    <if test="null != ne_currentDeptId" >
+      and asi.CURRENT_DEPT_ID != #{ne_currentDeptId}
+    </if>
+    <if test="null != list_currentDeptId" >
+      and asi.CURRENT_DEPT_ID in (<foreach collection="list_currentDeptId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != currentDeptName" >
+      and asi.CURRENT_DEPT_NAME = #{currentDeptName}
+    </if>
+    <if test="null != ne_currentDeptName" >
+      and asi.CURRENT_DEPT_NAME != #{ne_currentDeptName}
+    </if>
+    <if test="null != like_currentDeptName" >
+      and asi.CURRENT_DEPT_NAME like CONCAT('%', #{like_currentDeptName}, '%')
+    </if>
+    <if test="null != list_currentDeptName" >
+      and asi.CURRENT_DEPT_NAME in (<foreach collection="list_currentDeptName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_currentDeptName" >
+      and asi.CURRENT_DEPT_NAME &gt;= #{begin_currentDeptName}
+    </if>
+    <if test="null != end_currentDeptName" >
+      and asi.CURRENT_DEPT_NAME &lt;= #{end_currentDeptName}
+    </if>
+    <if test="null != remark" >
+      and asi.REMARK = #{remark}
+    </if>
+    <if test="null != ne_remark" >
+      and asi.REMARK != #{ne_remark}
+    </if>
+    <if test="null != like_remark" >
+      and asi.REMARK like CONCAT('%', #{like_remark}, '%')
+    </if>
+    <if test="null != list_remark" >
+      and asi.REMARK in (<foreach collection="list_remark" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_remark" >
+      and asi.REMARK &gt;= #{begin_remark}
+    </if>
+    <if test="null != end_remark" >
+      and asi.REMARK &lt;= #{end_remark}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'serviceId' == orderItem.column" >
+            asi.SERVICE_ID ${orderItem.dir}
+          </if>
+          <if test="'businessNo' == orderItem.column" >
+            asi.BUSINESS_NO ${orderItem.dir}
+          </if>
+          <if test="'businessDeptPerson' == orderItem.column" >
+            asi.BUSINESS_DEPT_PERSON ${orderItem.dir}
+          </if>
+          <if test="'status' == orderItem.column" >
+            asi.STATUS ${orderItem.dir}
+          </if>
+          <if test="'cellphone' == orderItem.column" >
+            asi.CELLPHONE ${orderItem.dir}
+          </if>
+          <if test="'deptcode' == orderItem.column" >
+            asi.DEPTCODE ${orderItem.dir}
+          </if>
+          <if test="'deptname' == orderItem.column" >
+            asi.DEPTNAME ${orderItem.dir}
+          </if>
+          <if test="'guidecode' == orderItem.column" >
+            asi.GUIDECODE ${orderItem.dir}
+          </if>
+          <if test="'guidename' == orderItem.column" >
+            asi.GUIDENAME ${orderItem.dir}
+          </if>
+          <if test="'businessType' == orderItem.column" >
+            asi.BUSINESS_TYPE ${orderItem.dir}
+          </if>
+          <if test="'createUserId' == orderItem.column" >
+            asi.CREATE_USER_ID ${orderItem.dir}
+          </if>
+          <if test="'createUserName' == orderItem.column" >
+            asi.CREATE_USER_NAME ${orderItem.dir}
+          </if>
+          <if test="'createWindowId' == orderItem.column" >
+            asi.CREATE_WINDOW_ID ${orderItem.dir}
+          </if>
+          <if test="'createWindowName' == orderItem.column" >
+            asi.CREATE_WINDOW_NAME ${orderItem.dir}
+          </if>
+          <if test="'createCellphone' == orderItem.column" >
+            asi.CREATE_CELLPHONE ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            asi.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'acceptUserId' == orderItem.column" >
+            asi.ACCEPT_USER_ID ${orderItem.dir}
+          </if>
+          <if test="'acceptUserName' == orderItem.column" >
+            asi.ACCEPT_USER_NAME ${orderItem.dir}
+          </if>
+          <if test="'acceptWindowId' == orderItem.column" >
+            asi.ACCEPT_WINDOW_ID ${orderItem.dir}
+          </if>
+          <if test="'acceptWindowName' == orderItem.column" >
+            asi.ACCEPT_WINDOW_NAME ${orderItem.dir}
+          </if>
+          <if test="'acceptCellphone' == orderItem.column" >
+            asi.ACCEPT_CELLPHONE ${orderItem.dir}
+          </if>
+          <if test="'acceptTime' == orderItem.column" >
+            asi.ACCEPT_TIME ${orderItem.dir}
+          </if>
+          <if test="'fileId' == orderItem.column" >
+            asi.FILE_ID ${orderItem.dir}
+          </if>
+          <if test="'fileName' == orderItem.column" >
+            asi.FILE_NAME ${orderItem.dir}
+          </if>
+          <if test="'timeLimit' == orderItem.column" >
+            asi.TIME_LIMIT ${orderItem.dir}
+          </if>
+          <if test="'currentUserId' == orderItem.column" >
+            asi.CURRENT_USER_ID ${orderItem.dir}
+          </if>
+          <if test="'currentUserName' == orderItem.column" >
+            asi.CURRENT_USER_NAME ${orderItem.dir}
+          </if>
+          <if test="'acceptNoticeFileId' == orderItem.column" >
+            asi.ACCEPT_NOTICE_FILE_ID ${orderItem.dir}
+          </if>
+          <if test="'acceptNoticeFileName' == orderItem.column" >
+            asi.ACCEPT_NOTICE_FILE_NAME ${orderItem.dir}
+          </if>
+          <if test="'finishDocFileId' == orderItem.column" >
+            asi.FINISH_DOC_FILE_ID ${orderItem.dir}
+          </if>
+          <if test="'finishDocFileName' == orderItem.column" >
+            asi.FINISH_DOC_FILE_NAME ${orderItem.dir}
+          </if>
+          <if test="'finishTime' == orderItem.column" >
+            asi.FINISH_TIME ${orderItem.dir}
+          </if>
+          <if test="'currentDeptId' == orderItem.column" >
+            asi.CURRENT_DEPT_ID ${orderItem.dir}
+          </if>
+          <if test="'currentDeptName' == orderItem.column" >
+            asi.CURRENT_DEPT_NAME ${orderItem.dir}
+          </if>
+          <if test="'remark' == orderItem.column" >
+            asi.REMARK ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    asi.SERVICE_ID, asi.BUSINESS_NO, asi.BUSINESS_DEPT_PERSON, asi.STATUS, asi.CELLPHONE, 
+    asi.DEPTCODE, asi.DEPTNAME, asi.GUIDECODE, asi.GUIDENAME, asi.BUSINESS_TYPE, asi.CREATE_USER_ID, 
+    asi.CREATE_USER_NAME, asi.CREATE_WINDOW_ID, asi.CREATE_WINDOW_NAME, asi.CREATE_CELLPHONE, 
+    asi.CREATE_TIME, asi.ACCEPT_USER_ID, asi.ACCEPT_USER_NAME, asi.ACCEPT_WINDOW_ID, 
+    asi.ACCEPT_WINDOW_NAME, asi.ACCEPT_CELLPHONE, asi.ACCEPT_TIME, asi.FILE_ID, asi.FILE_NAME, 
+    asi.TIME_LIMIT, asi.CURRENT_USER_ID, asi.CURRENT_USER_NAME, asi.ACCEPT_NOTICE_FILE_ID, 
+    asi.ACCEPT_NOTICE_FILE_NAME, asi.FINISH_DOC_FILE_ID, asi.FINISH_DOC_FILE_NAME, asi.FINISH_TIME, 
+    asi.CURRENT_DEPT_ID, asi.CURRENT_DEPT_NAME
+  </sql>
+  <sql id="Blob_Column_List" >
+    REMARK
+  </sql>
+  <select id="selectById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ap_service_info asi
+    where asi.SERVICE_ID = #{serviceId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ap_service_info asi
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from ap_service_info asi
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.ApServiceInfo" >
+    <selectKey resultType="java.lang.Integer" keyProperty="serviceId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into ap_service_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      SERVICE_ID,
+      <if test="businessNo != null" >
+        BUSINESS_NO,
+      </if>
+      <if test="businessDeptPerson != null" >
+        BUSINESS_DEPT_PERSON,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="cellphone != null" >
+        CELLPHONE,
+      </if>
+      <if test="deptcode != null" >
+        DEPTCODE,
+      </if>
+      <if test="deptname != null" >
+        DEPTNAME,
+      </if>
+      <if test="guidecode != null" >
+        GUIDECODE,
+      </if>
+      <if test="guidename != null" >
+        GUIDENAME,
+      </if>
+      <if test="businessType != null" >
+        BUSINESS_TYPE,
+      </if>
+      <if test="createUserId != null" >
+        CREATE_USER_ID,
+      </if>
+      <if test="createUserName != null" >
+        CREATE_USER_NAME,
+      </if>
+      <if test="createWindowId != null" >
+        CREATE_WINDOW_ID,
+      </if>
+      <if test="createWindowName != null" >
+        CREATE_WINDOW_NAME,
+      </if>
+      <if test="createCellphone != null" >
+        CREATE_CELLPHONE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="acceptUserId != null" >
+        ACCEPT_USER_ID,
+      </if>
+      <if test="acceptUserName != null" >
+        ACCEPT_USER_NAME,
+      </if>
+      <if test="acceptWindowId != null" >
+        ACCEPT_WINDOW_ID,
+      </if>
+      <if test="acceptWindowName != null" >
+        ACCEPT_WINDOW_NAME,
+      </if>
+      <if test="acceptCellphone != null" >
+        ACCEPT_CELLPHONE,
+      </if>
+      <if test="acceptTime != null" >
+        ACCEPT_TIME,
+      </if>
+      <if test="fileId != null" >
+        FILE_ID,
+      </if>
+      <if test="fileName != null" >
+        FILE_NAME,
+      </if>
+      <if test="timeLimit != null" >
+        TIME_LIMIT,
+      </if>
+      <if test="currentUserId != null" >
+        CURRENT_USER_ID,
+      </if>
+      <if test="currentUserName != null" >
+        CURRENT_USER_NAME,
+      </if>
+      <if test="acceptNoticeFileId != null" >
+        ACCEPT_NOTICE_FILE_ID,
+      </if>
+      <if test="acceptNoticeFileName != null" >
+        ACCEPT_NOTICE_FILE_NAME,
+      </if>
+      <if test="finishDocFileId != null" >
+        FINISH_DOC_FILE_ID,
+      </if>
+      <if test="finishDocFileName != null" >
+        FINISH_DOC_FILE_NAME,
+      </if>
+      <if test="finishTime != null" >
+        FINISH_TIME,
+      </if>
+      <if test="currentDeptId != null" >
+        CURRENT_DEPT_ID,
+      </if>
+      <if test="currentDeptName != null" >
+        CURRENT_DEPT_NAME,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{serviceId,jdbcType=INTEGER},
+      <if test="businessNo != null" >
+        #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessDeptPerson != null" >
+        #{businessDeptPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="cellphone != null" >
+        #{cellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="deptcode != null" >
+        #{deptcode,jdbcType=INTEGER},
+      </if>
+      <if test="deptname != null" >
+        #{deptname,jdbcType=VARCHAR},
+      </if>
+      <if test="guidecode != null" >
+        #{guidecode,jdbcType=VARCHAR},
+      </if>
+      <if test="guidename != null" >
+        #{guidename,jdbcType=VARCHAR},
+      </if>
+      <if test="businessType != null" >
+        #{businessType,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserName != null" >
+        #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createWindowId != null" >
+        #{createWindowId,jdbcType=VARCHAR},
+      </if>
+      <if test="createWindowName != null" >
+        #{createWindowName,jdbcType=VARCHAR},
+      </if>
+      <if test="createCellphone != null" >
+        #{createCellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="acceptUserId != null" >
+        #{acceptUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptUserName != null" >
+        #{acceptUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptWindowId != null" >
+        #{acceptWindowId,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptWindowName != null" >
+        #{acceptWindowName,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptCellphone != null" >
+        #{acceptCellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptTime != null" >
+        #{acceptTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fileId != null" >
+        #{fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="timeLimit != null" >
+        #{timeLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="currentUserId != null" >
+        #{currentUserId,jdbcType=INTEGER},
+      </if>
+      <if test="currentUserName != null" >
+        #{currentUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptNoticeFileId != null" >
+        #{acceptNoticeFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptNoticeFileName != null" >
+        #{acceptNoticeFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="finishDocFileId != null" >
+        #{finishDocFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="finishDocFileName != null" >
+        #{finishDocFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="finishTime != null" >
+        #{finishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="currentDeptId != null" >
+        #{currentDeptId,jdbcType=INTEGER},
+      </if>
+      <if test="currentDeptName != null" >
+        #{currentDeptName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from ap_service_info
+    where SERVICE_ID = #{serviceId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from ap_service_info where SERVICE_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from asi using (ap_service_info as asi) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.ApServiceInfo" >
+    update ap_service_info
+    <set >
+      <if test="businessNo != null" >
+        BUSINESS_NO = #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessDeptPerson != null" >
+        BUSINESS_DEPT_PERSON = #{businessDeptPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="cellphone != null" >
+        CELLPHONE = #{cellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="deptcode != null" >
+        DEPTCODE = #{deptcode,jdbcType=INTEGER},
+      </if>
+      <if test="deptname != null" >
+        DEPTNAME = #{deptname,jdbcType=VARCHAR},
+      </if>
+      <if test="guidecode != null" >
+        GUIDECODE = #{guidecode,jdbcType=VARCHAR},
+      </if>
+      <if test="guidename != null" >
+        GUIDENAME = #{guidename,jdbcType=VARCHAR},
+      </if>
+      <if test="businessType != null" >
+        BUSINESS_TYPE = #{businessType,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null" >
+        CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserName != null" >
+        CREATE_USER_NAME = #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createWindowId != null" >
+        CREATE_WINDOW_ID = #{createWindowId,jdbcType=VARCHAR},
+      </if>
+      <if test="createWindowName != null" >
+        CREATE_WINDOW_NAME = #{createWindowName,jdbcType=VARCHAR},
+      </if>
+      <if test="createCellphone != null" >
+        CREATE_CELLPHONE = #{createCellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="acceptUserId != null" >
+        ACCEPT_USER_ID = #{acceptUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptUserName != null" >
+        ACCEPT_USER_NAME = #{acceptUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptWindowId != null" >
+        ACCEPT_WINDOW_ID = #{acceptWindowId,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptWindowName != null" >
+        ACCEPT_WINDOW_NAME = #{acceptWindowName,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptCellphone != null" >
+        ACCEPT_CELLPHONE = #{acceptCellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptTime != null" >
+        ACCEPT_TIME = #{acceptTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fileId != null" >
+        FILE_ID = #{fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        FILE_NAME = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="timeLimit != null" >
+        TIME_LIMIT = #{timeLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="currentUserId != null" >
+        CURRENT_USER_ID = #{currentUserId,jdbcType=INTEGER},
+      </if>
+      <if test="currentUserName != null" >
+        CURRENT_USER_NAME = #{currentUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptNoticeFileId != null" >
+        ACCEPT_NOTICE_FILE_ID = #{acceptNoticeFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptNoticeFileName != null" >
+        ACCEPT_NOTICE_FILE_NAME = #{acceptNoticeFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="finishDocFileId != null" >
+        FINISH_DOC_FILE_ID = #{finishDocFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="finishDocFileName != null" >
+        FINISH_DOC_FILE_NAME = #{finishDocFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="finishTime != null" >
+        FINISH_TIME = #{finishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="currentDeptId != null" >
+        CURRENT_DEPT_ID = #{currentDeptId,jdbcType=INTEGER},
+      </if>
+      <if test="currentDeptName != null" >
+        CURRENT_DEPT_NAME = #{currentDeptName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where SERVICE_ID = #{serviceId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update ap_service_info asi
+    <set >
+      <if test="record.serviceId != null" >
+        SERVICE_ID = #{record.serviceId,jdbcType=INTEGER},
+      </if>
+      <if test="record.businessNo != null" >
+        BUSINESS_NO = #{record.businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessDeptPerson != null" >
+        BUSINESS_DEPT_PERSON = #{record.businessDeptPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cellphone != null" >
+        CELLPHONE = #{record.cellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deptcode != null" >
+        DEPTCODE = #{record.deptcode,jdbcType=INTEGER},
+      </if>
+      <if test="record.deptname != null" >
+        DEPTNAME = #{record.deptname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.guidecode != null" >
+        GUIDECODE = #{record.guidecode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.guidename != null" >
+        GUIDENAME = #{record.guidename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessType != null" >
+        BUSINESS_TYPE = #{record.businessType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createUserId != null" >
+        CREATE_USER_ID = #{record.createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createUserName != null" >
+        CREATE_USER_NAME = #{record.createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createWindowId != null" >
+        CREATE_WINDOW_ID = #{record.createWindowId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createWindowName != null" >
+        CREATE_WINDOW_NAME = #{record.createWindowName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createCellphone != null" >
+        CREATE_CELLPHONE = #{record.createCellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.acceptUserId != null" >
+        ACCEPT_USER_ID = #{record.acceptUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acceptUserName != null" >
+        ACCEPT_USER_NAME = #{record.acceptUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acceptWindowId != null" >
+        ACCEPT_WINDOW_ID = #{record.acceptWindowId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acceptWindowName != null" >
+        ACCEPT_WINDOW_NAME = #{record.acceptWindowName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acceptCellphone != null" >
+        ACCEPT_CELLPHONE = #{record.acceptCellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acceptTime != null" >
+        ACCEPT_TIME = #{record.acceptTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fileId != null" >
+        FILE_ID = #{record.fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileName != null" >
+        FILE_NAME = #{record.fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.timeLimit != null" >
+        TIME_LIMIT = #{record.timeLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currentUserId != null" >
+        CURRENT_USER_ID = #{record.currentUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.currentUserName != null" >
+        CURRENT_USER_NAME = #{record.currentUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acceptNoticeFileId != null" >
+        ACCEPT_NOTICE_FILE_ID = #{record.acceptNoticeFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acceptNoticeFileName != null" >
+        ACCEPT_NOTICE_FILE_NAME = #{record.acceptNoticeFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.finishDocFileId != null" >
+        FINISH_DOC_FILE_ID = #{record.finishDocFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.finishDocFileName != null" >
+        FINISH_DOC_FILE_NAME = #{record.finishDocFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.finishTime != null" >
+        FINISH_TIME = #{record.finishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.currentDeptId != null" >
+        CURRENT_DEPT_ID = #{record.currentDeptId,jdbcType=INTEGER},
+      </if>
+      <if test="record.currentDeptName != null" >
+        CURRENT_DEPT_NAME = #{record.currentDeptName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.serviceId" >
+        and asi.SERVICE_ID = #{map.serviceId}
+      </if>
+      <if test="null != map.list_serviceId" >
+        and asi.SERVICE_ID in (<foreach collection="map.list_serviceId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.businessNo" >
+        and asi.BUSINESS_NO = #{map.businessNo}
+      </if>
+      <if test="null != map.like_businessNo" >
+        and asi.BUSINESS_NO like '%' || #{map.like_businessNo} || '%'
+      </if>
+      <if test="null != map.list_businessNo" >
+        and asi.BUSINESS_NO in (<foreach collection="map.list_businessNo" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.businessDeptPerson" >
+        and asi.BUSINESS_DEPT_PERSON = #{map.businessDeptPerson}
+      </if>
+      <if test="null != map.like_businessDeptPerson" >
+        and asi.BUSINESS_DEPT_PERSON like '%' || #{map.like_businessDeptPerson} || '%'
+      </if>
+      <if test="null != map.list_businessDeptPerson" >
+        and asi.BUSINESS_DEPT_PERSON in (<foreach collection="map.list_businessDeptPerson" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.status" >
+        and asi.STATUS = #{map.status}
+      </if>
+      <if test="null != map.like_status" >
+        and asi.STATUS like '%' || #{map.like_status} || '%'
+      </if>
+      <if test="null != map.list_status" >
+        and asi.STATUS in (<foreach collection="map.list_status" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.cellphone" >
+        and asi.CELLPHONE = #{map.cellphone}
+      </if>
+      <if test="null != map.like_cellphone" >
+        and asi.CELLPHONE like '%' || #{map.like_cellphone} || '%'
+      </if>
+      <if test="null != map.list_cellphone" >
+        and asi.CELLPHONE in (<foreach collection="map.list_cellphone" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.deptcode" >
+        and asi.DEPTCODE = #{map.deptcode}
+      </if>
+      <if test="null != map.list_deptcode" >
+        and asi.DEPTCODE in (<foreach collection="map.list_deptcode" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.deptname" >
+        and asi.DEPTNAME = #{map.deptname}
+      </if>
+      <if test="null != map.like_deptname" >
+        and asi.DEPTNAME like '%' || #{map.like_deptname} || '%'
+      </if>
+      <if test="null != map.list_deptname" >
+        and asi.DEPTNAME in (<foreach collection="map.list_deptname" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.guidecode" >
+        and asi.GUIDECODE = #{map.guidecode}
+      </if>
+      <if test="null != map.like_guidecode" >
+        and asi.GUIDECODE like '%' || #{map.like_guidecode} || '%'
+      </if>
+      <if test="null != map.list_guidecode" >
+        and asi.GUIDECODE in (<foreach collection="map.list_guidecode" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.guidename" >
+        and asi.GUIDENAME = #{map.guidename}
+      </if>
+      <if test="null != map.like_guidename" >
+        and asi.GUIDENAME like '%' || #{map.like_guidename} || '%'
+      </if>
+      <if test="null != map.list_guidename" >
+        and asi.GUIDENAME in (<foreach collection="map.list_guidename" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.businessType" >
+        and asi.BUSINESS_TYPE = #{map.businessType}
+      </if>
+      <if test="null != map.like_businessType" >
+        and asi.BUSINESS_TYPE like '%' || #{map.like_businessType} || '%'
+      </if>
+      <if test="null != map.list_businessType" >
+        and asi.BUSINESS_TYPE in (<foreach collection="map.list_businessType" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.createUserId" >
+        and asi.CREATE_USER_ID = #{map.createUserId}
+      </if>
+      <if test="null != map.like_createUserId" >
+        and asi.CREATE_USER_ID like '%' || #{map.like_createUserId} || '%'
+      </if>
+      <if test="null != map.list_createUserId" >
+        and asi.CREATE_USER_ID in (<foreach collection="map.list_createUserId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.createUserName" >
+        and asi.CREATE_USER_NAME = #{map.createUserName}
+      </if>
+      <if test="null != map.like_createUserName" >
+        and asi.CREATE_USER_NAME like '%' || #{map.like_createUserName} || '%'
+      </if>
+      <if test="null != map.list_createUserName" >
+        and asi.CREATE_USER_NAME in (<foreach collection="map.list_createUserName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.createWindowId" >
+        and asi.CREATE_WINDOW_ID = #{map.createWindowId}
+      </if>
+      <if test="null != map.like_createWindowId" >
+        and asi.CREATE_WINDOW_ID like '%' || #{map.like_createWindowId} || '%'
+      </if>
+      <if test="null != map.list_createWindowId" >
+        and asi.CREATE_WINDOW_ID in (<foreach collection="map.list_createWindowId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.createWindowName" >
+        and asi.CREATE_WINDOW_NAME = #{map.createWindowName}
+      </if>
+      <if test="null != map.like_createWindowName" >
+        and asi.CREATE_WINDOW_NAME like '%' || #{map.like_createWindowName} || '%'
+      </if>
+      <if test="null != map.list_createWindowName" >
+        and asi.CREATE_WINDOW_NAME in (<foreach collection="map.list_createWindowName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.createCellphone" >
+        and asi.CREATE_CELLPHONE = #{map.createCellphone}
+      </if>
+      <if test="null != map.like_createCellphone" >
+        and asi.CREATE_CELLPHONE like '%' || #{map.like_createCellphone} || '%'
+      </if>
+      <if test="null != map.list_createCellphone" >
+        and asi.CREATE_CELLPHONE in (<foreach collection="map.list_createCellphone" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and asi.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and asi.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.acceptUserId" >
+        and asi.ACCEPT_USER_ID = #{map.acceptUserId}
+      </if>
+      <if test="null != map.like_acceptUserId" >
+        and asi.ACCEPT_USER_ID like '%' || #{map.like_acceptUserId} || '%'
+      </if>
+      <if test="null != map.list_acceptUserId" >
+        and asi.ACCEPT_USER_ID in (<foreach collection="map.list_acceptUserId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.acceptUserName" >
+        and asi.ACCEPT_USER_NAME = #{map.acceptUserName}
+      </if>
+      <if test="null != map.like_acceptUserName" >
+        and asi.ACCEPT_USER_NAME like '%' || #{map.like_acceptUserName} || '%'
+      </if>
+      <if test="null != map.list_acceptUserName" >
+        and asi.ACCEPT_USER_NAME in (<foreach collection="map.list_acceptUserName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.acceptWindowId" >
+        and asi.ACCEPT_WINDOW_ID = #{map.acceptWindowId}
+      </if>
+      <if test="null != map.like_acceptWindowId" >
+        and asi.ACCEPT_WINDOW_ID like '%' || #{map.like_acceptWindowId} || '%'
+      </if>
+      <if test="null != map.list_acceptWindowId" >
+        and asi.ACCEPT_WINDOW_ID in (<foreach collection="map.list_acceptWindowId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.acceptWindowName" >
+        and asi.ACCEPT_WINDOW_NAME = #{map.acceptWindowName}
+      </if>
+      <if test="null != map.like_acceptWindowName" >
+        and asi.ACCEPT_WINDOW_NAME like '%' || #{map.like_acceptWindowName} || '%'
+      </if>
+      <if test="null != map.list_acceptWindowName" >
+        and asi.ACCEPT_WINDOW_NAME in (<foreach collection="map.list_acceptWindowName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.acceptCellphone" >
+        and asi.ACCEPT_CELLPHONE = #{map.acceptCellphone}
+      </if>
+      <if test="null != map.like_acceptCellphone" >
+        and asi.ACCEPT_CELLPHONE like '%' || #{map.like_acceptCellphone} || '%'
+      </if>
+      <if test="null != map.list_acceptCellphone" >
+        and asi.ACCEPT_CELLPHONE in (<foreach collection="map.list_acceptCellphone" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_acceptTime" >
+        and asi.ACCEPT_TIME &gt;= #{map.begin_acceptTime}
+      </if>
+      <if test="null != map.end_acceptTime" >
+        and asi.ACCEPT_TIME &lt;= #{map.end_acceptTime}
+      </if>
+      <if test="null != map.fileId" >
+        and asi.FILE_ID = #{map.fileId}
+      </if>
+      <if test="null != map.like_fileId" >
+        and asi.FILE_ID like '%' || #{map.like_fileId} || '%'
+      </if>
+      <if test="null != map.list_fileId" >
+        and asi.FILE_ID in (<foreach collection="map.list_fileId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.fileName" >
+        and asi.FILE_NAME = #{map.fileName}
+      </if>
+      <if test="null != map.like_fileName" >
+        and asi.FILE_NAME like '%' || #{map.like_fileName} || '%'
+      </if>
+      <if test="null != map.list_fileName" >
+        and asi.FILE_NAME in (<foreach collection="map.list_fileName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.timeLimit" >
+        and asi.TIME_LIMIT = #{map.timeLimit}
+      </if>
+      <if test="null != map.like_timeLimit" >
+        and asi.TIME_LIMIT like '%' || #{map.like_timeLimit} || '%'
+      </if>
+      <if test="null != map.list_timeLimit" >
+        and asi.TIME_LIMIT in (<foreach collection="map.list_timeLimit" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.currentUserId" >
+        and asi.CURRENT_USER_ID = #{map.currentUserId}
+      </if>
+      <if test="null != map.list_currentUserId" >
+        and asi.CURRENT_USER_ID in (<foreach collection="map.list_currentUserId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.currentUserName" >
+        and asi.CURRENT_USER_NAME = #{map.currentUserName}
+      </if>
+      <if test="null != map.like_currentUserName" >
+        and asi.CURRENT_USER_NAME like '%' || #{map.like_currentUserName} || '%'
+      </if>
+      <if test="null != map.list_currentUserName" >
+        and asi.CURRENT_USER_NAME in (<foreach collection="map.list_currentUserName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.acceptNoticeFileId" >
+        and asi.ACCEPT_NOTICE_FILE_ID = #{map.acceptNoticeFileId}
+      </if>
+      <if test="null != map.like_acceptNoticeFileId" >
+        and asi.ACCEPT_NOTICE_FILE_ID like '%' || #{map.like_acceptNoticeFileId} || '%'
+      </if>
+      <if test="null != map.list_acceptNoticeFileId" >
+        and asi.ACCEPT_NOTICE_FILE_ID in (<foreach collection="map.list_acceptNoticeFileId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.acceptNoticeFileName" >
+        and asi.ACCEPT_NOTICE_FILE_NAME = #{map.acceptNoticeFileName}
+      </if>
+      <if test="null != map.like_acceptNoticeFileName" >
+        and asi.ACCEPT_NOTICE_FILE_NAME like '%' || #{map.like_acceptNoticeFileName} || '%'
+      </if>
+      <if test="null != map.list_acceptNoticeFileName" >
+        and asi.ACCEPT_NOTICE_FILE_NAME in (<foreach collection="map.list_acceptNoticeFileName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.finishDocFileId" >
+        and asi.FINISH_DOC_FILE_ID = #{map.finishDocFileId}
+      </if>
+      <if test="null != map.like_finishDocFileId" >
+        and asi.FINISH_DOC_FILE_ID like '%' || #{map.like_finishDocFileId} || '%'
+      </if>
+      <if test="null != map.list_finishDocFileId" >
+        and asi.FINISH_DOC_FILE_ID in (<foreach collection="map.list_finishDocFileId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.finishDocFileName" >
+        and asi.FINISH_DOC_FILE_NAME = #{map.finishDocFileName}
+      </if>
+      <if test="null != map.like_finishDocFileName" >
+        and asi.FINISH_DOC_FILE_NAME like '%' || #{map.like_finishDocFileName} || '%'
+      </if>
+      <if test="null != map.list_finishDocFileName" >
+        and asi.FINISH_DOC_FILE_NAME in (<foreach collection="map.list_finishDocFileName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_finishTime" >
+        and asi.FINISH_TIME &gt;= #{map.begin_finishTime}
+      </if>
+      <if test="null != map.end_finishTime" >
+        and asi.FINISH_TIME &lt;= #{map.end_finishTime}
+      </if>
+      <if test="null != map.currentDeptId" >
+        and asi.CURRENT_DEPT_ID = #{map.currentDeptId}
+      </if>
+      <if test="null != map.list_currentDeptId" >
+        and asi.CURRENT_DEPT_ID in (<foreach collection="map.list_currentDeptId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.currentDeptName" >
+        and asi.CURRENT_DEPT_NAME = #{map.currentDeptName}
+      </if>
+      <if test="null != map.like_currentDeptName" >
+        and asi.CURRENT_DEPT_NAME like '%' || #{map.like_currentDeptName} || '%'
+      </if>
+      <if test="null != map.list_currentDeptName" >
+        and asi.CURRENT_DEPT_NAME in (<foreach collection="map.list_currentDeptName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.remark" >
+        and asi.REMARK = #{map.remark}
+      </if>
+      <if test="null != map.like_remark" >
+        and asi.REMARK like '%' || #{map.like_remark} || '%'
+      </if>
+      <if test="null != map.list_remark" >
+        and asi.REMARK in (<foreach collection="map.list_remark" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

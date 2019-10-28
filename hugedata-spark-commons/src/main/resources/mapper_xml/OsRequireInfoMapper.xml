@@ -1,0 +1,1173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.OsRequireInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.OsRequireInfo" >
+    <id column="require_id" property="requireId" jdbcType="INTEGER" />
+    <result column="require_area" property="requireArea" jdbcType="VARCHAR" />
+    <result column="require_title" property="requireTitle" jdbcType="VARCHAR" />
+    <result column="dead_date" property="deadDate" jdbcType="DATE" />
+    <result column="offer_date" property="offerDate" jdbcType="DATE" />
+    <result column="hope_price" property="hopePrice" jdbcType="DOUBLE" />
+    <result column="price_unit" property="priceUnit" jdbcType="VARCHAR" />
+    <result column="is_chat" property="isChat" jdbcType="CHAR" />
+    <result column="is_quick" property="isQuick" jdbcType="CHAR" />
+    <result column="key_word" property="keyWord" jdbcType="VARCHAR" />
+    <result column="payment_method" property="paymentMethod" jdbcType="VARCHAR" />
+    <result column="invoice_type" property="invoiceType" jdbcType="VARCHAR" />
+    <result column="freight_payer" property="freightPayer" jdbcType="VARCHAR" />
+    <result column="is_cod" property="isCod" jdbcType="CHAR" />
+    <result column="require_num" property="requireNum" jdbcType="INTEGER" />
+    <result column="num_unit" property="numUnit" jdbcType="VARCHAR" />
+    <result column="contact_area" property="contactArea" jdbcType="VARCHAR" />
+    <result column="contact_addr" property="contactAddr" jdbcType="VARCHAR" />
+    <result column="contacter" property="contacter" jdbcType="VARCHAR" />
+    <result column="contact_phone" property="contactPhone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="publish_time" property="publishTime" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="CHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="company_id" property="companyId" jdbcType="INTEGER" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="read_num" property="readNum" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.com.hugedata.spark.commons.storage.entity.OsRequireInfo" extends="BaseResultMap" >
+    <result column="require_desc" property="requireDesc" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != requireId" >
+      and ori.require_id = #{requireId}
+    </if>
+    <if test="null != ne_requireId" >
+      and ori.require_id != #{ne_requireId}
+    </if>
+    <if test="null != list_requireId" >
+      and ori.require_id in (<foreach collection="list_requireId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != requireArea" >
+      and ori.require_area = #{requireArea}
+    </if>
+    <if test="null != ne_requireArea" >
+      and ori.require_area != #{ne_requireArea}
+    </if>
+    <if test="null != like_requireArea" >
+      and ori.require_area like CONCAT('%', #{like_requireArea}, '%')
+    </if>
+    <if test="null != list_requireArea" >
+      and ori.require_area in (<foreach collection="list_requireArea" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_requireArea" >
+      and ori.require_area &gt;= #{begin_requireArea}
+    </if>
+    <if test="null != end_requireArea" >
+      and ori.require_area &lt;= #{end_requireArea}
+    </if>
+    <if test="null != requireTitle" >
+      and ori.require_title = #{requireTitle}
+    </if>
+    <if test="null != ne_requireTitle" >
+      and ori.require_title != #{ne_requireTitle}
+    </if>
+    <if test="null != like_requireTitle" >
+      and ori.require_title like CONCAT('%', #{like_requireTitle}, '%')
+    </if>
+    <if test="null != list_requireTitle" >
+      and ori.require_title in (<foreach collection="list_requireTitle" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_requireTitle" >
+      and ori.require_title &gt;= #{begin_requireTitle}
+    </if>
+    <if test="null != end_requireTitle" >
+      and ori.require_title &lt;= #{end_requireTitle}
+    </if>
+    <if test="null != begin_deadDate" >
+      and ori.dead_date &gt;= #{begin_deadDate}
+    </if>
+    <if test="null != end_deadDate" >
+      and ori.dead_date &lt;= #{end_deadDate}
+    </if>
+    <if test="null != begin_offerDate" >
+      and ori.offer_date &gt;= #{begin_offerDate}
+    </if>
+    <if test="null != end_offerDate" >
+      and ori.offer_date &lt;= #{end_offerDate}
+    </if>
+    <if test="null != hopePrice" >
+      and ori.hope_price = #{hopePrice}
+    </if>
+    <if test="null != ne_hopePrice" >
+      and ori.hope_price != #{ne_hopePrice}
+    </if>
+    <if test="null != list_hopePrice" >
+      and ori.hope_price in (<foreach collection="list_hopePrice" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != priceUnit" >
+      and ori.price_unit = #{priceUnit}
+    </if>
+    <if test="null != ne_priceUnit" >
+      and ori.price_unit != #{ne_priceUnit}
+    </if>
+    <if test="null != like_priceUnit" >
+      and ori.price_unit like CONCAT('%', #{like_priceUnit}, '%')
+    </if>
+    <if test="null != list_priceUnit" >
+      and ori.price_unit in (<foreach collection="list_priceUnit" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_priceUnit" >
+      and ori.price_unit &gt;= #{begin_priceUnit}
+    </if>
+    <if test="null != end_priceUnit" >
+      and ori.price_unit &lt;= #{end_priceUnit}
+    </if>
+    <if test="null != isChat" >
+      and ori.is_chat = #{isChat}
+    </if>
+    <if test="null != ne_isChat" >
+      and ori.is_chat != #{ne_isChat}
+    </if>
+    <if test="null != like_isChat" >
+      and ori.is_chat like CONCAT('%', #{like_isChat}, '%')
+    </if>
+    <if test="null != list_isChat" >
+      and ori.is_chat in (<foreach collection="list_isChat" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_isChat" >
+      and ori.is_chat &gt;= #{begin_isChat}
+    </if>
+    <if test="null != end_isChat" >
+      and ori.is_chat &lt;= #{end_isChat}
+    </if>
+    <if test="null != isQuick" >
+      and ori.is_quick = #{isQuick}
+    </if>
+    <if test="null != ne_isQuick" >
+      and ori.is_quick != #{ne_isQuick}
+    </if>
+    <if test="null != like_isQuick" >
+      and ori.is_quick like CONCAT('%', #{like_isQuick}, '%')
+    </if>
+    <if test="null != list_isQuick" >
+      and ori.is_quick in (<foreach collection="list_isQuick" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_isQuick" >
+      and ori.is_quick &gt;= #{begin_isQuick}
+    </if>
+    <if test="null != end_isQuick" >
+      and ori.is_quick &lt;= #{end_isQuick}
+    </if>
+    <if test="null != keyWord" >
+      and ori.key_word = #{keyWord}
+    </if>
+    <if test="null != ne_keyWord" >
+      and ori.key_word != #{ne_keyWord}
+    </if>
+    <if test="null != like_keyWord" >
+      and ori.key_word like CONCAT('%', #{like_keyWord}, '%')
+    </if>
+    <if test="null != list_keyWord" >
+      and ori.key_word in (<foreach collection="list_keyWord" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_keyWord" >
+      and ori.key_word &gt;= #{begin_keyWord}
+    </if>
+    <if test="null != end_keyWord" >
+      and ori.key_word &lt;= #{end_keyWord}
+    </if>
+    <if test="null != paymentMethod" >
+      and ori.payment_method = #{paymentMethod}
+    </if>
+    <if test="null != ne_paymentMethod" >
+      and ori.payment_method != #{ne_paymentMethod}
+    </if>
+    <if test="null != like_paymentMethod" >
+      and ori.payment_method like CONCAT('%', #{like_paymentMethod}, '%')
+    </if>
+    <if test="null != list_paymentMethod" >
+      and ori.payment_method in (<foreach collection="list_paymentMethod" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_paymentMethod" >
+      and ori.payment_method &gt;= #{begin_paymentMethod}
+    </if>
+    <if test="null != end_paymentMethod" >
+      and ori.payment_method &lt;= #{end_paymentMethod}
+    </if>
+    <if test="null != invoiceType" >
+      and ori.invoice_type = #{invoiceType}
+    </if>
+    <if test="null != ne_invoiceType" >
+      and ori.invoice_type != #{ne_invoiceType}
+    </if>
+    <if test="null != like_invoiceType" >
+      and ori.invoice_type like CONCAT('%', #{like_invoiceType}, '%')
+    </if>
+    <if test="null != list_invoiceType" >
+      and ori.invoice_type in (<foreach collection="list_invoiceType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_invoiceType" >
+      and ori.invoice_type &gt;= #{begin_invoiceType}
+    </if>
+    <if test="null != end_invoiceType" >
+      and ori.invoice_type &lt;= #{end_invoiceType}
+    </if>
+    <if test="null != freightPayer" >
+      and ori.freight_payer = #{freightPayer}
+    </if>
+    <if test="null != ne_freightPayer" >
+      and ori.freight_payer != #{ne_freightPayer}
+    </if>
+    <if test="null != like_freightPayer" >
+      and ori.freight_payer like CONCAT('%', #{like_freightPayer}, '%')
+    </if>
+    <if test="null != list_freightPayer" >
+      and ori.freight_payer in (<foreach collection="list_freightPayer" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_freightPayer" >
+      and ori.freight_payer &gt;= #{begin_freightPayer}
+    </if>
+    <if test="null != end_freightPayer" >
+      and ori.freight_payer &lt;= #{end_freightPayer}
+    </if>
+    <if test="null != isCod" >
+      and ori.is_cod = #{isCod}
+    </if>
+    <if test="null != ne_isCod" >
+      and ori.is_cod != #{ne_isCod}
+    </if>
+    <if test="null != like_isCod" >
+      and ori.is_cod like CONCAT('%', #{like_isCod}, '%')
+    </if>
+    <if test="null != list_isCod" >
+      and ori.is_cod in (<foreach collection="list_isCod" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_isCod" >
+      and ori.is_cod &gt;= #{begin_isCod}
+    </if>
+    <if test="null != end_isCod" >
+      and ori.is_cod &lt;= #{end_isCod}
+    </if>
+    <if test="null != requireNum" >
+      and ori.require_num = #{requireNum}
+    </if>
+    <if test="null != ne_requireNum" >
+      and ori.require_num != #{ne_requireNum}
+    </if>
+    <if test="null != list_requireNum" >
+      and ori.require_num in (<foreach collection="list_requireNum" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != numUnit" >
+      and ori.num_unit = #{numUnit}
+    </if>
+    <if test="null != ne_numUnit" >
+      and ori.num_unit != #{ne_numUnit}
+    </if>
+    <if test="null != like_numUnit" >
+      and ori.num_unit like CONCAT('%', #{like_numUnit}, '%')
+    </if>
+    <if test="null != list_numUnit" >
+      and ori.num_unit in (<foreach collection="list_numUnit" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_numUnit" >
+      and ori.num_unit &gt;= #{begin_numUnit}
+    </if>
+    <if test="null != end_numUnit" >
+      and ori.num_unit &lt;= #{end_numUnit}
+    </if>
+    <if test="null != contactArea" >
+      and ori.contact_area = #{contactArea}
+    </if>
+    <if test="null != ne_contactArea" >
+      and ori.contact_area != #{ne_contactArea}
+    </if>
+    <if test="null != like_contactArea" >
+      and ori.contact_area like CONCAT('%', #{like_contactArea}, '%')
+    </if>
+    <if test="null != list_contactArea" >
+      and ori.contact_area in (<foreach collection="list_contactArea" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_contactArea" >
+      and ori.contact_area &gt;= #{begin_contactArea}
+    </if>
+    <if test="null != end_contactArea" >
+      and ori.contact_area &lt;= #{end_contactArea}
+    </if>
+    <if test="null != contactAddr" >
+      and ori.contact_addr = #{contactAddr}
+    </if>
+    <if test="null != ne_contactAddr" >
+      and ori.contact_addr != #{ne_contactAddr}
+    </if>
+    <if test="null != like_contactAddr" >
+      and ori.contact_addr like CONCAT('%', #{like_contactAddr}, '%')
+    </if>
+    <if test="null != list_contactAddr" >
+      and ori.contact_addr in (<foreach collection="list_contactAddr" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_contactAddr" >
+      and ori.contact_addr &gt;= #{begin_contactAddr}
+    </if>
+    <if test="null != end_contactAddr" >
+      and ori.contact_addr &lt;= #{end_contactAddr}
+    </if>
+    <if test="null != contacter" >
+      and ori.contacter = #{contacter}
+    </if>
+    <if test="null != ne_contacter" >
+      and ori.contacter != #{ne_contacter}
+    </if>
+    <if test="null != like_contacter" >
+      and ori.contacter like CONCAT('%', #{like_contacter}, '%')
+    </if>
+    <if test="null != list_contacter" >
+      and ori.contacter in (<foreach collection="list_contacter" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_contacter" >
+      and ori.contacter &gt;= #{begin_contacter}
+    </if>
+    <if test="null != end_contacter" >
+      and ori.contacter &lt;= #{end_contacter}
+    </if>
+    <if test="null != contactPhone" >
+      and ori.contact_phone = #{contactPhone}
+    </if>
+    <if test="null != ne_contactPhone" >
+      and ori.contact_phone != #{ne_contactPhone}
+    </if>
+    <if test="null != like_contactPhone" >
+      and ori.contact_phone like CONCAT('%', #{like_contactPhone}, '%')
+    </if>
+    <if test="null != list_contactPhone" >
+      and ori.contact_phone in (<foreach collection="list_contactPhone" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_contactPhone" >
+      and ori.contact_phone &gt;= #{begin_contactPhone}
+    </if>
+    <if test="null != end_contactPhone" >
+      and ori.contact_phone &lt;= #{end_contactPhone}
+    </if>
+    <if test="null != email" >
+      and ori.email = #{email}
+    </if>
+    <if test="null != ne_email" >
+      and ori.email != #{ne_email}
+    </if>
+    <if test="null != like_email" >
+      and ori.email like CONCAT('%', #{like_email}, '%')
+    </if>
+    <if test="null != list_email" >
+      and ori.email in (<foreach collection="list_email" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_email" >
+      and ori.email &gt;= #{begin_email}
+    </if>
+    <if test="null != end_email" >
+      and ori.email &lt;= #{end_email}
+    </if>
+    <if test="null != begin_publishTime" >
+      and ori.publish_time &gt;= #{begin_publishTime}
+    </if>
+    <if test="null != end_publishTime" >
+      and ori.publish_time &lt;= #{end_publishTime}
+    </if>
+    <if test="null != deleted" >
+      and ori.deleted = #{deleted}
+    </if>
+    <if test="null != ne_deleted" >
+      and ori.deleted != #{ne_deleted}
+    </if>
+    <if test="null != like_deleted" >
+      and ori.deleted like CONCAT('%', #{like_deleted}, '%')
+    </if>
+    <if test="null != list_deleted" >
+      and ori.deleted in (<foreach collection="list_deleted" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_deleted" >
+      and ori.deleted &gt;= #{begin_deleted}
+    </if>
+    <if test="null != end_deleted" >
+      and ori.deleted &lt;= #{end_deleted}
+    </if>
+    <if test="null != userId" >
+      and ori.user_id = #{userId}
+    </if>
+    <if test="null != ne_userId" >
+      and ori.user_id != #{ne_userId}
+    </if>
+    <if test="null != list_userId" >
+      and ori.user_id in (<foreach collection="list_userId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != companyId" >
+      and ori.company_id = #{companyId}
+    </if>
+    <if test="null != ne_companyId" >
+      and ori.company_id != #{ne_companyId}
+    </if>
+    <if test="null != list_companyId" >
+      and ori.company_id in (<foreach collection="list_companyId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != companyName" >
+      and ori.company_name = #{companyName}
+    </if>
+    <if test="null != ne_companyName" >
+      and ori.company_name != #{ne_companyName}
+    </if>
+    <if test="null != like_companyName" >
+      and ori.company_name like CONCAT('%', #{like_companyName}, '%')
+    </if>
+    <if test="null != list_companyName" >
+      and ori.company_name in (<foreach collection="list_companyName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_companyName" >
+      and ori.company_name &gt;= #{begin_companyName}
+    </if>
+    <if test="null != end_companyName" >
+      and ori.company_name &lt;= #{end_companyName}
+    </if>
+    <if test="null != readNum" >
+      and ori.read_num = #{readNum}
+    </if>
+    <if test="null != ne_readNum" >
+      and ori.read_num != #{ne_readNum}
+    </if>
+    <if test="null != list_readNum" >
+      and ori.read_num in (<foreach collection="list_readNum" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != requireDesc" >
+      and ori.require_desc = #{requireDesc}
+    </if>
+    <if test="null != ne_requireDesc" >
+      and ori.require_desc != #{ne_requireDesc}
+    </if>
+    <if test="null != like_requireDesc" >
+      and ori.require_desc like CONCAT('%', #{like_requireDesc}, '%')
+    </if>
+    <if test="null != list_requireDesc" >
+      and ori.require_desc in (<foreach collection="list_requireDesc" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_requireDesc" >
+      and ori.require_desc &gt;= #{begin_requireDesc}
+    </if>
+    <if test="null != end_requireDesc" >
+      and ori.require_desc &lt;= #{end_requireDesc}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'requireId' == orderItem.column" >
+            ori.require_id ${orderItem.dir}
+          </if>
+          <if test="'requireArea' == orderItem.column" >
+            ori.require_area ${orderItem.dir}
+          </if>
+          <if test="'requireTitle' == orderItem.column" >
+            ori.require_title ${orderItem.dir}
+          </if>
+          <if test="'deadDate' == orderItem.column" >
+            ori.dead_date ${orderItem.dir}
+          </if>
+          <if test="'offerDate' == orderItem.column" >
+            ori.offer_date ${orderItem.dir}
+          </if>
+          <if test="'hopePrice' == orderItem.column" >
+            ori.hope_price ${orderItem.dir}
+          </if>
+          <if test="'priceUnit' == orderItem.column" >
+            ori.price_unit ${orderItem.dir}
+          </if>
+          <if test="'isChat' == orderItem.column" >
+            ori.is_chat ${orderItem.dir}
+          </if>
+          <if test="'isQuick' == orderItem.column" >
+            ori.is_quick ${orderItem.dir}
+          </if>
+          <if test="'keyWord' == orderItem.column" >
+            ori.key_word ${orderItem.dir}
+          </if>
+          <if test="'paymentMethod' == orderItem.column" >
+            ori.payment_method ${orderItem.dir}
+          </if>
+          <if test="'invoiceType' == orderItem.column" >
+            ori.invoice_type ${orderItem.dir}
+          </if>
+          <if test="'freightPayer' == orderItem.column" >
+            ori.freight_payer ${orderItem.dir}
+          </if>
+          <if test="'isCod' == orderItem.column" >
+            ori.is_cod ${orderItem.dir}
+          </if>
+          <if test="'requireNum' == orderItem.column" >
+            ori.require_num ${orderItem.dir}
+          </if>
+          <if test="'numUnit' == orderItem.column" >
+            ori.num_unit ${orderItem.dir}
+          </if>
+          <if test="'contactArea' == orderItem.column" >
+            ori.contact_area ${orderItem.dir}
+          </if>
+          <if test="'contactAddr' == orderItem.column" >
+            ori.contact_addr ${orderItem.dir}
+          </if>
+          <if test="'contacter' == orderItem.column" >
+            ori.contacter ${orderItem.dir}
+          </if>
+          <if test="'contactPhone' == orderItem.column" >
+            ori.contact_phone ${orderItem.dir}
+          </if>
+          <if test="'email' == orderItem.column" >
+            ori.email ${orderItem.dir}
+          </if>
+          <if test="'publishTime' == orderItem.column" >
+            ori.publish_time ${orderItem.dir}
+          </if>
+          <if test="'deleted' == orderItem.column" >
+            ori.deleted ${orderItem.dir}
+          </if>
+          <if test="'userId' == orderItem.column" >
+            ori.user_id ${orderItem.dir}
+          </if>
+          <if test="'companyId' == orderItem.column" >
+            ori.company_id ${orderItem.dir}
+          </if>
+          <if test="'companyName' == orderItem.column" >
+            ori.company_name ${orderItem.dir}
+          </if>
+          <if test="'readNum' == orderItem.column" >
+            ori.read_num ${orderItem.dir}
+          </if>
+          <if test="'requireDesc' == orderItem.column" >
+            ori.require_desc ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    ori.require_id, ori.require_area, ori.require_title, ori.dead_date, ori.offer_date, 
+    ori.hope_price, ori.price_unit, ori.is_chat, ori.is_quick, ori.key_word, ori.payment_method, 
+    ori.invoice_type, ori.freight_payer, ori.is_cod, ori.require_num, ori.num_unit, ori.contact_area, 
+    ori.contact_addr, ori.contacter, ori.contact_phone, ori.email, ori.publish_time, 
+    ori.deleted, ori.user_id, ori.company_id, ori.company_name, ori.read_num
+  </sql>
+  <sql id="Blob_Column_List" >
+    require_desc
+  </sql>
+  <select id="selectById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from os_require_info ori
+    where ori.require_id = #{requireId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from os_require_info ori
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from os_require_info ori
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.OsRequireInfo" >
+    <selectKey resultType="java.lang.Integer" keyProperty="requireId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into os_require_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      require_id,
+      <if test="requireArea != null" >
+        require_area,
+      </if>
+      <if test="requireTitle != null" >
+        require_title,
+      </if>
+      <if test="deadDate != null" >
+        dead_date,
+      </if>
+      <if test="offerDate != null" >
+        offer_date,
+      </if>
+      <if test="hopePrice != null" >
+        hope_price,
+      </if>
+      <if test="priceUnit != null" >
+        price_unit,
+      </if>
+      <if test="isChat != null" >
+        is_chat,
+      </if>
+      <if test="isQuick != null" >
+        is_quick,
+      </if>
+      <if test="keyWord != null" >
+        key_word,
+      </if>
+      <if test="paymentMethod != null" >
+        payment_method,
+      </if>
+      <if test="invoiceType != null" >
+        invoice_type,
+      </if>
+      <if test="freightPayer != null" >
+        freight_payer,
+      </if>
+      <if test="isCod != null" >
+        is_cod,
+      </if>
+      <if test="requireNum != null" >
+        require_num,
+      </if>
+      <if test="numUnit != null" >
+        num_unit,
+      </if>
+      <if test="contactArea != null" >
+        contact_area,
+      </if>
+      <if test="contactAddr != null" >
+        contact_addr,
+      </if>
+      <if test="contacter != null" >
+        contacter,
+      </if>
+      <if test="contactPhone != null" >
+        contact_phone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="publishTime != null" >
+        publish_time,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="readNum != null" >
+        read_num,
+      </if>
+      <if test="requireDesc != null" >
+        require_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{requireId,jdbcType=INTEGER},
+      <if test="requireArea != null" >
+        #{requireArea,jdbcType=VARCHAR},
+      </if>
+      <if test="requireTitle != null" >
+        #{requireTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="deadDate != null" >
+        #{deadDate,jdbcType=DATE},
+      </if>
+      <if test="offerDate != null" >
+        #{offerDate,jdbcType=DATE},
+      </if>
+      <if test="hopePrice != null" >
+        #{hopePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="priceUnit != null" >
+        #{priceUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="isChat != null" >
+        #{isChat,jdbcType=CHAR},
+      </if>
+      <if test="isQuick != null" >
+        #{isQuick,jdbcType=CHAR},
+      </if>
+      <if test="keyWord != null" >
+        #{keyWord,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentMethod != null" >
+        #{paymentMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceType != null" >
+        #{invoiceType,jdbcType=VARCHAR},
+      </if>
+      <if test="freightPayer != null" >
+        #{freightPayer,jdbcType=VARCHAR},
+      </if>
+      <if test="isCod != null" >
+        #{isCod,jdbcType=CHAR},
+      </if>
+      <if test="requireNum != null" >
+        #{requireNum,jdbcType=INTEGER},
+      </if>
+      <if test="numUnit != null" >
+        #{numUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="contactArea != null" >
+        #{contactArea,jdbcType=VARCHAR},
+      </if>
+      <if test="contactAddr != null" >
+        #{contactAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="contacter != null" >
+        #{contacter,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null" >
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null" >
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=CHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="readNum != null" >
+        #{readNum,jdbcType=INTEGER},
+      </if>
+      <if test="requireDesc != null" >
+        #{requireDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from os_require_info
+    where require_id = #{requireId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from os_require_info where require_id in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from ori using (os_require_info as ori) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.OsRequireInfo" >
+    update os_require_info
+    <set >
+      <if test="requireArea != null" >
+        require_area = #{requireArea,jdbcType=VARCHAR},
+      </if>
+      <if test="requireTitle != null" >
+        require_title = #{requireTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="deadDate != null" >
+        dead_date = #{deadDate,jdbcType=DATE},
+      </if>
+      <if test="offerDate != null" >
+        offer_date = #{offerDate,jdbcType=DATE},
+      </if>
+      <if test="hopePrice != null" >
+        hope_price = #{hopePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="priceUnit != null" >
+        price_unit = #{priceUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="isChat != null" >
+        is_chat = #{isChat,jdbcType=CHAR},
+      </if>
+      <if test="isQuick != null" >
+        is_quick = #{isQuick,jdbcType=CHAR},
+      </if>
+      <if test="keyWord != null" >
+        key_word = #{keyWord,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentMethod != null" >
+        payment_method = #{paymentMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceType != null" >
+        invoice_type = #{invoiceType,jdbcType=VARCHAR},
+      </if>
+      <if test="freightPayer != null" >
+        freight_payer = #{freightPayer,jdbcType=VARCHAR},
+      </if>
+      <if test="isCod != null" >
+        is_cod = #{isCod,jdbcType=CHAR},
+      </if>
+      <if test="requireNum != null" >
+        require_num = #{requireNum,jdbcType=INTEGER},
+      </if>
+      <if test="numUnit != null" >
+        num_unit = #{numUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="contactArea != null" >
+        contact_area = #{contactArea,jdbcType=VARCHAR},
+      </if>
+      <if test="contactAddr != null" >
+        contact_addr = #{contactAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="contacter != null" >
+        contacter = #{contacter,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null" >
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null" >
+        publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=CHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="readNum != null" >
+        read_num = #{readNum,jdbcType=INTEGER},
+      </if>
+      <if test="requireDesc != null" >
+        require_desc = #{requireDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where require_id = #{requireId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update os_require_info ori
+    <set >
+      <if test="record.requireId != null" >
+        require_id = #{record.requireId,jdbcType=INTEGER},
+      </if>
+      <if test="record.requireArea != null" >
+        require_area = #{record.requireArea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requireTitle != null" >
+        require_title = #{record.requireTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deadDate != null" >
+        dead_date = #{record.deadDate,jdbcType=DATE},
+      </if>
+      <if test="record.offerDate != null" >
+        offer_date = #{record.offerDate,jdbcType=DATE},
+      </if>
+      <if test="record.hopePrice != null" >
+        hope_price = #{record.hopePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.priceUnit != null" >
+        price_unit = #{record.priceUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isChat != null" >
+        is_chat = #{record.isChat,jdbcType=CHAR},
+      </if>
+      <if test="record.isQuick != null" >
+        is_quick = #{record.isQuick,jdbcType=CHAR},
+      </if>
+      <if test="record.keyWord != null" >
+        key_word = #{record.keyWord,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paymentMethod != null" >
+        payment_method = #{record.paymentMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.invoiceType != null" >
+        invoice_type = #{record.invoiceType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.freightPayer != null" >
+        freight_payer = #{record.freightPayer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isCod != null" >
+        is_cod = #{record.isCod,jdbcType=CHAR},
+      </if>
+      <if test="record.requireNum != null" >
+        require_num = #{record.requireNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.numUnit != null" >
+        num_unit = #{record.numUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactArea != null" >
+        contact_area = #{record.contactArea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactAddr != null" >
+        contact_addr = #{record.contactAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contacter != null" >
+        contacter = #{record.contacter,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactPhone != null" >
+        contact_phone = #{record.contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.publishTime != null" >
+        publish_time = #{record.publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.deleted != null" >
+        deleted = #{record.deleted,jdbcType=CHAR},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.companyId != null" >
+        company_id = #{record.companyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.companyName != null" >
+        company_name = #{record.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.readNum != null" >
+        read_num = #{record.readNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.requireDesc != null" >
+        require_desc = #{record.requireDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.requireId" >
+        and ori.require_id = #{map.requireId}
+      </if>
+      <if test="null != map.list_requireId" >
+        and ori.require_id in (<foreach collection="map.list_requireId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.requireArea" >
+        and ori.require_area = #{map.requireArea}
+      </if>
+      <if test="null != map.like_requireArea" >
+        and ori.require_area like '%' || #{map.like_requireArea} || '%'
+      </if>
+      <if test="null != map.list_requireArea" >
+        and ori.require_area in (<foreach collection="map.list_requireArea" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.requireTitle" >
+        and ori.require_title = #{map.requireTitle}
+      </if>
+      <if test="null != map.like_requireTitle" >
+        and ori.require_title like '%' || #{map.like_requireTitle} || '%'
+      </if>
+      <if test="null != map.list_requireTitle" >
+        and ori.require_title in (<foreach collection="map.list_requireTitle" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_deadDate" >
+        and ori.dead_date &gt;= #{map.begin_deadDate}
+      </if>
+      <if test="null != map.end_deadDate" >
+        and ori.dead_date &lt;= #{map.end_deadDate}
+      </if>
+      <if test="null != map.begin_offerDate" >
+        and ori.offer_date &gt;= #{map.begin_offerDate}
+      </if>
+      <if test="null != map.end_offerDate" >
+        and ori.offer_date &lt;= #{map.end_offerDate}
+      </if>
+      <if test="null != map.hopePrice" >
+        and ori.hope_price = #{map.hopePrice}
+      </if>
+      <if test="null != map.list_hopePrice" >
+        and ori.hope_price in (<foreach collection="map.list_hopePrice" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.priceUnit" >
+        and ori.price_unit = #{map.priceUnit}
+      </if>
+      <if test="null != map.like_priceUnit" >
+        and ori.price_unit like '%' || #{map.like_priceUnit} || '%'
+      </if>
+      <if test="null != map.list_priceUnit" >
+        and ori.price_unit in (<foreach collection="map.list_priceUnit" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.isChat" >
+        and ori.is_chat = #{map.isChat}
+      </if>
+      <if test="null != map.like_isChat" >
+        and ori.is_chat like '%' || #{map.like_isChat} || '%'
+      </if>
+      <if test="null != map.list_isChat" >
+        and ori.is_chat in (<foreach collection="map.list_isChat" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.isQuick" >
+        and ori.is_quick = #{map.isQuick}
+      </if>
+      <if test="null != map.like_isQuick" >
+        and ori.is_quick like '%' || #{map.like_isQuick} || '%'
+      </if>
+      <if test="null != map.list_isQuick" >
+        and ori.is_quick in (<foreach collection="map.list_isQuick" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.keyWord" >
+        and ori.key_word = #{map.keyWord}
+      </if>
+      <if test="null != map.like_keyWord" >
+        and ori.key_word like '%' || #{map.like_keyWord} || '%'
+      </if>
+      <if test="null != map.list_keyWord" >
+        and ori.key_word in (<foreach collection="map.list_keyWord" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.paymentMethod" >
+        and ori.payment_method = #{map.paymentMethod}
+      </if>
+      <if test="null != map.like_paymentMethod" >
+        and ori.payment_method like '%' || #{map.like_paymentMethod} || '%'
+      </if>
+      <if test="null != map.list_paymentMethod" >
+        and ori.payment_method in (<foreach collection="map.list_paymentMethod" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.invoiceType" >
+        and ori.invoice_type = #{map.invoiceType}
+      </if>
+      <if test="null != map.like_invoiceType" >
+        and ori.invoice_type like '%' || #{map.like_invoiceType} || '%'
+      </if>
+      <if test="null != map.list_invoiceType" >
+        and ori.invoice_type in (<foreach collection="map.list_invoiceType" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.freightPayer" >
+        and ori.freight_payer = #{map.freightPayer}
+      </if>
+      <if test="null != map.like_freightPayer" >
+        and ori.freight_payer like '%' || #{map.like_freightPayer} || '%'
+      </if>
+      <if test="null != map.list_freightPayer" >
+        and ori.freight_payer in (<foreach collection="map.list_freightPayer" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.isCod" >
+        and ori.is_cod = #{map.isCod}
+      </if>
+      <if test="null != map.like_isCod" >
+        and ori.is_cod like '%' || #{map.like_isCod} || '%'
+      </if>
+      <if test="null != map.list_isCod" >
+        and ori.is_cod in (<foreach collection="map.list_isCod" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.requireNum" >
+        and ori.require_num = #{map.requireNum}
+      </if>
+      <if test="null != map.list_requireNum" >
+        and ori.require_num in (<foreach collection="map.list_requireNum" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.numUnit" >
+        and ori.num_unit = #{map.numUnit}
+      </if>
+      <if test="null != map.like_numUnit" >
+        and ori.num_unit like '%' || #{map.like_numUnit} || '%'
+      </if>
+      <if test="null != map.list_numUnit" >
+        and ori.num_unit in (<foreach collection="map.list_numUnit" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.contactArea" >
+        and ori.contact_area = #{map.contactArea}
+      </if>
+      <if test="null != map.like_contactArea" >
+        and ori.contact_area like '%' || #{map.like_contactArea} || '%'
+      </if>
+      <if test="null != map.list_contactArea" >
+        and ori.contact_area in (<foreach collection="map.list_contactArea" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.contactAddr" >
+        and ori.contact_addr = #{map.contactAddr}
+      </if>
+      <if test="null != map.like_contactAddr" >
+        and ori.contact_addr like '%' || #{map.like_contactAddr} || '%'
+      </if>
+      <if test="null != map.list_contactAddr" >
+        and ori.contact_addr in (<foreach collection="map.list_contactAddr" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.contacter" >
+        and ori.contacter = #{map.contacter}
+      </if>
+      <if test="null != map.like_contacter" >
+        and ori.contacter like '%' || #{map.like_contacter} || '%'
+      </if>
+      <if test="null != map.list_contacter" >
+        and ori.contacter in (<foreach collection="map.list_contacter" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.contactPhone" >
+        and ori.contact_phone = #{map.contactPhone}
+      </if>
+      <if test="null != map.like_contactPhone" >
+        and ori.contact_phone like '%' || #{map.like_contactPhone} || '%'
+      </if>
+      <if test="null != map.list_contactPhone" >
+        and ori.contact_phone in (<foreach collection="map.list_contactPhone" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.email" >
+        and ori.email = #{map.email}
+      </if>
+      <if test="null != map.like_email" >
+        and ori.email like '%' || #{map.like_email} || '%'
+      </if>
+      <if test="null != map.list_email" >
+        and ori.email in (<foreach collection="map.list_email" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_publishTime" >
+        and ori.publish_time &gt;= #{map.begin_publishTime}
+      </if>
+      <if test="null != map.end_publishTime" >
+        and ori.publish_time &lt;= #{map.end_publishTime}
+      </if>
+      <if test="null != map.deleted" >
+        and ori.deleted = #{map.deleted}
+      </if>
+      <if test="null != map.like_deleted" >
+        and ori.deleted like '%' || #{map.like_deleted} || '%'
+      </if>
+      <if test="null != map.list_deleted" >
+        and ori.deleted in (<foreach collection="map.list_deleted" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.userId" >
+        and ori.user_id = #{map.userId}
+      </if>
+      <if test="null != map.list_userId" >
+        and ori.user_id in (<foreach collection="map.list_userId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.companyId" >
+        and ori.company_id = #{map.companyId}
+      </if>
+      <if test="null != map.list_companyId" >
+        and ori.company_id in (<foreach collection="map.list_companyId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.companyName" >
+        and ori.company_name = #{map.companyName}
+      </if>
+      <if test="null != map.like_companyName" >
+        and ori.company_name like '%' || #{map.like_companyName} || '%'
+      </if>
+      <if test="null != map.list_companyName" >
+        and ori.company_name in (<foreach collection="map.list_companyName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.readNum" >
+        and ori.read_num = #{map.readNum}
+      </if>
+      <if test="null != map.list_readNum" >
+        and ori.read_num in (<foreach collection="map.list_readNum" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.requireDesc" >
+        and ori.require_desc = #{map.requireDesc}
+      </if>
+      <if test="null != map.like_requireDesc" >
+        and ori.require_desc like '%' || #{map.like_requireDesc} || '%'
+      </if>
+      <if test="null != map.list_requireDesc" >
+        and ori.require_desc in (<foreach collection="map.list_requireDesc" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

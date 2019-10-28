@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.PmDocTypeMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.PmDocType" >
+    <id column="TYPE_ID" property="typeId" jdbcType="INTEGER" />
+    <result column="TYPE_NAME" property="typeName" jdbcType="VARCHAR" />
+    <result column="DOC_TYPE" property="docType" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != typeId" >
+      and pdt.TYPE_ID = #{typeId}
+    </if>
+    <if test="null != ne_typeId" >
+      and pdt.TYPE_ID != #{ne_typeId}
+    </if>
+    <if test="null != list_typeId" >
+      and pdt.TYPE_ID in (<foreach collection="list_typeId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != typeName" >
+      and pdt.TYPE_NAME = #{typeName}
+    </if>
+    <if test="null != ne_typeName" >
+      and pdt.TYPE_NAME != #{ne_typeName}
+    </if>
+    <if test="null != like_typeName" >
+      and pdt.TYPE_NAME like CONCAT('%', #{like_typeName}, '%')
+    </if>
+    <if test="null != list_typeName" >
+      and pdt.TYPE_NAME in (<foreach collection="list_typeName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_typeName" >
+      and pdt.TYPE_NAME &gt;= #{begin_typeName}
+    </if>
+    <if test="null != end_typeName" >
+      and pdt.TYPE_NAME &lt;= #{end_typeName}
+    </if>
+    <if test="null != docType" >
+      and pdt.DOC_TYPE = #{docType}
+    </if>
+    <if test="null != ne_docType" >
+      and pdt.DOC_TYPE != #{ne_docType}
+    </if>
+    <if test="null != like_docType" >
+      and pdt.DOC_TYPE like CONCAT('%', #{like_docType}, '%')
+    </if>
+    <if test="null != list_docType" >
+      and pdt.DOC_TYPE in (<foreach collection="list_docType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_docType" >
+      and pdt.DOC_TYPE &gt;= #{begin_docType}
+    </if>
+    <if test="null != end_docType" >
+      and pdt.DOC_TYPE &lt;= #{end_docType}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'typeId' == orderItem.column" >
+            pdt.TYPE_ID ${orderItem.dir}
+          </if>
+          <if test="'typeName' == orderItem.column" >
+            pdt.TYPE_NAME ${orderItem.dir}
+          </if>
+          <if test="'docType' == orderItem.column" >
+            pdt.DOC_TYPE ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    pdt.TYPE_ID, pdt.TYPE_NAME, pdt.DOC_TYPE
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from pm_doc_type pdt
+    where pdt.TYPE_ID = #{typeId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from pm_doc_type pdt
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from pm_doc_type pdt
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.PmDocType" >
+    <selectKey resultType="java.lang.Integer" keyProperty="typeId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into pm_doc_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      TYPE_ID,
+      <if test="typeName != null" >
+        TYPE_NAME,
+      </if>
+      <if test="docType != null" >
+        DOC_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{typeId,jdbcType=INTEGER},
+      <if test="typeName != null" >
+        #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="docType != null" >
+        #{docType,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from pm_doc_type
+    where TYPE_ID = #{typeId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from pm_doc_type where TYPE_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from pdt using (pm_doc_type as pdt) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.PmDocType" >
+    update pm_doc_type
+    <set >
+      <if test="typeName != null" >
+        TYPE_NAME = #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="docType != null" >
+        DOC_TYPE = #{docType,jdbcType=CHAR},
+      </if>
+    </set>
+    where TYPE_ID = #{typeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update pm_doc_type pdt
+    <set >
+      <if test="record.typeId != null" >
+        TYPE_ID = #{record.typeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.typeName != null" >
+        TYPE_NAME = #{record.typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.docType != null" >
+        DOC_TYPE = #{record.docType,jdbcType=CHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.typeId" >
+        and pdt.TYPE_ID = #{map.typeId}
+      </if>
+      <if test="null != map.list_typeId" >
+        and pdt.TYPE_ID in (<foreach collection="map.list_typeId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.typeName" >
+        and pdt.TYPE_NAME = #{map.typeName}
+      </if>
+      <if test="null != map.like_typeName" >
+        and pdt.TYPE_NAME like '%' || #{map.like_typeName} || '%'
+      </if>
+      <if test="null != map.list_typeName" >
+        and pdt.TYPE_NAME in (<foreach collection="map.list_typeName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.docType" >
+        and pdt.DOC_TYPE = #{map.docType}
+      </if>
+      <if test="null != map.like_docType" >
+        and pdt.DOC_TYPE like '%' || #{map.like_docType} || '%'
+      </if>
+      <if test="null != map.list_docType" >
+        and pdt.DOC_TYPE in (<foreach collection="map.list_docType" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

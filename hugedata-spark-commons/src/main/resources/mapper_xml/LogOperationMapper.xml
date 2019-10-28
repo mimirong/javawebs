@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.LogOperationMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.LogOperation" >
+    <id column="LOG_ID" property="logId" jdbcType="INTEGER" />
+    <result column="USER_ID" property="userId" jdbcType="INTEGER" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="OPERATION_TYPE" property="operationType" jdbcType="VARCHAR" />
+    <result column="TARGET" property="target" jdbcType="VARCHAR" />
+    <result column="TARGET_INFO" property="targetInfo" jdbcType="VARCHAR" />
+    <result column="OPERATION" property="operation" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.com.hugedata.spark.commons.storage.entity.LogOperation" extends="BaseResultMap" >
+    <result column="DATA" property="data" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != logId" >
+      and lo.LOG_ID = #{logId}
+    </if>
+    <if test="null != ne_logId" >
+      and lo.LOG_ID != #{ne_logId}
+    </if>
+    <if test="null != list_logId" >
+      and lo.LOG_ID in (<foreach collection="list_logId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != userId" >
+      and lo.USER_ID = #{userId}
+    </if>
+    <if test="null != ne_userId" >
+      and lo.USER_ID != #{ne_userId}
+    </if>
+    <if test="null != list_userId" >
+      and lo.USER_ID in (<foreach collection="list_userId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != username" >
+      and lo.USERNAME = #{username}
+    </if>
+    <if test="null != ne_username" >
+      and lo.USERNAME != #{ne_username}
+    </if>
+    <if test="null != like_username" >
+      and lo.USERNAME like CONCAT('%', #{like_username}, '%')
+    </if>
+    <if test="null != list_username" >
+      and lo.USERNAME in (<foreach collection="list_username" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_username" >
+      and lo.USERNAME &gt;= #{begin_username}
+    </if>
+    <if test="null != end_username" >
+      and lo.USERNAME &lt;= #{end_username}
+    </if>
+    <if test="null != operationType" >
+      and lo.OPERATION_TYPE = #{operationType}
+    </if>
+    <if test="null != ne_operationType" >
+      and lo.OPERATION_TYPE != #{ne_operationType}
+    </if>
+    <if test="null != like_operationType" >
+      and lo.OPERATION_TYPE like CONCAT('%', #{like_operationType}, '%')
+    </if>
+    <if test="null != list_operationType" >
+      and lo.OPERATION_TYPE in (<foreach collection="list_operationType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_operationType" >
+      and lo.OPERATION_TYPE &gt;= #{begin_operationType}
+    </if>
+    <if test="null != end_operationType" >
+      and lo.OPERATION_TYPE &lt;= #{end_operationType}
+    </if>
+    <if test="null != target" >
+      and lo.TARGET = #{target}
+    </if>
+    <if test="null != ne_target" >
+      and lo.TARGET != #{ne_target}
+    </if>
+    <if test="null != like_target" >
+      and lo.TARGET like CONCAT('%', #{like_target}, '%')
+    </if>
+    <if test="null != list_target" >
+      and lo.TARGET in (<foreach collection="list_target" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_target" >
+      and lo.TARGET &gt;= #{begin_target}
+    </if>
+    <if test="null != end_target" >
+      and lo.TARGET &lt;= #{end_target}
+    </if>
+    <if test="null != targetInfo" >
+      and lo.TARGET_INFO = #{targetInfo}
+    </if>
+    <if test="null != ne_targetInfo" >
+      and lo.TARGET_INFO != #{ne_targetInfo}
+    </if>
+    <if test="null != like_targetInfo" >
+      and lo.TARGET_INFO like CONCAT('%', #{like_targetInfo}, '%')
+    </if>
+    <if test="null != list_targetInfo" >
+      and lo.TARGET_INFO in (<foreach collection="list_targetInfo" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_targetInfo" >
+      and lo.TARGET_INFO &gt;= #{begin_targetInfo}
+    </if>
+    <if test="null != end_targetInfo" >
+      and lo.TARGET_INFO &lt;= #{end_targetInfo}
+    </if>
+    <if test="null != operation" >
+      and lo.OPERATION = #{operation}
+    </if>
+    <if test="null != ne_operation" >
+      and lo.OPERATION != #{ne_operation}
+    </if>
+    <if test="null != like_operation" >
+      and lo.OPERATION like CONCAT('%', #{like_operation}, '%')
+    </if>
+    <if test="null != list_operation" >
+      and lo.OPERATION in (<foreach collection="list_operation" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_operation" >
+      and lo.OPERATION &gt;= #{begin_operation}
+    </if>
+    <if test="null != end_operation" >
+      and lo.OPERATION &lt;= #{end_operation}
+    </if>
+    <if test="null != begin_createTime" >
+      and lo.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and lo.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != data" >
+      and lo.DATA = #{data}
+    </if>
+    <if test="null != ne_data" >
+      and lo.DATA != #{ne_data}
+    </if>
+    <if test="null != like_data" >
+      and lo.DATA like CONCAT('%', #{like_data}, '%')
+    </if>
+    <if test="null != list_data" >
+      and lo.DATA in (<foreach collection="list_data" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_data" >
+      and lo.DATA &gt;= #{begin_data}
+    </if>
+    <if test="null != end_data" >
+      and lo.DATA &lt;= #{end_data}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'logId' == orderItem.column" >
+            lo.LOG_ID ${orderItem.dir}
+          </if>
+          <if test="'userId' == orderItem.column" >
+            lo.USER_ID ${orderItem.dir}
+          </if>
+          <if test="'username' == orderItem.column" >
+            lo.USERNAME ${orderItem.dir}
+          </if>
+          <if test="'operationType' == orderItem.column" >
+            lo.OPERATION_TYPE ${orderItem.dir}
+          </if>
+          <if test="'target' == orderItem.column" >
+            lo.TARGET ${orderItem.dir}
+          </if>
+          <if test="'targetInfo' == orderItem.column" >
+            lo.TARGET_INFO ${orderItem.dir}
+          </if>
+          <if test="'operation' == orderItem.column" >
+            lo.OPERATION ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            lo.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'data' == orderItem.column" >
+            lo.DATA ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    lo.LOG_ID, lo.USER_ID, lo.USERNAME, lo.OPERATION_TYPE, lo.TARGET, lo.TARGET_INFO, 
+    lo.OPERATION, lo.CREATE_TIME
+  </sql>
+  <sql id="Blob_Column_List" >
+    DATA
+  </sql>
+  <select id="selectById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from log_operation lo
+    where lo.LOG_ID = #{logId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from log_operation lo
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from log_operation lo
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.LogOperation" >
+    <selectKey resultType="java.lang.Integer" keyProperty="userId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into log_operation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="logId != null" >
+        LOG_ID,
+      </if>
+      USER_ID,
+      <if test="username != null" >
+        USERNAME,
+      </if>
+      <if test="operationType != null" >
+        OPERATION_TYPE,
+      </if>
+      <if test="target != null" >
+        TARGET,
+      </if>
+      <if test="targetInfo != null" >
+        TARGET_INFO,
+      </if>
+      <if test="operation != null" >
+        OPERATION,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="data != null" >
+        DATA,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="logId != null" >
+        #{logId,jdbcType=INTEGER},
+      </if>
+      #{userId,jdbcType=INTEGER},
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="operationType != null" >
+        #{operationType,jdbcType=VARCHAR},
+      </if>
+      <if test="target != null" >
+        #{target,jdbcType=VARCHAR},
+      </if>
+      <if test="targetInfo != null" >
+        #{targetInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="data != null" >
+        #{data,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from log_operation
+    where LOG_ID = #{logId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from log_operation where LOG_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from lo using (log_operation as lo) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.LogOperation" >
+    update log_operation
+    <set >
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="operationType != null" >
+        OPERATION_TYPE = #{operationType,jdbcType=VARCHAR},
+      </if>
+      <if test="target != null" >
+        TARGET = #{target,jdbcType=VARCHAR},
+      </if>
+      <if test="targetInfo != null" >
+        TARGET_INFO = #{targetInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null" >
+        OPERATION = #{operation,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="data != null" >
+        DATA = #{data,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where LOG_ID = #{logId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update log_operation lo
+    <set >
+      <if test="record.logId != null" >
+        LOG_ID = #{record.logId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null" >
+        USER_ID = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.username != null" >
+        USERNAME = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operationType != null" >
+        OPERATION_TYPE = #{record.operationType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.target != null" >
+        TARGET = #{record.target,jdbcType=VARCHAR},
+      </if>
+      <if test="record.targetInfo != null" >
+        TARGET_INFO = #{record.targetInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operation != null" >
+        OPERATION = #{record.operation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.data != null" >
+        DATA = #{record.data,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.logId" >
+        and lo.LOG_ID = #{map.logId}
+      </if>
+      <if test="null != map.list_logId" >
+        and lo.LOG_ID in (<foreach collection="map.list_logId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.userId" >
+        and lo.USER_ID = #{map.userId}
+      </if>
+      <if test="null != map.list_userId" >
+        and lo.USER_ID in (<foreach collection="map.list_userId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.username" >
+        and lo.USERNAME = #{map.username}
+      </if>
+      <if test="null != map.like_username" >
+        and lo.USERNAME like '%' || #{map.like_username} || '%'
+      </if>
+      <if test="null != map.list_username" >
+        and lo.USERNAME in (<foreach collection="map.list_username" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.operationType" >
+        and lo.OPERATION_TYPE = #{map.operationType}
+      </if>
+      <if test="null != map.like_operationType" >
+        and lo.OPERATION_TYPE like '%' || #{map.like_operationType} || '%'
+      </if>
+      <if test="null != map.list_operationType" >
+        and lo.OPERATION_TYPE in (<foreach collection="map.list_operationType" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.target" >
+        and lo.TARGET = #{map.target}
+      </if>
+      <if test="null != map.like_target" >
+        and lo.TARGET like '%' || #{map.like_target} || '%'
+      </if>
+      <if test="null != map.list_target" >
+        and lo.TARGET in (<foreach collection="map.list_target" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.targetInfo" >
+        and lo.TARGET_INFO = #{map.targetInfo}
+      </if>
+      <if test="null != map.like_targetInfo" >
+        and lo.TARGET_INFO like '%' || #{map.like_targetInfo} || '%'
+      </if>
+      <if test="null != map.list_targetInfo" >
+        and lo.TARGET_INFO in (<foreach collection="map.list_targetInfo" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.operation" >
+        and lo.OPERATION = #{map.operation}
+      </if>
+      <if test="null != map.like_operation" >
+        and lo.OPERATION like '%' || #{map.like_operation} || '%'
+      </if>
+      <if test="null != map.list_operation" >
+        and lo.OPERATION in (<foreach collection="map.list_operation" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and lo.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and lo.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.data" >
+        and lo.DATA = #{map.data}
+      </if>
+      <if test="null != map.like_data" >
+        and lo.DATA like '%' || #{map.like_data} || '%'
+      </if>
+      <if test="null != map.list_data" >
+        and lo.DATA in (<foreach collection="map.list_data" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

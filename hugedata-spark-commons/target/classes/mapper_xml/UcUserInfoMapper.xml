@@ -1,0 +1,1278 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.UcUserInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.UcUserInfo" >
+    <id column="USER_ID" property="userId" jdbcType="INTEGER" />
+    <result column="REF_USER_ID" property="refUserId" jdbcType="VARCHAR" />
+    <result column="USER_TYPE" property="userType" jdbcType="VARCHAR" />
+    <result column="LOGIN_NAME" property="loginName" jdbcType="VARCHAR" />
+    <result column="LOGIN_NAME_UPPER" property="loginNameUpper" jdbcType="VARCHAR" />
+    <result column="PASSWORD_HASH" property="passwordHash" jdbcType="VARCHAR" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="PASSWORD_KEY" property="passwordKey" jdbcType="VARCHAR" />
+    <result column="DEPT_ID" property="deptId" jdbcType="INTEGER" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="ID_CARD" property="idCard" jdbcType="VARCHAR" />
+    <result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+    <result column="TELEPHONE" property="telephone" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="EMAIL_UPPER" property="emailUpper" jdbcType="VARCHAR" />
+    <result column="FULL_ADDRESS" property="fullAddress" jdbcType="VARCHAR" />
+    <result column="HEAD_IMAGE_PREVIEW_ID" property="headImagePreviewId" jdbcType="VARCHAR" />
+    <result column="HEAD_IMAGE_ID" property="headImageId" jdbcType="VARCHAR" />
+    <result column="SEX" property="sex" jdbcType="CHAR" />
+    <result column="BIRTHDAY" property="birthday" jdbcType="VARCHAR" />
+    <result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR" />
+    <result column="APPROVE_STATUS" property="approveStatus" jdbcType="VARCHAR" />
+    <result column="USABLE" property="usable" jdbcType="BIT" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="WINDOW_ID" property="windowId" jdbcType="INTEGER" />
+    <result column="COMPANY_ID" property="companyId" jdbcType="INTEGER" />
+    <result column="WINDOW_NAME" property="windowName" jdbcType="VARCHAR" />
+    <result column="DEPT_NAME" property="deptName" jdbcType="VARCHAR" />
+    <result column="SERVICE_ROLE" property="serviceRole" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != userId" >
+      and uui.USER_ID = #{userId}
+    </if>
+    <if test="null != ne_userId" >
+      and uui.USER_ID != #{ne_userId}
+    </if>
+    <if test="null != list_userId" >
+      and uui.USER_ID in (<foreach collection="list_userId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != refUserId" >
+      and uui.REF_USER_ID = #{refUserId}
+    </if>
+    <if test="null != ne_refUserId" >
+      and uui.REF_USER_ID != #{ne_refUserId}
+    </if>
+    <if test="null != like_refUserId" >
+      and uui.REF_USER_ID like CONCAT('%', #{like_refUserId}, '%')
+    </if>
+    <if test="null != list_refUserId" >
+      and uui.REF_USER_ID in (<foreach collection="list_refUserId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_refUserId" >
+      and uui.REF_USER_ID &gt;= #{begin_refUserId}
+    </if>
+    <if test="null != end_refUserId" >
+      and uui.REF_USER_ID &lt;= #{end_refUserId}
+    </if>
+    <if test="null != userType" >
+      and uui.USER_TYPE = #{userType}
+    </if>
+    <if test="null != ne_userType" >
+      and uui.USER_TYPE != #{ne_userType}
+    </if>
+    <if test="null != like_userType" >
+      and uui.USER_TYPE like CONCAT('%', #{like_userType}, '%')
+    </if>
+    <if test="null != list_userType" >
+      and uui.USER_TYPE in (<foreach collection="list_userType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_userType" >
+      and uui.USER_TYPE &gt;= #{begin_userType}
+    </if>
+    <if test="null != end_userType" >
+      and uui.USER_TYPE &lt;= #{end_userType}
+    </if>
+    <if test="null != loginName" >
+      and uui.LOGIN_NAME = #{loginName}
+    </if>
+    <if test="null != ne_loginName" >
+      and uui.LOGIN_NAME != #{ne_loginName}
+    </if>
+    <if test="null != like_loginName" >
+      and uui.LOGIN_NAME like CONCAT('%', #{like_loginName}, '%')
+    </if>
+    <if test="null != list_loginName" >
+      and uui.LOGIN_NAME in (<foreach collection="list_loginName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_loginName" >
+      and uui.LOGIN_NAME &gt;= #{begin_loginName}
+    </if>
+    <if test="null != end_loginName" >
+      and uui.LOGIN_NAME &lt;= #{end_loginName}
+    </if>
+    <if test="null != loginNameUpper" >
+      and uui.LOGIN_NAME_UPPER = #{loginNameUpper}
+    </if>
+    <if test="null != ne_loginNameUpper" >
+      and uui.LOGIN_NAME_UPPER != #{ne_loginNameUpper}
+    </if>
+    <if test="null != like_loginNameUpper" >
+      and uui.LOGIN_NAME_UPPER like CONCAT('%', #{like_loginNameUpper}, '%')
+    </if>
+    <if test="null != list_loginNameUpper" >
+      and uui.LOGIN_NAME_UPPER in (<foreach collection="list_loginNameUpper" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_loginNameUpper" >
+      and uui.LOGIN_NAME_UPPER &gt;= #{begin_loginNameUpper}
+    </if>
+    <if test="null != end_loginNameUpper" >
+      and uui.LOGIN_NAME_UPPER &lt;= #{end_loginNameUpper}
+    </if>
+    <if test="null != passwordHash" >
+      and uui.PASSWORD_HASH = #{passwordHash}
+    </if>
+    <if test="null != ne_passwordHash" >
+      and uui.PASSWORD_HASH != #{ne_passwordHash}
+    </if>
+    <if test="null != like_passwordHash" >
+      and uui.PASSWORD_HASH like CONCAT('%', #{like_passwordHash}, '%')
+    </if>
+    <if test="null != list_passwordHash" >
+      and uui.PASSWORD_HASH in (<foreach collection="list_passwordHash" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_passwordHash" >
+      and uui.PASSWORD_HASH &gt;= #{begin_passwordHash}
+    </if>
+    <if test="null != end_passwordHash" >
+      and uui.PASSWORD_HASH &lt;= #{end_passwordHash}
+    </if>
+    <if test="null != password" >
+      and uui.PASSWORD = #{password}
+    </if>
+    <if test="null != ne_password" >
+      and uui.PASSWORD != #{ne_password}
+    </if>
+    <if test="null != like_password" >
+      and uui.PASSWORD like CONCAT('%', #{like_password}, '%')
+    </if>
+    <if test="null != list_password" >
+      and uui.PASSWORD in (<foreach collection="list_password" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_password" >
+      and uui.PASSWORD &gt;= #{begin_password}
+    </if>
+    <if test="null != end_password" >
+      and uui.PASSWORD &lt;= #{end_password}
+    </if>
+    <if test="null != passwordKey" >
+      and uui.PASSWORD_KEY = #{passwordKey}
+    </if>
+    <if test="null != ne_passwordKey" >
+      and uui.PASSWORD_KEY != #{ne_passwordKey}
+    </if>
+    <if test="null != like_passwordKey" >
+      and uui.PASSWORD_KEY like CONCAT('%', #{like_passwordKey}, '%')
+    </if>
+    <if test="null != list_passwordKey" >
+      and uui.PASSWORD_KEY in (<foreach collection="list_passwordKey" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_passwordKey" >
+      and uui.PASSWORD_KEY &gt;= #{begin_passwordKey}
+    </if>
+    <if test="null != end_passwordKey" >
+      and uui.PASSWORD_KEY &lt;= #{end_passwordKey}
+    </if>
+    <if test="null != deptId" >
+      and uui.DEPT_ID = #{deptId}
+    </if>
+    <if test="null != ne_deptId" >
+      and uui.DEPT_ID != #{ne_deptId}
+    </if>
+    <if test="null != list_deptId" >
+      and uui.DEPT_ID in (<foreach collection="list_deptId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != name" >
+      and uui.NAME = #{name}
+    </if>
+    <if test="null != ne_name" >
+      and uui.NAME != #{ne_name}
+    </if>
+    <if test="null != like_name" >
+      and uui.NAME like CONCAT('%', #{like_name}, '%')
+    </if>
+    <if test="null != list_name" >
+      and uui.NAME in (<foreach collection="list_name" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_name" >
+      and uui.NAME &gt;= #{begin_name}
+    </if>
+    <if test="null != end_name" >
+      and uui.NAME &lt;= #{end_name}
+    </if>
+    <if test="null != idCard" >
+      and uui.ID_CARD = #{idCard}
+    </if>
+    <if test="null != ne_idCard" >
+      and uui.ID_CARD != #{ne_idCard}
+    </if>
+    <if test="null != like_idCard" >
+      and uui.ID_CARD like CONCAT('%', #{like_idCard}, '%')
+    </if>
+    <if test="null != list_idCard" >
+      and uui.ID_CARD in (<foreach collection="list_idCard" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_idCard" >
+      and uui.ID_CARD &gt;= #{begin_idCard}
+    </if>
+    <if test="null != end_idCard" >
+      and uui.ID_CARD &lt;= #{end_idCard}
+    </if>
+    <if test="null != mobile" >
+      and uui.MOBILE = #{mobile}
+    </if>
+    <if test="null != ne_mobile" >
+      and uui.MOBILE != #{ne_mobile}
+    </if>
+    <if test="null != like_mobile" >
+      and uui.MOBILE like CONCAT('%', #{like_mobile}, '%')
+    </if>
+    <if test="null != list_mobile" >
+      and uui.MOBILE in (<foreach collection="list_mobile" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_mobile" >
+      and uui.MOBILE &gt;= #{begin_mobile}
+    </if>
+    <if test="null != end_mobile" >
+      and uui.MOBILE &lt;= #{end_mobile}
+    </if>
+    <if test="null != telephone" >
+      and uui.TELEPHONE = #{telephone}
+    </if>
+    <if test="null != ne_telephone" >
+      and uui.TELEPHONE != #{ne_telephone}
+    </if>
+    <if test="null != like_telephone" >
+      and uui.TELEPHONE like CONCAT('%', #{like_telephone}, '%')
+    </if>
+    <if test="null != list_telephone" >
+      and uui.TELEPHONE in (<foreach collection="list_telephone" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_telephone" >
+      and uui.TELEPHONE &gt;= #{begin_telephone}
+    </if>
+    <if test="null != end_telephone" >
+      and uui.TELEPHONE &lt;= #{end_telephone}
+    </if>
+    <if test="null != email" >
+      and uui.EMAIL = #{email}
+    </if>
+    <if test="null != ne_email" >
+      and uui.EMAIL != #{ne_email}
+    </if>
+    <if test="null != like_email" >
+      and uui.EMAIL like CONCAT('%', #{like_email}, '%')
+    </if>
+    <if test="null != list_email" >
+      and uui.EMAIL in (<foreach collection="list_email" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_email" >
+      and uui.EMAIL &gt;= #{begin_email}
+    </if>
+    <if test="null != end_email" >
+      and uui.EMAIL &lt;= #{end_email}
+    </if>
+    <if test="null != emailUpper" >
+      and uui.EMAIL_UPPER = #{emailUpper}
+    </if>
+    <if test="null != ne_emailUpper" >
+      and uui.EMAIL_UPPER != #{ne_emailUpper}
+    </if>
+    <if test="null != like_emailUpper" >
+      and uui.EMAIL_UPPER like CONCAT('%', #{like_emailUpper}, '%')
+    </if>
+    <if test="null != list_emailUpper" >
+      and uui.EMAIL_UPPER in (<foreach collection="list_emailUpper" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_emailUpper" >
+      and uui.EMAIL_UPPER &gt;= #{begin_emailUpper}
+    </if>
+    <if test="null != end_emailUpper" >
+      and uui.EMAIL_UPPER &lt;= #{end_emailUpper}
+    </if>
+    <if test="null != fullAddress" >
+      and uui.FULL_ADDRESS = #{fullAddress}
+    </if>
+    <if test="null != ne_fullAddress" >
+      and uui.FULL_ADDRESS != #{ne_fullAddress}
+    </if>
+    <if test="null != like_fullAddress" >
+      and uui.FULL_ADDRESS like CONCAT('%', #{like_fullAddress}, '%')
+    </if>
+    <if test="null != list_fullAddress" >
+      and uui.FULL_ADDRESS in (<foreach collection="list_fullAddress" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_fullAddress" >
+      and uui.FULL_ADDRESS &gt;= #{begin_fullAddress}
+    </if>
+    <if test="null != end_fullAddress" >
+      and uui.FULL_ADDRESS &lt;= #{end_fullAddress}
+    </if>
+    <if test="null != headImagePreviewId" >
+      and uui.HEAD_IMAGE_PREVIEW_ID = #{headImagePreviewId}
+    </if>
+    <if test="null != ne_headImagePreviewId" >
+      and uui.HEAD_IMAGE_PREVIEW_ID != #{ne_headImagePreviewId}
+    </if>
+    <if test="null != like_headImagePreviewId" >
+      and uui.HEAD_IMAGE_PREVIEW_ID like CONCAT('%', #{like_headImagePreviewId}, '%')
+    </if>
+    <if test="null != list_headImagePreviewId" >
+      and uui.HEAD_IMAGE_PREVIEW_ID in (<foreach collection="list_headImagePreviewId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_headImagePreviewId" >
+      and uui.HEAD_IMAGE_PREVIEW_ID &gt;= #{begin_headImagePreviewId}
+    </if>
+    <if test="null != end_headImagePreviewId" >
+      and uui.HEAD_IMAGE_PREVIEW_ID &lt;= #{end_headImagePreviewId}
+    </if>
+    <if test="null != headImageId" >
+      and uui.HEAD_IMAGE_ID = #{headImageId}
+    </if>
+    <if test="null != ne_headImageId" >
+      and uui.HEAD_IMAGE_ID != #{ne_headImageId}
+    </if>
+    <if test="null != like_headImageId" >
+      and uui.HEAD_IMAGE_ID like CONCAT('%', #{like_headImageId}, '%')
+    </if>
+    <if test="null != list_headImageId" >
+      and uui.HEAD_IMAGE_ID in (<foreach collection="list_headImageId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_headImageId" >
+      and uui.HEAD_IMAGE_ID &gt;= #{begin_headImageId}
+    </if>
+    <if test="null != end_headImageId" >
+      and uui.HEAD_IMAGE_ID &lt;= #{end_headImageId}
+    </if>
+    <if test="null != sex" >
+      and uui.SEX = #{sex}
+    </if>
+    <if test="null != ne_sex" >
+      and uui.SEX != #{ne_sex}
+    </if>
+    <if test="null != like_sex" >
+      and uui.SEX like CONCAT('%', #{like_sex}, '%')
+    </if>
+    <if test="null != list_sex" >
+      and uui.SEX in (<foreach collection="list_sex" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_sex" >
+      and uui.SEX &gt;= #{begin_sex}
+    </if>
+    <if test="null != end_sex" >
+      and uui.SEX &lt;= #{end_sex}
+    </if>
+    <if test="null != birthday" >
+      and uui.BIRTHDAY = #{birthday}
+    </if>
+    <if test="null != ne_birthday" >
+      and uui.BIRTHDAY != #{ne_birthday}
+    </if>
+    <if test="null != like_birthday" >
+      and uui.BIRTHDAY like CONCAT('%', #{like_birthday}, '%')
+    </if>
+    <if test="null != list_birthday" >
+      and uui.BIRTHDAY in (<foreach collection="list_birthday" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_birthday" >
+      and uui.BIRTHDAY &gt;= #{begin_birthday}
+    </if>
+    <if test="null != end_birthday" >
+      and uui.BIRTHDAY &lt;= #{end_birthday}
+    </if>
+    <if test="null != companyName" >
+      and uui.COMPANY_NAME = #{companyName}
+    </if>
+    <if test="null != ne_companyName" >
+      and uui.COMPANY_NAME != #{ne_companyName}
+    </if>
+    <if test="null != like_companyName" >
+      and uui.COMPANY_NAME like CONCAT('%', #{like_companyName}, '%')
+    </if>
+    <if test="null != list_companyName" >
+      and uui.COMPANY_NAME in (<foreach collection="list_companyName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_companyName" >
+      and uui.COMPANY_NAME &gt;= #{begin_companyName}
+    </if>
+    <if test="null != end_companyName" >
+      and uui.COMPANY_NAME &lt;= #{end_companyName}
+    </if>
+    <if test="null != approveStatus" >
+      and uui.APPROVE_STATUS = #{approveStatus}
+    </if>
+    <if test="null != ne_approveStatus" >
+      and uui.APPROVE_STATUS != #{ne_approveStatus}
+    </if>
+    <if test="null != like_approveStatus" >
+      and uui.APPROVE_STATUS like CONCAT('%', #{like_approveStatus}, '%')
+    </if>
+    <if test="null != list_approveStatus" >
+      and uui.APPROVE_STATUS in (<foreach collection="list_approveStatus" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_approveStatus" >
+      and uui.APPROVE_STATUS &gt;= #{begin_approveStatus}
+    </if>
+    <if test="null != end_approveStatus" >
+      and uui.APPROVE_STATUS &lt;= #{end_approveStatus}
+    </if>
+    <if test="null != usable" >
+      and uui.USABLE = #{usable}
+    </if>
+    <if test="null != ne_usable" >
+      and uui.USABLE != #{ne_usable}
+    </if>
+    <if test="null != list_usable" >
+      and uui.USABLE in (<foreach collection="list_usable" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_createTime" >
+      and uui.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and uui.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_updateTime" >
+      and uui.UPDATE_TIME &gt;= #{begin_updateTime}
+    </if>
+    <if test="null != end_updateTime" >
+      and uui.UPDATE_TIME &lt;= #{end_updateTime}
+    </if>
+    <if test="null != windowId" >
+      and uui.WINDOW_ID = #{windowId}
+    </if>
+    <if test="null != ne_windowId" >
+      and uui.WINDOW_ID != #{ne_windowId}
+    </if>
+    <if test="null != list_windowId" >
+      and uui.WINDOW_ID in (<foreach collection="list_windowId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != companyId" >
+      and uui.COMPANY_ID = #{companyId}
+    </if>
+    <if test="null != ne_companyId" >
+      and uui.COMPANY_ID != #{ne_companyId}
+    </if>
+    <if test="null != list_companyId" >
+      and uui.COMPANY_ID in (<foreach collection="list_companyId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != windowName" >
+      and uui.WINDOW_NAME = #{windowName}
+    </if>
+    <if test="null != ne_windowName" >
+      and uui.WINDOW_NAME != #{ne_windowName}
+    </if>
+    <if test="null != like_windowName" >
+      and uui.WINDOW_NAME like CONCAT('%', #{like_windowName}, '%')
+    </if>
+    <if test="null != list_windowName" >
+      and uui.WINDOW_NAME in (<foreach collection="list_windowName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_windowName" >
+      and uui.WINDOW_NAME &gt;= #{begin_windowName}
+    </if>
+    <if test="null != end_windowName" >
+      and uui.WINDOW_NAME &lt;= #{end_windowName}
+    </if>
+    <if test="null != deptName" >
+      and uui.DEPT_NAME = #{deptName}
+    </if>
+    <if test="null != ne_deptName" >
+      and uui.DEPT_NAME != #{ne_deptName}
+    </if>
+    <if test="null != like_deptName" >
+      and uui.DEPT_NAME like CONCAT('%', #{like_deptName}, '%')
+    </if>
+    <if test="null != list_deptName" >
+      and uui.DEPT_NAME in (<foreach collection="list_deptName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_deptName" >
+      and uui.DEPT_NAME &gt;= #{begin_deptName}
+    </if>
+    <if test="null != end_deptName" >
+      and uui.DEPT_NAME &lt;= #{end_deptName}
+    </if>
+    <if test="null != serviceRole" >
+      and uui.SERVICE_ROLE = #{serviceRole}
+    </if>
+    <if test="null != ne_serviceRole" >
+      and uui.SERVICE_ROLE != #{ne_serviceRole}
+    </if>
+    <if test="null != like_serviceRole" >
+      and uui.SERVICE_ROLE like CONCAT('%', #{like_serviceRole}, '%')
+    </if>
+    <if test="null != list_serviceRole" >
+      and uui.SERVICE_ROLE in (<foreach collection="list_serviceRole" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_serviceRole" >
+      and uui.SERVICE_ROLE &gt;= #{begin_serviceRole}
+    </if>
+    <if test="null != end_serviceRole" >
+      and uui.SERVICE_ROLE &lt;= #{end_serviceRole}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'userId' == orderItem.column" >
+            uui.USER_ID ${orderItem.dir}
+          </if>
+          <if test="'refUserId' == orderItem.column" >
+            uui.REF_USER_ID ${orderItem.dir}
+          </if>
+          <if test="'userType' == orderItem.column" >
+            uui.USER_TYPE ${orderItem.dir}
+          </if>
+          <if test="'loginName' == orderItem.column" >
+            uui.LOGIN_NAME ${orderItem.dir}
+          </if>
+          <if test="'loginNameUpper' == orderItem.column" >
+            uui.LOGIN_NAME_UPPER ${orderItem.dir}
+          </if>
+          <if test="'passwordHash' == orderItem.column" >
+            uui.PASSWORD_HASH ${orderItem.dir}
+          </if>
+          <if test="'password' == orderItem.column" >
+            uui.PASSWORD ${orderItem.dir}
+          </if>
+          <if test="'passwordKey' == orderItem.column" >
+            uui.PASSWORD_KEY ${orderItem.dir}
+          </if>
+          <if test="'deptId' == orderItem.column" >
+            uui.DEPT_ID ${orderItem.dir}
+          </if>
+          <if test="'name' == orderItem.column" >
+            uui.NAME ${orderItem.dir}
+          </if>
+          <if test="'idCard' == orderItem.column" >
+            uui.ID_CARD ${orderItem.dir}
+          </if>
+          <if test="'mobile' == orderItem.column" >
+            uui.MOBILE ${orderItem.dir}
+          </if>
+          <if test="'telephone' == orderItem.column" >
+            uui.TELEPHONE ${orderItem.dir}
+          </if>
+          <if test="'email' == orderItem.column" >
+            uui.EMAIL ${orderItem.dir}
+          </if>
+          <if test="'emailUpper' == orderItem.column" >
+            uui.EMAIL_UPPER ${orderItem.dir}
+          </if>
+          <if test="'fullAddress' == orderItem.column" >
+            uui.FULL_ADDRESS ${orderItem.dir}
+          </if>
+          <if test="'headImagePreviewId' == orderItem.column" >
+            uui.HEAD_IMAGE_PREVIEW_ID ${orderItem.dir}
+          </if>
+          <if test="'headImageId' == orderItem.column" >
+            uui.HEAD_IMAGE_ID ${orderItem.dir}
+          </if>
+          <if test="'sex' == orderItem.column" >
+            uui.SEX ${orderItem.dir}
+          </if>
+          <if test="'birthday' == orderItem.column" >
+            uui.BIRTHDAY ${orderItem.dir}
+          </if>
+          <if test="'companyName' == orderItem.column" >
+            uui.COMPANY_NAME ${orderItem.dir}
+          </if>
+          <if test="'approveStatus' == orderItem.column" >
+            uui.APPROVE_STATUS ${orderItem.dir}
+          </if>
+          <if test="'usable' == orderItem.column" >
+            uui.USABLE ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            uui.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'updateTime' == orderItem.column" >
+            uui.UPDATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'windowId' == orderItem.column" >
+            uui.WINDOW_ID ${orderItem.dir}
+          </if>
+          <if test="'companyId' == orderItem.column" >
+            uui.COMPANY_ID ${orderItem.dir}
+          </if>
+          <if test="'windowName' == orderItem.column" >
+            uui.WINDOW_NAME ${orderItem.dir}
+          </if>
+          <if test="'deptName' == orderItem.column" >
+            uui.DEPT_NAME ${orderItem.dir}
+          </if>
+          <if test="'serviceRole' == orderItem.column" >
+            uui.SERVICE_ROLE ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    uui.USER_ID, uui.REF_USER_ID, uui.USER_TYPE, uui.LOGIN_NAME, uui.LOGIN_NAME_UPPER, 
+    uui.PASSWORD_HASH, uui.PASSWORD, uui.PASSWORD_KEY, uui.DEPT_ID, uui.NAME, uui.ID_CARD, 
+    uui.MOBILE, uui.TELEPHONE, uui.EMAIL, uui.EMAIL_UPPER, uui.FULL_ADDRESS, uui.HEAD_IMAGE_PREVIEW_ID, 
+    uui.HEAD_IMAGE_ID, uui.SEX, uui.BIRTHDAY, uui.COMPANY_NAME, uui.APPROVE_STATUS, uui.USABLE, 
+    uui.CREATE_TIME, uui.UPDATE_TIME, uui.WINDOW_ID, uui.COMPANY_ID, uui.WINDOW_NAME, 
+    uui.DEPT_NAME, uui.SERVICE_ROLE
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from uc_user_info uui
+    where uui.USER_ID = #{userId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from uc_user_info uui
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from uc_user_info uui
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcUserInfo" >
+    <selectKey resultType="java.lang.Integer" keyProperty="userId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into uc_user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      USER_ID,
+      <if test="refUserId != null" >
+        REF_USER_ID,
+      </if>
+      <if test="userType != null" >
+        USER_TYPE,
+      </if>
+      <if test="loginName != null" >
+        LOGIN_NAME,
+      </if>
+      <if test="loginNameUpper != null" >
+        LOGIN_NAME_UPPER,
+      </if>
+      <if test="passwordHash != null" >
+        PASSWORD_HASH,
+      </if>
+      <if test="password != null" >
+        PASSWORD,
+      </if>
+      <if test="passwordKey != null" >
+        PASSWORD_KEY,
+      </if>
+      <if test="deptId != null" >
+        DEPT_ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="idCard != null" >
+        ID_CARD,
+      </if>
+      <if test="mobile != null" >
+        MOBILE,
+      </if>
+      <if test="telephone != null" >
+        TELEPHONE,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="emailUpper != null" >
+        EMAIL_UPPER,
+      </if>
+      <if test="fullAddress != null" >
+        FULL_ADDRESS,
+      </if>
+      <if test="headImagePreviewId != null" >
+        HEAD_IMAGE_PREVIEW_ID,
+      </if>
+      <if test="headImageId != null" >
+        HEAD_IMAGE_ID,
+      </if>
+      <if test="sex != null" >
+        SEX,
+      </if>
+      <if test="birthday != null" >
+        BIRTHDAY,
+      </if>
+      <if test="companyName != null" >
+        COMPANY_NAME,
+      </if>
+      <if test="approveStatus != null" >
+        APPROVE_STATUS,
+      </if>
+      <if test="usable != null" >
+        USABLE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="windowId != null" >
+        WINDOW_ID,
+      </if>
+      <if test="companyId != null" >
+        COMPANY_ID,
+      </if>
+      <if test="windowName != null" >
+        WINDOW_NAME,
+      </if>
+      <if test="deptName != null" >
+        DEPT_NAME,
+      </if>
+      <if test="serviceRole != null" >
+        SERVICE_ROLE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{userId,jdbcType=INTEGER},
+      <if test="refUserId != null" >
+        #{refUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null" >
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginNameUpper != null" >
+        #{loginNameUpper,jdbcType=VARCHAR},
+      </if>
+      <if test="passwordHash != null" >
+        #{passwordHash,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="passwordKey != null" >
+        #{passwordKey,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null" >
+        #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null" >
+        #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="emailUpper != null" >
+        #{emailUpper,jdbcType=VARCHAR},
+      </if>
+      <if test="fullAddress != null" >
+        #{fullAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="headImagePreviewId != null" >
+        #{headImagePreviewId,jdbcType=VARCHAR},
+      </if>
+      <if test="headImageId != null" >
+        #{headImageId,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="approveStatus != null" >
+        #{approveStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="usable != null" >
+        #{usable,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="windowId != null" >
+        #{windowId,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="windowName != null" >
+        #{windowName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceRole != null" >
+        #{serviceRole,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from uc_user_info
+    where USER_ID = #{userId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from uc_user_info where USER_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from uui using (uc_user_info as uui) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcUserInfo" >
+    update uc_user_info
+    <set >
+      <if test="refUserId != null" >
+        REF_USER_ID = #{refUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        USER_TYPE = #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null" >
+        LOGIN_NAME = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginNameUpper != null" >
+        LOGIN_NAME_UPPER = #{loginNameUpper,jdbcType=VARCHAR},
+      </if>
+      <if test="passwordHash != null" >
+        PASSWORD_HASH = #{passwordHash,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="passwordKey != null" >
+        PASSWORD_KEY = #{passwordKey,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null" >
+        DEPT_ID = #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null" >
+        ID_CARD = #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        MOBILE = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        TELEPHONE = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="emailUpper != null" >
+        EMAIL_UPPER = #{emailUpper,jdbcType=VARCHAR},
+      </if>
+      <if test="fullAddress != null" >
+        FULL_ADDRESS = #{fullAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="headImagePreviewId != null" >
+        HEAD_IMAGE_PREVIEW_ID = #{headImagePreviewId,jdbcType=VARCHAR},
+      </if>
+      <if test="headImageId != null" >
+        HEAD_IMAGE_ID = #{headImageId,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        SEX = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="birthday != null" >
+        BIRTHDAY = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="approveStatus != null" >
+        APPROVE_STATUS = #{approveStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="usable != null" >
+        USABLE = #{usable,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="windowId != null" >
+        WINDOW_ID = #{windowId,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null" >
+        COMPANY_ID = #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="windowName != null" >
+        WINDOW_NAME = #{windowName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+        DEPT_NAME = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceRole != null" >
+        SERVICE_ROLE = #{serviceRole,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update uc_user_info uui
+    <set >
+      <if test="record.userId != null" >
+        USER_ID = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.refUserId != null" >
+        REF_USER_ID = #{record.refUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userType != null" >
+        USER_TYPE = #{record.userType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.loginName != null" >
+        LOGIN_NAME = #{record.loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.loginNameUpper != null" >
+        LOGIN_NAME_UPPER = #{record.loginNameUpper,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passwordHash != null" >
+        PASSWORD_HASH = #{record.passwordHash,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null" >
+        PASSWORD = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passwordKey != null" >
+        PASSWORD_KEY = #{record.passwordKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deptId != null" >
+        DEPT_ID = #{record.deptId,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idCard != null" >
+        ID_CARD = #{record.idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobile != null" >
+        MOBILE = #{record.mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telephone != null" >
+        TELEPHONE = #{record.telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        EMAIL = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.emailUpper != null" >
+        EMAIL_UPPER = #{record.emailUpper,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fullAddress != null" >
+        FULL_ADDRESS = #{record.fullAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.headImagePreviewId != null" >
+        HEAD_IMAGE_PREVIEW_ID = #{record.headImagePreviewId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.headImageId != null" >
+        HEAD_IMAGE_ID = #{record.headImageId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null" >
+        SEX = #{record.sex,jdbcType=CHAR},
+      </if>
+      <if test="record.birthday != null" >
+        BIRTHDAY = #{record.birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyName != null" >
+        COMPANY_NAME = #{record.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.approveStatus != null" >
+        APPROVE_STATUS = #{record.approveStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usable != null" >
+        USABLE = #{record.usable,jdbcType=BIT},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.windowId != null" >
+        WINDOW_ID = #{record.windowId,jdbcType=INTEGER},
+      </if>
+      <if test="record.companyId != null" >
+        COMPANY_ID = #{record.companyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.windowName != null" >
+        WINDOW_NAME = #{record.windowName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deptName != null" >
+        DEPT_NAME = #{record.deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceRole != null" >
+        SERVICE_ROLE = #{record.serviceRole,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.userId" >
+        and uui.USER_ID = #{map.userId}
+      </if>
+      <if test="null != map.list_userId" >
+        and uui.USER_ID in (<foreach collection="map.list_userId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.refUserId" >
+        and uui.REF_USER_ID = #{map.refUserId}
+      </if>
+      <if test="null != map.like_refUserId" >
+        and uui.REF_USER_ID like '%' || #{map.like_refUserId} || '%'
+      </if>
+      <if test="null != map.list_refUserId" >
+        and uui.REF_USER_ID in (<foreach collection="map.list_refUserId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.userType" >
+        and uui.USER_TYPE = #{map.userType}
+      </if>
+      <if test="null != map.like_userType" >
+        and uui.USER_TYPE like '%' || #{map.like_userType} || '%'
+      </if>
+      <if test="null != map.list_userType" >
+        and uui.USER_TYPE in (<foreach collection="map.list_userType" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.loginName" >
+        and uui.LOGIN_NAME = #{map.loginName}
+      </if>
+      <if test="null != map.like_loginName" >
+        and uui.LOGIN_NAME like '%' || #{map.like_loginName} || '%'
+      </if>
+      <if test="null != map.list_loginName" >
+        and uui.LOGIN_NAME in (<foreach collection="map.list_loginName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.loginNameUpper" >
+        and uui.LOGIN_NAME_UPPER = #{map.loginNameUpper}
+      </if>
+      <if test="null != map.like_loginNameUpper" >
+        and uui.LOGIN_NAME_UPPER like '%' || #{map.like_loginNameUpper} || '%'
+      </if>
+      <if test="null != map.list_loginNameUpper" >
+        and uui.LOGIN_NAME_UPPER in (<foreach collection="map.list_loginNameUpper" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.passwordHash" >
+        and uui.PASSWORD_HASH = #{map.passwordHash}
+      </if>
+      <if test="null != map.like_passwordHash" >
+        and uui.PASSWORD_HASH like '%' || #{map.like_passwordHash} || '%'
+      </if>
+      <if test="null != map.list_passwordHash" >
+        and uui.PASSWORD_HASH in (<foreach collection="map.list_passwordHash" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.password" >
+        and uui.PASSWORD = #{map.password}
+      </if>
+      <if test="null != map.like_password" >
+        and uui.PASSWORD like '%' || #{map.like_password} || '%'
+      </if>
+      <if test="null != map.list_password" >
+        and uui.PASSWORD in (<foreach collection="map.list_password" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.passwordKey" >
+        and uui.PASSWORD_KEY = #{map.passwordKey}
+      </if>
+      <if test="null != map.like_passwordKey" >
+        and uui.PASSWORD_KEY like '%' || #{map.like_passwordKey} || '%'
+      </if>
+      <if test="null != map.list_passwordKey" >
+        and uui.PASSWORD_KEY in (<foreach collection="map.list_passwordKey" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.deptId" >
+        and uui.DEPT_ID = #{map.deptId}
+      </if>
+      <if test="null != map.list_deptId" >
+        and uui.DEPT_ID in (<foreach collection="map.list_deptId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.name" >
+        and uui.NAME = #{map.name}
+      </if>
+      <if test="null != map.like_name" >
+        and uui.NAME like '%' || #{map.like_name} || '%'
+      </if>
+      <if test="null != map.list_name" >
+        and uui.NAME in (<foreach collection="map.list_name" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.idCard" >
+        and uui.ID_CARD = #{map.idCard}
+      </if>
+      <if test="null != map.like_idCard" >
+        and uui.ID_CARD like '%' || #{map.like_idCard} || '%'
+      </if>
+      <if test="null != map.list_idCard" >
+        and uui.ID_CARD in (<foreach collection="map.list_idCard" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.mobile" >
+        and uui.MOBILE = #{map.mobile}
+      </if>
+      <if test="null != map.like_mobile" >
+        and uui.MOBILE like '%' || #{map.like_mobile} || '%'
+      </if>
+      <if test="null != map.list_mobile" >
+        and uui.MOBILE in (<foreach collection="map.list_mobile" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.telephone" >
+        and uui.TELEPHONE = #{map.telephone}
+      </if>
+      <if test="null != map.like_telephone" >
+        and uui.TELEPHONE like '%' || #{map.like_telephone} || '%'
+      </if>
+      <if test="null != map.list_telephone" >
+        and uui.TELEPHONE in (<foreach collection="map.list_telephone" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.email" >
+        and uui.EMAIL = #{map.email}
+      </if>
+      <if test="null != map.like_email" >
+        and uui.EMAIL like '%' || #{map.like_email} || '%'
+      </if>
+      <if test="null != map.list_email" >
+        and uui.EMAIL in (<foreach collection="map.list_email" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.emailUpper" >
+        and uui.EMAIL_UPPER = #{map.emailUpper}
+      </if>
+      <if test="null != map.like_emailUpper" >
+        and uui.EMAIL_UPPER like '%' || #{map.like_emailUpper} || '%'
+      </if>
+      <if test="null != map.list_emailUpper" >
+        and uui.EMAIL_UPPER in (<foreach collection="map.list_emailUpper" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.fullAddress" >
+        and uui.FULL_ADDRESS = #{map.fullAddress}
+      </if>
+      <if test="null != map.like_fullAddress" >
+        and uui.FULL_ADDRESS like '%' || #{map.like_fullAddress} || '%'
+      </if>
+      <if test="null != map.list_fullAddress" >
+        and uui.FULL_ADDRESS in (<foreach collection="map.list_fullAddress" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.headImagePreviewId" >
+        and uui.HEAD_IMAGE_PREVIEW_ID = #{map.headImagePreviewId}
+      </if>
+      <if test="null != map.like_headImagePreviewId" >
+        and uui.HEAD_IMAGE_PREVIEW_ID like '%' || #{map.like_headImagePreviewId} || '%'
+      </if>
+      <if test="null != map.list_headImagePreviewId" >
+        and uui.HEAD_IMAGE_PREVIEW_ID in (<foreach collection="map.list_headImagePreviewId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.headImageId" >
+        and uui.HEAD_IMAGE_ID = #{map.headImageId}
+      </if>
+      <if test="null != map.like_headImageId" >
+        and uui.HEAD_IMAGE_ID like '%' || #{map.like_headImageId} || '%'
+      </if>
+      <if test="null != map.list_headImageId" >
+        and uui.HEAD_IMAGE_ID in (<foreach collection="map.list_headImageId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.sex" >
+        and uui.SEX = #{map.sex}
+      </if>
+      <if test="null != map.like_sex" >
+        and uui.SEX like '%' || #{map.like_sex} || '%'
+      </if>
+      <if test="null != map.list_sex" >
+        and uui.SEX in (<foreach collection="map.list_sex" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.birthday" >
+        and uui.BIRTHDAY = #{map.birthday}
+      </if>
+      <if test="null != map.like_birthday" >
+        and uui.BIRTHDAY like '%' || #{map.like_birthday} || '%'
+      </if>
+      <if test="null != map.list_birthday" >
+        and uui.BIRTHDAY in (<foreach collection="map.list_birthday" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.companyName" >
+        and uui.COMPANY_NAME = #{map.companyName}
+      </if>
+      <if test="null != map.like_companyName" >
+        and uui.COMPANY_NAME like '%' || #{map.like_companyName} || '%'
+      </if>
+      <if test="null != map.list_companyName" >
+        and uui.COMPANY_NAME in (<foreach collection="map.list_companyName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.approveStatus" >
+        and uui.APPROVE_STATUS = #{map.approveStatus}
+      </if>
+      <if test="null != map.like_approveStatus" >
+        and uui.APPROVE_STATUS like '%' || #{map.like_approveStatus} || '%'
+      </if>
+      <if test="null != map.list_approveStatus" >
+        and uui.APPROVE_STATUS in (<foreach collection="map.list_approveStatus" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.usable" >
+        and uui.USABLE = #{map.usable}
+      </if>
+      <if test="null != map.list_usable" >
+        and uui.USABLE in (<foreach collection="map.list_usable" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and uui.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and uui.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_updateTime" >
+        and uui.UPDATE_TIME &gt;= #{map.begin_updateTime}
+      </if>
+      <if test="null != map.end_updateTime" >
+        and uui.UPDATE_TIME &lt;= #{map.end_updateTime}
+      </if>
+      <if test="null != map.windowId" >
+        and uui.WINDOW_ID = #{map.windowId}
+      </if>
+      <if test="null != map.list_windowId" >
+        and uui.WINDOW_ID in (<foreach collection="map.list_windowId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.companyId" >
+        and uui.COMPANY_ID = #{map.companyId}
+      </if>
+      <if test="null != map.list_companyId" >
+        and uui.COMPANY_ID in (<foreach collection="map.list_companyId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.windowName" >
+        and uui.WINDOW_NAME = #{map.windowName}
+      </if>
+      <if test="null != map.like_windowName" >
+        and uui.WINDOW_NAME like '%' || #{map.like_windowName} || '%'
+      </if>
+      <if test="null != map.list_windowName" >
+        and uui.WINDOW_NAME in (<foreach collection="map.list_windowName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.deptName" >
+        and uui.DEPT_NAME = #{map.deptName}
+      </if>
+      <if test="null != map.like_deptName" >
+        and uui.DEPT_NAME like '%' || #{map.like_deptName} || '%'
+      </if>
+      <if test="null != map.list_deptName" >
+        and uui.DEPT_NAME in (<foreach collection="map.list_deptName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.serviceRole" >
+        and uui.SERVICE_ROLE = #{map.serviceRole}
+      </if>
+      <if test="null != map.like_serviceRole" >
+        and uui.SERVICE_ROLE like '%' || #{map.like_serviceRole} || '%'
+      </if>
+      <if test="null != map.list_serviceRole" >
+        and uui.SERVICE_ROLE in (<foreach collection="map.list_serviceRole" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

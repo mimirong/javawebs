@@ -1,0 +1,825 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.OsTechServiceApplyMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.OsTechServiceApply" >
+    <id column="APPLY_ID" property="applyId" jdbcType="INTEGER" />
+    <result column="APPLY_TYPE" property="applyType" jdbcType="VARCHAR" />
+    <result column="SPEC_ID" property="specId" jdbcType="VARCHAR" />
+    <result column="SPEC_NAME" property="specName" jdbcType="VARCHAR" />
+    <result column="SERVICE_DURATION" property="serviceDuration" jdbcType="INTEGER" />
+    <result column="SERVICE_START" property="serviceStart" jdbcType="TIMESTAMP" />
+    <result column="SERVICE_END" property="serviceEnd" jdbcType="TIMESTAMP" />
+    <result column="AMOUNT" property="amount" jdbcType="INTEGER" />
+    <result column="PRICE" property="price" jdbcType="INTEGER" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR" />
+    <result column="CONTACT_NAME" property="contactName" jdbcType="VARCHAR" />
+    <result column="CONTACT_MOBILE" property="contactMobile" jdbcType="VARCHAR" />
+    <result column="APPLIER_ID" property="applierId" jdbcType="INTEGER" />
+    <result column="APPLIER_NAME" property="applierName" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="APPROVE_REMARK" property="approveRemark" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.com.hugedata.spark.commons.storage.entity.OsTechServiceApply" extends="BaseResultMap" >
+    <result column="REMARK" property="remark" jdbcType="LONGVARCHAR" />
+    <result column="EXTRA_DATA" property="extraData" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != applyId" >
+      and otsa.APPLY_ID = #{applyId}
+    </if>
+    <if test="null != ne_applyId" >
+      and otsa.APPLY_ID != #{ne_applyId}
+    </if>
+    <if test="null != list_applyId" >
+      and otsa.APPLY_ID in (<foreach collection="list_applyId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != applyType" >
+      and otsa.APPLY_TYPE = #{applyType}
+    </if>
+    <if test="null != ne_applyType" >
+      and otsa.APPLY_TYPE != #{ne_applyType}
+    </if>
+    <if test="null != like_applyType" >
+      and otsa.APPLY_TYPE like CONCAT('%', #{like_applyType}, '%')
+    </if>
+    <if test="null != list_applyType" >
+      and otsa.APPLY_TYPE in (<foreach collection="list_applyType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_applyType" >
+      and otsa.APPLY_TYPE &gt;= #{begin_applyType}
+    </if>
+    <if test="null != end_applyType" >
+      and otsa.APPLY_TYPE &lt;= #{end_applyType}
+    </if>
+    <if test="null != specId" >
+      and otsa.SPEC_ID = #{specId}
+    </if>
+    <if test="null != ne_specId" >
+      and otsa.SPEC_ID != #{ne_specId}
+    </if>
+    <if test="null != like_specId" >
+      and otsa.SPEC_ID like CONCAT('%', #{like_specId}, '%')
+    </if>
+    <if test="null != list_specId" >
+      and otsa.SPEC_ID in (<foreach collection="list_specId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_specId" >
+      and otsa.SPEC_ID &gt;= #{begin_specId}
+    </if>
+    <if test="null != end_specId" >
+      and otsa.SPEC_ID &lt;= #{end_specId}
+    </if>
+    <if test="null != specName" >
+      and otsa.SPEC_NAME = #{specName}
+    </if>
+    <if test="null != ne_specName" >
+      and otsa.SPEC_NAME != #{ne_specName}
+    </if>
+    <if test="null != like_specName" >
+      and otsa.SPEC_NAME like CONCAT('%', #{like_specName}, '%')
+    </if>
+    <if test="null != list_specName" >
+      and otsa.SPEC_NAME in (<foreach collection="list_specName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_specName" >
+      and otsa.SPEC_NAME &gt;= #{begin_specName}
+    </if>
+    <if test="null != end_specName" >
+      and otsa.SPEC_NAME &lt;= #{end_specName}
+    </if>
+    <if test="null != serviceDuration" >
+      and otsa.SERVICE_DURATION = #{serviceDuration}
+    </if>
+    <if test="null != ne_serviceDuration" >
+      and otsa.SERVICE_DURATION != #{ne_serviceDuration}
+    </if>
+    <if test="null != list_serviceDuration" >
+      and otsa.SERVICE_DURATION in (<foreach collection="list_serviceDuration" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_serviceStart" >
+      and otsa.SERVICE_START &gt;= #{begin_serviceStart}
+    </if>
+    <if test="null != end_serviceStart" >
+      and otsa.SERVICE_START &lt;= #{end_serviceStart}
+    </if>
+    <if test="null != begin_serviceEnd" >
+      and otsa.SERVICE_END &gt;= #{begin_serviceEnd}
+    </if>
+    <if test="null != end_serviceEnd" >
+      and otsa.SERVICE_END &lt;= #{end_serviceEnd}
+    </if>
+    <if test="null != amount" >
+      and otsa.AMOUNT = #{amount}
+    </if>
+    <if test="null != ne_amount" >
+      and otsa.AMOUNT != #{ne_amount}
+    </if>
+    <if test="null != list_amount" >
+      and otsa.AMOUNT in (<foreach collection="list_amount" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != price" >
+      and otsa.PRICE = #{price}
+    </if>
+    <if test="null != ne_price" >
+      and otsa.PRICE != #{ne_price}
+    </if>
+    <if test="null != list_price" >
+      and otsa.PRICE in (<foreach collection="list_price" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != status" >
+      and otsa.STATUS = #{status}
+    </if>
+    <if test="null != ne_status" >
+      and otsa.STATUS != #{ne_status}
+    </if>
+    <if test="null != like_status" >
+      and otsa.STATUS like CONCAT('%', #{like_status}, '%')
+    </if>
+    <if test="null != list_status" >
+      and otsa.STATUS in (<foreach collection="list_status" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_status" >
+      and otsa.STATUS &gt;= #{begin_status}
+    </if>
+    <if test="null != end_status" >
+      and otsa.STATUS &lt;= #{end_status}
+    </if>
+    <if test="null != companyName" >
+      and otsa.COMPANY_NAME = #{companyName}
+    </if>
+    <if test="null != ne_companyName" >
+      and otsa.COMPANY_NAME != #{ne_companyName}
+    </if>
+    <if test="null != like_companyName" >
+      and otsa.COMPANY_NAME like CONCAT('%', #{like_companyName}, '%')
+    </if>
+    <if test="null != list_companyName" >
+      and otsa.COMPANY_NAME in (<foreach collection="list_companyName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_companyName" >
+      and otsa.COMPANY_NAME &gt;= #{begin_companyName}
+    </if>
+    <if test="null != end_companyName" >
+      and otsa.COMPANY_NAME &lt;= #{end_companyName}
+    </if>
+    <if test="null != contactName" >
+      and otsa.CONTACT_NAME = #{contactName}
+    </if>
+    <if test="null != ne_contactName" >
+      and otsa.CONTACT_NAME != #{ne_contactName}
+    </if>
+    <if test="null != like_contactName" >
+      and otsa.CONTACT_NAME like CONCAT('%', #{like_contactName}, '%')
+    </if>
+    <if test="null != list_contactName" >
+      and otsa.CONTACT_NAME in (<foreach collection="list_contactName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_contactName" >
+      and otsa.CONTACT_NAME &gt;= #{begin_contactName}
+    </if>
+    <if test="null != end_contactName" >
+      and otsa.CONTACT_NAME &lt;= #{end_contactName}
+    </if>
+    <if test="null != contactMobile" >
+      and otsa.CONTACT_MOBILE = #{contactMobile}
+    </if>
+    <if test="null != ne_contactMobile" >
+      and otsa.CONTACT_MOBILE != #{ne_contactMobile}
+    </if>
+    <if test="null != like_contactMobile" >
+      and otsa.CONTACT_MOBILE like CONCAT('%', #{like_contactMobile}, '%')
+    </if>
+    <if test="null != list_contactMobile" >
+      and otsa.CONTACT_MOBILE in (<foreach collection="list_contactMobile" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_contactMobile" >
+      and otsa.CONTACT_MOBILE &gt;= #{begin_contactMobile}
+    </if>
+    <if test="null != end_contactMobile" >
+      and otsa.CONTACT_MOBILE &lt;= #{end_contactMobile}
+    </if>
+    <if test="null != applierId" >
+      and otsa.APPLIER_ID = #{applierId}
+    </if>
+    <if test="null != ne_applierId" >
+      and otsa.APPLIER_ID != #{ne_applierId}
+    </if>
+    <if test="null != list_applierId" >
+      and otsa.APPLIER_ID in (<foreach collection="list_applierId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != applierName" >
+      and otsa.APPLIER_NAME = #{applierName}
+    </if>
+    <if test="null != ne_applierName" >
+      and otsa.APPLIER_NAME != #{ne_applierName}
+    </if>
+    <if test="null != like_applierName" >
+      and otsa.APPLIER_NAME like CONCAT('%', #{like_applierName}, '%')
+    </if>
+    <if test="null != list_applierName" >
+      and otsa.APPLIER_NAME in (<foreach collection="list_applierName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_applierName" >
+      and otsa.APPLIER_NAME &gt;= #{begin_applierName}
+    </if>
+    <if test="null != end_applierName" >
+      and otsa.APPLIER_NAME &lt;= #{end_applierName}
+    </if>
+    <if test="null != begin_createTime" >
+      and otsa.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and otsa.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_updateTime" >
+      and otsa.UPDATE_TIME &gt;= #{begin_updateTime}
+    </if>
+    <if test="null != end_updateTime" >
+      and otsa.UPDATE_TIME &lt;= #{end_updateTime}
+    </if>
+    <if test="null != approveRemark" >
+      and otsa.APPROVE_REMARK = #{approveRemark}
+    </if>
+    <if test="null != ne_approveRemark" >
+      and otsa.APPROVE_REMARK != #{ne_approveRemark}
+    </if>
+    <if test="null != like_approveRemark" >
+      and otsa.APPROVE_REMARK like CONCAT('%', #{like_approveRemark}, '%')
+    </if>
+    <if test="null != list_approveRemark" >
+      and otsa.APPROVE_REMARK in (<foreach collection="list_approveRemark" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_approveRemark" >
+      and otsa.APPROVE_REMARK &gt;= #{begin_approveRemark}
+    </if>
+    <if test="null != end_approveRemark" >
+      and otsa.APPROVE_REMARK &lt;= #{end_approveRemark}
+    </if>
+    <if test="null != remark" >
+      and otsa.REMARK = #{remark}
+    </if>
+    <if test="null != ne_remark" >
+      and otsa.REMARK != #{ne_remark}
+    </if>
+    <if test="null != like_remark" >
+      and otsa.REMARK like CONCAT('%', #{like_remark}, '%')
+    </if>
+    <if test="null != list_remark" >
+      and otsa.REMARK in (<foreach collection="list_remark" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_remark" >
+      and otsa.REMARK &gt;= #{begin_remark}
+    </if>
+    <if test="null != end_remark" >
+      and otsa.REMARK &lt;= #{end_remark}
+    </if>
+    <if test="null != extraData" >
+      and otsa.EXTRA_DATA = #{extraData}
+    </if>
+    <if test="null != ne_extraData" >
+      and otsa.EXTRA_DATA != #{ne_extraData}
+    </if>
+    <if test="null != like_extraData" >
+      and otsa.EXTRA_DATA like CONCAT('%', #{like_extraData}, '%')
+    </if>
+    <if test="null != list_extraData" >
+      and otsa.EXTRA_DATA in (<foreach collection="list_extraData" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_extraData" >
+      and otsa.EXTRA_DATA &gt;= #{begin_extraData}
+    </if>
+    <if test="null != end_extraData" >
+      and otsa.EXTRA_DATA &lt;= #{end_extraData}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'applyId' == orderItem.column" >
+            otsa.APPLY_ID ${orderItem.dir}
+          </if>
+          <if test="'applyType' == orderItem.column" >
+            otsa.APPLY_TYPE ${orderItem.dir}
+          </if>
+          <if test="'specId' == orderItem.column" >
+            otsa.SPEC_ID ${orderItem.dir}
+          </if>
+          <if test="'specName' == orderItem.column" >
+            otsa.SPEC_NAME ${orderItem.dir}
+          </if>
+          <if test="'serviceDuration' == orderItem.column" >
+            otsa.SERVICE_DURATION ${orderItem.dir}
+          </if>
+          <if test="'serviceStart' == orderItem.column" >
+            otsa.SERVICE_START ${orderItem.dir}
+          </if>
+          <if test="'serviceEnd' == orderItem.column" >
+            otsa.SERVICE_END ${orderItem.dir}
+          </if>
+          <if test="'amount' == orderItem.column" >
+            otsa.AMOUNT ${orderItem.dir}
+          </if>
+          <if test="'price' == orderItem.column" >
+            otsa.PRICE ${orderItem.dir}
+          </if>
+          <if test="'status' == orderItem.column" >
+            otsa.STATUS ${orderItem.dir}
+          </if>
+          <if test="'companyName' == orderItem.column" >
+            otsa.COMPANY_NAME ${orderItem.dir}
+          </if>
+          <if test="'contactName' == orderItem.column" >
+            otsa.CONTACT_NAME ${orderItem.dir}
+          </if>
+          <if test="'contactMobile' == orderItem.column" >
+            otsa.CONTACT_MOBILE ${orderItem.dir}
+          </if>
+          <if test="'applierId' == orderItem.column" >
+            otsa.APPLIER_ID ${orderItem.dir}
+          </if>
+          <if test="'applierName' == orderItem.column" >
+            otsa.APPLIER_NAME ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            otsa.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'updateTime' == orderItem.column" >
+            otsa.UPDATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'approveRemark' == orderItem.column" >
+            otsa.APPROVE_REMARK ${orderItem.dir}
+          </if>
+          <if test="'remark' == orderItem.column" >
+            otsa.REMARK ${orderItem.dir}
+          </if>
+          <if test="'extraData' == orderItem.column" >
+            otsa.EXTRA_DATA ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    otsa.APPLY_ID, otsa.APPLY_TYPE, otsa.SPEC_ID, otsa.SPEC_NAME, otsa.SERVICE_DURATION, 
+    otsa.SERVICE_START, otsa.SERVICE_END, otsa.AMOUNT, otsa.PRICE, otsa.STATUS, otsa.COMPANY_NAME, 
+    otsa.CONTACT_NAME, otsa.CONTACT_MOBILE, otsa.APPLIER_ID, otsa.APPLIER_NAME, otsa.CREATE_TIME, 
+    otsa.UPDATE_TIME, otsa.APPROVE_REMARK
+  </sql>
+  <sql id="Blob_Column_List" >
+    REMARK, EXTRA_DATA
+  </sql>
+  <select id="selectById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from os_tech_service_apply otsa
+    where otsa.APPLY_ID = #{applyId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from os_tech_service_apply otsa
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from os_tech_service_apply otsa
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.OsTechServiceApply" >
+    <selectKey resultType="java.lang.Integer" keyProperty="applyId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into os_tech_service_apply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      APPLY_ID,
+      <if test="applyType != null" >
+        APPLY_TYPE,
+      </if>
+      <if test="specId != null" >
+        SPEC_ID,
+      </if>
+      <if test="specName != null" >
+        SPEC_NAME,
+      </if>
+      <if test="serviceDuration != null" >
+        SERVICE_DURATION,
+      </if>
+      <if test="serviceStart != null" >
+        SERVICE_START,
+      </if>
+      <if test="serviceEnd != null" >
+        SERVICE_END,
+      </if>
+      <if test="amount != null" >
+        AMOUNT,
+      </if>
+      <if test="price != null" >
+        PRICE,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="companyName != null" >
+        COMPANY_NAME,
+      </if>
+      <if test="contactName != null" >
+        CONTACT_NAME,
+      </if>
+      <if test="contactMobile != null" >
+        CONTACT_MOBILE,
+      </if>
+      <if test="applierId != null" >
+        APPLIER_ID,
+      </if>
+      <if test="applierName != null" >
+        APPLIER_NAME,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="approveRemark != null" >
+        APPROVE_REMARK,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="extraData != null" >
+        EXTRA_DATA,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{applyId,jdbcType=INTEGER},
+      <if test="applyType != null" >
+        #{applyType,jdbcType=VARCHAR},
+      </if>
+      <if test="specId != null" >
+        #{specId,jdbcType=VARCHAR},
+      </if>
+      <if test="specName != null" >
+        #{specName,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceDuration != null" >
+        #{serviceDuration,jdbcType=INTEGER},
+      </if>
+      <if test="serviceStart != null" >
+        #{serviceStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serviceEnd != null" >
+        #{serviceEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactMobile != null" >
+        #{contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="applierId != null" >
+        #{applierId,jdbcType=INTEGER},
+      </if>
+      <if test="applierName != null" >
+        #{applierName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approveRemark != null" >
+        #{approveRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="extraData != null" >
+        #{extraData,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from os_tech_service_apply
+    where APPLY_ID = #{applyId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from os_tech_service_apply where APPLY_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from otsa using (os_tech_service_apply as otsa) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.OsTechServiceApply" >
+    update os_tech_service_apply
+    <set >
+      <if test="applyType != null" >
+        APPLY_TYPE = #{applyType,jdbcType=VARCHAR},
+      </if>
+      <if test="specId != null" >
+        SPEC_ID = #{specId,jdbcType=VARCHAR},
+      </if>
+      <if test="specName != null" >
+        SPEC_NAME = #{specName,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceDuration != null" >
+        SERVICE_DURATION = #{serviceDuration,jdbcType=INTEGER},
+      </if>
+      <if test="serviceStart != null" >
+        SERVICE_START = #{serviceStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serviceEnd != null" >
+        SERVICE_END = #{serviceEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amount != null" >
+        AMOUNT = #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        PRICE = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        CONTACT_NAME = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactMobile != null" >
+        CONTACT_MOBILE = #{contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="applierId != null" >
+        APPLIER_ID = #{applierId,jdbcType=INTEGER},
+      </if>
+      <if test="applierName != null" >
+        APPLIER_NAME = #{applierName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approveRemark != null" >
+        APPROVE_REMARK = #{approveRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="extraData != null" >
+        EXTRA_DATA = #{extraData,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where APPLY_ID = #{applyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update os_tech_service_apply otsa
+    <set >
+      <if test="record.applyId != null" >
+        APPLY_ID = #{record.applyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.applyType != null" >
+        APPLY_TYPE = #{record.applyType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.specId != null" >
+        SPEC_ID = #{record.specId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.specName != null" >
+        SPEC_NAME = #{record.specName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceDuration != null" >
+        SERVICE_DURATION = #{record.serviceDuration,jdbcType=INTEGER},
+      </if>
+      <if test="record.serviceStart != null" >
+        SERVICE_START = #{record.serviceStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.serviceEnd != null" >
+        SERVICE_END = #{record.serviceEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.amount != null" >
+        AMOUNT = #{record.amount,jdbcType=INTEGER},
+      </if>
+      <if test="record.price != null" >
+        PRICE = #{record.price,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyName != null" >
+        COMPANY_NAME = #{record.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactName != null" >
+        CONTACT_NAME = #{record.contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactMobile != null" >
+        CONTACT_MOBILE = #{record.contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applierId != null" >
+        APPLIER_ID = #{record.applierId,jdbcType=INTEGER},
+      </if>
+      <if test="record.applierName != null" >
+        APPLIER_NAME = #{record.applierName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.approveRemark != null" >
+        APPROVE_REMARK = #{record.approveRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.extraData != null" >
+        EXTRA_DATA = #{record.extraData,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.applyId" >
+        and otsa.APPLY_ID = #{map.applyId}
+      </if>
+      <if test="null != map.list_applyId" >
+        and otsa.APPLY_ID in (<foreach collection="map.list_applyId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.applyType" >
+        and otsa.APPLY_TYPE = #{map.applyType}
+      </if>
+      <if test="null != map.like_applyType" >
+        and otsa.APPLY_TYPE like '%' || #{map.like_applyType} || '%'
+      </if>
+      <if test="null != map.list_applyType" >
+        and otsa.APPLY_TYPE in (<foreach collection="map.list_applyType" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.specId" >
+        and otsa.SPEC_ID = #{map.specId}
+      </if>
+      <if test="null != map.like_specId" >
+        and otsa.SPEC_ID like '%' || #{map.like_specId} || '%'
+      </if>
+      <if test="null != map.list_specId" >
+        and otsa.SPEC_ID in (<foreach collection="map.list_specId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.specName" >
+        and otsa.SPEC_NAME = #{map.specName}
+      </if>
+      <if test="null != map.like_specName" >
+        and otsa.SPEC_NAME like '%' || #{map.like_specName} || '%'
+      </if>
+      <if test="null != map.list_specName" >
+        and otsa.SPEC_NAME in (<foreach collection="map.list_specName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.serviceDuration" >
+        and otsa.SERVICE_DURATION = #{map.serviceDuration}
+      </if>
+      <if test="null != map.list_serviceDuration" >
+        and otsa.SERVICE_DURATION in (<foreach collection="map.list_serviceDuration" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_serviceStart" >
+        and otsa.SERVICE_START &gt;= #{map.begin_serviceStart}
+      </if>
+      <if test="null != map.end_serviceStart" >
+        and otsa.SERVICE_START &lt;= #{map.end_serviceStart}
+      </if>
+      <if test="null != map.begin_serviceEnd" >
+        and otsa.SERVICE_END &gt;= #{map.begin_serviceEnd}
+      </if>
+      <if test="null != map.end_serviceEnd" >
+        and otsa.SERVICE_END &lt;= #{map.end_serviceEnd}
+      </if>
+      <if test="null != map.amount" >
+        and otsa.AMOUNT = #{map.amount}
+      </if>
+      <if test="null != map.list_amount" >
+        and otsa.AMOUNT in (<foreach collection="map.list_amount" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.price" >
+        and otsa.PRICE = #{map.price}
+      </if>
+      <if test="null != map.list_price" >
+        and otsa.PRICE in (<foreach collection="map.list_price" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.status" >
+        and otsa.STATUS = #{map.status}
+      </if>
+      <if test="null != map.like_status" >
+        and otsa.STATUS like '%' || #{map.like_status} || '%'
+      </if>
+      <if test="null != map.list_status" >
+        and otsa.STATUS in (<foreach collection="map.list_status" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.companyName" >
+        and otsa.COMPANY_NAME = #{map.companyName}
+      </if>
+      <if test="null != map.like_companyName" >
+        and otsa.COMPANY_NAME like '%' || #{map.like_companyName} || '%'
+      </if>
+      <if test="null != map.list_companyName" >
+        and otsa.COMPANY_NAME in (<foreach collection="map.list_companyName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.contactName" >
+        and otsa.CONTACT_NAME = #{map.contactName}
+      </if>
+      <if test="null != map.like_contactName" >
+        and otsa.CONTACT_NAME like '%' || #{map.like_contactName} || '%'
+      </if>
+      <if test="null != map.list_contactName" >
+        and otsa.CONTACT_NAME in (<foreach collection="map.list_contactName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.contactMobile" >
+        and otsa.CONTACT_MOBILE = #{map.contactMobile}
+      </if>
+      <if test="null != map.like_contactMobile" >
+        and otsa.CONTACT_MOBILE like '%' || #{map.like_contactMobile} || '%'
+      </if>
+      <if test="null != map.list_contactMobile" >
+        and otsa.CONTACT_MOBILE in (<foreach collection="map.list_contactMobile" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.applierId" >
+        and otsa.APPLIER_ID = #{map.applierId}
+      </if>
+      <if test="null != map.list_applierId" >
+        and otsa.APPLIER_ID in (<foreach collection="map.list_applierId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.applierName" >
+        and otsa.APPLIER_NAME = #{map.applierName}
+      </if>
+      <if test="null != map.like_applierName" >
+        and otsa.APPLIER_NAME like '%' || #{map.like_applierName} || '%'
+      </if>
+      <if test="null != map.list_applierName" >
+        and otsa.APPLIER_NAME in (<foreach collection="map.list_applierName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and otsa.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and otsa.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_updateTime" >
+        and otsa.UPDATE_TIME &gt;= #{map.begin_updateTime}
+      </if>
+      <if test="null != map.end_updateTime" >
+        and otsa.UPDATE_TIME &lt;= #{map.end_updateTime}
+      </if>
+      <if test="null != map.approveRemark" >
+        and otsa.APPROVE_REMARK = #{map.approveRemark}
+      </if>
+      <if test="null != map.like_approveRemark" >
+        and otsa.APPROVE_REMARK like '%' || #{map.like_approveRemark} || '%'
+      </if>
+      <if test="null != map.list_approveRemark" >
+        and otsa.APPROVE_REMARK in (<foreach collection="map.list_approveRemark" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.remark" >
+        and otsa.REMARK = #{map.remark}
+      </if>
+      <if test="null != map.like_remark" >
+        and otsa.REMARK like '%' || #{map.like_remark} || '%'
+      </if>
+      <if test="null != map.list_remark" >
+        and otsa.REMARK in (<foreach collection="map.list_remark" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.extraData" >
+        and otsa.EXTRA_DATA = #{map.extraData}
+      </if>
+      <if test="null != map.like_extraData" >
+        and otsa.EXTRA_DATA like '%' || #{map.like_extraData} || '%'
+      </if>
+      <if test="null != map.list_extraData" >
+        and otsa.EXTRA_DATA in (<foreach collection="map.list_extraData" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

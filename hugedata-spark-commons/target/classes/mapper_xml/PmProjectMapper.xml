@@ -1,0 +1,1065 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.PmProjectMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.PmProject" >
+    <id column="PROJECT_ID" property="projectId" jdbcType="INTEGER" />
+    <result column="PROJECT_NAME" property="projectName" jdbcType="VARCHAR" />
+    <result column="PROJECT_CODE" property="projectCode" jdbcType="VARCHAR" />
+    <result column="PROJECT_ADDR" property="projectAddr" jdbcType="VARCHAR" />
+    <result column="PROJECT_AREA" property="projectArea" jdbcType="VARCHAR" />
+    <result column="PROJECT_TYPE" property="projectType" jdbcType="VARCHAR" />
+    <result column="PROJECT_CONTENT" property="projectContent" jdbcType="VARCHAR" />
+    <result column="MAIN_ACTOR" property="mainActor" jdbcType="VARCHAR" />
+    <result column="DUTY_ORG" property="dutyOrg" jdbcType="VARCHAR" />
+    <result column="DUTY_MAN" property="dutyMan" jdbcType="VARCHAR" />
+    <result column="CONTACT_LEAD" property="contactLead" jdbcType="VARCHAR" />
+    <result column="REPO_NAME" property="repoName" jdbcType="VARCHAR" />
+    <result column="BEGIN_END" property="beginEnd" jdbcType="VARCHAR" />
+    <result column="INVEST_TOTAL" property="investTotal" jdbcType="DOUBLE" />
+    <result column="ACCOUNT_COMMENT" property="accountComment" jdbcType="VARCHAR" />
+    <result column="PROJECT_STATUS" property="projectStatus" jdbcType="CHAR" />
+    <result column="INF_COMPANY_ID" property="infCompanyId" jdbcType="INTEGER" />
+    <result column="INF_COMPANY_NAME" property="infCompanyName" jdbcType="VARCHAR" />
+    <result column="INF_USER_ID" property="infUserId" jdbcType="INTEGER" />
+    <result column="INF_USER_NAME" property="infUserName" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="begin_year" property="beginYear" jdbcType="INTEGER" />
+    <result column="end_year" property="endYear" jdbcType="INTEGER" />
+    <result column="FRONT_UPDATED" property="frontUpdated" jdbcType="CHAR" />
+    <result column="PROJECT_DELETED" property="projectDeleted" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != projectId" >
+      and pp.PROJECT_ID = #{projectId}
+    </if>
+    <if test="null != ne_projectId" >
+      and pp.PROJECT_ID != #{ne_projectId}
+    </if>
+    <if test="null != list_projectId" >
+      and pp.PROJECT_ID in (<foreach collection="list_projectId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != projectName" >
+      and pp.PROJECT_NAME = #{projectName}
+    </if>
+    <if test="null != ne_projectName" >
+      and pp.PROJECT_NAME != #{ne_projectName}
+    </if>
+    <if test="null != like_projectName" >
+      and pp.PROJECT_NAME like CONCAT('%', #{like_projectName}, '%')
+    </if>
+    <if test="null != list_projectName" >
+      and pp.PROJECT_NAME in (<foreach collection="list_projectName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_projectName" >
+      and pp.PROJECT_NAME &gt;= #{begin_projectName}
+    </if>
+    <if test="null != end_projectName" >
+      and pp.PROJECT_NAME &lt;= #{end_projectName}
+    </if>
+    <if test="null != projectCode" >
+      and pp.PROJECT_CODE = #{projectCode}
+    </if>
+    <if test="null != ne_projectCode" >
+      and pp.PROJECT_CODE != #{ne_projectCode}
+    </if>
+    <if test="null != like_projectCode" >
+      and pp.PROJECT_CODE like CONCAT('%', #{like_projectCode}, '%')
+    </if>
+    <if test="null != list_projectCode" >
+      and pp.PROJECT_CODE in (<foreach collection="list_projectCode" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_projectCode" >
+      and pp.PROJECT_CODE &gt;= #{begin_projectCode}
+    </if>
+    <if test="null != end_projectCode" >
+      and pp.PROJECT_CODE &lt;= #{end_projectCode}
+    </if>
+    <if test="null != projectAddr" >
+      and pp.PROJECT_ADDR = #{projectAddr}
+    </if>
+    <if test="null != ne_projectAddr" >
+      and pp.PROJECT_ADDR != #{ne_projectAddr}
+    </if>
+    <if test="null != like_projectAddr" >
+      and pp.PROJECT_ADDR like CONCAT('%', #{like_projectAddr}, '%')
+    </if>
+    <if test="null != list_projectAddr" >
+      and pp.PROJECT_ADDR in (<foreach collection="list_projectAddr" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_projectAddr" >
+      and pp.PROJECT_ADDR &gt;= #{begin_projectAddr}
+    </if>
+    <if test="null != end_projectAddr" >
+      and pp.PROJECT_ADDR &lt;= #{end_projectAddr}
+    </if>
+    <if test="null != projectArea" >
+      and pp.PROJECT_AREA = #{projectArea}
+    </if>
+    <if test="null != ne_projectArea" >
+      and pp.PROJECT_AREA != #{ne_projectArea}
+    </if>
+    <if test="null != like_projectArea" >
+      and pp.PROJECT_AREA like CONCAT('%', #{like_projectArea}, '%')
+    </if>
+    <if test="null != list_projectArea" >
+      and pp.PROJECT_AREA in (<foreach collection="list_projectArea" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_projectArea" >
+      and pp.PROJECT_AREA &gt;= #{begin_projectArea}
+    </if>
+    <if test="null != end_projectArea" >
+      and pp.PROJECT_AREA &lt;= #{end_projectArea}
+    </if>
+    <if test="null != projectType" >
+      and pp.PROJECT_TYPE = #{projectType}
+    </if>
+    <if test="null != ne_projectType" >
+      and pp.PROJECT_TYPE != #{ne_projectType}
+    </if>
+    <if test="null != like_projectType" >
+      and pp.PROJECT_TYPE like CONCAT('%', #{like_projectType}, '%')
+    </if>
+    <if test="null != list_projectType" >
+      and pp.PROJECT_TYPE in (<foreach collection="list_projectType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_projectType" >
+      and pp.PROJECT_TYPE &gt;= #{begin_projectType}
+    </if>
+    <if test="null != end_projectType" >
+      and pp.PROJECT_TYPE &lt;= #{end_projectType}
+    </if>
+    <if test="null != projectContent" >
+      and pp.PROJECT_CONTENT = #{projectContent}
+    </if>
+    <if test="null != ne_projectContent" >
+      and pp.PROJECT_CONTENT != #{ne_projectContent}
+    </if>
+    <if test="null != like_projectContent" >
+      and pp.PROJECT_CONTENT like CONCAT('%', #{like_projectContent}, '%')
+    </if>
+    <if test="null != list_projectContent" >
+      and pp.PROJECT_CONTENT in (<foreach collection="list_projectContent" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_projectContent" >
+      and pp.PROJECT_CONTENT &gt;= #{begin_projectContent}
+    </if>
+    <if test="null != end_projectContent" >
+      and pp.PROJECT_CONTENT &lt;= #{end_projectContent}
+    </if>
+    <if test="null != mainActor" >
+      and pp.MAIN_ACTOR = #{mainActor}
+    </if>
+    <if test="null != ne_mainActor" >
+      and pp.MAIN_ACTOR != #{ne_mainActor}
+    </if>
+    <if test="null != like_mainActor" >
+      and pp.MAIN_ACTOR like CONCAT('%', #{like_mainActor}, '%')
+    </if>
+    <if test="null != list_mainActor" >
+      and pp.MAIN_ACTOR in (<foreach collection="list_mainActor" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_mainActor" >
+      and pp.MAIN_ACTOR &gt;= #{begin_mainActor}
+    </if>
+    <if test="null != end_mainActor" >
+      and pp.MAIN_ACTOR &lt;= #{end_mainActor}
+    </if>
+    <if test="null != dutyOrg" >
+      and pp.DUTY_ORG = #{dutyOrg}
+    </if>
+    <if test="null != ne_dutyOrg" >
+      and pp.DUTY_ORG != #{ne_dutyOrg}
+    </if>
+    <if test="null != like_dutyOrg" >
+      and pp.DUTY_ORG like CONCAT('%', #{like_dutyOrg}, '%')
+    </if>
+    <if test="null != list_dutyOrg" >
+      and pp.DUTY_ORG in (<foreach collection="list_dutyOrg" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_dutyOrg" >
+      and pp.DUTY_ORG &gt;= #{begin_dutyOrg}
+    </if>
+    <if test="null != end_dutyOrg" >
+      and pp.DUTY_ORG &lt;= #{end_dutyOrg}
+    </if>
+    <if test="null != dutyMan" >
+      and pp.DUTY_MAN = #{dutyMan}
+    </if>
+    <if test="null != ne_dutyMan" >
+      and pp.DUTY_MAN != #{ne_dutyMan}
+    </if>
+    <if test="null != like_dutyMan" >
+      and pp.DUTY_MAN like CONCAT('%', #{like_dutyMan}, '%')
+    </if>
+    <if test="null != list_dutyMan" >
+      and pp.DUTY_MAN in (<foreach collection="list_dutyMan" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_dutyMan" >
+      and pp.DUTY_MAN &gt;= #{begin_dutyMan}
+    </if>
+    <if test="null != end_dutyMan" >
+      and pp.DUTY_MAN &lt;= #{end_dutyMan}
+    </if>
+    <if test="null != contactLead" >
+      and pp.CONTACT_LEAD = #{contactLead}
+    </if>
+    <if test="null != ne_contactLead" >
+      and pp.CONTACT_LEAD != #{ne_contactLead}
+    </if>
+    <if test="null != like_contactLead" >
+      and pp.CONTACT_LEAD like CONCAT('%', #{like_contactLead}, '%')
+    </if>
+    <if test="null != list_contactLead" >
+      and pp.CONTACT_LEAD in (<foreach collection="list_contactLead" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_contactLead" >
+      and pp.CONTACT_LEAD &gt;= #{begin_contactLead}
+    </if>
+    <if test="null != end_contactLead" >
+      and pp.CONTACT_LEAD &lt;= #{end_contactLead}
+    </if>
+    <if test="null != repoName" >
+      and pp.REPO_NAME = #{repoName}
+    </if>
+    <if test="null != ne_repoName" >
+      and pp.REPO_NAME != #{ne_repoName}
+    </if>
+    <if test="null != like_repoName" >
+      and pp.REPO_NAME like CONCAT('%', #{like_repoName}, '%')
+    </if>
+    <if test="null != list_repoName" >
+      and pp.REPO_NAME in (<foreach collection="list_repoName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_repoName" >
+      and pp.REPO_NAME &gt;= #{begin_repoName}
+    </if>
+    <if test="null != end_repoName" >
+      and pp.REPO_NAME &lt;= #{end_repoName}
+    </if>
+    <if test="null != beginEnd" >
+      and pp.BEGIN_END = #{beginEnd}
+    </if>
+    <if test="null != ne_beginEnd" >
+      and pp.BEGIN_END != #{ne_beginEnd}
+    </if>
+    <if test="null != like_beginEnd" >
+      and pp.BEGIN_END like CONCAT('%', #{like_beginEnd}, '%')
+    </if>
+    <if test="null != list_beginEnd" >
+      and pp.BEGIN_END in (<foreach collection="list_beginEnd" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_beginEnd" >
+      and pp.BEGIN_END &gt;= #{begin_beginEnd}
+    </if>
+    <if test="null != end_beginEnd" >
+      and pp.BEGIN_END &lt;= #{end_beginEnd}
+    </if>
+    <if test="null != investTotal" >
+      and pp.INVEST_TOTAL = #{investTotal}
+    </if>
+    <if test="null != ne_investTotal" >
+      and pp.INVEST_TOTAL != #{ne_investTotal}
+    </if>
+    <if test="null != list_investTotal" >
+      and pp.INVEST_TOTAL in (<foreach collection="list_investTotal" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != accountComment" >
+      and pp.ACCOUNT_COMMENT = #{accountComment}
+    </if>
+    <if test="null != ne_accountComment" >
+      and pp.ACCOUNT_COMMENT != #{ne_accountComment}
+    </if>
+    <if test="null != like_accountComment" >
+      and pp.ACCOUNT_COMMENT like CONCAT('%', #{like_accountComment}, '%')
+    </if>
+    <if test="null != list_accountComment" >
+      and pp.ACCOUNT_COMMENT in (<foreach collection="list_accountComment" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_accountComment" >
+      and pp.ACCOUNT_COMMENT &gt;= #{begin_accountComment}
+    </if>
+    <if test="null != end_accountComment" >
+      and pp.ACCOUNT_COMMENT &lt;= #{end_accountComment}
+    </if>
+    <if test="null != projectStatus" >
+      and pp.PROJECT_STATUS = #{projectStatus}
+    </if>
+    <if test="null != ne_projectStatus" >
+      and pp.PROJECT_STATUS != #{ne_projectStatus}
+    </if>
+    <if test="null != like_projectStatus" >
+      and pp.PROJECT_STATUS like CONCAT('%', #{like_projectStatus}, '%')
+    </if>
+    <if test="null != list_projectStatus" >
+      and pp.PROJECT_STATUS in (<foreach collection="list_projectStatus" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_projectStatus" >
+      and pp.PROJECT_STATUS &gt;= #{begin_projectStatus}
+    </if>
+    <if test="null != end_projectStatus" >
+      and pp.PROJECT_STATUS &lt;= #{end_projectStatus}
+    </if>
+    <if test="null != infCompanyId" >
+      and pp.INF_COMPANY_ID = #{infCompanyId}
+    </if>
+    <if test="null != ne_infCompanyId" >
+      and pp.INF_COMPANY_ID != #{ne_infCompanyId}
+    </if>
+    <if test="null != list_infCompanyId" >
+      and pp.INF_COMPANY_ID in (<foreach collection="list_infCompanyId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != infCompanyName" >
+      and pp.INF_COMPANY_NAME = #{infCompanyName}
+    </if>
+    <if test="null != ne_infCompanyName" >
+      and pp.INF_COMPANY_NAME != #{ne_infCompanyName}
+    </if>
+    <if test="null != like_infCompanyName" >
+      and pp.INF_COMPANY_NAME like CONCAT('%', #{like_infCompanyName}, '%')
+    </if>
+    <if test="null != list_infCompanyName" >
+      and pp.INF_COMPANY_NAME in (<foreach collection="list_infCompanyName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_infCompanyName" >
+      and pp.INF_COMPANY_NAME &gt;= #{begin_infCompanyName}
+    </if>
+    <if test="null != end_infCompanyName" >
+      and pp.INF_COMPANY_NAME &lt;= #{end_infCompanyName}
+    </if>
+    <if test="null != infUserId" >
+      and pp.INF_USER_ID = #{infUserId}
+    </if>
+    <if test="null != ne_infUserId" >
+      and pp.INF_USER_ID != #{ne_infUserId}
+    </if>
+    <if test="null != list_infUserId" >
+      and pp.INF_USER_ID in (<foreach collection="list_infUserId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != infUserName" >
+      and pp.INF_USER_NAME = #{infUserName}
+    </if>
+    <if test="null != ne_infUserName" >
+      and pp.INF_USER_NAME != #{ne_infUserName}
+    </if>
+    <if test="null != like_infUserName" >
+      and pp.INF_USER_NAME like CONCAT('%', #{like_infUserName}, '%')
+    </if>
+    <if test="null != list_infUserName" >
+      and pp.INF_USER_NAME in (<foreach collection="list_infUserName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_infUserName" >
+      and pp.INF_USER_NAME &gt;= #{begin_infUserName}
+    </if>
+    <if test="null != end_infUserName" >
+      and pp.INF_USER_NAME &lt;= #{end_infUserName}
+    </if>
+    <if test="null != begin_createTime" >
+      and pp.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and pp.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != beginYear" >
+      and pp.begin_year = #{beginYear}
+    </if>
+    <if test="null != ne_beginYear" >
+      and pp.begin_year != #{ne_beginYear}
+    </if>
+    <if test="null != list_beginYear" >
+      and pp.begin_year in (<foreach collection="list_beginYear" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != endYear" >
+      and pp.end_year = #{endYear}
+    </if>
+    <if test="null != ne_endYear" >
+      and pp.end_year != #{ne_endYear}
+    </if>
+    <if test="null != list_endYear" >
+      and pp.end_year in (<foreach collection="list_endYear" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != frontUpdated" >
+      and pp.FRONT_UPDATED = #{frontUpdated}
+    </if>
+    <if test="null != ne_frontUpdated" >
+      and pp.FRONT_UPDATED != #{ne_frontUpdated}
+    </if>
+    <if test="null != like_frontUpdated" >
+      and pp.FRONT_UPDATED like CONCAT('%', #{like_frontUpdated}, '%')
+    </if>
+    <if test="null != list_frontUpdated" >
+      and pp.FRONT_UPDATED in (<foreach collection="list_frontUpdated" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_frontUpdated" >
+      and pp.FRONT_UPDATED &gt;= #{begin_frontUpdated}
+    </if>
+    <if test="null != end_frontUpdated" >
+      and pp.FRONT_UPDATED &lt;= #{end_frontUpdated}
+    </if>
+    <if test="null != projectDeleted" >
+      and pp.PROJECT_DELETED = #{projectDeleted}
+    </if>
+    <if test="null != ne_projectDeleted" >
+      and pp.PROJECT_DELETED != #{ne_projectDeleted}
+    </if>
+    <if test="null != like_projectDeleted" >
+      and pp.PROJECT_DELETED like CONCAT('%', #{like_projectDeleted}, '%')
+    </if>
+    <if test="null != list_projectDeleted" >
+      and pp.PROJECT_DELETED in (<foreach collection="list_projectDeleted" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_projectDeleted" >
+      and pp.PROJECT_DELETED &gt;= #{begin_projectDeleted}
+    </if>
+    <if test="null != end_projectDeleted" >
+      and pp.PROJECT_DELETED &lt;= #{end_projectDeleted}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'projectId' == orderItem.column" >
+            pp.PROJECT_ID ${orderItem.dir}
+          </if>
+          <if test="'projectName' == orderItem.column" >
+            pp.PROJECT_NAME ${orderItem.dir}
+          </if>
+          <if test="'projectCode' == orderItem.column" >
+            pp.PROJECT_CODE ${orderItem.dir}
+          </if>
+          <if test="'projectAddr' == orderItem.column" >
+            pp.PROJECT_ADDR ${orderItem.dir}
+          </if>
+          <if test="'projectArea' == orderItem.column" >
+            pp.PROJECT_AREA ${orderItem.dir}
+          </if>
+          <if test="'projectType' == orderItem.column" >
+            pp.PROJECT_TYPE ${orderItem.dir}
+          </if>
+          <if test="'projectContent' == orderItem.column" >
+            pp.PROJECT_CONTENT ${orderItem.dir}
+          </if>
+          <if test="'mainActor' == orderItem.column" >
+            pp.MAIN_ACTOR ${orderItem.dir}
+          </if>
+          <if test="'dutyOrg' == orderItem.column" >
+            pp.DUTY_ORG ${orderItem.dir}
+          </if>
+          <if test="'dutyMan' == orderItem.column" >
+            pp.DUTY_MAN ${orderItem.dir}
+          </if>
+          <if test="'contactLead' == orderItem.column" >
+            pp.CONTACT_LEAD ${orderItem.dir}
+          </if>
+          <if test="'repoName' == orderItem.column" >
+            pp.REPO_NAME ${orderItem.dir}
+          </if>
+          <if test="'beginEnd' == orderItem.column" >
+            pp.BEGIN_END ${orderItem.dir}
+          </if>
+          <if test="'investTotal' == orderItem.column" >
+            pp.INVEST_TOTAL ${orderItem.dir}
+          </if>
+          <if test="'accountComment' == orderItem.column" >
+            pp.ACCOUNT_COMMENT ${orderItem.dir}
+          </if>
+          <if test="'projectStatus' == orderItem.column" >
+            pp.PROJECT_STATUS ${orderItem.dir}
+          </if>
+          <if test="'infCompanyId' == orderItem.column" >
+            pp.INF_COMPANY_ID ${orderItem.dir}
+          </if>
+          <if test="'infCompanyName' == orderItem.column" >
+            pp.INF_COMPANY_NAME ${orderItem.dir}
+          </if>
+          <if test="'infUserId' == orderItem.column" >
+            pp.INF_USER_ID ${orderItem.dir}
+          </if>
+          <if test="'infUserName' == orderItem.column" >
+            pp.INF_USER_NAME ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            pp.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'beginYear' == orderItem.column" >
+            pp.begin_year ${orderItem.dir}
+          </if>
+          <if test="'endYear' == orderItem.column" >
+            pp.end_year ${orderItem.dir}
+          </if>
+          <if test="'frontUpdated' == orderItem.column" >
+            pp.FRONT_UPDATED ${orderItem.dir}
+          </if>
+          <if test="'projectDeleted' == orderItem.column" >
+            pp.PROJECT_DELETED ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    pp.PROJECT_ID, pp.PROJECT_NAME, pp.PROJECT_CODE, pp.PROJECT_ADDR, pp.PROJECT_AREA, 
+    pp.PROJECT_TYPE, pp.PROJECT_CONTENT, pp.MAIN_ACTOR, pp.DUTY_ORG, pp.DUTY_MAN, pp.CONTACT_LEAD, 
+    pp.REPO_NAME, pp.BEGIN_END, pp.INVEST_TOTAL, pp.ACCOUNT_COMMENT, pp.PROJECT_STATUS, 
+    pp.INF_COMPANY_ID, pp.INF_COMPANY_NAME, pp.INF_USER_ID, pp.INF_USER_NAME, pp.CREATE_TIME, 
+    pp.begin_year, pp.end_year, pp.FRONT_UPDATED, pp.PROJECT_DELETED
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from pm_project pp
+    where pp.PROJECT_ID = #{projectId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from pm_project pp
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from pm_project pp
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.PmProject" >
+    <selectKey resultType="java.lang.Integer" keyProperty="projectId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into pm_project
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      PROJECT_ID,
+      <if test="projectName != null" >
+        PROJECT_NAME,
+      </if>
+      <if test="projectCode != null" >
+        PROJECT_CODE,
+      </if>
+      <if test="projectAddr != null" >
+        PROJECT_ADDR,
+      </if>
+      <if test="projectArea != null" >
+        PROJECT_AREA,
+      </if>
+      <if test="projectType != null" >
+        PROJECT_TYPE,
+      </if>
+      <if test="projectContent != null" >
+        PROJECT_CONTENT,
+      </if>
+      <if test="mainActor != null" >
+        MAIN_ACTOR,
+      </if>
+      <if test="dutyOrg != null" >
+        DUTY_ORG,
+      </if>
+      <if test="dutyMan != null" >
+        DUTY_MAN,
+      </if>
+      <if test="contactLead != null" >
+        CONTACT_LEAD,
+      </if>
+      <if test="repoName != null" >
+        REPO_NAME,
+      </if>
+      <if test="beginEnd != null" >
+        BEGIN_END,
+      </if>
+      <if test="investTotal != null" >
+        INVEST_TOTAL,
+      </if>
+      <if test="accountComment != null" >
+        ACCOUNT_COMMENT,
+      </if>
+      <if test="projectStatus != null" >
+        PROJECT_STATUS,
+      </if>
+      <if test="infCompanyId != null" >
+        INF_COMPANY_ID,
+      </if>
+      <if test="infCompanyName != null" >
+        INF_COMPANY_NAME,
+      </if>
+      <if test="infUserId != null" >
+        INF_USER_ID,
+      </if>
+      <if test="infUserName != null" >
+        INF_USER_NAME,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="beginYear != null" >
+        begin_year,
+      </if>
+      <if test="endYear != null" >
+        end_year,
+      </if>
+      <if test="frontUpdated != null" >
+        FRONT_UPDATED,
+      </if>
+      <if test="projectDeleted != null" >
+        PROJECT_DELETED,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{projectId,jdbcType=INTEGER},
+      <if test="projectName != null" >
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCode != null" >
+        #{projectCode,jdbcType=VARCHAR},
+      </if>
+      <if test="projectAddr != null" >
+        #{projectAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="projectArea != null" >
+        #{projectArea,jdbcType=VARCHAR},
+      </if>
+      <if test="projectType != null" >
+        #{projectType,jdbcType=VARCHAR},
+      </if>
+      <if test="projectContent != null" >
+        #{projectContent,jdbcType=VARCHAR},
+      </if>
+      <if test="mainActor != null" >
+        #{mainActor,jdbcType=VARCHAR},
+      </if>
+      <if test="dutyOrg != null" >
+        #{dutyOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="dutyMan != null" >
+        #{dutyMan,jdbcType=VARCHAR},
+      </if>
+      <if test="contactLead != null" >
+        #{contactLead,jdbcType=VARCHAR},
+      </if>
+      <if test="repoName != null" >
+        #{repoName,jdbcType=VARCHAR},
+      </if>
+      <if test="beginEnd != null" >
+        #{beginEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="investTotal != null" >
+        #{investTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="accountComment != null" >
+        #{accountComment,jdbcType=VARCHAR},
+      </if>
+      <if test="projectStatus != null" >
+        #{projectStatus,jdbcType=CHAR},
+      </if>
+      <if test="infCompanyId != null" >
+        #{infCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="infCompanyName != null" >
+        #{infCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="infUserId != null" >
+        #{infUserId,jdbcType=INTEGER},
+      </if>
+      <if test="infUserName != null" >
+        #{infUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beginYear != null" >
+        #{beginYear,jdbcType=INTEGER},
+      </if>
+      <if test="endYear != null" >
+        #{endYear,jdbcType=INTEGER},
+      </if>
+      <if test="frontUpdated != null" >
+        #{frontUpdated,jdbcType=CHAR},
+      </if>
+      <if test="projectDeleted != null" >
+        #{projectDeleted,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from pm_project
+    where PROJECT_ID = #{projectId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from pm_project where PROJECT_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from pp using (pm_project as pp) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.PmProject" >
+    update pm_project
+    <set >
+      <if test="projectName != null" >
+        PROJECT_NAME = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCode != null" >
+        PROJECT_CODE = #{projectCode,jdbcType=VARCHAR},
+      </if>
+      <if test="projectAddr != null" >
+        PROJECT_ADDR = #{projectAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="projectArea != null" >
+        PROJECT_AREA = #{projectArea,jdbcType=VARCHAR},
+      </if>
+      <if test="projectType != null" >
+        PROJECT_TYPE = #{projectType,jdbcType=VARCHAR},
+      </if>
+      <if test="projectContent != null" >
+        PROJECT_CONTENT = #{projectContent,jdbcType=VARCHAR},
+      </if>
+      <if test="mainActor != null" >
+        MAIN_ACTOR = #{mainActor,jdbcType=VARCHAR},
+      </if>
+      <if test="dutyOrg != null" >
+        DUTY_ORG = #{dutyOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="dutyMan != null" >
+        DUTY_MAN = #{dutyMan,jdbcType=VARCHAR},
+      </if>
+      <if test="contactLead != null" >
+        CONTACT_LEAD = #{contactLead,jdbcType=VARCHAR},
+      </if>
+      <if test="repoName != null" >
+        REPO_NAME = #{repoName,jdbcType=VARCHAR},
+      </if>
+      <if test="beginEnd != null" >
+        BEGIN_END = #{beginEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="investTotal != null" >
+        INVEST_TOTAL = #{investTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="accountComment != null" >
+        ACCOUNT_COMMENT = #{accountComment,jdbcType=VARCHAR},
+      </if>
+      <if test="projectStatus != null" >
+        PROJECT_STATUS = #{projectStatus,jdbcType=CHAR},
+      </if>
+      <if test="infCompanyId != null" >
+        INF_COMPANY_ID = #{infCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="infCompanyName != null" >
+        INF_COMPANY_NAME = #{infCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="infUserId != null" >
+        INF_USER_ID = #{infUserId,jdbcType=INTEGER},
+      </if>
+      <if test="infUserName != null" >
+        INF_USER_NAME = #{infUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beginYear != null" >
+        begin_year = #{beginYear,jdbcType=INTEGER},
+      </if>
+      <if test="endYear != null" >
+        end_year = #{endYear,jdbcType=INTEGER},
+      </if>
+      <if test="frontUpdated != null" >
+        FRONT_UPDATED = #{frontUpdated,jdbcType=CHAR},
+      </if>
+      <if test="projectDeleted != null" >
+        PROJECT_DELETED = #{projectDeleted,jdbcType=CHAR},
+      </if>
+    </set>
+    where PROJECT_ID = #{projectId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update pm_project pp
+    <set >
+      <if test="record.projectId != null" >
+        PROJECT_ID = #{record.projectId,jdbcType=INTEGER},
+      </if>
+      <if test="record.projectName != null" >
+        PROJECT_NAME = #{record.projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectCode != null" >
+        PROJECT_CODE = #{record.projectCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectAddr != null" >
+        PROJECT_ADDR = #{record.projectAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectArea != null" >
+        PROJECT_AREA = #{record.projectArea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectType != null" >
+        PROJECT_TYPE = #{record.projectType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectContent != null" >
+        PROJECT_CONTENT = #{record.projectContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mainActor != null" >
+        MAIN_ACTOR = #{record.mainActor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dutyOrg != null" >
+        DUTY_ORG = #{record.dutyOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dutyMan != null" >
+        DUTY_MAN = #{record.dutyMan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactLead != null" >
+        CONTACT_LEAD = #{record.contactLead,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repoName != null" >
+        REPO_NAME = #{record.repoName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.beginEnd != null" >
+        BEGIN_END = #{record.beginEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.investTotal != null" >
+        INVEST_TOTAL = #{record.investTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="record.accountComment != null" >
+        ACCOUNT_COMMENT = #{record.accountComment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectStatus != null" >
+        PROJECT_STATUS = #{record.projectStatus,jdbcType=CHAR},
+      </if>
+      <if test="record.infCompanyId != null" >
+        INF_COMPANY_ID = #{record.infCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.infCompanyName != null" >
+        INF_COMPANY_NAME = #{record.infCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.infUserId != null" >
+        INF_USER_ID = #{record.infUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.infUserName != null" >
+        INF_USER_NAME = #{record.infUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.beginYear != null" >
+        begin_year = #{record.beginYear,jdbcType=INTEGER},
+      </if>
+      <if test="record.endYear != null" >
+        end_year = #{record.endYear,jdbcType=INTEGER},
+      </if>
+      <if test="record.frontUpdated != null" >
+        FRONT_UPDATED = #{record.frontUpdated,jdbcType=CHAR},
+      </if>
+      <if test="record.projectDeleted != null" >
+        PROJECT_DELETED = #{record.projectDeleted,jdbcType=CHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.projectId" >
+        and pp.PROJECT_ID = #{map.projectId}
+      </if>
+      <if test="null != map.list_projectId" >
+        and pp.PROJECT_ID in (<foreach collection="map.list_projectId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.projectName" >
+        and pp.PROJECT_NAME = #{map.projectName}
+      </if>
+      <if test="null != map.like_projectName" >
+        and pp.PROJECT_NAME like '%' || #{map.like_projectName} || '%'
+      </if>
+      <if test="null != map.list_projectName" >
+        and pp.PROJECT_NAME in (<foreach collection="map.list_projectName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.projectCode" >
+        and pp.PROJECT_CODE = #{map.projectCode}
+      </if>
+      <if test="null != map.like_projectCode" >
+        and pp.PROJECT_CODE like '%' || #{map.like_projectCode} || '%'
+      </if>
+      <if test="null != map.list_projectCode" >
+        and pp.PROJECT_CODE in (<foreach collection="map.list_projectCode" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.projectAddr" >
+        and pp.PROJECT_ADDR = #{map.projectAddr}
+      </if>
+      <if test="null != map.like_projectAddr" >
+        and pp.PROJECT_ADDR like '%' || #{map.like_projectAddr} || '%'
+      </if>
+      <if test="null != map.list_projectAddr" >
+        and pp.PROJECT_ADDR in (<foreach collection="map.list_projectAddr" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.projectArea" >
+        and pp.PROJECT_AREA = #{map.projectArea}
+      </if>
+      <if test="null != map.like_projectArea" >
+        and pp.PROJECT_AREA like '%' || #{map.like_projectArea} || '%'
+      </if>
+      <if test="null != map.list_projectArea" >
+        and pp.PROJECT_AREA in (<foreach collection="map.list_projectArea" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.projectType" >
+        and pp.PROJECT_TYPE = #{map.projectType}
+      </if>
+      <if test="null != map.like_projectType" >
+        and pp.PROJECT_TYPE like '%' || #{map.like_projectType} || '%'
+      </if>
+      <if test="null != map.list_projectType" >
+        and pp.PROJECT_TYPE in (<foreach collection="map.list_projectType" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.projectContent" >
+        and pp.PROJECT_CONTENT = #{map.projectContent}
+      </if>
+      <if test="null != map.like_projectContent" >
+        and pp.PROJECT_CONTENT like '%' || #{map.like_projectContent} || '%'
+      </if>
+      <if test="null != map.list_projectContent" >
+        and pp.PROJECT_CONTENT in (<foreach collection="map.list_projectContent" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.mainActor" >
+        and pp.MAIN_ACTOR = #{map.mainActor}
+      </if>
+      <if test="null != map.like_mainActor" >
+        and pp.MAIN_ACTOR like '%' || #{map.like_mainActor} || '%'
+      </if>
+      <if test="null != map.list_mainActor" >
+        and pp.MAIN_ACTOR in (<foreach collection="map.list_mainActor" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.dutyOrg" >
+        and pp.DUTY_ORG = #{map.dutyOrg}
+      </if>
+      <if test="null != map.like_dutyOrg" >
+        and pp.DUTY_ORG like '%' || #{map.like_dutyOrg} || '%'
+      </if>
+      <if test="null != map.list_dutyOrg" >
+        and pp.DUTY_ORG in (<foreach collection="map.list_dutyOrg" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.dutyMan" >
+        and pp.DUTY_MAN = #{map.dutyMan}
+      </if>
+      <if test="null != map.like_dutyMan" >
+        and pp.DUTY_MAN like '%' || #{map.like_dutyMan} || '%'
+      </if>
+      <if test="null != map.list_dutyMan" >
+        and pp.DUTY_MAN in (<foreach collection="map.list_dutyMan" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.contactLead" >
+        and pp.CONTACT_LEAD = #{map.contactLead}
+      </if>
+      <if test="null != map.like_contactLead" >
+        and pp.CONTACT_LEAD like '%' || #{map.like_contactLead} || '%'
+      </if>
+      <if test="null != map.list_contactLead" >
+        and pp.CONTACT_LEAD in (<foreach collection="map.list_contactLead" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.repoName" >
+        and pp.REPO_NAME = #{map.repoName}
+      </if>
+      <if test="null != map.like_repoName" >
+        and pp.REPO_NAME like '%' || #{map.like_repoName} || '%'
+      </if>
+      <if test="null != map.list_repoName" >
+        and pp.REPO_NAME in (<foreach collection="map.list_repoName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.beginEnd" >
+        and pp.BEGIN_END = #{map.beginEnd}
+      </if>
+      <if test="null != map.like_beginEnd" >
+        and pp.BEGIN_END like '%' || #{map.like_beginEnd} || '%'
+      </if>
+      <if test="null != map.list_beginEnd" >
+        and pp.BEGIN_END in (<foreach collection="map.list_beginEnd" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.investTotal" >
+        and pp.INVEST_TOTAL = #{map.investTotal}
+      </if>
+      <if test="null != map.list_investTotal" >
+        and pp.INVEST_TOTAL in (<foreach collection="map.list_investTotal" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.accountComment" >
+        and pp.ACCOUNT_COMMENT = #{map.accountComment}
+      </if>
+      <if test="null != map.like_accountComment" >
+        and pp.ACCOUNT_COMMENT like '%' || #{map.like_accountComment} || '%'
+      </if>
+      <if test="null != map.list_accountComment" >
+        and pp.ACCOUNT_COMMENT in (<foreach collection="map.list_accountComment" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.projectStatus" >
+        and pp.PROJECT_STATUS = #{map.projectStatus}
+      </if>
+      <if test="null != map.like_projectStatus" >
+        and pp.PROJECT_STATUS like '%' || #{map.like_projectStatus} || '%'
+      </if>
+      <if test="null != map.list_projectStatus" >
+        and pp.PROJECT_STATUS in (<foreach collection="map.list_projectStatus" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.infCompanyId" >
+        and pp.INF_COMPANY_ID = #{map.infCompanyId}
+      </if>
+      <if test="null != map.list_infCompanyId" >
+        and pp.INF_COMPANY_ID in (<foreach collection="map.list_infCompanyId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.infCompanyName" >
+        and pp.INF_COMPANY_NAME = #{map.infCompanyName}
+      </if>
+      <if test="null != map.like_infCompanyName" >
+        and pp.INF_COMPANY_NAME like '%' || #{map.like_infCompanyName} || '%'
+      </if>
+      <if test="null != map.list_infCompanyName" >
+        and pp.INF_COMPANY_NAME in (<foreach collection="map.list_infCompanyName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.infUserId" >
+        and pp.INF_USER_ID = #{map.infUserId}
+      </if>
+      <if test="null != map.list_infUserId" >
+        and pp.INF_USER_ID in (<foreach collection="map.list_infUserId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.infUserName" >
+        and pp.INF_USER_NAME = #{map.infUserName}
+      </if>
+      <if test="null != map.like_infUserName" >
+        and pp.INF_USER_NAME like '%' || #{map.like_infUserName} || '%'
+      </if>
+      <if test="null != map.list_infUserName" >
+        and pp.INF_USER_NAME in (<foreach collection="map.list_infUserName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and pp.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and pp.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.beginYear" >
+        and pp.begin_year = #{map.beginYear}
+      </if>
+      <if test="null != map.list_beginYear" >
+        and pp.begin_year in (<foreach collection="map.list_beginYear" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.endYear" >
+        and pp.end_year = #{map.endYear}
+      </if>
+      <if test="null != map.list_endYear" >
+        and pp.end_year in (<foreach collection="map.list_endYear" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.frontUpdated" >
+        and pp.FRONT_UPDATED = #{map.frontUpdated}
+      </if>
+      <if test="null != map.like_frontUpdated" >
+        and pp.FRONT_UPDATED like '%' || #{map.like_frontUpdated} || '%'
+      </if>
+      <if test="null != map.list_frontUpdated" >
+        and pp.FRONT_UPDATED in (<foreach collection="map.list_frontUpdated" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.projectDeleted" >
+        and pp.PROJECT_DELETED = #{map.projectDeleted}
+      </if>
+      <if test="null != map.like_projectDeleted" >
+        and pp.PROJECT_DELETED like '%' || #{map.like_projectDeleted} || '%'
+      </if>
+      <if test="null != map.list_projectDeleted" >
+        and pp.PROJECT_DELETED in (<foreach collection="map.list_projectDeleted" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

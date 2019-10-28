@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.SysFileInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.SysFileInfo" >
+    <id column="FILE_ID" property="fileId" jdbcType="VARCHAR" />
+    <result column="FILE_NAME" property="fileName" jdbcType="VARCHAR" />
+    <result column="FILE_SIZE" property="fileSize" jdbcType="BIGINT" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MIME_TYPE" property="mimeType" jdbcType="VARCHAR" />
+    <result column="EXTENSION" property="extension" jdbcType="VARCHAR" />
+    <result column="OWNER_ID" property="ownerId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != fileId" >
+      and sfi.FILE_ID = #{fileId}
+    </if>
+    <if test="null != ne_fileId" >
+      and sfi.FILE_ID != #{ne_fileId}
+    </if>
+    <if test="null != like_fileId" >
+      and sfi.FILE_ID like CONCAT('%', #{like_fileId}, '%')
+    </if>
+    <if test="null != list_fileId" >
+      and sfi.FILE_ID in (<foreach collection="list_fileId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_fileId" >
+      and sfi.FILE_ID &gt;= #{begin_fileId}
+    </if>
+    <if test="null != end_fileId" >
+      and sfi.FILE_ID &lt;= #{end_fileId}
+    </if>
+    <if test="null != fileName" >
+      and sfi.FILE_NAME = #{fileName}
+    </if>
+    <if test="null != ne_fileName" >
+      and sfi.FILE_NAME != #{ne_fileName}
+    </if>
+    <if test="null != like_fileName" >
+      and sfi.FILE_NAME like CONCAT('%', #{like_fileName}, '%')
+    </if>
+    <if test="null != list_fileName" >
+      and sfi.FILE_NAME in (<foreach collection="list_fileName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_fileName" >
+      and sfi.FILE_NAME &gt;= #{begin_fileName}
+    </if>
+    <if test="null != end_fileName" >
+      and sfi.FILE_NAME &lt;= #{end_fileName}
+    </if>
+    <if test="null != fileSize" >
+      and sfi.FILE_SIZE = #{fileSize}
+    </if>
+    <if test="null != ne_fileSize" >
+      and sfi.FILE_SIZE != #{ne_fileSize}
+    </if>
+    <if test="null != list_fileSize" >
+      and sfi.FILE_SIZE in (<foreach collection="list_fileSize" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_createTime" >
+      and sfi.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and sfi.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != mimeType" >
+      and sfi.MIME_TYPE = #{mimeType}
+    </if>
+    <if test="null != ne_mimeType" >
+      and sfi.MIME_TYPE != #{ne_mimeType}
+    </if>
+    <if test="null != like_mimeType" >
+      and sfi.MIME_TYPE like CONCAT('%', #{like_mimeType}, '%')
+    </if>
+    <if test="null != list_mimeType" >
+      and sfi.MIME_TYPE in (<foreach collection="list_mimeType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_mimeType" >
+      and sfi.MIME_TYPE &gt;= #{begin_mimeType}
+    </if>
+    <if test="null != end_mimeType" >
+      and sfi.MIME_TYPE &lt;= #{end_mimeType}
+    </if>
+    <if test="null != extension" >
+      and sfi.EXTENSION = #{extension}
+    </if>
+    <if test="null != ne_extension" >
+      and sfi.EXTENSION != #{ne_extension}
+    </if>
+    <if test="null != like_extension" >
+      and sfi.EXTENSION like CONCAT('%', #{like_extension}, '%')
+    </if>
+    <if test="null != list_extension" >
+      and sfi.EXTENSION in (<foreach collection="list_extension" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_extension" >
+      and sfi.EXTENSION &gt;= #{begin_extension}
+    </if>
+    <if test="null != end_extension" >
+      and sfi.EXTENSION &lt;= #{end_extension}
+    </if>
+    <if test="null != ownerId" >
+      and sfi.OWNER_ID = #{ownerId}
+    </if>
+    <if test="null != ne_ownerId" >
+      and sfi.OWNER_ID != #{ne_ownerId}
+    </if>
+    <if test="null != list_ownerId" >
+      and sfi.OWNER_ID in (<foreach collection="list_ownerId" item="i" separator=",">#{i}</foreach>)
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'fileId' == orderItem.column" >
+            sfi.FILE_ID ${orderItem.dir}
+          </if>
+          <if test="'fileName' == orderItem.column" >
+            sfi.FILE_NAME ${orderItem.dir}
+          </if>
+          <if test="'fileSize' == orderItem.column" >
+            sfi.FILE_SIZE ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            sfi.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'mimeType' == orderItem.column" >
+            sfi.MIME_TYPE ${orderItem.dir}
+          </if>
+          <if test="'extension' == orderItem.column" >
+            sfi.EXTENSION ${orderItem.dir}
+          </if>
+          <if test="'ownerId' == orderItem.column" >
+            sfi.OWNER_ID ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    sfi.FILE_ID, sfi.FILE_NAME, sfi.FILE_SIZE, sfi.CREATE_TIME, sfi.MIME_TYPE, sfi.EXTENSION, 
+    sfi.OWNER_ID
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_file_info sfi
+    where sfi.FILE_ID = #{fileId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from sys_file_info sfi
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from sys_file_info sfi
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.SysFileInfo" >
+    insert into sys_file_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fileId != null" >
+        FILE_ID,
+      </if>
+      <if test="fileName != null" >
+        FILE_NAME,
+      </if>
+      <if test="fileSize != null" >
+        FILE_SIZE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="mimeType != null" >
+        MIME_TYPE,
+      </if>
+      <if test="extension != null" >
+        EXTENSION,
+      </if>
+      <if test="ownerId != null" >
+        OWNER_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fileId != null" >
+        #{fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null" >
+        #{fileSize,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mimeType != null" >
+        #{mimeType,jdbcType=VARCHAR},
+      </if>
+      <if test="extension != null" >
+        #{extension,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerId != null" >
+        #{ownerId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.String" >
+    delete from sys_file_info
+    where FILE_ID = #{fileId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from sys_file_info where FILE_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from sfi using (sys_file_info as sfi) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.SysFileInfo" >
+    update sys_file_info
+    <set >
+      <if test="fileName != null" >
+        FILE_NAME = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null" >
+        FILE_SIZE = #{fileSize,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mimeType != null" >
+        MIME_TYPE = #{mimeType,jdbcType=VARCHAR},
+      </if>
+      <if test="extension != null" >
+        EXTENSION = #{extension,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerId != null" >
+        OWNER_ID = #{ownerId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where FILE_ID = #{fileId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update sys_file_info sfi
+    <set >
+      <if test="record.fileId != null" >
+        FILE_ID = #{record.fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileName != null" >
+        FILE_NAME = #{record.fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileSize != null" >
+        FILE_SIZE = #{record.fileSize,jdbcType=BIGINT},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.mimeType != null" >
+        MIME_TYPE = #{record.mimeType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.extension != null" >
+        EXTENSION = #{record.extension,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ownerId != null" >
+        OWNER_ID = #{record.ownerId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.fileId" >
+        and sfi.FILE_ID = #{map.fileId}
+      </if>
+      <if test="null != map.like_fileId" >
+        and sfi.FILE_ID like '%' || #{map.like_fileId} || '%'
+      </if>
+      <if test="null != map.list_fileId" >
+        and sfi.FILE_ID in (<foreach collection="map.list_fileId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.fileName" >
+        and sfi.FILE_NAME = #{map.fileName}
+      </if>
+      <if test="null != map.like_fileName" >
+        and sfi.FILE_NAME like '%' || #{map.like_fileName} || '%'
+      </if>
+      <if test="null != map.list_fileName" >
+        and sfi.FILE_NAME in (<foreach collection="map.list_fileName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.fileSize" >
+        and sfi.FILE_SIZE = #{map.fileSize}
+      </if>
+      <if test="null != map.list_fileSize" >
+        and sfi.FILE_SIZE in (<foreach collection="map.list_fileSize" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and sfi.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and sfi.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.mimeType" >
+        and sfi.MIME_TYPE = #{map.mimeType}
+      </if>
+      <if test="null != map.like_mimeType" >
+        and sfi.MIME_TYPE like '%' || #{map.like_mimeType} || '%'
+      </if>
+      <if test="null != map.list_mimeType" >
+        and sfi.MIME_TYPE in (<foreach collection="map.list_mimeType" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.extension" >
+        and sfi.EXTENSION = #{map.extension}
+      </if>
+      <if test="null != map.like_extension" >
+        and sfi.EXTENSION like '%' || #{map.like_extension} || '%'
+      </if>
+      <if test="null != map.list_extension" >
+        and sfi.EXTENSION in (<foreach collection="map.list_extension" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.ownerId" >
+        and sfi.OWNER_ID = #{map.ownerId}
+      </if>
+      <if test="null != map.list_ownerId" >
+        and sfi.OWNER_ID in (<foreach collection="map.list_ownerId" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.PmMonthReportMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.PmMonthReport" >
+    <id column="REPORT_ID" property="reportId" jdbcType="INTEGER" />
+    <result column="REPORT_YEAR" property="reportYear" jdbcType="INTEGER" />
+    <result column="REPORT_MONTH" property="reportMonth" jdbcType="INTEGER" />
+    <result column="PROJECT_ID" property="projectId" jdbcType="INTEGER" />
+    <result column="INVESTED_NUM" property="investedNum" jdbcType="DOUBLE" />
+    <result column="USE_DESIGN" property="useDesign" jdbcType="DOUBLE" />
+    <result column="USE_OVERSEE" property="useOversee" jdbcType="DOUBLE" />
+    <result column="USE_ENGINEER" property="useEngineer" jdbcType="DOUBLE" />
+    <result column="USE_BUY" property="useBuy" jdbcType="DOUBLE" />
+    <result column="USE_ASSET" property="useAsset" jdbcType="DOUBLE" />
+    <result column="USE_TOTAL" property="useTotal" jdbcType="DOUBLE" />
+    <result column="CURRENT" property="current" jdbcType="VARCHAR" />
+    <result column="ASSET" property="asset" jdbcType="VARCHAR" />
+    <result column="DIFFICULT" property="difficult" jdbcType="VARCHAR" />
+    <result column="DIFFICULT_ORG" property="difficultOrg" jdbcType="VARCHAR" />
+    <result column="COMMENT" property="comment" jdbcType="VARCHAR" />
+    <result column="APPROVE_INFO" property="approveInfo" jdbcType="VARCHAR" />
+    <result column="REPORT_STATUS" property="reportStatus" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != reportId" >
+      and pmr.REPORT_ID = #{reportId}
+    </if>
+    <if test="null != ne_reportId" >
+      and pmr.REPORT_ID != #{ne_reportId}
+    </if>
+    <if test="null != list_reportId" >
+      and pmr.REPORT_ID in (<foreach collection="list_reportId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != reportYear" >
+      and pmr.REPORT_YEAR = #{reportYear}
+    </if>
+    <if test="null != ne_reportYear" >
+      and pmr.REPORT_YEAR != #{ne_reportYear}
+    </if>
+    <if test="null != list_reportYear" >
+      and pmr.REPORT_YEAR in (<foreach collection="list_reportYear" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != reportMonth" >
+      and pmr.REPORT_MONTH = #{reportMonth}
+    </if>
+    <if test="null != ne_reportMonth" >
+      and pmr.REPORT_MONTH != #{ne_reportMonth}
+    </if>
+    <if test="null != list_reportMonth" >
+      and pmr.REPORT_MONTH in (<foreach collection="list_reportMonth" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != projectId" >
+      and pmr.PROJECT_ID = #{projectId}
+    </if>
+    <if test="null != ne_projectId" >
+      and pmr.PROJECT_ID != #{ne_projectId}
+    </if>
+    <if test="null != list_projectId" >
+      and pmr.PROJECT_ID in (<foreach collection="list_projectId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != investedNum" >
+      and pmr.INVESTED_NUM = #{investedNum}
+    </if>
+    <if test="null != ne_investedNum" >
+      and pmr.INVESTED_NUM != #{ne_investedNum}
+    </if>
+    <if test="null != list_investedNum" >
+      and pmr.INVESTED_NUM in (<foreach collection="list_investedNum" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != useDesign" >
+      and pmr.USE_DESIGN = #{useDesign}
+    </if>
+    <if test="null != ne_useDesign" >
+      and pmr.USE_DESIGN != #{ne_useDesign}
+    </if>
+    <if test="null != list_useDesign" >
+      and pmr.USE_DESIGN in (<foreach collection="list_useDesign" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != useOversee" >
+      and pmr.USE_OVERSEE = #{useOversee}
+    </if>
+    <if test="null != ne_useOversee" >
+      and pmr.USE_OVERSEE != #{ne_useOversee}
+    </if>
+    <if test="null != list_useOversee" >
+      and pmr.USE_OVERSEE in (<foreach collection="list_useOversee" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != useEngineer" >
+      and pmr.USE_ENGINEER = #{useEngineer}
+    </if>
+    <if test="null != ne_useEngineer" >
+      and pmr.USE_ENGINEER != #{ne_useEngineer}
+    </if>
+    <if test="null != list_useEngineer" >
+      and pmr.USE_ENGINEER in (<foreach collection="list_useEngineer" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != useBuy" >
+      and pmr.USE_BUY = #{useBuy}
+    </if>
+    <if test="null != ne_useBuy" >
+      and pmr.USE_BUY != #{ne_useBuy}
+    </if>
+    <if test="null != list_useBuy" >
+      and pmr.USE_BUY in (<foreach collection="list_useBuy" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != useAsset" >
+      and pmr.USE_ASSET = #{useAsset}
+    </if>
+    <if test="null != ne_useAsset" >
+      and pmr.USE_ASSET != #{ne_useAsset}
+    </if>
+    <if test="null != list_useAsset" >
+      and pmr.USE_ASSET in (<foreach collection="list_useAsset" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != useTotal" >
+      and pmr.USE_TOTAL = #{useTotal}
+    </if>
+    <if test="null != ne_useTotal" >
+      and pmr.USE_TOTAL != #{ne_useTotal}
+    </if>
+    <if test="null != list_useTotal" >
+      and pmr.USE_TOTAL in (<foreach collection="list_useTotal" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != current" >
+      and pmr.CURRENT = #{current}
+    </if>
+    <if test="null != ne_current" >
+      and pmr.CURRENT != #{ne_current}
+    </if>
+    <if test="null != like_current" >
+      and pmr.CURRENT like CONCAT('%', #{like_current}, '%')
+    </if>
+    <if test="null != list_current" >
+      and pmr.CURRENT in (<foreach collection="list_current" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_current" >
+      and pmr.CURRENT &gt;= #{begin_current}
+    </if>
+    <if test="null != end_current" >
+      and pmr.CURRENT &lt;= #{end_current}
+    </if>
+    <if test="null != asset" >
+      and pmr.ASSET = #{asset}
+    </if>
+    <if test="null != ne_asset" >
+      and pmr.ASSET != #{ne_asset}
+    </if>
+    <if test="null != like_asset" >
+      and pmr.ASSET like CONCAT('%', #{like_asset}, '%')
+    </if>
+    <if test="null != list_asset" >
+      and pmr.ASSET in (<foreach collection="list_asset" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_asset" >
+      and pmr.ASSET &gt;= #{begin_asset}
+    </if>
+    <if test="null != end_asset" >
+      and pmr.ASSET &lt;= #{end_asset}
+    </if>
+    <if test="null != difficult" >
+      and pmr.DIFFICULT = #{difficult}
+    </if>
+    <if test="null != ne_difficult" >
+      and pmr.DIFFICULT != #{ne_difficult}
+    </if>
+    <if test="null != like_difficult" >
+      and pmr.DIFFICULT like CONCAT('%', #{like_difficult}, '%')
+    </if>
+    <if test="null != list_difficult" >
+      and pmr.DIFFICULT in (<foreach collection="list_difficult" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_difficult" >
+      and pmr.DIFFICULT &gt;= #{begin_difficult}
+    </if>
+    <if test="null != end_difficult" >
+      and pmr.DIFFICULT &lt;= #{end_difficult}
+    </if>
+    <if test="null != difficultOrg" >
+      and pmr.DIFFICULT_ORG = #{difficultOrg}
+    </if>
+    <if test="null != ne_difficultOrg" >
+      and pmr.DIFFICULT_ORG != #{ne_difficultOrg}
+    </if>
+    <if test="null != like_difficultOrg" >
+      and pmr.DIFFICULT_ORG like CONCAT('%', #{like_difficultOrg}, '%')
+    </if>
+    <if test="null != list_difficultOrg" >
+      and pmr.DIFFICULT_ORG in (<foreach collection="list_difficultOrg" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_difficultOrg" >
+      and pmr.DIFFICULT_ORG &gt;= #{begin_difficultOrg}
+    </if>
+    <if test="null != end_difficultOrg" >
+      and pmr.DIFFICULT_ORG &lt;= #{end_difficultOrg}
+    </if>
+    <if test="null != comment" >
+      and pmr.COMMENT = #{comment}
+    </if>
+    <if test="null != ne_comment" >
+      and pmr.COMMENT != #{ne_comment}
+    </if>
+    <if test="null != like_comment" >
+      and pmr.COMMENT like CONCAT('%', #{like_comment}, '%')
+    </if>
+    <if test="null != list_comment" >
+      and pmr.COMMENT in (<foreach collection="list_comment" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_comment" >
+      and pmr.COMMENT &gt;= #{begin_comment}
+    </if>
+    <if test="null != end_comment" >
+      and pmr.COMMENT &lt;= #{end_comment}
+    </if>
+    <if test="null != approveInfo" >
+      and pmr.APPROVE_INFO = #{approveInfo}
+    </if>
+    <if test="null != ne_approveInfo" >
+      and pmr.APPROVE_INFO != #{ne_approveInfo}
+    </if>
+    <if test="null != like_approveInfo" >
+      and pmr.APPROVE_INFO like CONCAT('%', #{like_approveInfo}, '%')
+    </if>
+    <if test="null != list_approveInfo" >
+      and pmr.APPROVE_INFO in (<foreach collection="list_approveInfo" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_approveInfo" >
+      and pmr.APPROVE_INFO &gt;= #{begin_approveInfo}
+    </if>
+    <if test="null != end_approveInfo" >
+      and pmr.APPROVE_INFO &lt;= #{end_approveInfo}
+    </if>
+    <if test="null != reportStatus" >
+      and pmr.REPORT_STATUS = #{reportStatus}
+    </if>
+    <if test="null != ne_reportStatus" >
+      and pmr.REPORT_STATUS != #{ne_reportStatus}
+    </if>
+    <if test="null != list_reportStatus" >
+      and pmr.REPORT_STATUS in (<foreach collection="list_reportStatus" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_createTime" >
+      and pmr.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and pmr.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'reportId' == orderItem.column" >
+            pmr.REPORT_ID ${orderItem.dir}
+          </if>
+          <if test="'reportYear' == orderItem.column" >
+            pmr.REPORT_YEAR ${orderItem.dir}
+          </if>
+          <if test="'reportMonth' == orderItem.column" >
+            pmr.REPORT_MONTH ${orderItem.dir}
+          </if>
+          <if test="'projectId' == orderItem.column" >
+            pmr.PROJECT_ID ${orderItem.dir}
+          </if>
+          <if test="'investedNum' == orderItem.column" >
+            pmr.INVESTED_NUM ${orderItem.dir}
+          </if>
+          <if test="'useDesign' == orderItem.column" >
+            pmr.USE_DESIGN ${orderItem.dir}
+          </if>
+          <if test="'useOversee' == orderItem.column" >
+            pmr.USE_OVERSEE ${orderItem.dir}
+          </if>
+          <if test="'useEngineer' == orderItem.column" >
+            pmr.USE_ENGINEER ${orderItem.dir}
+          </if>
+          <if test="'useBuy' == orderItem.column" >
+            pmr.USE_BUY ${orderItem.dir}
+          </if>
+          <if test="'useAsset' == orderItem.column" >
+            pmr.USE_ASSET ${orderItem.dir}
+          </if>
+          <if test="'useTotal' == orderItem.column" >
+            pmr.USE_TOTAL ${orderItem.dir}
+          </if>
+          <if test="'current' == orderItem.column" >
+            pmr.CURRENT ${orderItem.dir}
+          </if>
+          <if test="'asset' == orderItem.column" >
+            pmr.ASSET ${orderItem.dir}
+          </if>
+          <if test="'difficult' == orderItem.column" >
+            pmr.DIFFICULT ${orderItem.dir}
+          </if>
+          <if test="'difficultOrg' == orderItem.column" >
+            pmr.DIFFICULT_ORG ${orderItem.dir}
+          </if>
+          <if test="'comment' == orderItem.column" >
+            pmr.COMMENT ${orderItem.dir}
+          </if>
+          <if test="'approveInfo' == orderItem.column" >
+            pmr.APPROVE_INFO ${orderItem.dir}
+          </if>
+          <if test="'reportStatus' == orderItem.column" >
+            pmr.REPORT_STATUS ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            pmr.CREATE_TIME ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    pmr.REPORT_ID, pmr.REPORT_YEAR, pmr.REPORT_MONTH, pmr.PROJECT_ID, pmr.INVESTED_NUM, 
+    pmr.USE_DESIGN, pmr.USE_OVERSEE, pmr.USE_ENGINEER, pmr.USE_BUY, pmr.USE_ASSET, pmr.USE_TOTAL, 
+    pmr.CURRENT, pmr.ASSET, pmr.DIFFICULT, pmr.DIFFICULT_ORG, pmr.COMMENT, pmr.APPROVE_INFO, 
+    pmr.REPORT_STATUS, pmr.CREATE_TIME
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from pm_month_report pmr
+    where pmr.REPORT_ID = #{reportId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from pm_month_report pmr
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from pm_month_report pmr
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.PmMonthReport" >
+    <selectKey resultType="java.lang.Integer" keyProperty="reportId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into pm_month_report
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      REPORT_ID,
+      <if test="reportYear != null" >
+        REPORT_YEAR,
+      </if>
+      <if test="reportMonth != null" >
+        REPORT_MONTH,
+      </if>
+      <if test="projectId != null" >
+        PROJECT_ID,
+      </if>
+      <if test="investedNum != null" >
+        INVESTED_NUM,
+      </if>
+      <if test="useDesign != null" >
+        USE_DESIGN,
+      </if>
+      <if test="useOversee != null" >
+        USE_OVERSEE,
+      </if>
+      <if test="useEngineer != null" >
+        USE_ENGINEER,
+      </if>
+      <if test="useBuy != null" >
+        USE_BUY,
+      </if>
+      <if test="useAsset != null" >
+        USE_ASSET,
+      </if>
+      <if test="useTotal != null" >
+        USE_TOTAL,
+      </if>
+      <if test="current != null" >
+        CURRENT,
+      </if>
+      <if test="asset != null" >
+        ASSET,
+      </if>
+      <if test="difficult != null" >
+        DIFFICULT,
+      </if>
+      <if test="difficultOrg != null" >
+        DIFFICULT_ORG,
+      </if>
+      <if test="comment != null" >
+        COMMENT,
+      </if>
+      <if test="approveInfo != null" >
+        APPROVE_INFO,
+      </if>
+      <if test="reportStatus != null" >
+        REPORT_STATUS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{reportId,jdbcType=INTEGER},
+      <if test="reportYear != null" >
+        #{reportYear,jdbcType=INTEGER},
+      </if>
+      <if test="reportMonth != null" >
+        #{reportMonth,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="investedNum != null" >
+        #{investedNum,jdbcType=DOUBLE},
+      </if>
+      <if test="useDesign != null" >
+        #{useDesign,jdbcType=DOUBLE},
+      </if>
+      <if test="useOversee != null" >
+        #{useOversee,jdbcType=DOUBLE},
+      </if>
+      <if test="useEngineer != null" >
+        #{useEngineer,jdbcType=DOUBLE},
+      </if>
+      <if test="useBuy != null" >
+        #{useBuy,jdbcType=DOUBLE},
+      </if>
+      <if test="useAsset != null" >
+        #{useAsset,jdbcType=DOUBLE},
+      </if>
+      <if test="useTotal != null" >
+        #{useTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="current != null" >
+        #{current,jdbcType=VARCHAR},
+      </if>
+      <if test="asset != null" >
+        #{asset,jdbcType=VARCHAR},
+      </if>
+      <if test="difficult != null" >
+        #{difficult,jdbcType=VARCHAR},
+      </if>
+      <if test="difficultOrg != null" >
+        #{difficultOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="approveInfo != null" >
+        #{approveInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="reportStatus != null" >
+        #{reportStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from pm_month_report
+    where REPORT_ID = #{reportId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from pm_month_report where REPORT_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from pmr using (pm_month_report as pmr) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.PmMonthReport" >
+    update pm_month_report
+    <set >
+      <if test="reportYear != null" >
+        REPORT_YEAR = #{reportYear,jdbcType=INTEGER},
+      </if>
+      <if test="reportMonth != null" >
+        REPORT_MONTH = #{reportMonth,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        PROJECT_ID = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="investedNum != null" >
+        INVESTED_NUM = #{investedNum,jdbcType=DOUBLE},
+      </if>
+      <if test="useDesign != null" >
+        USE_DESIGN = #{useDesign,jdbcType=DOUBLE},
+      </if>
+      <if test="useOversee != null" >
+        USE_OVERSEE = #{useOversee,jdbcType=DOUBLE},
+      </if>
+      <if test="useEngineer != null" >
+        USE_ENGINEER = #{useEngineer,jdbcType=DOUBLE},
+      </if>
+      <if test="useBuy != null" >
+        USE_BUY = #{useBuy,jdbcType=DOUBLE},
+      </if>
+      <if test="useAsset != null" >
+        USE_ASSET = #{useAsset,jdbcType=DOUBLE},
+      </if>
+      <if test="useTotal != null" >
+        USE_TOTAL = #{useTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="current != null" >
+        CURRENT = #{current,jdbcType=VARCHAR},
+      </if>
+      <if test="asset != null" >
+        ASSET = #{asset,jdbcType=VARCHAR},
+      </if>
+      <if test="difficult != null" >
+        DIFFICULT = #{difficult,jdbcType=VARCHAR},
+      </if>
+      <if test="difficultOrg != null" >
+        DIFFICULT_ORG = #{difficultOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null" >
+        COMMENT = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="approveInfo != null" >
+        APPROVE_INFO = #{approveInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="reportStatus != null" >
+        REPORT_STATUS = #{reportStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where REPORT_ID = #{reportId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update pm_month_report pmr
+    <set >
+      <if test="record.reportId != null" >
+        REPORT_ID = #{record.reportId,jdbcType=INTEGER},
+      </if>
+      <if test="record.reportYear != null" >
+        REPORT_YEAR = #{record.reportYear,jdbcType=INTEGER},
+      </if>
+      <if test="record.reportMonth != null" >
+        REPORT_MONTH = #{record.reportMonth,jdbcType=INTEGER},
+      </if>
+      <if test="record.projectId != null" >
+        PROJECT_ID = #{record.projectId,jdbcType=INTEGER},
+      </if>
+      <if test="record.investedNum != null" >
+        INVESTED_NUM = #{record.investedNum,jdbcType=DOUBLE},
+      </if>
+      <if test="record.useDesign != null" >
+        USE_DESIGN = #{record.useDesign,jdbcType=DOUBLE},
+      </if>
+      <if test="record.useOversee != null" >
+        USE_OVERSEE = #{record.useOversee,jdbcType=DOUBLE},
+      </if>
+      <if test="record.useEngineer != null" >
+        USE_ENGINEER = #{record.useEngineer,jdbcType=DOUBLE},
+      </if>
+      <if test="record.useBuy != null" >
+        USE_BUY = #{record.useBuy,jdbcType=DOUBLE},
+      </if>
+      <if test="record.useAsset != null" >
+        USE_ASSET = #{record.useAsset,jdbcType=DOUBLE},
+      </if>
+      <if test="record.useTotal != null" >
+        USE_TOTAL = #{record.useTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="record.current != null" >
+        CURRENT = #{record.current,jdbcType=VARCHAR},
+      </if>
+      <if test="record.asset != null" >
+        ASSET = #{record.asset,jdbcType=VARCHAR},
+      </if>
+      <if test="record.difficult != null" >
+        DIFFICULT = #{record.difficult,jdbcType=VARCHAR},
+      </if>
+      <if test="record.difficultOrg != null" >
+        DIFFICULT_ORG = #{record.difficultOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.comment != null" >
+        COMMENT = #{record.comment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.approveInfo != null" >
+        APPROVE_INFO = #{record.approveInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reportStatus != null" >
+        REPORT_STATUS = #{record.reportStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.reportId" >
+        and pmr.REPORT_ID = #{map.reportId}
+      </if>
+      <if test="null != map.list_reportId" >
+        and pmr.REPORT_ID in (<foreach collection="map.list_reportId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.reportYear" >
+        and pmr.REPORT_YEAR = #{map.reportYear}
+      </if>
+      <if test="null != map.list_reportYear" >
+        and pmr.REPORT_YEAR in (<foreach collection="map.list_reportYear" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.reportMonth" >
+        and pmr.REPORT_MONTH = #{map.reportMonth}
+      </if>
+      <if test="null != map.list_reportMonth" >
+        and pmr.REPORT_MONTH in (<foreach collection="map.list_reportMonth" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.projectId" >
+        and pmr.PROJECT_ID = #{map.projectId}
+      </if>
+      <if test="null != map.list_projectId" >
+        and pmr.PROJECT_ID in (<foreach collection="map.list_projectId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.investedNum" >
+        and pmr.INVESTED_NUM = #{map.investedNum}
+      </if>
+      <if test="null != map.list_investedNum" >
+        and pmr.INVESTED_NUM in (<foreach collection="map.list_investedNum" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.useDesign" >
+        and pmr.USE_DESIGN = #{map.useDesign}
+      </if>
+      <if test="null != map.list_useDesign" >
+        and pmr.USE_DESIGN in (<foreach collection="map.list_useDesign" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.useOversee" >
+        and pmr.USE_OVERSEE = #{map.useOversee}
+      </if>
+      <if test="null != map.list_useOversee" >
+        and pmr.USE_OVERSEE in (<foreach collection="map.list_useOversee" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.useEngineer" >
+        and pmr.USE_ENGINEER = #{map.useEngineer}
+      </if>
+      <if test="null != map.list_useEngineer" >
+        and pmr.USE_ENGINEER in (<foreach collection="map.list_useEngineer" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.useBuy" >
+        and pmr.USE_BUY = #{map.useBuy}
+      </if>
+      <if test="null != map.list_useBuy" >
+        and pmr.USE_BUY in (<foreach collection="map.list_useBuy" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.useAsset" >
+        and pmr.USE_ASSET = #{map.useAsset}
+      </if>
+      <if test="null != map.list_useAsset" >
+        and pmr.USE_ASSET in (<foreach collection="map.list_useAsset" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.useTotal" >
+        and pmr.USE_TOTAL = #{map.useTotal}
+      </if>
+      <if test="null != map.list_useTotal" >
+        and pmr.USE_TOTAL in (<foreach collection="map.list_useTotal" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.current" >
+        and pmr.CURRENT = #{map.current}
+      </if>
+      <if test="null != map.like_current" >
+        and pmr.CURRENT like '%' || #{map.like_current} || '%'
+      </if>
+      <if test="null != map.list_current" >
+        and pmr.CURRENT in (<foreach collection="map.list_current" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.asset" >
+        and pmr.ASSET = #{map.asset}
+      </if>
+      <if test="null != map.like_asset" >
+        and pmr.ASSET like '%' || #{map.like_asset} || '%'
+      </if>
+      <if test="null != map.list_asset" >
+        and pmr.ASSET in (<foreach collection="map.list_asset" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.difficult" >
+        and pmr.DIFFICULT = #{map.difficult}
+      </if>
+      <if test="null != map.like_difficult" >
+        and pmr.DIFFICULT like '%' || #{map.like_difficult} || '%'
+      </if>
+      <if test="null != map.list_difficult" >
+        and pmr.DIFFICULT in (<foreach collection="map.list_difficult" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.difficultOrg" >
+        and pmr.DIFFICULT_ORG = #{map.difficultOrg}
+      </if>
+      <if test="null != map.like_difficultOrg" >
+        and pmr.DIFFICULT_ORG like '%' || #{map.like_difficultOrg} || '%'
+      </if>
+      <if test="null != map.list_difficultOrg" >
+        and pmr.DIFFICULT_ORG in (<foreach collection="map.list_difficultOrg" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.comment" >
+        and pmr.COMMENT = #{map.comment}
+      </if>
+      <if test="null != map.like_comment" >
+        and pmr.COMMENT like '%' || #{map.like_comment} || '%'
+      </if>
+      <if test="null != map.list_comment" >
+        and pmr.COMMENT in (<foreach collection="map.list_comment" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.approveInfo" >
+        and pmr.APPROVE_INFO = #{map.approveInfo}
+      </if>
+      <if test="null != map.like_approveInfo" >
+        and pmr.APPROVE_INFO like '%' || #{map.like_approveInfo} || '%'
+      </if>
+      <if test="null != map.list_approveInfo" >
+        and pmr.APPROVE_INFO in (<foreach collection="map.list_approveInfo" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.reportStatus" >
+        and pmr.REPORT_STATUS = #{map.reportStatus}
+      </if>
+      <if test="null != map.list_reportStatus" >
+        and pmr.REPORT_STATUS in (<foreach collection="map.list_reportStatus" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and pmr.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and pmr.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+    </where>
+  </update>
+</mapper>

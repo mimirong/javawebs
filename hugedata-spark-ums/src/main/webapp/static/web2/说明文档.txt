@@ -1,0 +1,178 @@
+0.登录						login.html
+
+  注册						register01.html
+
+  注册服务协议					register.html
+
+1.首页						index.html
+
+ 个人中心-注册信息				grzx.html
+
+	注册信息修改页面			grzx01.html
+
+ 个人中心-消息通知 				grzx02.html	
+	
+2.办事服务 		
+	2.1 办事事项				bsfw01.html
+
+		2.1.1 办事指南			bsfw01-1.html
+
+		2.1.2 办理流程			bsfw01-2.html
+
+		2.1.3 表格下载			bsfw01-3.html
+
+		2.1.4 在线办理 			bsfw01-4.html
+
+	2.2 办件公示 				bsfw02.html
+
+		办件详情				bsfw02-1.html
+
+3.服务外包 （详情页样式一致）			fwwb.html
+
+	3.1 检测设计服务 				fwwb01.html
+
+		3.1.1 成果展示（更多）		fwwb01-1.html
+
+			详情页  			fwwb01-1-1.html
+
+		3.1.2 资源平台（更多）		fwwb01-2.html
+
+			详情页  			fwwb01-1-1.html
+
+		3.1.3 技术转让（更多）		fwwb01-3.html
+
+			详情页  			fwwb01-1-1.html
+
+		3.1.4 技术培训（更多）		fwwb01-4.html
+
+			详情页  			fwwb01-1-1.html
+
+	 3.2 公共技术服务				 fwwb02.html
+
+		3.2.1 人力资源服务
+
+			3.2.1.1 人才培训		 fwwb02-1-1.html
+
+				详情页	 	fwwb01-1-1.html
+
+			3.2.1.2 技术职称招考	 fwwb02-1-2.html
+
+				详情页 	 	fwwb01-1-1.html
+
+			3.2.1.2企业招聘 	 	fwwb02-1-3.html
+
+				详情页       	fwwb01-1-1.html
+
+		3.2.2 企业信息服务 
+
+			3.2.2.1 企业信息库 		 fwwb02-2-1.html
+
+				详情页  		fwwb01-1-1.html
+
+			3.2.2.2 产品信息库  		fwwb02-2-2.html
+
+				详情页  		fwwb01-1-1.html
+
+		3.2.3 项目招商服务
+
+			3.2.3.1 招商信息 		fwwb02-3-1.html 
+
+				详情页  		fwwb01-1-1.html
+
+			3.2.3.2 资源展示 		fwwb02-3-2.html
+
+				详情页  		fwwb01-1-1.html
+
+	3.3 电子商务服务 				fwwb03.html
+
+		3.3.1 招标公告 			fwwb03-1.html
+
+			详情页			fwwb01-1-1.html
+
+		3.3.2 项目对接 fwwb03-2.html
+
+			详情页			fwwb01-1-1.html
+
+		3.3.3 服务外包 fwwb03-3.html
+
+			详情页			fwwb01-1-1.html
+
+		3.3.4 金融服务 fwwb03-4.html
+
+			详情页			fwwb01-1-1.html
+
+	3.4 综合政务服务				fwwb04.html
+
+		3.4.1 入园服务			
+
+			入园指南			fwwb04-1-1.html
+
+			入园申请			fwwb04-1-2.html
+
+		3.4.2 退园服务			
+
+			退园指南			fwwb04-2-1.html
+
+			退园申请			fwwb04-2-2.html
+
+		3.4.3 场地服务			fwwb04-3.html
+
+		3.4.4 费用服务			fwwb04-4.html
+
+4.项目管理（新增）
+
+	4.1 项目列表 xmgl.html
+
+		项目详情
+
+		4.1.1 基本信息 xmgl01.html
+
+			更新信息 xmgl01-1.html
+
+		4.1.2 手续文件xmgl02.html
+
+		4.1.3 文档资料xmgl03.html
+
+		4.1.4 项目月报xmgl04.html
+
+			11月月报上报xmgl04-1.html
+
+		4.1.5 年度计划xmgl05.html
+
+5.通知公告 					tzgg.html
+
+	5.1 更多信息 				tzgg01.html
+
+		详情页 				tzgg01-1.html
+
+6.便民服务 					bmfw.html
+
+	6.1 园区小区  				bmfw01.html
+
+	6.2 园区学校  				bmfw02.html
+
+	6.3 园区医院  				bmfw03.html
+
+	6.4 园区公交  				bmfw04.html
+
+7.互动交流	
+
+	7.1 领导信箱 				hdjl.html
+
+		7.1.1 详情			hdjl-show.html
+
+		7.1.2 我要写信			hdjl-letter.html
+
+		7.1.3 提交成功			hdjl-success.html
+
+		
+
+	7.2 调查征集 				hdjl01.html
+
+		7.2.1 调查问卷			hdjl-question.html		
+
+	
+
+
+
+

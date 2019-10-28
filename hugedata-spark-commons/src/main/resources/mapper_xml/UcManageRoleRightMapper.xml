@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.UcManageRoleRightMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.UcManageRoleRight" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="ROLE_ID" property="roleId" jdbcType="VARCHAR" />
+    <result column="RIGHT_ID" property="rightId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != id" >
+      and umrr.ID = #{id}
+    </if>
+    <if test="null != ne_id" >
+      and umrr.ID != #{ne_id}
+    </if>
+    <if test="null != list_id" >
+      and umrr.ID in (<foreach collection="list_id" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != roleId" >
+      and umrr.ROLE_ID = #{roleId}
+    </if>
+    <if test="null != ne_roleId" >
+      and umrr.ROLE_ID != #{ne_roleId}
+    </if>
+    <if test="null != like_roleId" >
+      and umrr.ROLE_ID like CONCAT('%', #{like_roleId}, '%')
+    </if>
+    <if test="null != list_roleId" >
+      and umrr.ROLE_ID in (<foreach collection="list_roleId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_roleId" >
+      and umrr.ROLE_ID &gt;= #{begin_roleId}
+    </if>
+    <if test="null != end_roleId" >
+      and umrr.ROLE_ID &lt;= #{end_roleId}
+    </if>
+    <if test="null != rightId" >
+      and umrr.RIGHT_ID = #{rightId}
+    </if>
+    <if test="null != ne_rightId" >
+      and umrr.RIGHT_ID != #{ne_rightId}
+    </if>
+    <if test="null != like_rightId" >
+      and umrr.RIGHT_ID like CONCAT('%', #{like_rightId}, '%')
+    </if>
+    <if test="null != list_rightId" >
+      and umrr.RIGHT_ID in (<foreach collection="list_rightId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_rightId" >
+      and umrr.RIGHT_ID &gt;= #{begin_rightId}
+    </if>
+    <if test="null != end_rightId" >
+      and umrr.RIGHT_ID &lt;= #{end_rightId}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'id' == orderItem.column" >
+            umrr.ID ${orderItem.dir}
+          </if>
+          <if test="'roleId' == orderItem.column" >
+            umrr.ROLE_ID ${orderItem.dir}
+          </if>
+          <if test="'rightId' == orderItem.column" >
+            umrr.RIGHT_ID ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    umrr.ID, umrr.ROLE_ID, umrr.RIGHT_ID
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from uc_manage_role_right umrr
+    where umrr.ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from uc_manage_role_right umrr
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from uc_manage_role_right umrr
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcManageRoleRight" >
+    insert into uc_manage_role_right
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="roleId != null" >
+        ROLE_ID,
+      </if>
+      <if test="rightId != null" >
+        RIGHT_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="rightId != null" >
+        #{rightId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from uc_manage_role_right
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from uc_manage_role_right where ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from umrr using (uc_manage_role_right as umrr) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.UcManageRoleRight" >
+    update uc_manage_role_right
+    <set >
+      <if test="roleId != null" >
+        ROLE_ID = #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="rightId != null" >
+        RIGHT_ID = #{rightId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update uc_manage_role_right umrr
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.roleId != null" >
+        ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rightId != null" >
+        RIGHT_ID = #{record.rightId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.id" >
+        and umrr.ID = #{map.id}
+      </if>
+      <if test="null != map.list_id" >
+        and umrr.ID in (<foreach collection="map.list_id" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.roleId" >
+        and umrr.ROLE_ID = #{map.roleId}
+      </if>
+      <if test="null != map.like_roleId" >
+        and umrr.ROLE_ID like '%' || #{map.like_roleId} || '%'
+      </if>
+      <if test="null != map.list_roleId" >
+        and umrr.ROLE_ID in (<foreach collection="map.list_roleId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.rightId" >
+        and umrr.RIGHT_ID = #{map.rightId}
+      </if>
+      <if test="null != map.like_rightId" >
+        and umrr.RIGHT_ID like '%' || #{map.like_rightId} || '%'
+      </if>
+      <if test="null != map.list_rightId" >
+        and umrr.RIGHT_ID in (<foreach collection="map.list_rightId" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.insertmapper.UcDeptInfoInsertMapper">
+
+    <insert id="insertAll" parameterType="ArrayList">
+        <selectKey resultType="java.lang.Integer" keyProperty="deptId" order="AFTER">
+            select @@identity
+        </selectKey>
+        INSERT into uc_dept_info
+        (DEPT_ID,REF_DEPT_ID,NAME,ORG_ID,PARENT_DEPT_ID,FULL_ID,CREATE_TIME,UPDATE_TIME)
+        values
+        <foreach collection="list" item="obj" index="index" separator=",">
+            (#{obj.deptId,jdbcType=INTEGER},#{obj.refDeptId,jdbcType=VARCHAR},
+            #{obj.name,jdbcType=VARCHAR},#{obj.orgId,jdbcType=INTEGER},
+            #{obj.parentDeptId,jdbcType=INTEGER}, #{obj.fullId,jdbcType=VARCHAR},
+            #{obj.createTime,jdbcType=TIMESTAMP},#{obj.updateTime,jdbcType=TIMESTAMP})
+        </foreach>
+         on duplicate key update
+        NAME=VALUES(NAME),ORG_ID=VALUES(ORG_ID),
+        PARENT_DEPT_ID=VALUES(PARENT_DEPT_ID),FULL_ID=VALUES(FULL_ID),
+        UPDATE_TIME=VALUES(UPDATE_TIME)
+    </insert>
+
+</mapper>

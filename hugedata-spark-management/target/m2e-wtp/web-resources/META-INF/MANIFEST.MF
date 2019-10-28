@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Build-Timestamp: 20191028053254
+Built-By: a8689
+Build-Jdk: 1.8.0_231
+Created-By: Maven Integration for Eclipse
+

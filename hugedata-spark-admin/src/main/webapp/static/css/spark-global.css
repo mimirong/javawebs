@@ -1,0 +1,11 @@
+
+* { font:normal 14px 微软雅黑; }
+.masterPageContent { float:left; margin:50px 8px 0 200px; }
+.masterPageSideMenu { float:left; width:180px; position:fixed; }
+
+.feature-content { padding:12px; }
+.feature-content-internal { }
+.operation-panel { margin-top:10px; }
+.form-wrapper { width:520px; margin:0 auto; }
+.form-wrapper2 { width:800px; margin:0 auto; }
+span.required { color:red; font-weight:bold; }

@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.PtArticleMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.PtArticle" >
+    <id column="ARTICLE_ID" property="articleId" jdbcType="INTEGER" />
+    <result column="CATEGORY_ID" property="categoryId" jdbcType="VARCHAR" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="BRIEF" property="brief" jdbcType="VARCHAR" />
+    <result column="AUTHOR" property="author" jdbcType="VARCHAR" />
+    <result column="SOURCE" property="source" jdbcType="VARCHAR" />
+    <result column="PUBLISHER_USER_ID" property="publisherUserId" jdbcType="INTEGER" />
+    <result column="PUBLISHER_NAME" property="publisherName" jdbcType="VARCHAR" />
+    <result column="COVER_FILE_ID" property="coverFileId" jdbcType="VARCHAR" />
+    <result column="COVER_FILE_NAME" property="coverFileName" jdbcType="VARCHAR" />
+    <result column="IS_VISIBLE" property="isVisible" jdbcType="BIT" />
+    <result column="PUBLISH_TIME" property="publishTime" jdbcType="TIMESTAMP" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.com.hugedata.spark.commons.storage.entity.PtArticle" extends="BaseResultMap" >
+    <result column="CONTENT" property="content" jdbcType="LONGVARCHAR" />
+    <result column="EXTRA_DATA" property="extraData" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != articleId" >
+      and pa.ARTICLE_ID = #{articleId}
+    </if>
+    <if test="null != ne_articleId" >
+      and pa.ARTICLE_ID != #{ne_articleId}
+    </if>
+    <if test="null != list_articleId" >
+      and pa.ARTICLE_ID in (<foreach collection="list_articleId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != categoryId" >
+      and pa.CATEGORY_ID = #{categoryId}
+    </if>
+    <if test="null != ne_categoryId" >
+      and pa.CATEGORY_ID != #{ne_categoryId}
+    </if>
+    <if test="null != like_categoryId" >
+      and pa.CATEGORY_ID like CONCAT('%', #{like_categoryId}, '%')
+    </if>
+    <if test="null != list_categoryId" >
+      and pa.CATEGORY_ID in (<foreach collection="list_categoryId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_categoryId" >
+      and pa.CATEGORY_ID &gt;= #{begin_categoryId}
+    </if>
+    <if test="null != end_categoryId" >
+      and pa.CATEGORY_ID &lt;= #{end_categoryId}
+    </if>
+    <if test="null != title" >
+      and pa.TITLE = #{title}
+    </if>
+    <if test="null != ne_title" >
+      and pa.TITLE != #{ne_title}
+    </if>
+    <if test="null != like_title" >
+      and pa.TITLE like CONCAT('%', #{like_title}, '%')
+    </if>
+    <if test="null != list_title" >
+      and pa.TITLE in (<foreach collection="list_title" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_title" >
+      and pa.TITLE &gt;= #{begin_title}
+    </if>
+    <if test="null != end_title" >
+      and pa.TITLE &lt;= #{end_title}
+    </if>
+    <if test="null != brief" >
+      and pa.BRIEF = #{brief}
+    </if>
+    <if test="null != ne_brief" >
+      and pa.BRIEF != #{ne_brief}
+    </if>
+    <if test="null != like_brief" >
+      and pa.BRIEF like CONCAT('%', #{like_brief}, '%')
+    </if>
+    <if test="null != list_brief" >
+      and pa.BRIEF in (<foreach collection="list_brief" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_brief" >
+      and pa.BRIEF &gt;= #{begin_brief}
+    </if>
+    <if test="null != end_brief" >
+      and pa.BRIEF &lt;= #{end_brief}
+    </if>
+    <if test="null != author" >
+      and pa.AUTHOR = #{author}
+    </if>
+    <if test="null != ne_author" >
+      and pa.AUTHOR != #{ne_author}
+    </if>
+    <if test="null != like_author" >
+      and pa.AUTHOR like CONCAT('%', #{like_author}, '%')
+    </if>
+    <if test="null != list_author" >
+      and pa.AUTHOR in (<foreach collection="list_author" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_author" >
+      and pa.AUTHOR &gt;= #{begin_author}
+    </if>
+    <if test="null != end_author" >
+      and pa.AUTHOR &lt;= #{end_author}
+    </if>
+    <if test="null != source" >
+      and pa.SOURCE = #{source}
+    </if>
+    <if test="null != ne_source" >
+      and pa.SOURCE != #{ne_source}
+    </if>
+    <if test="null != like_source" >
+      and pa.SOURCE like CONCAT('%', #{like_source}, '%')
+    </if>
+    <if test="null != list_source" >
+      and pa.SOURCE in (<foreach collection="list_source" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_source" >
+      and pa.SOURCE &gt;= #{begin_source}
+    </if>
+    <if test="null != end_source" >
+      and pa.SOURCE &lt;= #{end_source}
+    </if>
+    <if test="null != publisherUserId" >
+      and pa.PUBLISHER_USER_ID = #{publisherUserId}
+    </if>
+    <if test="null != ne_publisherUserId" >
+      and pa.PUBLISHER_USER_ID != #{ne_publisherUserId}
+    </if>
+    <if test="null != list_publisherUserId" >
+      and pa.PUBLISHER_USER_ID in (<foreach collection="list_publisherUserId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != publisherName" >
+      and pa.PUBLISHER_NAME = #{publisherName}
+    </if>
+    <if test="null != ne_publisherName" >
+      and pa.PUBLISHER_NAME != #{ne_publisherName}
+    </if>
+    <if test="null != like_publisherName" >
+      and pa.PUBLISHER_NAME like CONCAT('%', #{like_publisherName}, '%')
+    </if>
+    <if test="null != list_publisherName" >
+      and pa.PUBLISHER_NAME in (<foreach collection="list_publisherName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_publisherName" >
+      and pa.PUBLISHER_NAME &gt;= #{begin_publisherName}
+    </if>
+    <if test="null != end_publisherName" >
+      and pa.PUBLISHER_NAME &lt;= #{end_publisherName}
+    </if>
+    <if test="null != coverFileId" >
+      and pa.COVER_FILE_ID = #{coverFileId}
+    </if>
+    <if test="null != ne_coverFileId" >
+      and pa.COVER_FILE_ID != #{ne_coverFileId}
+    </if>
+    <if test="null != like_coverFileId" >
+      and pa.COVER_FILE_ID like CONCAT('%', #{like_coverFileId}, '%')
+    </if>
+    <if test="null != list_coverFileId" >
+      and pa.COVER_FILE_ID in (<foreach collection="list_coverFileId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_coverFileId" >
+      and pa.COVER_FILE_ID &gt;= #{begin_coverFileId}
+    </if>
+    <if test="null != end_coverFileId" >
+      and pa.COVER_FILE_ID &lt;= #{end_coverFileId}
+    </if>
+    <if test="null != coverFileName" >
+      and pa.COVER_FILE_NAME = #{coverFileName}
+    </if>
+    <if test="null != ne_coverFileName" >
+      and pa.COVER_FILE_NAME != #{ne_coverFileName}
+    </if>
+    <if test="null != like_coverFileName" >
+      and pa.COVER_FILE_NAME like CONCAT('%', #{like_coverFileName}, '%')
+    </if>
+    <if test="null != list_coverFileName" >
+      and pa.COVER_FILE_NAME in (<foreach collection="list_coverFileName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_coverFileName" >
+      and pa.COVER_FILE_NAME &gt;= #{begin_coverFileName}
+    </if>
+    <if test="null != end_coverFileName" >
+      and pa.COVER_FILE_NAME &lt;= #{end_coverFileName}
+    </if>
+    <if test="null != isVisible" >
+      and pa.IS_VISIBLE = #{isVisible}
+    </if>
+    <if test="null != ne_isVisible" >
+      and pa.IS_VISIBLE != #{ne_isVisible}
+    </if>
+    <if test="null != list_isVisible" >
+      and pa.IS_VISIBLE in (<foreach collection="list_isVisible" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_publishTime" >
+      and pa.PUBLISH_TIME &gt;= #{begin_publishTime}
+    </if>
+    <if test="null != end_publishTime" >
+      and pa.PUBLISH_TIME &lt;= #{end_publishTime}
+    </if>
+    <if test="null != begin_createTime" >
+      and pa.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and pa.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_updateTime" >
+      and pa.UPDATE_TIME &gt;= #{begin_updateTime}
+    </if>
+    <if test="null != end_updateTime" >
+      and pa.UPDATE_TIME &lt;= #{end_updateTime}
+    </if>
+    <if test="null != content" >
+      and pa.CONTENT = #{content}
+    </if>
+    <if test="null != ne_content" >
+      and pa.CONTENT != #{ne_content}
+    </if>
+    <if test="null != like_content" >
+      and pa.CONTENT like CONCAT('%', #{like_content}, '%')
+    </if>
+    <if test="null != list_content" >
+      and pa.CONTENT in (<foreach collection="list_content" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_content" >
+      and pa.CONTENT &gt;= #{begin_content}
+    </if>
+    <if test="null != end_content" >
+      and pa.CONTENT &lt;= #{end_content}
+    </if>
+    <if test="null != extraData" >
+      and pa.EXTRA_DATA = #{extraData}
+    </if>
+    <if test="null != ne_extraData" >
+      and pa.EXTRA_DATA != #{ne_extraData}
+    </if>
+    <if test="null != like_extraData" >
+      and pa.EXTRA_DATA like CONCAT('%', #{like_extraData}, '%')
+    </if>
+    <if test="null != list_extraData" >
+      and pa.EXTRA_DATA in (<foreach collection="list_extraData" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_extraData" >
+      and pa.EXTRA_DATA &gt;= #{begin_extraData}
+    </if>
+    <if test="null != end_extraData" >
+      and pa.EXTRA_DATA &lt;= #{end_extraData}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'articleId' == orderItem.column" >
+            pa.ARTICLE_ID ${orderItem.dir}
+          </if>
+          <if test="'categoryId' == orderItem.column" >
+            pa.CATEGORY_ID ${orderItem.dir}
+          </if>
+          <if test="'title' == orderItem.column" >
+            pa.TITLE ${orderItem.dir}
+          </if>
+          <if test="'brief' == orderItem.column" >
+            pa.BRIEF ${orderItem.dir}
+          </if>
+          <if test="'author' == orderItem.column" >
+            pa.AUTHOR ${orderItem.dir}
+          </if>
+          <if test="'source' == orderItem.column" >
+            pa.SOURCE ${orderItem.dir}
+          </if>
+          <if test="'publisherUserId' == orderItem.column" >
+            pa.PUBLISHER_USER_ID ${orderItem.dir}
+          </if>
+          <if test="'publisherName' == orderItem.column" >
+            pa.PUBLISHER_NAME ${orderItem.dir}
+          </if>
+          <if test="'coverFileId' == orderItem.column" >
+            pa.COVER_FILE_ID ${orderItem.dir}
+          </if>
+          <if test="'coverFileName' == orderItem.column" >
+            pa.COVER_FILE_NAME ${orderItem.dir}
+          </if>
+          <if test="'isVisible' == orderItem.column" >
+            pa.IS_VISIBLE ${orderItem.dir}
+          </if>
+          <if test="'publishTime' == orderItem.column" >
+            pa.PUBLISH_TIME ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            pa.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'updateTime' == orderItem.column" >
+            pa.UPDATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'content' == orderItem.column" >
+            pa.CONTENT ${orderItem.dir}
+          </if>
+          <if test="'extraData' == orderItem.column" >
+            pa.EXTRA_DATA ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    pa.ARTICLE_ID, pa.CATEGORY_ID, pa.TITLE, pa.BRIEF, pa.AUTHOR, pa.SOURCE, pa.PUBLISHER_USER_ID, 
+    pa.PUBLISHER_NAME, pa.COVER_FILE_ID, pa.COVER_FILE_NAME, pa.IS_VISIBLE, pa.PUBLISH_TIME, 
+    pa.CREATE_TIME, pa.UPDATE_TIME
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONTENT, EXTRA_DATA
+  </sql>
+  <select id="selectById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from pt_article pa
+    where pa.ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from pt_article pa
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from pt_article pa
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.PtArticle" >
+    <selectKey resultType="java.lang.Integer" keyProperty="articleId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into pt_article
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      ARTICLE_ID,
+      <if test="categoryId != null" >
+        CATEGORY_ID,
+      </if>
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="brief != null" >
+        BRIEF,
+      </if>
+      <if test="author != null" >
+        AUTHOR,
+      </if>
+      <if test="source != null" >
+        SOURCE,
+      </if>
+      <if test="publisherUserId != null" >
+        PUBLISHER_USER_ID,
+      </if>
+      <if test="publisherName != null" >
+        PUBLISHER_NAME,
+      </if>
+      <if test="coverFileId != null" >
+        COVER_FILE_ID,
+      </if>
+      <if test="coverFileName != null" >
+        COVER_FILE_NAME,
+      </if>
+      <if test="isVisible != null" >
+        IS_VISIBLE,
+      </if>
+      <if test="publishTime != null" >
+        PUBLISH_TIME,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+      <if test="extraData != null" >
+        EXTRA_DATA,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{articleId,jdbcType=INTEGER},
+      <if test="categoryId != null" >
+        #{categoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="brief != null" >
+        #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="publisherUserId != null" >
+        #{publisherUserId,jdbcType=INTEGER},
+      </if>
+      <if test="publisherName != null" >
+        #{publisherName,jdbcType=VARCHAR},
+      </if>
+      <if test="coverFileId != null" >
+        #{coverFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="coverFileName != null" >
+        #{coverFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="isVisible != null" >
+        #{isVisible,jdbcType=BIT},
+      </if>
+      <if test="publishTime != null" >
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="extraData != null" >
+        #{extraData,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from pt_article
+    where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from pt_article where ARTICLE_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from pa using (pt_article as pa) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.PtArticle" >
+    update pt_article
+    <set >
+      <if test="categoryId != null" >
+        CATEGORY_ID = #{categoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="brief != null" >
+        BRIEF = #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        AUTHOR = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        SOURCE = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="publisherUserId != null" >
+        PUBLISHER_USER_ID = #{publisherUserId,jdbcType=INTEGER},
+      </if>
+      <if test="publisherName != null" >
+        PUBLISHER_NAME = #{publisherName,jdbcType=VARCHAR},
+      </if>
+      <if test="coverFileId != null" >
+        COVER_FILE_ID = #{coverFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="coverFileName != null" >
+        COVER_FILE_NAME = #{coverFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="isVisible != null" >
+        IS_VISIBLE = #{isVisible,jdbcType=BIT},
+      </if>
+      <if test="publishTime != null" >
+        PUBLISH_TIME = #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="extraData != null" >
+        EXTRA_DATA = #{extraData,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update pt_article pa
+    <set >
+      <if test="record.articleId != null" >
+        ARTICLE_ID = #{record.articleId,jdbcType=INTEGER},
+      </if>
+      <if test="record.categoryId != null" >
+        CATEGORY_ID = #{record.categoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title != null" >
+        TITLE = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brief != null" >
+        BRIEF = #{record.brief,jdbcType=VARCHAR},
+      </if>
+      <if test="record.author != null" >
+        AUTHOR = #{record.author,jdbcType=VARCHAR},
+      </if>
+      <if test="record.source != null" >
+        SOURCE = #{record.source,jdbcType=VARCHAR},
+      </if>
+      <if test="record.publisherUserId != null" >
+        PUBLISHER_USER_ID = #{record.publisherUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.publisherName != null" >
+        PUBLISHER_NAME = #{record.publisherName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coverFileId != null" >
+        COVER_FILE_ID = #{record.coverFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coverFileName != null" >
+        COVER_FILE_NAME = #{record.coverFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isVisible != null" >
+        IS_VISIBLE = #{record.isVisible,jdbcType=BIT},
+      </if>
+      <if test="record.publishTime != null" >
+        PUBLISH_TIME = #{record.publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.content != null" >
+        CONTENT = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.extraData != null" >
+        EXTRA_DATA = #{record.extraData,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.articleId" >
+        and pa.ARTICLE_ID = #{map.articleId}
+      </if>
+      <if test="null != map.list_articleId" >
+        and pa.ARTICLE_ID in (<foreach collection="map.list_articleId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.categoryId" >
+        and pa.CATEGORY_ID = #{map.categoryId}
+      </if>
+      <if test="null != map.like_categoryId" >
+        and pa.CATEGORY_ID like '%' || #{map.like_categoryId} || '%'
+      </if>
+      <if test="null != map.list_categoryId" >
+        and pa.CATEGORY_ID in (<foreach collection="map.list_categoryId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.title" >
+        and pa.TITLE = #{map.title}
+      </if>
+      <if test="null != map.like_title" >
+        and pa.TITLE like '%' || #{map.like_title} || '%'
+      </if>
+      <if test="null != map.list_title" >
+        and pa.TITLE in (<foreach collection="map.list_title" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.brief" >
+        and pa.BRIEF = #{map.brief}
+      </if>
+      <if test="null != map.like_brief" >
+        and pa.BRIEF like '%' || #{map.like_brief} || '%'
+      </if>
+      <if test="null != map.list_brief" >
+        and pa.BRIEF in (<foreach collection="map.list_brief" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.author" >
+        and pa.AUTHOR = #{map.author}
+      </if>
+      <if test="null != map.like_author" >
+        and pa.AUTHOR like '%' || #{map.like_author} || '%'
+      </if>
+      <if test="null != map.list_author" >
+        and pa.AUTHOR in (<foreach collection="map.list_author" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.source" >
+        and pa.SOURCE = #{map.source}
+      </if>
+      <if test="null != map.like_source" >
+        and pa.SOURCE like '%' || #{map.like_source} || '%'
+      </if>
+      <if test="null != map.list_source" >
+        and pa.SOURCE in (<foreach collection="map.list_source" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.publisherUserId" >
+        and pa.PUBLISHER_USER_ID = #{map.publisherUserId}
+      </if>
+      <if test="null != map.list_publisherUserId" >
+        and pa.PUBLISHER_USER_ID in (<foreach collection="map.list_publisherUserId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.publisherName" >
+        and pa.PUBLISHER_NAME = #{map.publisherName}
+      </if>
+      <if test="null != map.like_publisherName" >
+        and pa.PUBLISHER_NAME like '%' || #{map.like_publisherName} || '%'
+      </if>
+      <if test="null != map.list_publisherName" >
+        and pa.PUBLISHER_NAME in (<foreach collection="map.list_publisherName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.coverFileId" >
+        and pa.COVER_FILE_ID = #{map.coverFileId}
+      </if>
+      <if test="null != map.like_coverFileId" >
+        and pa.COVER_FILE_ID like '%' || #{map.like_coverFileId} || '%'
+      </if>
+      <if test="null != map.list_coverFileId" >
+        and pa.COVER_FILE_ID in (<foreach collection="map.list_coverFileId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.coverFileName" >
+        and pa.COVER_FILE_NAME = #{map.coverFileName}
+      </if>
+      <if test="null != map.like_coverFileName" >
+        and pa.COVER_FILE_NAME like '%' || #{map.like_coverFileName} || '%'
+      </if>
+      <if test="null != map.list_coverFileName" >
+        and pa.COVER_FILE_NAME in (<foreach collection="map.list_coverFileName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.isVisible" >
+        and pa.IS_VISIBLE = #{map.isVisible}
+      </if>
+      <if test="null != map.list_isVisible" >
+        and pa.IS_VISIBLE in (<foreach collection="map.list_isVisible" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_publishTime" >
+        and pa.PUBLISH_TIME &gt;= #{map.begin_publishTime}
+      </if>
+      <if test="null != map.end_publishTime" >
+        and pa.PUBLISH_TIME &lt;= #{map.end_publishTime}
+      </if>
+      <if test="null != map.begin_createTime" >
+        and pa.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and pa.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_updateTime" >
+        and pa.UPDATE_TIME &gt;= #{map.begin_updateTime}
+      </if>
+      <if test="null != map.end_updateTime" >
+        and pa.UPDATE_TIME &lt;= #{map.end_updateTime}
+      </if>
+      <if test="null != map.content" >
+        and pa.CONTENT = #{map.content}
+      </if>
+      <if test="null != map.like_content" >
+        and pa.CONTENT like '%' || #{map.like_content} || '%'
+      </if>
+      <if test="null != map.list_content" >
+        and pa.CONTENT in (<foreach collection="map.list_content" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.extraData" >
+        and pa.EXTRA_DATA = #{map.extraData}
+      </if>
+      <if test="null != map.like_extraData" >
+        and pa.EXTRA_DATA like '%' || #{map.like_extraData} || '%'
+      </if>
+      <if test="null != map.list_extraData" >
+        and pa.EXTRA_DATA in (<foreach collection="map.list_extraData" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

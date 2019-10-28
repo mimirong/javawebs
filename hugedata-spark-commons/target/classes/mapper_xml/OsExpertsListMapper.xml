@@ -1,0 +1,953 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.OsExpertsListMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.OsExpertsList" >
+    <id column="EXPERT_ID" property="expertId" jdbcType="INTEGER" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="POSITION" property="position" jdbcType="VARCHAR" />
+    <result column="JOB_TITLE" property="jobTitle" jdbcType="VARCHAR" />
+    <result column="DEPT" property="dept" jdbcType="VARCHAR" />
+    <result column="PROFESSION_FIELD_ID" property="professionFieldId" jdbcType="VARCHAR" />
+    <result column="EXPERT_FIELD" property="expertField" jdbcType="VARCHAR" />
+    <result column="EXPERT_TITLE" property="expertTitle" jdbcType="VARCHAR" />
+    <result column="BRIEF" property="brief" jdbcType="VARCHAR" />
+    <result column="SEX" property="sex" jdbcType="BIT" />
+    <result column="ETHNIC" property="ethnic" jdbcType="VARCHAR" />
+    <result column="NATIVE_PLACE" property="nativePlace" jdbcType="VARCHAR" />
+    <result column="EDUCATION" property="education" jdbcType="VARCHAR" />
+    <result column="FILE_ID" property="fileId" jdbcType="VARCHAR" />
+    <result column="PREVIEW_FILE_ID" property="previewFileId" jdbcType="VARCHAR" />
+    <result column="SORT_INDEX" property="sortIndex" jdbcType="INTEGER" />
+    <result column="IS_VISIBLE" property="isVisible" jdbcType="BIT" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="FILE_NAME" property="fileName" jdbcType="VARCHAR" />
+    <result column="PREVIEW_FILE_NAME" property="previewFileName" jdbcType="VARCHAR" />
+    <result column="ORGANIZATION" property="organization" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != expertId" >
+      and oel.EXPERT_ID = #{expertId}
+    </if>
+    <if test="null != ne_expertId" >
+      and oel.EXPERT_ID != #{ne_expertId}
+    </if>
+    <if test="null != list_expertId" >
+      and oel.EXPERT_ID in (<foreach collection="list_expertId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != name" >
+      and oel.NAME = #{name}
+    </if>
+    <if test="null != ne_name" >
+      and oel.NAME != #{ne_name}
+    </if>
+    <if test="null != like_name" >
+      and oel.NAME like CONCAT('%', #{like_name}, '%')
+    </if>
+    <if test="null != list_name" >
+      and oel.NAME in (<foreach collection="list_name" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_name" >
+      and oel.NAME &gt;= #{begin_name}
+    </if>
+    <if test="null != end_name" >
+      and oel.NAME &lt;= #{end_name}
+    </if>
+    <if test="null != position" >
+      and oel.POSITION = #{position}
+    </if>
+    <if test="null != ne_position" >
+      and oel.POSITION != #{ne_position}
+    </if>
+    <if test="null != like_position" >
+      and oel.POSITION like CONCAT('%', #{like_position}, '%')
+    </if>
+    <if test="null != list_position" >
+      and oel.POSITION in (<foreach collection="list_position" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_position" >
+      and oel.POSITION &gt;= #{begin_position}
+    </if>
+    <if test="null != end_position" >
+      and oel.POSITION &lt;= #{end_position}
+    </if>
+    <if test="null != jobTitle" >
+      and oel.JOB_TITLE = #{jobTitle}
+    </if>
+    <if test="null != ne_jobTitle" >
+      and oel.JOB_TITLE != #{ne_jobTitle}
+    </if>
+    <if test="null != like_jobTitle" >
+      and oel.JOB_TITLE like CONCAT('%', #{like_jobTitle}, '%')
+    </if>
+    <if test="null != list_jobTitle" >
+      and oel.JOB_TITLE in (<foreach collection="list_jobTitle" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_jobTitle" >
+      and oel.JOB_TITLE &gt;= #{begin_jobTitle}
+    </if>
+    <if test="null != end_jobTitle" >
+      and oel.JOB_TITLE &lt;= #{end_jobTitle}
+    </if>
+    <if test="null != dept" >
+      and oel.DEPT = #{dept}
+    </if>
+    <if test="null != ne_dept" >
+      and oel.DEPT != #{ne_dept}
+    </if>
+    <if test="null != like_dept" >
+      and oel.DEPT like CONCAT('%', #{like_dept}, '%')
+    </if>
+    <if test="null != list_dept" >
+      and oel.DEPT in (<foreach collection="list_dept" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_dept" >
+      and oel.DEPT &gt;= #{begin_dept}
+    </if>
+    <if test="null != end_dept" >
+      and oel.DEPT &lt;= #{end_dept}
+    </if>
+    <if test="null != professionFieldId" >
+      and oel.PROFESSION_FIELD_ID = #{professionFieldId}
+    </if>
+    <if test="null != ne_professionFieldId" >
+      and oel.PROFESSION_FIELD_ID != #{ne_professionFieldId}
+    </if>
+    <if test="null != like_professionFieldId" >
+      and oel.PROFESSION_FIELD_ID like CONCAT('%', #{like_professionFieldId}, '%')
+    </if>
+    <if test="null != list_professionFieldId" >
+      and oel.PROFESSION_FIELD_ID in (<foreach collection="list_professionFieldId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_professionFieldId" >
+      and oel.PROFESSION_FIELD_ID &gt;= #{begin_professionFieldId}
+    </if>
+    <if test="null != end_professionFieldId" >
+      and oel.PROFESSION_FIELD_ID &lt;= #{end_professionFieldId}
+    </if>
+    <if test="null != expertField" >
+      and oel.EXPERT_FIELD = #{expertField}
+    </if>
+    <if test="null != ne_expertField" >
+      and oel.EXPERT_FIELD != #{ne_expertField}
+    </if>
+    <if test="null != like_expertField" >
+      and oel.EXPERT_FIELD like CONCAT('%', #{like_expertField}, '%')
+    </if>
+    <if test="null != list_expertField" >
+      and oel.EXPERT_FIELD in (<foreach collection="list_expertField" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_expertField" >
+      and oel.EXPERT_FIELD &gt;= #{begin_expertField}
+    </if>
+    <if test="null != end_expertField" >
+      and oel.EXPERT_FIELD &lt;= #{end_expertField}
+    </if>
+    <if test="null != expertTitle" >
+      and oel.EXPERT_TITLE = #{expertTitle}
+    </if>
+    <if test="null != ne_expertTitle" >
+      and oel.EXPERT_TITLE != #{ne_expertTitle}
+    </if>
+    <if test="null != like_expertTitle" >
+      and oel.EXPERT_TITLE like CONCAT('%', #{like_expertTitle}, '%')
+    </if>
+    <if test="null != list_expertTitle" >
+      and oel.EXPERT_TITLE in (<foreach collection="list_expertTitle" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_expertTitle" >
+      and oel.EXPERT_TITLE &gt;= #{begin_expertTitle}
+    </if>
+    <if test="null != end_expertTitle" >
+      and oel.EXPERT_TITLE &lt;= #{end_expertTitle}
+    </if>
+    <if test="null != brief" >
+      and oel.BRIEF = #{brief}
+    </if>
+    <if test="null != ne_brief" >
+      and oel.BRIEF != #{ne_brief}
+    </if>
+    <if test="null != like_brief" >
+      and oel.BRIEF like CONCAT('%', #{like_brief}, '%')
+    </if>
+    <if test="null != list_brief" >
+      and oel.BRIEF in (<foreach collection="list_brief" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_brief" >
+      and oel.BRIEF &gt;= #{begin_brief}
+    </if>
+    <if test="null != end_brief" >
+      and oel.BRIEF &lt;= #{end_brief}
+    </if>
+    <if test="null != sex" >
+      and oel.SEX = #{sex}
+    </if>
+    <if test="null != ne_sex" >
+      and oel.SEX != #{ne_sex}
+    </if>
+    <if test="null != list_sex" >
+      and oel.SEX in (<foreach collection="list_sex" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != ethnic" >
+      and oel.ETHNIC = #{ethnic}
+    </if>
+    <if test="null != ne_ethnic" >
+      and oel.ETHNIC != #{ne_ethnic}
+    </if>
+    <if test="null != like_ethnic" >
+      and oel.ETHNIC like CONCAT('%', #{like_ethnic}, '%')
+    </if>
+    <if test="null != list_ethnic" >
+      and oel.ETHNIC in (<foreach collection="list_ethnic" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_ethnic" >
+      and oel.ETHNIC &gt;= #{begin_ethnic}
+    </if>
+    <if test="null != end_ethnic" >
+      and oel.ETHNIC &lt;= #{end_ethnic}
+    </if>
+    <if test="null != nativePlace" >
+      and oel.NATIVE_PLACE = #{nativePlace}
+    </if>
+    <if test="null != ne_nativePlace" >
+      and oel.NATIVE_PLACE != #{ne_nativePlace}
+    </if>
+    <if test="null != like_nativePlace" >
+      and oel.NATIVE_PLACE like CONCAT('%', #{like_nativePlace}, '%')
+    </if>
+    <if test="null != list_nativePlace" >
+      and oel.NATIVE_PLACE in (<foreach collection="list_nativePlace" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_nativePlace" >
+      and oel.NATIVE_PLACE &gt;= #{begin_nativePlace}
+    </if>
+    <if test="null != end_nativePlace" >
+      and oel.NATIVE_PLACE &lt;= #{end_nativePlace}
+    </if>
+    <if test="null != education" >
+      and oel.EDUCATION = #{education}
+    </if>
+    <if test="null != ne_education" >
+      and oel.EDUCATION != #{ne_education}
+    </if>
+    <if test="null != like_education" >
+      and oel.EDUCATION like CONCAT('%', #{like_education}, '%')
+    </if>
+    <if test="null != list_education" >
+      and oel.EDUCATION in (<foreach collection="list_education" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_education" >
+      and oel.EDUCATION &gt;= #{begin_education}
+    </if>
+    <if test="null != end_education" >
+      and oel.EDUCATION &lt;= #{end_education}
+    </if>
+    <if test="null != fileId" >
+      and oel.FILE_ID = #{fileId}
+    </if>
+    <if test="null != ne_fileId" >
+      and oel.FILE_ID != #{ne_fileId}
+    </if>
+    <if test="null != like_fileId" >
+      and oel.FILE_ID like CONCAT('%', #{like_fileId}, '%')
+    </if>
+    <if test="null != list_fileId" >
+      and oel.FILE_ID in (<foreach collection="list_fileId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_fileId" >
+      and oel.FILE_ID &gt;= #{begin_fileId}
+    </if>
+    <if test="null != end_fileId" >
+      and oel.FILE_ID &lt;= #{end_fileId}
+    </if>
+    <if test="null != previewFileId" >
+      and oel.PREVIEW_FILE_ID = #{previewFileId}
+    </if>
+    <if test="null != ne_previewFileId" >
+      and oel.PREVIEW_FILE_ID != #{ne_previewFileId}
+    </if>
+    <if test="null != like_previewFileId" >
+      and oel.PREVIEW_FILE_ID like CONCAT('%', #{like_previewFileId}, '%')
+    </if>
+    <if test="null != list_previewFileId" >
+      and oel.PREVIEW_FILE_ID in (<foreach collection="list_previewFileId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_previewFileId" >
+      and oel.PREVIEW_FILE_ID &gt;= #{begin_previewFileId}
+    </if>
+    <if test="null != end_previewFileId" >
+      and oel.PREVIEW_FILE_ID &lt;= #{end_previewFileId}
+    </if>
+    <if test="null != sortIndex" >
+      and oel.SORT_INDEX = #{sortIndex}
+    </if>
+    <if test="null != ne_sortIndex" >
+      and oel.SORT_INDEX != #{ne_sortIndex}
+    </if>
+    <if test="null != list_sortIndex" >
+      and oel.SORT_INDEX in (<foreach collection="list_sortIndex" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != isVisible" >
+      and oel.IS_VISIBLE = #{isVisible}
+    </if>
+    <if test="null != ne_isVisible" >
+      and oel.IS_VISIBLE != #{ne_isVisible}
+    </if>
+    <if test="null != list_isVisible" >
+      and oel.IS_VISIBLE in (<foreach collection="list_isVisible" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_createTime" >
+      and oel.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and oel.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_updateTime" >
+      and oel.UPDATE_TIME &gt;= #{begin_updateTime}
+    </if>
+    <if test="null != end_updateTime" >
+      and oel.UPDATE_TIME &lt;= #{end_updateTime}
+    </if>
+    <if test="null != fileName" >
+      and oel.FILE_NAME = #{fileName}
+    </if>
+    <if test="null != ne_fileName" >
+      and oel.FILE_NAME != #{ne_fileName}
+    </if>
+    <if test="null != like_fileName" >
+      and oel.FILE_NAME like CONCAT('%', #{like_fileName}, '%')
+    </if>
+    <if test="null != list_fileName" >
+      and oel.FILE_NAME in (<foreach collection="list_fileName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_fileName" >
+      and oel.FILE_NAME &gt;= #{begin_fileName}
+    </if>
+    <if test="null != end_fileName" >
+      and oel.FILE_NAME &lt;= #{end_fileName}
+    </if>
+    <if test="null != previewFileName" >
+      and oel.PREVIEW_FILE_NAME = #{previewFileName}
+    </if>
+    <if test="null != ne_previewFileName" >
+      and oel.PREVIEW_FILE_NAME != #{ne_previewFileName}
+    </if>
+    <if test="null != like_previewFileName" >
+      and oel.PREVIEW_FILE_NAME like CONCAT('%', #{like_previewFileName}, '%')
+    </if>
+    <if test="null != list_previewFileName" >
+      and oel.PREVIEW_FILE_NAME in (<foreach collection="list_previewFileName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_previewFileName" >
+      and oel.PREVIEW_FILE_NAME &gt;= #{begin_previewFileName}
+    </if>
+    <if test="null != end_previewFileName" >
+      and oel.PREVIEW_FILE_NAME &lt;= #{end_previewFileName}
+    </if>
+    <if test="null != organization" >
+      and oel.ORGANIZATION = #{organization}
+    </if>
+    <if test="null != ne_organization" >
+      and oel.ORGANIZATION != #{ne_organization}
+    </if>
+    <if test="null != like_organization" >
+      and oel.ORGANIZATION like CONCAT('%', #{like_organization}, '%')
+    </if>
+    <if test="null != list_organization" >
+      and oel.ORGANIZATION in (<foreach collection="list_organization" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_organization" >
+      and oel.ORGANIZATION &gt;= #{begin_organization}
+    </if>
+    <if test="null != end_organization" >
+      and oel.ORGANIZATION &lt;= #{end_organization}
+    </if>
+    <if test="null != like_keyWord" >
+      and ( oel.NAME like CONCAT('%', #{like_keyWord}, '%') or
+      oel.JOB_TITLE like CONCAT('%', #{like_keyWord}, '%') or
+      oel.DEPT like CONCAT('%', #{like_keyWord}, '%') or
+      oel.POSITION like CONCAT('%', #{like_keyWord}, '%') or
+      oel.EXPERT_FIELD like CONCAT('%', #{like_keyWord}, '%') or
+      oel.EXPERT_TITLE like CONCAT('%', #{like_keyWord}, '%') or
+      oel.BRIEF like CONCAT('%', #{like_keyWord}, '%') )
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'expertId' == orderItem.column" >
+            oel.EXPERT_ID ${orderItem.dir}
+          </if>
+          <if test="'name' == orderItem.column" >
+            oel.NAME ${orderItem.dir}
+          </if>
+          <if test="'position' == orderItem.column" >
+            oel.POSITION ${orderItem.dir}
+          </if>
+          <if test="'jobTitle' == orderItem.column" >
+            oel.JOB_TITLE ${orderItem.dir}
+          </if>
+          <if test="'dept' == orderItem.column" >
+            oel.DEPT ${orderItem.dir}
+          </if>
+          <if test="'professionFieldId' == orderItem.column" >
+            oel.PROFESSION_FIELD_ID ${orderItem.dir}
+          </if>
+          <if test="'expertField' == orderItem.column" >
+            oel.EXPERT_FIELD ${orderItem.dir}
+          </if>
+          <if test="'expertTitle' == orderItem.column" >
+            oel.EXPERT_TITLE ${orderItem.dir}
+          </if>
+          <if test="'brief' == orderItem.column" >
+            oel.BRIEF ${orderItem.dir}
+          </if>
+          <if test="'sex' == orderItem.column" >
+            oel.SEX ${orderItem.dir}
+          </if>
+          <if test="'ethnic' == orderItem.column" >
+            oel.ETHNIC ${orderItem.dir}
+          </if>
+          <if test="'nativePlace' == orderItem.column" >
+            oel.NATIVE_PLACE ${orderItem.dir}
+          </if>
+          <if test="'education' == orderItem.column" >
+            oel.EDUCATION ${orderItem.dir}
+          </if>
+          <if test="'fileId' == orderItem.column" >
+            oel.FILE_ID ${orderItem.dir}
+          </if>
+          <if test="'previewFileId' == orderItem.column" >
+            oel.PREVIEW_FILE_ID ${orderItem.dir}
+          </if>
+          <if test="'sortIndex' == orderItem.column" >
+            oel.SORT_INDEX ${orderItem.dir}
+          </if>
+          <if test="'isVisible' == orderItem.column" >
+            oel.IS_VISIBLE ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            oel.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'updateTime' == orderItem.column" >
+            oel.UPDATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'fileName' == orderItem.column" >
+            oel.FILE_NAME ${orderItem.dir}
+          </if>
+          <if test="'previewFileName' == orderItem.column" >
+            oel.PREVIEW_FILE_NAME ${orderItem.dir}
+          </if>
+          <if test="'organization' == orderItem.column" >
+            oel.ORGANIZATION ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    oel.EXPERT_ID, oel.NAME, oel.POSITION, oel.JOB_TITLE, oel.DEPT, oel.PROFESSION_FIELD_ID, 
+    oel.EXPERT_FIELD, oel.EXPERT_TITLE, oel.BRIEF, oel.SEX, oel.ETHNIC, oel.NATIVE_PLACE, 
+    oel.EDUCATION, oel.FILE_ID, oel.PREVIEW_FILE_ID, oel.SORT_INDEX, oel.IS_VISIBLE, 
+    oel.CREATE_TIME, oel.UPDATE_TIME, oel.FILE_NAME, oel.PREVIEW_FILE_NAME, oel.ORGANIZATION
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from os_experts_list oel
+    where oel.EXPERT_ID = #{expertId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from os_experts_list oel
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from os_experts_list oel
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.OsExpertsList" >
+    <selectKey resultType="java.lang.Integer" keyProperty="expertId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into os_experts_list
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      EXPERT_ID,
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="position != null" >
+        POSITION,
+      </if>
+      <if test="jobTitle != null" >
+        JOB_TITLE,
+      </if>
+      <if test="dept != null" >
+        DEPT,
+      </if>
+      <if test="professionFieldId != null" >
+        PROFESSION_FIELD_ID,
+      </if>
+      <if test="expertField != null" >
+        EXPERT_FIELD,
+      </if>
+      <if test="expertTitle != null" >
+        EXPERT_TITLE,
+      </if>
+      <if test="brief != null" >
+        BRIEF,
+      </if>
+      <if test="sex != null" >
+        SEX,
+      </if>
+      <if test="ethnic != null" >
+        ETHNIC,
+      </if>
+      <if test="nativePlace != null" >
+        NATIVE_PLACE,
+      </if>
+      <if test="education != null" >
+        EDUCATION,
+      </if>
+      <if test="fileId != null" >
+        FILE_ID,
+      </if>
+      <if test="previewFileId != null" >
+        PREVIEW_FILE_ID,
+      </if>
+      <if test="sortIndex != null" >
+        SORT_INDEX,
+      </if>
+      <if test="isVisible != null" >
+        IS_VISIBLE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="fileName != null" >
+        FILE_NAME,
+      </if>
+      <if test="previewFileName != null" >
+        PREVIEW_FILE_NAME,
+      </if>
+      <if test="organization != null" >
+        ORGANIZATION,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{expertId,jdbcType=INTEGER},
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="jobTitle != null" >
+        #{jobTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null" >
+        #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="professionFieldId != null" >
+        #{professionFieldId,jdbcType=VARCHAR},
+      </if>
+      <if test="expertField != null" >
+        #{expertField,jdbcType=VARCHAR},
+      </if>
+      <if test="expertTitle != null" >
+        #{expertTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="brief != null" >
+        #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=BIT},
+      </if>
+      <if test="ethnic != null" >
+        #{ethnic,jdbcType=VARCHAR},
+      </if>
+      <if test="nativePlace != null" >
+        #{nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="fileId != null" >
+        #{fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="previewFileId != null" >
+        #{previewFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="sortIndex != null" >
+        #{sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="isVisible != null" >
+        #{isVisible,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="previewFileName != null" >
+        #{previewFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="organization != null" >
+        #{organization,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from os_experts_list
+    where EXPERT_ID = #{expertId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from os_experts_list where EXPERT_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from oel using (os_experts_list as oel) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.OsExpertsList" >
+    update os_experts_list
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        POSITION = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="jobTitle != null" >
+        JOB_TITLE = #{jobTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null" >
+        DEPT = #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="professionFieldId != null" >
+        PROFESSION_FIELD_ID = #{professionFieldId,jdbcType=VARCHAR},
+      </if>
+      <if test="expertField != null" >
+        EXPERT_FIELD = #{expertField,jdbcType=VARCHAR},
+      </if>
+      <if test="expertTitle != null" >
+        EXPERT_TITLE = #{expertTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="brief != null" >
+        BRIEF = #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        SEX = #{sex,jdbcType=BIT},
+      </if>
+      <if test="ethnic != null" >
+        ETHNIC = #{ethnic,jdbcType=VARCHAR},
+      </if>
+      <if test="nativePlace != null" >
+        NATIVE_PLACE = #{nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        EDUCATION = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="fileId != null" >
+        FILE_ID = #{fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="previewFileId != null" >
+        PREVIEW_FILE_ID = #{previewFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="sortIndex != null" >
+        SORT_INDEX = #{sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="isVisible != null" >
+        IS_VISIBLE = #{isVisible,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fileName != null" >
+        FILE_NAME = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="previewFileName != null" >
+        PREVIEW_FILE_NAME = #{previewFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="organization != null" >
+        ORGANIZATION = #{organization,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where EXPERT_ID = #{expertId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update os_experts_list oel
+    <set >
+      <if test="record.expertId != null" >
+        EXPERT_ID = #{record.expertId,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.position != null" >
+        POSITION = #{record.position,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobTitle != null" >
+        JOB_TITLE = #{record.jobTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dept != null" >
+        DEPT = #{record.dept,jdbcType=VARCHAR},
+      </if>
+      <if test="record.professionFieldId != null" >
+        PROFESSION_FIELD_ID = #{record.professionFieldId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.expertField != null" >
+        EXPERT_FIELD = #{record.expertField,jdbcType=VARCHAR},
+      </if>
+      <if test="record.expertTitle != null" >
+        EXPERT_TITLE = #{record.expertTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brief != null" >
+        BRIEF = #{record.brief,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null" >
+        SEX = #{record.sex,jdbcType=BIT},
+      </if>
+      <if test="record.ethnic != null" >
+        ETHNIC = #{record.ethnic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nativePlace != null" >
+        NATIVE_PLACE = #{record.nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.education != null" >
+        EDUCATION = #{record.education,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileId != null" >
+        FILE_ID = #{record.fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.previewFileId != null" >
+        PREVIEW_FILE_ID = #{record.previewFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sortIndex != null" >
+        SORT_INDEX = #{record.sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="record.isVisible != null" >
+        IS_VISIBLE = #{record.isVisible,jdbcType=BIT},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fileName != null" >
+        FILE_NAME = #{record.fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.previewFileName != null" >
+        PREVIEW_FILE_NAME = #{record.previewFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.organization != null" >
+        ORGANIZATION = #{record.organization,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.expertId" >
+        and oel.EXPERT_ID = #{map.expertId}
+      </if>
+      <if test="null != map.list_expertId" >
+        and oel.EXPERT_ID in (<foreach collection="map.list_expertId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.name" >
+        and oel.NAME = #{map.name}
+      </if>
+      <if test="null != map.like_name" >
+        and oel.NAME like '%' || #{map.like_name} || '%'
+      </if>
+      <if test="null != map.list_name" >
+        and oel.NAME in (<foreach collection="map.list_name" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.position" >
+        and oel.POSITION = #{map.position}
+      </if>
+      <if test="null != map.like_position" >
+        and oel.POSITION like '%' || #{map.like_position} || '%'
+      </if>
+      <if test="null != map.list_position" >
+        and oel.POSITION in (<foreach collection="map.list_position" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.jobTitle" >
+        and oel.JOB_TITLE = #{map.jobTitle}
+      </if>
+      <if test="null != map.like_jobTitle" >
+        and oel.JOB_TITLE like '%' || #{map.like_jobTitle} || '%'
+      </if>
+      <if test="null != map.list_jobTitle" >
+        and oel.JOB_TITLE in (<foreach collection="map.list_jobTitle" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.dept" >
+        and oel.DEPT = #{map.dept}
+      </if>
+      <if test="null != map.like_dept" >
+        and oel.DEPT like '%' || #{map.like_dept} || '%'
+      </if>
+      <if test="null != map.list_dept" >
+        and oel.DEPT in (<foreach collection="map.list_dept" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.professionFieldId" >
+        and oel.PROFESSION_FIELD_ID = #{map.professionFieldId}
+      </if>
+      <if test="null != map.like_professionFieldId" >
+        and oel.PROFESSION_FIELD_ID like '%' || #{map.like_professionFieldId} || '%'
+      </if>
+      <if test="null != map.list_professionFieldId" >
+        and oel.PROFESSION_FIELD_ID in (<foreach collection="map.list_professionFieldId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.expertField" >
+        and oel.EXPERT_FIELD = #{map.expertField}
+      </if>
+      <if test="null != map.like_expertField" >
+        and oel.EXPERT_FIELD like '%' || #{map.like_expertField} || '%'
+      </if>
+      <if test="null != map.list_expertField" >
+        and oel.EXPERT_FIELD in (<foreach collection="map.list_expertField" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.expertTitle" >
+        and oel.EXPERT_TITLE = #{map.expertTitle}
+      </if>
+      <if test="null != map.like_expertTitle" >
+        and oel.EXPERT_TITLE like '%' || #{map.like_expertTitle} || '%'
+      </if>
+      <if test="null != map.list_expertTitle" >
+        and oel.EXPERT_TITLE in (<foreach collection="map.list_expertTitle" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.brief" >
+        and oel.BRIEF = #{map.brief}
+      </if>
+      <if test="null != map.like_brief" >
+        and oel.BRIEF like '%' || #{map.like_brief} || '%'
+      </if>
+      <if test="null != map.list_brief" >
+        and oel.BRIEF in (<foreach collection="map.list_brief" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.sex" >
+        and oel.SEX = #{map.sex}
+      </if>
+      <if test="null != map.list_sex" >
+        and oel.SEX in (<foreach collection="map.list_sex" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.ethnic" >
+        and oel.ETHNIC = #{map.ethnic}
+      </if>
+      <if test="null != map.like_ethnic" >
+        and oel.ETHNIC like '%' || #{map.like_ethnic} || '%'
+      </if>
+      <if test="null != map.list_ethnic" >
+        and oel.ETHNIC in (<foreach collection="map.list_ethnic" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.nativePlace" >
+        and oel.NATIVE_PLACE = #{map.nativePlace}
+      </if>
+      <if test="null != map.like_nativePlace" >
+        and oel.NATIVE_PLACE like '%' || #{map.like_nativePlace} || '%'
+      </if>
+      <if test="null != map.list_nativePlace" >
+        and oel.NATIVE_PLACE in (<foreach collection="map.list_nativePlace" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.education" >
+        and oel.EDUCATION = #{map.education}
+      </if>
+      <if test="null != map.like_education" >
+        and oel.EDUCATION like '%' || #{map.like_education} || '%'
+      </if>
+      <if test="null != map.list_education" >
+        and oel.EDUCATION in (<foreach collection="map.list_education" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.fileId" >
+        and oel.FILE_ID = #{map.fileId}
+      </if>
+      <if test="null != map.like_fileId" >
+        and oel.FILE_ID like '%' || #{map.like_fileId} || '%'
+      </if>
+      <if test="null != map.list_fileId" >
+        and oel.FILE_ID in (<foreach collection="map.list_fileId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.previewFileId" >
+        and oel.PREVIEW_FILE_ID = #{map.previewFileId}
+      </if>
+      <if test="null != map.like_previewFileId" >
+        and oel.PREVIEW_FILE_ID like '%' || #{map.like_previewFileId} || '%'
+      </if>
+      <if test="null != map.list_previewFileId" >
+        and oel.PREVIEW_FILE_ID in (<foreach collection="map.list_previewFileId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.sortIndex" >
+        and oel.SORT_INDEX = #{map.sortIndex}
+      </if>
+      <if test="null != map.list_sortIndex" >
+        and oel.SORT_INDEX in (<foreach collection="map.list_sortIndex" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.isVisible" >
+        and oel.IS_VISIBLE = #{map.isVisible}
+      </if>
+      <if test="null != map.list_isVisible" >
+        and oel.IS_VISIBLE in (<foreach collection="map.list_isVisible" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and oel.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and oel.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_updateTime" >
+        and oel.UPDATE_TIME &gt;= #{map.begin_updateTime}
+      </if>
+      <if test="null != map.end_updateTime" >
+        and oel.UPDATE_TIME &lt;= #{map.end_updateTime}
+      </if>
+      <if test="null != map.fileName" >
+        and oel.FILE_NAME = #{map.fileName}
+      </if>
+      <if test="null != map.like_fileName" >
+        and oel.FILE_NAME like '%' || #{map.like_fileName} || '%'
+      </if>
+      <if test="null != map.list_fileName" >
+        and oel.FILE_NAME in (<foreach collection="map.list_fileName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.previewFileName" >
+        and oel.PREVIEW_FILE_NAME = #{map.previewFileName}
+      </if>
+      <if test="null != map.like_previewFileName" >
+        and oel.PREVIEW_FILE_NAME like '%' || #{map.like_previewFileName} || '%'
+      </if>
+      <if test="null != map.list_previewFileName" >
+        and oel.PREVIEW_FILE_NAME in (<foreach collection="map.list_previewFileName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.organization" >
+        and oel.ORGANIZATION = #{map.organization}
+      </if>
+      <if test="null != map.like_organization" >
+        and oel.ORGANIZATION like '%' || #{map.like_organization} || '%'
+      </if>
+      <if test="null != map.list_organization" >
+        and oel.ORGANIZATION in (<foreach collection="map.list_organization" item="i" separator=",">#{i}</foreach>)
+      </if>
+    </where>
+  </update>
+</mapper>

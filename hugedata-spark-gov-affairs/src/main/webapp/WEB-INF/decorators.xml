@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/jsp">
+
+	<decorator name="empty" page="master/master_ajax.jsp">
+		<pattern>*-ajax</pattern>
+	</decorator>
+	
+	<decorator name="simple2" page="master/master_simple2.jsp">
+		<pattern>*-simple</pattern>
+	</decorator>
+	
+	<decorator name="main2" page="master/master2.jsp">
+		<pattern>*</pattern>
+	</decorator>
+
+	<decorator name="master_outsourcing" page="master/master_outsourcing.jsp">
+		<pattern>/outsourcing/*</pattern>
+	</decorator>
+	
+	<!-- 低版本浏览器使用 -->
+	<decorator name="main2low" page="master/master2_low.jsp">
+	</decorator>
+	
+	
+</decorators>

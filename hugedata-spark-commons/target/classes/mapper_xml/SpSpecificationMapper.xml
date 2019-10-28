@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.SpSpecificationMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.SpSpecification" >
+    <id column="SPEC_ID" property="specId" jdbcType="INTEGER" />
+    <result column="PROJECT_ID" property="projectId" jdbcType="VARCHAR" />
+    <result column="SPEC_NAME" property="specName" jdbcType="VARCHAR" />
+    <result column="REFER_PRICE" property="referPrice" jdbcType="REAL" />
+    <result column="MEASURE_UNIT" property="measureUnit" jdbcType="VARCHAR" />
+    <result column="IS_NEGOTIABLE_PRICE" property="isNegotiablePrice" jdbcType="BIT" />
+    <result column="PRICE_UNIT" property="priceUnit" jdbcType="VARCHAR" />
+    <result column="SPEC_BRIEF" property="specBrief" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != specId" >
+      and ss.SPEC_ID = #{specId}
+    </if>
+    <if test="null != ne_specId" >
+      and ss.SPEC_ID != #{ne_specId}
+    </if>
+    <if test="null != list_specId" >
+      and ss.SPEC_ID in (<foreach collection="list_specId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != projectId" >
+      and ss.PROJECT_ID = #{projectId}
+    </if>
+    <if test="null != ne_projectId" >
+      and ss.PROJECT_ID != #{ne_projectId}
+    </if>
+    <if test="null != like_projectId" >
+      and ss.PROJECT_ID like CONCAT('%', #{like_projectId}, '%')
+    </if>
+    <if test="null != list_projectId" >
+      and ss.PROJECT_ID in (<foreach collection="list_projectId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_projectId" >
+      and ss.PROJECT_ID &gt;= #{begin_projectId}
+    </if>
+    <if test="null != end_projectId" >
+      and ss.PROJECT_ID &lt;= #{end_projectId}
+    </if>
+    <if test="null != specName" >
+      and ss.SPEC_NAME = #{specName}
+    </if>
+    <if test="null != ne_specName" >
+      and ss.SPEC_NAME != #{ne_specName}
+    </if>
+    <if test="null != like_specName" >
+      and ss.SPEC_NAME like CONCAT('%', #{like_specName}, '%')
+    </if>
+    <if test="null != list_specName" >
+      and ss.SPEC_NAME in (<foreach collection="list_specName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_specName" >
+      and ss.SPEC_NAME &gt;= #{begin_specName}
+    </if>
+    <if test="null != end_specName" >
+      and ss.SPEC_NAME &lt;= #{end_specName}
+    </if>
+    <if test="null != referPrice" >
+      and ss.REFER_PRICE = #{referPrice}
+    </if>
+    <if test="null != ne_referPrice" >
+      and ss.REFER_PRICE != #{ne_referPrice}
+    </if>
+    <if test="null != list_referPrice" >
+      and ss.REFER_PRICE in (<foreach collection="list_referPrice" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != measureUnit" >
+      and ss.MEASURE_UNIT = #{measureUnit}
+    </if>
+    <if test="null != ne_measureUnit" >
+      and ss.MEASURE_UNIT != #{ne_measureUnit}
+    </if>
+    <if test="null != like_measureUnit" >
+      and ss.MEASURE_UNIT like CONCAT('%', #{like_measureUnit}, '%')
+    </if>
+    <if test="null != list_measureUnit" >
+      and ss.MEASURE_UNIT in (<foreach collection="list_measureUnit" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_measureUnit" >
+      and ss.MEASURE_UNIT &gt;= #{begin_measureUnit}
+    </if>
+    <if test="null != end_measureUnit" >
+      and ss.MEASURE_UNIT &lt;= #{end_measureUnit}
+    </if>
+    <if test="null != isNegotiablePrice" >
+      and ss.IS_NEGOTIABLE_PRICE = #{isNegotiablePrice}
+    </if>
+    <if test="null != ne_isNegotiablePrice" >
+      and ss.IS_NEGOTIABLE_PRICE != #{ne_isNegotiablePrice}
+    </if>
+    <if test="null != list_isNegotiablePrice" >
+      and ss.IS_NEGOTIABLE_PRICE in (<foreach collection="list_isNegotiablePrice" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != priceUnit" >
+      and ss.PRICE_UNIT = #{priceUnit}
+    </if>
+    <if test="null != ne_priceUnit" >
+      and ss.PRICE_UNIT != #{ne_priceUnit}
+    </if>
+    <if test="null != like_priceUnit" >
+      and ss.PRICE_UNIT like CONCAT('%', #{like_priceUnit}, '%')
+    </if>
+    <if test="null != list_priceUnit" >
+      and ss.PRICE_UNIT in (<foreach collection="list_priceUnit" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_priceUnit" >
+      and ss.PRICE_UNIT &gt;= #{begin_priceUnit}
+    </if>
+    <if test="null != end_priceUnit" >
+      and ss.PRICE_UNIT &lt;= #{end_priceUnit}
+    </if>
+    <if test="null != specBrief" >
+      and ss.SPEC_BRIEF = #{specBrief}
+    </if>
+    <if test="null != ne_specBrief" >
+      and ss.SPEC_BRIEF != #{ne_specBrief}
+    </if>
+    <if test="null != like_specBrief" >
+      and ss.SPEC_BRIEF like CONCAT('%', #{like_specBrief}, '%')
+    </if>
+    <if test="null != list_specBrief" >
+      and ss.SPEC_BRIEF in (<foreach collection="list_specBrief" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_specBrief" >
+      and ss.SPEC_BRIEF &gt;= #{begin_specBrief}
+    </if>
+    <if test="null != end_specBrief" >
+      and ss.SPEC_BRIEF &lt;= #{end_specBrief}
+    </if>
+    <if test="null != begin_createTime" >
+      and ss.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and ss.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_updateTime" >
+      and ss.UPDATE_TIME &gt;= #{begin_updateTime}
+    </if>
+    <if test="null != end_updateTime" >
+      and ss.UPDATE_TIME &lt;= #{end_updateTime}
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'specId' == orderItem.column" >
+            ss.SPEC_ID ${orderItem.dir}
+          </if>
+          <if test="'projectId' == orderItem.column" >
+            ss.PROJECT_ID ${orderItem.dir}
+          </if>
+          <if test="'specName' == orderItem.column" >
+            ss.SPEC_NAME ${orderItem.dir}
+          </if>
+          <if test="'referPrice' == orderItem.column" >
+            ss.REFER_PRICE ${orderItem.dir}
+          </if>
+          <if test="'measureUnit' == orderItem.column" >
+            ss.MEASURE_UNIT ${orderItem.dir}
+          </if>
+          <if test="'isNegotiablePrice' == orderItem.column" >
+            ss.IS_NEGOTIABLE_PRICE ${orderItem.dir}
+          </if>
+          <if test="'priceUnit' == orderItem.column" >
+            ss.PRICE_UNIT ${orderItem.dir}
+          </if>
+          <if test="'specBrief' == orderItem.column" >
+            ss.SPEC_BRIEF ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            ss.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'updateTime' == orderItem.column" >
+            ss.UPDATE_TIME ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    ss.SPEC_ID, ss.PROJECT_ID, ss.SPEC_NAME, ss.REFER_PRICE, ss.MEASURE_UNIT, ss.IS_NEGOTIABLE_PRICE, 
+    ss.PRICE_UNIT, ss.SPEC_BRIEF, ss.CREATE_TIME, ss.UPDATE_TIME
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sp_specification ss
+    where ss.SPEC_ID = #{specId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from sp_specification ss
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from sp_specification ss
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.SpSpecification" >
+    <selectKey resultType="java.lang.Integer" keyProperty="specId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into sp_specification
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      SPEC_ID,
+      <if test="projectId != null" >
+        PROJECT_ID,
+      </if>
+      <if test="specName != null" >
+        SPEC_NAME,
+      </if>
+      <if test="referPrice != null" >
+        REFER_PRICE,
+      </if>
+      <if test="measureUnit != null" >
+        MEASURE_UNIT,
+      </if>
+      <if test="isNegotiablePrice != null" >
+        IS_NEGOTIABLE_PRICE,
+      </if>
+      <if test="priceUnit != null" >
+        PRICE_UNIT,
+      </if>
+      <if test="specBrief != null" >
+        SPEC_BRIEF,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{specId,jdbcType=INTEGER},
+      <if test="projectId != null" >
+        #{projectId,jdbcType=VARCHAR},
+      </if>
+      <if test="specName != null" >
+        #{specName,jdbcType=VARCHAR},
+      </if>
+      <if test="referPrice != null" >
+        #{referPrice,jdbcType=REAL},
+      </if>
+      <if test="measureUnit != null" >
+        #{measureUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="isNegotiablePrice != null" >
+        #{isNegotiablePrice,jdbcType=BIT},
+      </if>
+      <if test="priceUnit != null" >
+        #{priceUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="specBrief != null" >
+        #{specBrief,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from sp_specification
+    where SPEC_ID = #{specId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from sp_specification where SPEC_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from ss using (sp_specification as ss) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.SpSpecification" >
+    update sp_specification
+    <set >
+      <if test="projectId != null" >
+        PROJECT_ID = #{projectId,jdbcType=VARCHAR},
+      </if>
+      <if test="specName != null" >
+        SPEC_NAME = #{specName,jdbcType=VARCHAR},
+      </if>
+      <if test="referPrice != null" >
+        REFER_PRICE = #{referPrice,jdbcType=REAL},
+      </if>
+      <if test="measureUnit != null" >
+        MEASURE_UNIT = #{measureUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="isNegotiablePrice != null" >
+        IS_NEGOTIABLE_PRICE = #{isNegotiablePrice,jdbcType=BIT},
+      </if>
+      <if test="priceUnit != null" >
+        PRICE_UNIT = #{priceUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="specBrief != null" >
+        SPEC_BRIEF = #{specBrief,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where SPEC_ID = #{specId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update sp_specification ss
+    <set >
+      <if test="record.specId != null" >
+        SPEC_ID = #{record.specId,jdbcType=INTEGER},
+      </if>
+      <if test="record.projectId != null" >
+        PROJECT_ID = #{record.projectId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.specName != null" >
+        SPEC_NAME = #{record.specName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.referPrice != null" >
+        REFER_PRICE = #{record.referPrice,jdbcType=REAL},
+      </if>
+      <if test="record.measureUnit != null" >
+        MEASURE_UNIT = #{record.measureUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isNegotiablePrice != null" >
+        IS_NEGOTIABLE_PRICE = #{record.isNegotiablePrice,jdbcType=BIT},
+      </if>
+      <if test="record.priceUnit != null" >
+        PRICE_UNIT = #{record.priceUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.specBrief != null" >
+        SPEC_BRIEF = #{record.specBrief,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.specId" >
+        and ss.SPEC_ID = #{map.specId}
+      </if>
+      <if test="null != map.list_specId" >
+        and ss.SPEC_ID in (<foreach collection="map.list_specId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.projectId" >
+        and ss.PROJECT_ID = #{map.projectId}
+      </if>
+      <if test="null != map.like_projectId" >
+        and ss.PROJECT_ID like '%' || #{map.like_projectId} || '%'
+      </if>
+      <if test="null != map.list_projectId" >
+        and ss.PROJECT_ID in (<foreach collection="map.list_projectId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.specName" >
+        and ss.SPEC_NAME = #{map.specName}
+      </if>
+      <if test="null != map.like_specName" >
+        and ss.SPEC_NAME like '%' || #{map.like_specName} || '%'
+      </if>
+      <if test="null != map.list_specName" >
+        and ss.SPEC_NAME in (<foreach collection="map.list_specName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.referPrice" >
+        and ss.REFER_PRICE = #{map.referPrice}
+      </if>
+      <if test="null != map.list_referPrice" >
+        and ss.REFER_PRICE in (<foreach collection="map.list_referPrice" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.measureUnit" >
+        and ss.MEASURE_UNIT = #{map.measureUnit}
+      </if>
+      <if test="null != map.like_measureUnit" >
+        and ss.MEASURE_UNIT like '%' || #{map.like_measureUnit} || '%'
+      </if>
+      <if test="null != map.list_measureUnit" >
+        and ss.MEASURE_UNIT in (<foreach collection="map.list_measureUnit" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.isNegotiablePrice" >
+        and ss.IS_NEGOTIABLE_PRICE = #{map.isNegotiablePrice}
+      </if>
+      <if test="null != map.list_isNegotiablePrice" >
+        and ss.IS_NEGOTIABLE_PRICE in (<foreach collection="map.list_isNegotiablePrice" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.priceUnit" >
+        and ss.PRICE_UNIT = #{map.priceUnit}
+      </if>
+      <if test="null != map.like_priceUnit" >
+        and ss.PRICE_UNIT like '%' || #{map.like_priceUnit} || '%'
+      </if>
+      <if test="null != map.list_priceUnit" >
+        and ss.PRICE_UNIT in (<foreach collection="map.list_priceUnit" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.specBrief" >
+        and ss.SPEC_BRIEF = #{map.specBrief}
+      </if>
+      <if test="null != map.like_specBrief" >
+        and ss.SPEC_BRIEF like '%' || #{map.like_specBrief} || '%'
+      </if>
+      <if test="null != map.list_specBrief" >
+        and ss.SPEC_BRIEF in (<foreach collection="map.list_specBrief" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and ss.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and ss.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_updateTime" >
+        and ss.UPDATE_TIME &gt;= #{map.begin_updateTime}
+      </if>
+      <if test="null != map.end_updateTime" >
+        and ss.UPDATE_TIME &lt;= #{map.end_updateTime}
+      </if>
+    </where>
+  </update>
+</mapper>

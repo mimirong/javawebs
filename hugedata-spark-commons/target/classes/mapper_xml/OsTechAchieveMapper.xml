@@ -1,0 +1,911 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hugedata.spark.commons.storage.mapper.OsTechAchieveMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hugedata.spark.commons.storage.entity.OsTechAchieve" >
+    <id column="ACHIEVE_ID" property="achieveId" jdbcType="INTEGER" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="PROFESSION_FIELD_ID" property="professionFieldId" jdbcType="VARCHAR" />
+    <result column="ACHIEVE_TYPE" property="achieveType" jdbcType="VARCHAR" />
+    <result column="INVESTMENT_VOLUME" property="investmentVolume" jdbcType="INTEGER" />
+    <result column="MONETARY_UNIT" property="monetaryUnit" jdbcType="VARCHAR" />
+    <result column="MATURITY_STAGE" property="maturityStage" jdbcType="VARCHAR" />
+    <result column="DESIRED_EFFECT" property="desiredEffect" jdbcType="VARCHAR" />
+    <result column="ADAPT_OBJECT" property="adaptObject" jdbcType="VARCHAR" />
+    <result column="COOPERATION_WAYS" property="cooperationWays" jdbcType="VARCHAR" />
+    <result column="CONTACT" property="contact" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="BRIEF" property="brief" jdbcType="VARCHAR" />
+    <result column="FILE_ID" property="fileId" jdbcType="VARCHAR" />
+    <result column="FILE_NAME" property="fileName" jdbcType="VARCHAR" />
+    <result column="PREVIEW_FILE_ID" property="previewFileId" jdbcType="VARCHAR" />
+    <result column="PREVIEW_FILE_NAME" property="previewFileName" jdbcType="VARCHAR" />
+    <result column="SORT_INDEX" property="sortIndex" jdbcType="INTEGER" />
+    <result column="IS_VISIBLE" property="isVisible" jdbcType="BIT" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Map_Where_Clause" >
+    <if test="null != achieveId" >
+      and ota.ACHIEVE_ID = #{achieveId}
+    </if>
+    <if test="null != ne_achieveId" >
+      and ota.ACHIEVE_ID != #{ne_achieveId}
+    </if>
+    <if test="null != list_achieveId" >
+      and ota.ACHIEVE_ID in (<foreach collection="list_achieveId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != name" >
+      and ota.NAME = #{name}
+    </if>
+    <if test="null != ne_name" >
+      and ota.NAME != #{ne_name}
+    </if>
+    <if test="null != like_name" >
+      and ota.NAME like CONCAT('%', #{like_name}, '%')
+    </if>
+    <if test="null != list_name" >
+      and ota.NAME in (<foreach collection="list_name" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_name" >
+      and ota.NAME &gt;= #{begin_name}
+    </if>
+    <if test="null != end_name" >
+      and ota.NAME &lt;= #{end_name}
+    </if>
+    <if test="null != professionFieldId" >
+      and ota.PROFESSION_FIELD_ID = #{professionFieldId}
+    </if>
+    <if test="null != ne_professionFieldId" >
+      and ota.PROFESSION_FIELD_ID != #{ne_professionFieldId}
+    </if>
+    <if test="null != like_professionFieldId" >
+      and ota.PROFESSION_FIELD_ID like CONCAT('%', #{like_professionFieldId}, '%')
+    </if>
+    <if test="null != list_professionFieldId" >
+      and ota.PROFESSION_FIELD_ID in (<foreach collection="list_professionFieldId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_professionFieldId" >
+      and ota.PROFESSION_FIELD_ID &gt;= #{begin_professionFieldId}
+    </if>
+    <if test="null != end_professionFieldId" >
+      and ota.PROFESSION_FIELD_ID &lt;= #{end_professionFieldId}
+    </if>
+    <if test="null != achieveType" >
+      and ota.ACHIEVE_TYPE = #{achieveType}
+    </if>
+    <if test="null != ne_achieveType" >
+      and ota.ACHIEVE_TYPE != #{ne_achieveType}
+    </if>
+    <if test="null != like_achieveType" >
+      and ota.ACHIEVE_TYPE like CONCAT('%', #{like_achieveType}, '%')
+    </if>
+    <if test="null != list_achieveType" >
+      and ota.ACHIEVE_TYPE in (<foreach collection="list_achieveType" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_achieveType" >
+      and ota.ACHIEVE_TYPE &gt;= #{begin_achieveType}
+    </if>
+    <if test="null != end_achieveType" >
+      and ota.ACHIEVE_TYPE &lt;= #{end_achieveType}
+    </if>
+    <if test="null != investmentVolume" >
+      and ota.INVESTMENT_VOLUME = #{investmentVolume}
+    </if>
+    <if test="null != ne_investmentVolume" >
+      and ota.INVESTMENT_VOLUME != #{ne_investmentVolume}
+    </if>
+    <if test="null != list_investmentVolume" >
+      and ota.INVESTMENT_VOLUME in (<foreach collection="list_investmentVolume" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != monetaryUnit" >
+      and ota.MONETARY_UNIT = #{monetaryUnit}
+    </if>
+    <if test="null != ne_monetaryUnit" >
+      and ota.MONETARY_UNIT != #{ne_monetaryUnit}
+    </if>
+    <if test="null != like_monetaryUnit" >
+      and ota.MONETARY_UNIT like CONCAT('%', #{like_monetaryUnit}, '%')
+    </if>
+    <if test="null != list_monetaryUnit" >
+      and ota.MONETARY_UNIT in (<foreach collection="list_monetaryUnit" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_monetaryUnit" >
+      and ota.MONETARY_UNIT &gt;= #{begin_monetaryUnit}
+    </if>
+    <if test="null != end_monetaryUnit" >
+      and ota.MONETARY_UNIT &lt;= #{end_monetaryUnit}
+    </if>
+    <if test="null != maturityStage" >
+      and ota.MATURITY_STAGE = #{maturityStage}
+    </if>
+    <if test="null != ne_maturityStage" >
+      and ota.MATURITY_STAGE != #{ne_maturityStage}
+    </if>
+    <if test="null != like_maturityStage" >
+      and ota.MATURITY_STAGE like CONCAT('%', #{like_maturityStage}, '%')
+    </if>
+    <if test="null != list_maturityStage" >
+      and ota.MATURITY_STAGE in (<foreach collection="list_maturityStage" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_maturityStage" >
+      and ota.MATURITY_STAGE &gt;= #{begin_maturityStage}
+    </if>
+    <if test="null != end_maturityStage" >
+      and ota.MATURITY_STAGE &lt;= #{end_maturityStage}
+    </if>
+    <if test="null != desiredEffect" >
+      and ota.DESIRED_EFFECT = #{desiredEffect}
+    </if>
+    <if test="null != ne_desiredEffect" >
+      and ota.DESIRED_EFFECT != #{ne_desiredEffect}
+    </if>
+    <if test="null != like_desiredEffect" >
+      and ota.DESIRED_EFFECT like CONCAT('%', #{like_desiredEffect}, '%')
+    </if>
+    <if test="null != list_desiredEffect" >
+      and ota.DESIRED_EFFECT in (<foreach collection="list_desiredEffect" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_desiredEffect" >
+      and ota.DESIRED_EFFECT &gt;= #{begin_desiredEffect}
+    </if>
+    <if test="null != end_desiredEffect" >
+      and ota.DESIRED_EFFECT &lt;= #{end_desiredEffect}
+    </if>
+    <if test="null != adaptObject" >
+      and ota.ADAPT_OBJECT = #{adaptObject}
+    </if>
+    <if test="null != ne_adaptObject" >
+      and ota.ADAPT_OBJECT != #{ne_adaptObject}
+    </if>
+    <if test="null != like_adaptObject" >
+      and ota.ADAPT_OBJECT like CONCAT('%', #{like_adaptObject}, '%')
+    </if>
+    <if test="null != list_adaptObject" >
+      and ota.ADAPT_OBJECT in (<foreach collection="list_adaptObject" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_adaptObject" >
+      and ota.ADAPT_OBJECT &gt;= #{begin_adaptObject}
+    </if>
+    <if test="null != end_adaptObject" >
+      and ota.ADAPT_OBJECT &lt;= #{end_adaptObject}
+    </if>
+    <if test="null != cooperationWays" >
+      and ota.COOPERATION_WAYS = #{cooperationWays}
+    </if>
+    <if test="null != ne_cooperationWays" >
+      and ota.COOPERATION_WAYS != #{ne_cooperationWays}
+    </if>
+    <if test="null != like_cooperationWays" >
+      and ota.COOPERATION_WAYS like CONCAT('%', #{like_cooperationWays}, '%')
+    </if>
+    <if test="null != list_cooperationWays" >
+      and ota.COOPERATION_WAYS in (<foreach collection="list_cooperationWays" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_cooperationWays" >
+      and ota.COOPERATION_WAYS &gt;= #{begin_cooperationWays}
+    </if>
+    <if test="null != end_cooperationWays" >
+      and ota.COOPERATION_WAYS &lt;= #{end_cooperationWays}
+    </if>
+    <if test="null != contact" >
+      and ota.CONTACT = #{contact}
+    </if>
+    <if test="null != ne_contact" >
+      and ota.CONTACT != #{ne_contact}
+    </if>
+    <if test="null != like_contact" >
+      and ota.CONTACT like CONCAT('%', #{like_contact}, '%')
+    </if>
+    <if test="null != list_contact" >
+      and ota.CONTACT in (<foreach collection="list_contact" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_contact" >
+      and ota.CONTACT &gt;= #{begin_contact}
+    </if>
+    <if test="null != end_contact" >
+      and ota.CONTACT &lt;= #{end_contact}
+    </if>
+    <if test="null != phone" >
+      and ota.PHONE = #{phone}
+    </if>
+    <if test="null != ne_phone" >
+      and ota.PHONE != #{ne_phone}
+    </if>
+    <if test="null != like_phone" >
+      and ota.PHONE like CONCAT('%', #{like_phone}, '%')
+    </if>
+    <if test="null != list_phone" >
+      and ota.PHONE in (<foreach collection="list_phone" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_phone" >
+      and ota.PHONE &gt;= #{begin_phone}
+    </if>
+    <if test="null != end_phone" >
+      and ota.PHONE &lt;= #{end_phone}
+    </if>
+    <if test="null != brief" >
+      and ota.BRIEF = #{brief}
+    </if>
+    <if test="null != ne_brief" >
+      and ota.BRIEF != #{ne_brief}
+    </if>
+    <if test="null != like_brief" >
+      and ota.BRIEF like CONCAT('%', #{like_brief}, '%')
+    </if>
+    <if test="null != list_brief" >
+      and ota.BRIEF in (<foreach collection="list_brief" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_brief" >
+      and ota.BRIEF &gt;= #{begin_brief}
+    </if>
+    <if test="null != end_brief" >
+      and ota.BRIEF &lt;= #{end_brief}
+    </if>
+    <if test="null != fileId" >
+      and ota.FILE_ID = #{fileId}
+    </if>
+    <if test="null != ne_fileId" >
+      and ota.FILE_ID != #{ne_fileId}
+    </if>
+    <if test="null != like_fileId" >
+      and ota.FILE_ID like CONCAT('%', #{like_fileId}, '%')
+    </if>
+    <if test="null != list_fileId" >
+      and ota.FILE_ID in (<foreach collection="list_fileId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_fileId" >
+      and ota.FILE_ID &gt;= #{begin_fileId}
+    </if>
+    <if test="null != end_fileId" >
+      and ota.FILE_ID &lt;= #{end_fileId}
+    </if>
+    <if test="null != fileName" >
+      and ota.FILE_NAME = #{fileName}
+    </if>
+    <if test="null != ne_fileName" >
+      and ota.FILE_NAME != #{ne_fileName}
+    </if>
+    <if test="null != like_fileName" >
+      and ota.FILE_NAME like CONCAT('%', #{like_fileName}, '%')
+    </if>
+    <if test="null != list_fileName" >
+      and ota.FILE_NAME in (<foreach collection="list_fileName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_fileName" >
+      and ota.FILE_NAME &gt;= #{begin_fileName}
+    </if>
+    <if test="null != end_fileName" >
+      and ota.FILE_NAME &lt;= #{end_fileName}
+    </if>
+    <if test="null != previewFileId" >
+      and ota.PREVIEW_FILE_ID = #{previewFileId}
+    </if>
+    <if test="null != ne_previewFileId" >
+      and ota.PREVIEW_FILE_ID != #{ne_previewFileId}
+    </if>
+    <if test="null != like_previewFileId" >
+      and ota.PREVIEW_FILE_ID like CONCAT('%', #{like_previewFileId}, '%')
+    </if>
+    <if test="null != list_previewFileId" >
+      and ota.PREVIEW_FILE_ID in (<foreach collection="list_previewFileId" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_previewFileId" >
+      and ota.PREVIEW_FILE_ID &gt;= #{begin_previewFileId}
+    </if>
+    <if test="null != end_previewFileId" >
+      and ota.PREVIEW_FILE_ID &lt;= #{end_previewFileId}
+    </if>
+    <if test="null != previewFileName" >
+      and ota.PREVIEW_FILE_NAME = #{previewFileName}
+    </if>
+    <if test="null != ne_previewFileName" >
+      and ota.PREVIEW_FILE_NAME != #{ne_previewFileName}
+    </if>
+    <if test="null != like_previewFileName" >
+      and ota.PREVIEW_FILE_NAME like CONCAT('%', #{like_previewFileName}, '%')
+    </if>
+    <if test="null != list_previewFileName" >
+      and ota.PREVIEW_FILE_NAME in (<foreach collection="list_previewFileName" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_previewFileName" >
+      and ota.PREVIEW_FILE_NAME &gt;= #{begin_previewFileName}
+    </if>
+    <if test="null != end_previewFileName" >
+      and ota.PREVIEW_FILE_NAME &lt;= #{end_previewFileName}
+    </if>
+    <if test="null != sortIndex" >
+      and ota.SORT_INDEX = #{sortIndex}
+    </if>
+    <if test="null != ne_sortIndex" >
+      and ota.SORT_INDEX != #{ne_sortIndex}
+    </if>
+    <if test="null != list_sortIndex" >
+      and ota.SORT_INDEX in (<foreach collection="list_sortIndex" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != isVisible" >
+      and ota.IS_VISIBLE = #{isVisible}
+    </if>
+    <if test="null != ne_isVisible" >
+      and ota.IS_VISIBLE != #{ne_isVisible}
+    </if>
+    <if test="null != list_isVisible" >
+      and ota.IS_VISIBLE in (<foreach collection="list_isVisible" item="i" separator=",">#{i}</foreach>)
+    </if>
+    <if test="null != begin_createTime" >
+      and ota.CREATE_TIME &gt;= #{begin_createTime}
+    </if>
+    <if test="null != end_createTime" >
+      and ota.CREATE_TIME &lt;= #{end_createTime}
+    </if>
+    <if test="null != begin_updateTime" >
+      and ota.UPDATE_TIME &gt;= #{begin_updateTime}
+    </if>
+    <if test="null != end_updateTime" >
+      and ota.UPDATE_TIME &lt;= #{end_updateTime}
+    </if>
+    <if test="null != like_keyWord" >
+      and ( ota.NAME like CONCAT('%', #{like_keyWord}, '%') or
+      ota.ACHIEVE_TYPE like CONCAT('%', #{like_keyWord}, '%') or
+      ota.DESIRED_EFFECT like CONCAT('%', #{like_keyWord}, '%') or
+      ota.ADAPT_OBJECT like CONCAT('%', #{like_keyWord}, '%') or
+      ota.COOPERATION_WAYS like CONCAT('%', #{like_keyWord}, '%') or
+      ota.CONTACT like CONCAT('%', #{like_keyWord}, '%') or
+      ota.PHONE like CONCAT('%', #{like_keyWord}, '%') or
+      ota.BRIEF like CONCAT('%', #{like_keyWord}, '%') )
+    </if>
+  </sql>
+  <sql id="Order_By_Clause" >
+    <if test="null != order" >
+      <trim prefix="order by " >
+        <foreach collection="order" item="orderItem" separator="," >
+          <if test="'achieveId' == orderItem.column" >
+            ota.ACHIEVE_ID ${orderItem.dir}
+          </if>
+          <if test="'name' == orderItem.column" >
+            ota.NAME ${orderItem.dir}
+          </if>
+          <if test="'professionFieldId' == orderItem.column" >
+            ota.PROFESSION_FIELD_ID ${orderItem.dir}
+          </if>
+          <if test="'achieveType' == orderItem.column" >
+            ota.ACHIEVE_TYPE ${orderItem.dir}
+          </if>
+          <if test="'investmentVolume' == orderItem.column" >
+            ota.INVESTMENT_VOLUME ${orderItem.dir}
+          </if>
+          <if test="'monetaryUnit' == orderItem.column" >
+            ota.MONETARY_UNIT ${orderItem.dir}
+          </if>
+          <if test="'maturityStage' == orderItem.column" >
+            ota.MATURITY_STAGE ${orderItem.dir}
+          </if>
+          <if test="'desiredEffect' == orderItem.column" >
+            ota.DESIRED_EFFECT ${orderItem.dir}
+          </if>
+          <if test="'adaptObject' == orderItem.column" >
+            ota.ADAPT_OBJECT ${orderItem.dir}
+          </if>
+          <if test="'cooperationWays' == orderItem.column" >
+            ota.COOPERATION_WAYS ${orderItem.dir}
+          </if>
+          <if test="'contact' == orderItem.column" >
+            ota.CONTACT ${orderItem.dir}
+          </if>
+          <if test="'phone' == orderItem.column" >
+            ota.PHONE ${orderItem.dir}
+          </if>
+          <if test="'brief' == orderItem.column" >
+            ota.BRIEF ${orderItem.dir}
+          </if>
+          <if test="'fileId' == orderItem.column" >
+            ota.FILE_ID ${orderItem.dir}
+          </if>
+          <if test="'fileName' == orderItem.column" >
+            ota.FILE_NAME ${orderItem.dir}
+          </if>
+          <if test="'previewFileId' == orderItem.column" >
+            ota.PREVIEW_FILE_ID ${orderItem.dir}
+          </if>
+          <if test="'previewFileName' == orderItem.column" >
+            ota.PREVIEW_FILE_NAME ${orderItem.dir}
+          </if>
+          <if test="'sortIndex' == orderItem.column" >
+            ota.SORT_INDEX ${orderItem.dir}
+          </if>
+          <if test="'isVisible' == orderItem.column" >
+            ota.IS_VISIBLE ${orderItem.dir}
+          </if>
+          <if test="'createTime' == orderItem.column" >
+            ota.CREATE_TIME ${orderItem.dir}
+          </if>
+          <if test="'updateTime' == orderItem.column" >
+            ota.UPDATE_TIME ${orderItem.dir}
+          </if>
+        </foreach>
+      </trim>
+    </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    ota.ACHIEVE_ID, ota.NAME, ota.PROFESSION_FIELD_ID, ota.ACHIEVE_TYPE, ota.INVESTMENT_VOLUME, 
+    ota.MONETARY_UNIT, ota.MATURITY_STAGE, ota.DESIRED_EFFECT, ota.ADAPT_OBJECT, ota.COOPERATION_WAYS, 
+    ota.CONTACT, ota.PHONE, ota.BRIEF, ota.FILE_ID, ota.FILE_NAME, ota.PREVIEW_FILE_ID, 
+    ota.PREVIEW_FILE_NAME, ota.SORT_INDEX, ota.IS_VISIBLE, ota.CREATE_TIME, ota.UPDATE_TIME
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from os_tech_achieve ota
+    where ota.ACHIEVE_ID = #{achieveId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMap" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from os_tech_achieve ota
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+    <include refid="Order_By_Clause" />
+  </select>
+  <select id="countByMap" resultType="java.lang.Integer" parameterType="map" >
+    select count(1)
+    from os_tech_achieve ota
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </select>
+  <insert id="insertSelective" parameterType="cn.com.hugedata.spark.commons.storage.entity.OsTechAchieve" >
+    <selectKey resultType="java.lang.Integer" keyProperty="achieveId" order="AFTER" >
+      select @@identity
+    </selectKey>
+    insert into os_tech_achieve
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      ACHIEVE_ID,
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="professionFieldId != null" >
+        PROFESSION_FIELD_ID,
+      </if>
+      <if test="achieveType != null" >
+        ACHIEVE_TYPE,
+      </if>
+      <if test="investmentVolume != null" >
+        INVESTMENT_VOLUME,
+      </if>
+      <if test="monetaryUnit != null" >
+        MONETARY_UNIT,
+      </if>
+      <if test="maturityStage != null" >
+        MATURITY_STAGE,
+      </if>
+      <if test="desiredEffect != null" >
+        DESIRED_EFFECT,
+      </if>
+      <if test="adaptObject != null" >
+        ADAPT_OBJECT,
+      </if>
+      <if test="cooperationWays != null" >
+        COOPERATION_WAYS,
+      </if>
+      <if test="contact != null" >
+        CONTACT,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="brief != null" >
+        BRIEF,
+      </if>
+      <if test="fileId != null" >
+        FILE_ID,
+      </if>
+      <if test="fileName != null" >
+        FILE_NAME,
+      </if>
+      <if test="previewFileId != null" >
+        PREVIEW_FILE_ID,
+      </if>
+      <if test="previewFileName != null" >
+        PREVIEW_FILE_NAME,
+      </if>
+      <if test="sortIndex != null" >
+        SORT_INDEX,
+      </if>
+      <if test="isVisible != null" >
+        IS_VISIBLE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{achieveId,jdbcType=INTEGER},
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="professionFieldId != null" >
+        #{professionFieldId,jdbcType=VARCHAR},
+      </if>
+      <if test="achieveType != null" >
+        #{achieveType,jdbcType=VARCHAR},
+      </if>
+      <if test="investmentVolume != null" >
+        #{investmentVolume,jdbcType=INTEGER},
+      </if>
+      <if test="monetaryUnit != null" >
+        #{monetaryUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="maturityStage != null" >
+        #{maturityStage,jdbcType=VARCHAR},
+      </if>
+      <if test="desiredEffect != null" >
+        #{desiredEffect,jdbcType=VARCHAR},
+      </if>
+      <if test="adaptObject != null" >
+        #{adaptObject,jdbcType=VARCHAR},
+      </if>
+      <if test="cooperationWays != null" >
+        #{cooperationWays,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="brief != null" >
+        #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="fileId != null" >
+        #{fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="previewFileId != null" >
+        #{previewFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="previewFileName != null" >
+        #{previewFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="sortIndex != null" >
+        #{sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="isVisible != null" >
+        #{isVisible,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from os_tech_achieve
+    where ACHIEVE_ID = #{achieveId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" >
+    delete from os_tech_achieve where ACHIEVE_ID in 
+    <foreach collection="list" item="id" open="(" separator="," close=")" >
+      #{id}
+    </foreach>
+  </delete>
+  <delete id="deleteByMap" >
+    delete from ota using (os_tech_achieve as ota) 
+    <where >
+      <include refid="Map_Where_Clause" />
+    </where>
+  </delete>
+  <update id="updateSelectiveById" parameterType="cn.com.hugedata.spark.commons.storage.entity.OsTechAchieve" >
+    update os_tech_achieve
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="professionFieldId != null" >
+        PROFESSION_FIELD_ID = #{professionFieldId,jdbcType=VARCHAR},
+      </if>
+      <if test="achieveType != null" >
+        ACHIEVE_TYPE = #{achieveType,jdbcType=VARCHAR},
+      </if>
+      <if test="investmentVolume != null" >
+        INVESTMENT_VOLUME = #{investmentVolume,jdbcType=INTEGER},
+      </if>
+      <if test="monetaryUnit != null" >
+        MONETARY_UNIT = #{monetaryUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="maturityStage != null" >
+        MATURITY_STAGE = #{maturityStage,jdbcType=VARCHAR},
+      </if>
+      <if test="desiredEffect != null" >
+        DESIRED_EFFECT = #{desiredEffect,jdbcType=VARCHAR},
+      </if>
+      <if test="adaptObject != null" >
+        ADAPT_OBJECT = #{adaptObject,jdbcType=VARCHAR},
+      </if>
+      <if test="cooperationWays != null" >
+        COOPERATION_WAYS = #{cooperationWays,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        CONTACT = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="brief != null" >
+        BRIEF = #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="fileId != null" >
+        FILE_ID = #{fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        FILE_NAME = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="previewFileId != null" >
+        PREVIEW_FILE_ID = #{previewFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="previewFileName != null" >
+        PREVIEW_FILE_NAME = #{previewFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="sortIndex != null" >
+        SORT_INDEX = #{sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="isVisible != null" >
+        IS_VISIBLE = #{isVisible,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ACHIEVE_ID = #{achieveId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelectiveByMap" parameterType="map" >
+    update os_tech_achieve ota
+    <set >
+      <if test="record.achieveId != null" >
+        ACHIEVE_ID = #{record.achieveId,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.professionFieldId != null" >
+        PROFESSION_FIELD_ID = #{record.professionFieldId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.achieveType != null" >
+        ACHIEVE_TYPE = #{record.achieveType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.investmentVolume != null" >
+        INVESTMENT_VOLUME = #{record.investmentVolume,jdbcType=INTEGER},
+      </if>
+      <if test="record.monetaryUnit != null" >
+        MONETARY_UNIT = #{record.monetaryUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.maturityStage != null" >
+        MATURITY_STAGE = #{record.maturityStage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.desiredEffect != null" >
+        DESIRED_EFFECT = #{record.desiredEffect,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adaptObject != null" >
+        ADAPT_OBJECT = #{record.adaptObject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cooperationWays != null" >
+        COOPERATION_WAYS = #{record.cooperationWays,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contact != null" >
+        CONTACT = #{record.contact,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        PHONE = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brief != null" >
+        BRIEF = #{record.brief,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileId != null" >
+        FILE_ID = #{record.fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileName != null" >
+        FILE_NAME = #{record.fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.previewFileId != null" >
+        PREVIEW_FILE_ID = #{record.previewFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.previewFileName != null" >
+        PREVIEW_FILE_NAME = #{record.previewFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sortIndex != null" >
+        SORT_INDEX = #{record.sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="record.isVisible != null" >
+        IS_VISIBLE = #{record.isVisible,jdbcType=BIT},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where >
+      <if test="null != map.achieveId" >
+        and ota.ACHIEVE_ID = #{map.achieveId}
+      </if>
+      <if test="null != map.list_achieveId" >
+        and ota.ACHIEVE_ID in (<foreach collection="map.list_achieveId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.name" >
+        and ota.NAME = #{map.name}
+      </if>
+      <if test="null != map.like_name" >
+        and ota.NAME like '%' || #{map.like_name} || '%'
+      </if>
+      <if test="null != map.list_name" >
+        and ota.NAME in (<foreach collection="map.list_name" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.professionFieldId" >
+        and ota.PROFESSION_FIELD_ID = #{map.professionFieldId}
+      </if>
+      <if test="null != map.like_professionFieldId" >
+        and ota.PROFESSION_FIELD_ID like '%' || #{map.like_professionFieldId} || '%'
+      </if>
+      <if test="null != map.list_professionFieldId" >
+        and ota.PROFESSION_FIELD_ID in (<foreach collection="map.list_professionFieldId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.achieveType" >
+        and ota.ACHIEVE_TYPE = #{map.achieveType}
+      </if>
+      <if test="null != map.like_achieveType" >
+        and ota.ACHIEVE_TYPE like '%' || #{map.like_achieveType} || '%'
+      </if>
+      <if test="null != map.list_achieveType" >
+        and ota.ACHIEVE_TYPE in (<foreach collection="map.list_achieveType" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.investmentVolume" >
+        and ota.INVESTMENT_VOLUME = #{map.investmentVolume}
+      </if>
+      <if test="null != map.list_investmentVolume" >
+        and ota.INVESTMENT_VOLUME in (<foreach collection="map.list_investmentVolume" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.monetaryUnit" >
+        and ota.MONETARY_UNIT = #{map.monetaryUnit}
+      </if>
+      <if test="null != map.like_monetaryUnit" >
+        and ota.MONETARY_UNIT like '%' || #{map.like_monetaryUnit} || '%'
+      </if>
+      <if test="null != map.list_monetaryUnit" >
+        and ota.MONETARY_UNIT in (<foreach collection="map.list_monetaryUnit" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.maturityStage" >
+        and ota.MATURITY_STAGE = #{map.maturityStage}
+      </if>
+      <if test="null != map.like_maturityStage" >
+        and ota.MATURITY_STAGE like '%' || #{map.like_maturityStage} || '%'
+      </if>
+      <if test="null != map.list_maturityStage" >
+        and ota.MATURITY_STAGE in (<foreach collection="map.list_maturityStage" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.desiredEffect" >
+        and ota.DESIRED_EFFECT = #{map.desiredEffect}
+      </if>
+      <if test="null != map.like_desiredEffect" >
+        and ota.DESIRED_EFFECT like '%' || #{map.like_desiredEffect} || '%'
+      </if>
+      <if test="null != map.list_desiredEffect" >
+        and ota.DESIRED_EFFECT in (<foreach collection="map.list_desiredEffect" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.adaptObject" >
+        and ota.ADAPT_OBJECT = #{map.adaptObject}
+      </if>
+      <if test="null != map.like_adaptObject" >
+        and ota.ADAPT_OBJECT like '%' || #{map.like_adaptObject} || '%'
+      </if>
+      <if test="null != map.list_adaptObject" >
+        and ota.ADAPT_OBJECT in (<foreach collection="map.list_adaptObject" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.cooperationWays" >
+        and ota.COOPERATION_WAYS = #{map.cooperationWays}
+      </if>
+      <if test="null != map.like_cooperationWays" >
+        and ota.COOPERATION_WAYS like '%' || #{map.like_cooperationWays} || '%'
+      </if>
+      <if test="null != map.list_cooperationWays" >
+        and ota.COOPERATION_WAYS in (<foreach collection="map.list_cooperationWays" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.contact" >
+        and ota.CONTACT = #{map.contact}
+      </if>
+      <if test="null != map.like_contact" >
+        and ota.CONTACT like '%' || #{map.like_contact} || '%'
+      </if>
+      <if test="null != map.list_contact" >
+        and ota.CONTACT in (<foreach collection="map.list_contact" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.phone" >
+        and ota.PHONE = #{map.phone}
+      </if>
+      <if test="null != map.like_phone" >
+        and ota.PHONE like '%' || #{map.like_phone} || '%'
+      </if>
+      <if test="null != map.list_phone" >
+        and ota.PHONE in (<foreach collection="map.list_phone" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.brief" >
+        and ota.BRIEF = #{map.brief}
+      </if>
+      <if test="null != map.like_brief" >
+        and ota.BRIEF like '%' || #{map.like_brief} || '%'
+      </if>
+      <if test="null != map.list_brief" >
+        and ota.BRIEF in (<foreach collection="map.list_brief" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.fileId" >
+        and ota.FILE_ID = #{map.fileId}
+      </if>
+      <if test="null != map.like_fileId" >
+        and ota.FILE_ID like '%' || #{map.like_fileId} || '%'
+      </if>
+      <if test="null != map.list_fileId" >
+        and ota.FILE_ID in (<foreach collection="map.list_fileId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.fileName" >
+        and ota.FILE_NAME = #{map.fileName}
+      </if>
+      <if test="null != map.like_fileName" >
+        and ota.FILE_NAME like '%' || #{map.like_fileName} || '%'
+      </if>
+      <if test="null != map.list_fileName" >
+        and ota.FILE_NAME in (<foreach collection="map.list_fileName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.previewFileId" >
+        and ota.PREVIEW_FILE_ID = #{map.previewFileId}
+      </if>
+      <if test="null != map.like_previewFileId" >
+        and ota.PREVIEW_FILE_ID like '%' || #{map.like_previewFileId} || '%'
+      </if>
+      <if test="null != map.list_previewFileId" >
+        and ota.PREVIEW_FILE_ID in (<foreach collection="map.list_previewFileId" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.previewFileName" >
+        and ota.PREVIEW_FILE_NAME = #{map.previewFileName}
+      </if>
+      <if test="null != map.like_previewFileName" >
+        and ota.PREVIEW_FILE_NAME like '%' || #{map.like_previewFileName} || '%'
+      </if>
+      <if test="null != map.list_previewFileName" >
+        and ota.PREVIEW_FILE_NAME in (<foreach collection="map.list_previewFileName" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.sortIndex" >
+        and ota.SORT_INDEX = #{map.sortIndex}
+      </if>
+      <if test="null != map.list_sortIndex" >
+        and ota.SORT_INDEX in (<foreach collection="map.list_sortIndex" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.isVisible" >
+        and ota.IS_VISIBLE = #{map.isVisible}
+      </if>
+      <if test="null != map.list_isVisible" >
+        and ota.IS_VISIBLE in (<foreach collection="map.list_isVisible" item="i" separator=",">#{i}</foreach>)
+      </if>
+      <if test="null != map.begin_createTime" >
+        and ota.CREATE_TIME &gt;= #{map.begin_createTime}
+      </if>
+      <if test="null != map.end_createTime" >
+        and ota.CREATE_TIME &lt;= #{map.end_createTime}
+      </if>
+      <if test="null != map.begin_updateTime" >
+        and ota.UPDATE_TIME &gt;= #{map.begin_updateTime}
+      </if>
+      <if test="null != map.end_updateTime" >
+        and ota.UPDATE_TIME &lt;= #{map.end_updateTime}
+      </if>
+    </where>
+  </update>
+</mapper>
